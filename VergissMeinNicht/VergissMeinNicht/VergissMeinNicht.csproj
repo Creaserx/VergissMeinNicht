@@ -113,6 +113,34 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Blume.cs" />
+    <Compile Include="Entities\Blume.Generated.cs">
+      <DependentUpon>Blume.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Enemies\JackInTheBox.cs" />
+    <Compile Include="Entities\Enemies\JackInTheBox.Generated.cs">
+      <DependentUpon>JackInTheBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Enemies\Schattenwesen.cs" />
+    <Compile Include="Entities\Enemies\Schattenwesen.Generated.cs">
+      <DependentUpon>Schattenwesen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Räume_Inhalt\Schlafraum\Bett.cs" />
+    <Compile Include="Entities\Räume_Inhalt\Schlafraum\Bett.Generated.cs">
+      <DependentUpon>Bett.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Räume_Inhalt\Schlafraum\Doppelbett.cs" />
+    <Compile Include="Entities\Räume_Inhalt\Schlafraum\Doppelbett.Generated.cs">
+      <DependentUpon>Doppelbett.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Teddy.cs" />
+    <Compile Include="Entities\Teddy.Generated.cs">
+      <DependentUpon>Teddy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Theodor.cs" />
+    <Compile Include="Entities\Theodor.Generated.cs">
+      <DependentUpon>Theodor.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlobalContent.Generated.cs" />
     <Compile Include="Performance\IEntityFactory.Generated.cs" />
     <Compile Include="Performance\IPoolable.Generated.cs" />
@@ -120,6 +148,38 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Screens\Aufenthaltsraum.cs" />
+    <Compile Include="Screens\Aufenthaltsraum.Generated.cs">
+      <DependentUpon>Aufenthaltsraum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Bad.cs" />
+    <Compile Include="Screens\Bad.Generated.cs">
+      <DependentUpon>Bad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Cinematics.cs" />
+    <Compile Include="Screens\Cinematics.Generated.cs">
+      <DependentUpon>Cinematics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Empfang.cs" />
+    <Compile Include="Screens\Empfang.Generated.cs">
+      <DependentUpon>Empfang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Flur.cs" />
+    <Compile Include="Screens\Flur.Generated.cs">
+      <DependentUpon>Flur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Hauptmenü.cs" />
+    <Compile Include="Screens\Hauptmenü.Generated.cs">
+      <DependentUpon>Hauptmenü.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Küche.cs" />
+    <Compile Include="Screens\Küche.Generated.cs">
+      <DependentUpon>küche.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Schlafraum.cs" />
+    <Compile Include="Screens\Schlafraum.Generated.cs">
+      <DependentUpon>Schlafraum.cs</DependentUpon>
+    </Compile>
     <Compile Include="Setup\CameraSetup.cs" />
   </ItemGroup>
   <ItemGroup>
