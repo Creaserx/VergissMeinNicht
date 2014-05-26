@@ -14,6 +14,7 @@ using FlatRedBall.Screens;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using FlatRedBall.Math.Geometry;
 
 #if XNA4 || WINDOWS_8
 using Color = Microsoft.Xna.Framework.Color;
@@ -35,7 +36,7 @@ using Model = Microsoft.Xna.Framework.Graphics.Model;
 
 namespace VergissMeinNicht.Entities
 {
-	public partial class Theodor : PositionedObject, IDestroyable
+	public partial class HauptmenüButton : PositionedObject, IDestroyable
 	{
         // This is made global so that static lazy-loaded content can access it.
         public static string ContentManagerName
@@ -52,21 +53,22 @@ namespace VergissMeinNicht.Entities
 		static List<string> mRegisteredUnloads = new List<string>();
 		static List<string> LoadedContentManagers = new List<string>();
 		
+		private PositionedObjectList<AxisAlignedRectangle> Button;
 		protected Layer LayerProvidedByContainer = null;
 
-        public Theodor()
+        public HauptmenüButton()
             : this(FlatRedBall.Screens.ScreenManager.CurrentScreen.ContentManagerName, true)
         {
 
         }
 
-        public Theodor(string contentManagerName) :
+        public HauptmenüButton(string contentManagerName) :
             this(contentManagerName, true)
         {
         }
 
 
-        public Theodor(string contentManagerName, bool addToManagers) :
+        public HauptmenüButton(string contentManagerName, bool addToManagers) :
 			base()
 		{
 			// Don't delete this:
@@ -79,6 +81,8 @@ namespace VergissMeinNicht.Entities
 		{
 			// Generated Initialize
 			LoadStaticContent(ContentManagerName);
+			Button = new PositionedObjectList<AxisAlignedRectangle>();
+			Button.Name = "Button";
 			
 			PostInitialize();
 			if (addToManagers)
@@ -117,6 +121,12 @@ namespace VergissMeinNicht.Entities
 			// Generated Destroy
 			SpriteManager.RemovePositionedObject(this);
 			
+			Button.MakeOneWay();
+			for (int i = Button.Count - 1; i > -1; i--)
+			{
+				ShapeManager.Remove(Button[i]);
+			}
+			Button.MakeTwoWay();
 
 
 			CustomDestroy();
@@ -136,6 +146,10 @@ namespace VergissMeinNicht.Entities
 		public virtual void RemoveFromManagers ()
 		{
 			SpriteManager.ConvertToManuallyUpdated(this);
+			for (int i = Button.Count - 1; i > -1; i--)
+			{
+				ShapeManager.Remove(Button[i]);
+			}
 		}
 		public virtual void AssignCustomVariables (bool callOnContainedElements)
 		{
@@ -173,7 +187,7 @@ namespace VergissMeinNicht.Entities
 				{
 					if (!mRegisteredUnloads.Contains(ContentManagerName) && ContentManagerName != FlatRedBallServices.GlobalContentManager)
 					{
-						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("TheodorStaticUnload", UnloadStaticContent);
+						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("HauptmenüButtonStaticUnload", UnloadStaticContent);
 						mRegisteredUnloads.Add(ContentManagerName);
 					}
 				}
@@ -184,7 +198,7 @@ namespace VergissMeinNicht.Entities
 				{
 					if (!mRegisteredUnloads.Contains(ContentManagerName) && ContentManagerName != FlatRedBallServices.GlobalContentManager)
 					{
-						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("TheodorStaticUnload", UnloadStaticContent);
+						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("HauptmenüButtonStaticUnload", UnloadStaticContent);
 						mRegisteredUnloads.Add(ContentManagerName);
 					}
 				}

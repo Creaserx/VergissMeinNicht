@@ -1,0 +1,10 @@
+C:\Users\Joel\Documents\GitHub\VergissMeinNicht\VergissMeinNicht\VergissMeinNicht\bin\x86\Debug\redball.BMP
+C:\Users\Joel\Documents\GitHub\VergissMeinNicht\VergissMeinNicht\VergissMeinNicht\bin\x86\Debug\VergissMeinNicht.exe.config
+C:\Users\Joel\Documents\GitHub\VergissMeinNicht\VergissMeinNicht\VergissMeinNicht\bin\x86\Debug\VergissMeinNicht.exe
+C:\Users\Joel\Documents\GitHub\VergissMeinNicht\VergissMeinNicht\VergissMeinNicht\bin\x86\Debug\VergissMeinNicht.pdb
+C:\Users\Joel\Documents\GitHub\VergissMeinNicht\VergissMeinNicht\VergissMeinNicht\bin\x86\Debug\FlatRedBall.dll
+C:\Users\Joel\Documents\GitHub\VergissMeinNicht\VergissMeinNicht\VergissMeinNicht\bin\x86\Debug\FlatRedBall.xml
+C:\Users\Joel\Documents\GitHub\VergissMeinNicht\VergissMeinNicht\VergissMeinNicht\obj\x86\Debug\VergissMeinNicht.csprojResolveAssemblyReference.cache
+C:\Users\Joel\Documents\GitHub\VergissMeinNicht\VergissMeinNicht\VergissMeinNicht\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Joel\Documents\GitHub\VergissMeinNicht\VergissMeinNicht\VergissMeinNicht\obj\x86\Debug\VergissMeinNicht.exe
+C:\Users\Joel\Documents\GitHub\VergissMeinNicht\VergissMeinNicht\VergissMeinNicht\obj\x86\Debug\VergissMeinNicht.pdb
