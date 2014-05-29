@@ -44,8 +44,10 @@ namespace VergissMeinNicht
             FlatRedBallServices.InitializeFlatRedBall(this, graphics);
 			CameraSetup.SetupCamera(SpriteManager.Camera, graphics);
 			GlobalContent.Initialize();
+            IsMouseVisible = true;
 
-			FlatRedBall.Screens.ScreenManager.Start(typeof(VergissMeinNicht.Screens.Hauptmenü));
+            //initializing the MainMenu Screen first
+			FlatRedBall.Screens.ScreenManager.Start(typeof(VergissMeinNicht.Screens.MainMenu));
 
             base.Initialize();
         }

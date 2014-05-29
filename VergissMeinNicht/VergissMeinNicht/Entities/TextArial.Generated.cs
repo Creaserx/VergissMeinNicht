@@ -6,6 +6,7 @@ using GuiManager = FlatRedBall.Gui.GuiManager;
 using VergissMeinNicht.Screens;
 using FlatRedBall.Graphics;
 using FlatRedBall.Math;
+using FlatRedBall.Gui;
 using VergissMeinNicht.Entities;
 using VergissMeinNicht.Entities.Enemies;
 using VergissMeinNicht.Entities.Räume_Inhalt.Schlafraum;
@@ -14,7 +15,6 @@ using FlatRedBall.Screens;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using FlatRedBall.Math.Geometry;
 
 #if XNA4 || WINDOWS_8
 using Color = Microsoft.Xna.Framework.Color;
@@ -36,7 +36,7 @@ using Model = Microsoft.Xna.Framework.Graphics.Model;
 
 namespace VergissMeinNicht.Entities
 {
-	public partial class HauptmenüButton : PositionedObject, IDestroyable
+	public partial class TextArial : PositionedObject, IDestroyable, IVisible, IClickable
 	{
         // This is made global so that static lazy-loaded content can access it.
         public static string ContentManagerName
@@ -52,23 +52,90 @@ namespace VergissMeinNicht.Entities
 		static object mLockObject = new object();
 		static List<string> mRegisteredUnloads = new List<string>();
 		static List<string> LoadedContentManagers = new List<string>();
+		protected static FlatRedBall.Scene SceneFile;
 		
-		private PositionedObjectList<AxisAlignedRectangle> Button;
+		private FlatRedBall.Graphics.Text TextInstance;
+		public string DisplayText
+		{
+			get
+			{
+				return TextInstance.DisplayText;
+			}
+			set
+			{
+				TextInstance.DisplayText = value;
+			}
+		}
+		public FlatRedBall.Graphics.HorizontalAlignment HorizontalAlignment
+		{
+			get
+			{
+				return TextInstance.HorizontalAlignment;
+			}
+			set
+			{
+				TextInstance.HorizontalAlignment = value;
+			}
+		}
+		public event EventHandler BeforeVisibleSet;
+		public event EventHandler AfterVisibleSet;
+		protected bool mVisible = true;
+		public virtual bool Visible
+		{
+			get
+			{
+				return mVisible;
+			}
+			set
+			{
+				if (BeforeVisibleSet != null)
+				{
+					BeforeVisibleSet(this, null);
+				}
+				mVisible = value;
+				if (AfterVisibleSet != null)
+				{
+					AfterVisibleSet(this, null);
+				}
+			}
+		}
+		public bool IgnoresParentVisibility { get; set; }
+		public bool AbsoluteVisible
+		{
+			get
+			{
+				return Visible && (Parent == null || IgnoresParentVisibility || Parent is IVisible == false || (Parent as IVisible).AbsoluteVisible);
+			}
+		}
+		IVisible IVisible.Parent
+		{
+			get
+			{
+				if (this.Parent != null && this.Parent is IVisible)
+				{
+					return this.Parent as IVisible;
+				}
+				else
+				{
+					return null;
+				}
+			}
+		}
 		protected Layer LayerProvidedByContainer = null;
 
-        public HauptmenüButton()
+        public TextArial()
             : this(FlatRedBall.Screens.ScreenManager.CurrentScreen.ContentManagerName, true)
         {
 
         }
 
-        public HauptmenüButton(string contentManagerName) :
+        public TextArial(string contentManagerName) :
             this(contentManagerName, true)
         {
         }
 
 
-        public HauptmenüButton(string contentManagerName, bool addToManagers) :
+        public TextArial(string contentManagerName, bool addToManagers) :
 			base()
 		{
 			// Don't delete this:
@@ -81,8 +148,8 @@ namespace VergissMeinNicht.Entities
 		{
 			// Generated Initialize
 			LoadStaticContent(ContentManagerName);
-			Button = new PositionedObjectList<AxisAlignedRectangle>();
-			Button.Name = "Button";
+			TextInstance = SceneFile.Texts.FindByName("Text").Clone();
+			TextInstance.AdjustPositionForPixelPerfectDrawing = true;
 			
 			PostInitialize();
 			if (addToManagers)
@@ -98,11 +165,13 @@ namespace VergissMeinNicht.Entities
 		{
 			LayerProvidedByContainer = layerToAddTo;
 			SpriteManager.AddPositionedObject(this);
+			TextManager.AddToLayer(TextInstance, LayerProvidedByContainer);
 		}
 		public virtual void AddToManagers (Layer layerToAddTo)
 		{
 			LayerProvidedByContainer = layerToAddTo;
 			SpriteManager.AddPositionedObject(this);
+			TextManager.AddToLayer(TextInstance, LayerProvidedByContainer);
 			AddToManagersBottomUp(layerToAddTo);
 			CustomInitialize();
 		}
@@ -110,6 +179,7 @@ namespace VergissMeinNicht.Entities
 		public virtual void Activity()
 		{
 			// Generated Activity
+			mIsPaused = false;
 			
 			CustomActivity();
 			
@@ -121,12 +191,10 @@ namespace VergissMeinNicht.Entities
 			// Generated Destroy
 			SpriteManager.RemovePositionedObject(this);
 			
-			Button.MakeOneWay();
-			for (int i = Button.Count - 1; i > -1; i--)
+			if (TextInstance != null)
 			{
-				ShapeManager.Remove(Button[i]);
+				TextManager.RemoveText(TextInstance);
 			}
-			Button.MakeTwoWay();
 
 
 			CustomDestroy();
@@ -137,6 +205,11 @@ namespace VergissMeinNicht.Entities
 		{
 			bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
+			if (TextInstance.Parent == null)
+			{
+				TextInstance.CopyAbsoluteToRelative();
+				TextInstance.AttachTo(this, false);
+			}
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp (Layer layerToAddTo)
@@ -146,9 +219,9 @@ namespace VergissMeinNicht.Entities
 		public virtual void RemoveFromManagers ()
 		{
 			SpriteManager.ConvertToManuallyUpdated(this);
-			for (int i = Button.Count - 1; i > -1; i--)
+			if (TextInstance != null)
 			{
-				ShapeManager.Remove(Button[i]);
+				TextManager.RemoveTextOneWay(TextInstance);
 			}
 		}
 		public virtual void AssignCustomVariables (bool callOnContainedElements)
@@ -156,11 +229,42 @@ namespace VergissMeinNicht.Entities
 			if (callOnContainedElements)
 			{
 			}
+			DisplayText = "Hello, I am a Text object";
+			if (Parent == null)
+			{
+				X = 0f;
+			}
+			else
+			{
+				RelativeX = 0f;
+			}
+			if (Parent == null)
+			{
+				Y = 0f;
+			}
+			else
+			{
+				RelativeY = 0f;
+			}
+			if (Parent == null)
+			{
+				Z = 0f;
+			}
+			else if (Parent is Camera)
+			{
+				RelativeZ = 0f - 40.0f;
+			}
+			else
+			{
+				RelativeZ = 0f;
+			}
+			HorizontalAlignment = FlatRedBall.Graphics.HorizontalAlignment.Center;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
 			this.ForceUpdateDependenciesDeep();
 			SpriteManager.ConvertToManuallyUpdated(this);
+			TextManager.ConvertToManuallyUpdated(TextInstance);
 		}
 		public static void LoadStaticContent (string contentManagerName)
 		{
@@ -187,10 +291,15 @@ namespace VergissMeinNicht.Entities
 				{
 					if (!mRegisteredUnloads.Contains(ContentManagerName) && ContentManagerName != FlatRedBallServices.GlobalContentManager)
 					{
-						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("HauptmenüButtonStaticUnload", UnloadStaticContent);
+						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("TextArialStaticUnload", UnloadStaticContent);
 						mRegisteredUnloads.Add(ContentManagerName);
 					}
 				}
+				if (!FlatRedBallServices.IsLoaded<FlatRedBall.Scene>(@"content/entities/textarial/scenefile.scnx", ContentManagerName))
+				{
+					registerUnload = true;
+				}
+				SceneFile = FlatRedBallServices.Load<FlatRedBall.Scene>(@"content/entities/textarial/scenefile.scnx", ContentManagerName);
 			}
 			if (registerUnload && ContentManagerName != FlatRedBallServices.GlobalContentManager)
 			{
@@ -198,7 +307,7 @@ namespace VergissMeinNicht.Entities
 				{
 					if (!mRegisteredUnloads.Contains(ContentManagerName) && ContentManagerName != FlatRedBallServices.GlobalContentManager)
 					{
-						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("HauptmenüButtonStaticUnload", UnloadStaticContent);
+						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("TextArialStaticUnload", UnloadStaticContent);
 						mRegisteredUnloads.Add(ContentManagerName);
 					}
 				}
@@ -214,20 +323,68 @@ namespace VergissMeinNicht.Entities
 			}
 			if (LoadedContentManagers.Count == 0)
 			{
+				if (SceneFile != null)
+				{
+					SceneFile.RemoveFromManagers(ContentManagerName != "Global");
+					SceneFile= null;
+				}
 			}
 		}
 		[System.Obsolete("Use GetFile instead")]
 		public static object GetStaticMember (string memberName)
 		{
+			switch(memberName)
+			{
+				case  "SceneFile":
+					return SceneFile;
+			}
 			return null;
 		}
 		public static object GetFile (string memberName)
 		{
+			switch(memberName)
+			{
+				case  "SceneFile":
+					return SceneFile;
+			}
 			return null;
 		}
 		object GetMember (string memberName)
 		{
+			switch(memberName)
+			{
+				case  "SceneFile":
+					return SceneFile;
+			}
 			return null;
+		}
+		public virtual bool HasCursorOver (FlatRedBall.Gui.Cursor cursor)
+		{
+			if (mIsPaused)
+			{
+				return false;
+			}
+			if (!AbsoluteVisible)
+			{
+				return false;
+			}
+			if (LayerProvidedByContainer != null && LayerProvidedByContainer.Visible == false)
+			{
+				return false;
+			}
+			if (!cursor.IsOn(LayerProvidedByContainer))
+			{
+				return false;
+			}
+			if (TextInstance.Alpha != 0 && TextInstance.AbsoluteVisible && cursor.IsOn3D(TextInstance, LayerProvidedByContainer))
+			{
+				return true;
+			}
+			return false;
+		}
+		public virtual bool WasClickedThisFrame (FlatRedBall.Gui.Cursor cursor)
+		{
+			return cursor.PrimaryClick && HasCursorOver(cursor);
 		}
 		protected bool mIsPaused;
 		public override void Pause (FlatRedBall.Instructions.InstructionList instructions)
@@ -238,15 +395,32 @@ namespace VergissMeinNicht.Entities
 		public virtual void SetToIgnorePausing ()
 		{
 			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(this);
+			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(TextInstance);
 		}
 		public virtual void MoveToLayer (Layer layerToMoveTo)
 		{
+			if (LayerProvidedByContainer != null)
+			{
+				LayerProvidedByContainer.Remove(TextInstance);
+			}
+			TextManager.AddToLayer(TextInstance, layerToMoveTo);
 			LayerProvidedByContainer = layerToMoveTo;
 		}
 
     }
 	
 	
-	// Extra classes
+		public static class TextArialExtensionMethods
+	{
+		public static void SetVisible (this PositionedObjectList<TextArial> list, bool value)
+		{
+			int count = list.Count;
+			for (int i = 0; i < count; i++)
+			{
+				list[i].Visible = value;
+			}
+		}
+	}
+
 	
 }

@@ -1,11 +1,8 @@
-#region Usings
-
 using System;
 using System.Collections.Generic;
 using System.Text;
 using FlatRedBall;
 using FlatRedBall.Input;
-using FlatRedBall.Instructions;
 using FlatRedBall.AI.Pathfinding;
 using FlatRedBall.Graphics.Animation;
 using FlatRedBall.Graphics.Particle;
@@ -21,12 +18,12 @@ using Keys = Microsoft.Xna.Framework.Input.Keys;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
 using Texture2D = Microsoft.Xna.Framework.Graphics.Texture2D;
 
+
 #endif
-#endregion
 
 namespace VergissMeinNicht.Entities
 {
-	public partial class HauptmenüButton
+	public partial class TextArial
 	{
 		private void CustomInitialize()
 		{

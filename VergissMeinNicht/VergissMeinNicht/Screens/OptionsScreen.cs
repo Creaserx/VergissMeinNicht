@@ -27,12 +27,14 @@ using Texture2D = Microsoft.Xna.Framework.Graphics.Texture2D;
 
 namespace VergissMeinNicht.Screens
 {
-	public partial class Hauptmenü
+	public partial class OptionsScreen
 	{
 
 		void CustomInitialize()
-		{
-
+		{  
+            //so the checkboxes are properly named at the beginning
+            OnSoundCheckBoxClick(null);
+            OnSoundEffectCheckBoxClick(null);
 
 		}
 

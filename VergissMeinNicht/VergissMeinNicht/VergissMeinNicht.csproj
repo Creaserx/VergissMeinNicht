@@ -118,6 +118,26 @@
     <Compile Include="Entities\Blume.Generated.cs">
       <DependentUpon>Blume.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Button.cs" />
+    <Compile Include="Entities\Button.Event.cs">
+      <DependentUpon>Button.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Button.Generated.cs">
+      <DependentUpon>Button.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Button.Generated.Event.cs">
+      <DependentUpon>Button.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CheckBox.cs" />
+    <Compile Include="Entities\CheckBox.Event.cs">
+      <DependentUpon>CheckBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CheckBox.Generated.cs">
+      <DependentUpon>CheckBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CheckBox.Generated.Event.cs">
+      <DependentUpon>CheckBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Enemies\JackInTheBox.cs" />
     <Compile Include="Entities\Enemies\JackInTheBox.Generated.cs">
       <DependentUpon>JackInTheBox.cs</DependentUpon>
@@ -126,9 +146,19 @@
     <Compile Include="Entities\Enemies\Schattenwesen.Generated.cs">
       <DependentUpon>Schattenwesen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\HauptmenüButton.cs" />
-    <Compile Include="Entities\HauptmenüButton.Generated.cs">
-      <DependentUpon>HauptmenüButton.cs</DependentUpon>
+    <Compile Include="Entities\Frame.cs" />
+    <Compile Include="Entities\Frame.Generated.cs">
+      <DependentUpon>Frame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\OkCancel.cs" />
+    <Compile Include="Entities\OkCancel.Event.cs">
+      <DependentUpon>OkCancel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\OkCancel.Generated.cs">
+      <DependentUpon>OkCancel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\OkCancel.Generated.Event.cs">
+      <DependentUpon>OkCancel.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\Räume_Inhalt\Schlafraum\Bett.cs" />
     <Compile Include="Entities\Räume_Inhalt\Schlafraum\Bett.Generated.cs">
@@ -141,6 +171,10 @@
     <Compile Include="Entities\Teddy.cs" />
     <Compile Include="Entities\Teddy.Generated.cs">
       <DependentUpon>Teddy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TextArial.cs" />
+    <Compile Include="Entities\TextArial.Generated.cs">
+      <DependentUpon>TextArial.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\Theodor.cs" />
     <Compile Include="Entities\Theodor.Generated.cs">
@@ -173,13 +207,33 @@
     <Compile Include="Screens\Flur.Generated.cs">
       <DependentUpon>Flur.cs</DependentUpon>
     </Compile>
-    <Compile Include="Screens\Hauptmenü.cs" />
-    <Compile Include="Screens\Hauptmenü.Generated.cs">
-      <DependentUpon>Hauptmenü.cs</DependentUpon>
-    </Compile>
     <Compile Include="Screens\Küche.cs" />
     <Compile Include="Screens\Küche.Generated.cs">
       <DependentUpon>Küche.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\LoadGameScreen.cs" />
+    <Compile Include="Screens\LoadGameScreen.Generated.cs">
+      <DependentUpon>LoadGameScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\MainMenu.cs" />
+    <Compile Include="Screens\MainMenu.Event.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\MainMenu.Generated.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\MainMenu.Generated.Event.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\OptionsScreen.cs" />
+    <Compile Include="Screens\OptionsScreen.Event.cs">
+      <DependentUpon>OptionsScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\OptionsScreen.Generated.cs">
+      <DependentUpon>OptionsScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\OptionsScreen.Generated.Event.cs">
+      <DependentUpon>OptionsScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Screens\Schlafraum.cs" />
     <Compile Include="Screens\Schlafraum.Generated.cs">
@@ -239,9 +293,7 @@
       <XnaReferenceType>Content</XnaReferenceType>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Screens\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--
