@@ -56,6 +56,15 @@
         <string>GLUE</string>
       </Tags>
       <Source>GLUE</Source>
+      <Events>
+        <EventResponseSave>
+          <EventName>BackButtonClick</EventName>
+          <SourceObject>BackButton</SourceObject>
+          <SourceObjectEvent>Click</SourceObjectEvent>
+          <BeforeOrAfter>Before</BeforeOrAfter>
+          <DelegateType />
+        </EventResponseSave>
+      </Events>
       <Name>Screens\LoadGameScreen</Name>
       <NamedObjects>
         <NamedObjectSave>
@@ -101,6 +110,23 @@
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\Button</SourceClassType>
           <InstanceName>Save3</InstanceName>
+          <AttachToContainer>true</AttachToContainer>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+        <NamedObjectSave>
+          <CustomProperty>
+            <Type>string</Type>
+            <Member>DisplayText</Member>
+            <ValueAsString>Back</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Y</Member>
+            <ValueAsFloat>-120</ValueAsFloat>
+          </CustomProperty>
+          <SourceType>Entity</SourceType>
+          <SourceClassType>Entities\Button</SourceClassType>
+          <InstanceName>BackButton</InstanceName>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
@@ -299,6 +325,11 @@
         <NamedObjectSave>
           <CustomProperty>
             <Type>string</Type>
+            <Member>SpriteFrameInstanceCurrentChainName</Member>
+            <ValueAsString />
+          </CustomProperty>
+          <CustomProperty>
+            <Type>string</Type>
             <Member>DisplayText</Member>
             <ValueAsString>New Game</ValueAsString>
           </CustomProperty>
@@ -420,6 +451,13 @@
           <BeforeOrAfter>Before</BeforeOrAfter>
           <DelegateType />
         </EventResponseSave>
+        <EventResponseSave>
+          <EventName>BackButtonClick</EventName>
+          <SourceObject>BackButton</SourceObject>
+          <SourceObjectEvent>Click</SourceObjectEvent>
+          <BeforeOrAfter>Before</BeforeOrAfter>
+          <DelegateType />
+        </EventResponseSave>
       </Events>
       <Name>Screens\OptionsScreen</Name>
       <NamedObjects>
@@ -439,6 +477,23 @@
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\CheckBox</SourceClassType>
           <InstanceName>SoundCheckBox</InstanceName>
+          <AttachToContainer>true</AttachToContainer>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+        <NamedObjectSave>
+          <CustomProperty>
+            <Type>string</Type>
+            <Member>DisplayText</Member>
+            <ValueAsString>Back</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Y</Member>
+            <ValueAsFloat>-120</ValueAsFloat>
+          </CustomProperty>
+          <SourceType>Entity</SourceType>
+          <SourceClassType>Entities\Button</SourceClassType>
+          <InstanceName>BackButton</InstanceName>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
@@ -634,8 +689,20 @@
           </CustomProperty>
           <CustomProperty>
             <Type>Single</Type>
+            <Member>X</Member>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>Single</Type>
+            <Member>Y</Member>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>Single</Type>
             <Member>Z</Member>
             <ValueAsFloat>1</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>HorizontalAlignment</Type>
+            <Member>HorizontalAlignment</Member>
           </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\TextArial</SourceClassType>
@@ -778,6 +845,14 @@
             <ValueAsFloat>15</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
+            <Type>Single</Type>
+            <Member>Y</Member>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>Single</Type>
+            <Member>Z</Member>
+          </CustomProperty>
+          <CustomProperty>
             <Type>HorizontalAlignment</Type>
             <Member>HorizontalAlignment</Member>
             <ValueAsInt>0</ValueAsInt>
@@ -803,7 +878,6 @@
         <EventResponseSave>
           <EventName>Click</EventName>
           <BeforeOrAfter>Before</BeforeOrAfter>
-          <DelegateType />
         </EventResponseSave>
       </Events>
       <Is2D>false</Is2D>
@@ -1079,19 +1153,6 @@
           <Name>Visible</Name>
           <Type>bool</Type>
         </CustomVariable>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
-              <ValueAsString>string</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>MessageLabelDisplayText</Name>
-          <Type>string</Type>
-          <DefaultValue xsi:type="xsd:string">Change Display Text</DefaultValue>
-          <SourceObject>MessageLabel</SourceObject>
-          <SourceObjectProperty>DisplayText</SourceObjectProperty>
-        </CustomVariable>
       </CustomVariables>
       <ImplementsIVisible>true</ImplementsIVisible>
       <Name>Entities\OkCancel</Name>
@@ -1164,18 +1225,18 @@
         </NamedObjectSave>
         <NamedObjectSave>
           <CustomProperty>
+            <Type>string</Type>
+            <Member>DisplayText</Member>
+            <ValueAsString>Do you really want to exit?</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
             <Type>float</Type>
             <Member>Y</Member>
             <ValueAsFloat>40</ValueAsFloat>
           </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>Z</Member>
-            <ValueAsFloat>1</ValueAsFloat>
-          </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\TextArial</SourceClassType>
-          <InstanceName>MessageLabel</InstanceName>
+          <InstanceName>TextArialInstance</InstanceName>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
@@ -1416,93 +1477,6 @@
           <Properties>
             <PropertySave>
               <Name>Type</Name>
-              <ValueAsString>string</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>DisplayText</Name>
-          <Type>string</Type>
-          <DefaultValue xsi:type="xsd:string">Hello, I am a Text object</DefaultValue>
-          <SourceObject>TextInstance</SourceObject>
-          <SourceObjectProperty>DisplayText</SourceObjectProperty>
-        </CustomVariable>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
-              <ValueAsString>float</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>X</Name>
-          <Type>float</Type>
-          <DefaultValue xsi:type="xsd:float">0</DefaultValue>
-        </CustomVariable>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
-              <ValueAsString>float</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>Y</Name>
-          <Type>float</Type>
-          <DefaultValue xsi:type="xsd:float">0</DefaultValue>
-        </CustomVariable>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
-              <ValueAsString>float</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>Z</Name>
-          <Type>float</Type>
-          <DefaultValue xsi:type="xsd:float">0</DefaultValue>
-        </CustomVariable>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
-              <ValueAsString>HorizontalAlignment</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>HorizontalAlignment</Name>
-          <Type>HorizontalAlignment</Type>
-          <DefaultValue xsi:type="xsd:int">2</DefaultValue>
-          <SourceObject>TextInstance</SourceObject>
-          <SourceObjectProperty>HorizontalAlignment</SourceObjectProperty>
-        </CustomVariable>
-      </CustomVariables>
-      <ImplementsIClickable>true</ImplementsIClickable>
-      <ImplementsIVisible>true</ImplementsIVisible>
-      <Name>Entities\TextArial</Name>
-      <NamedObjects>
-        <NamedObjectSave>
-          <SourceType>File</SourceType>
-          <SourceFile>Entities/TextArial/SceneFile.scnx</SourceFile>
-          <SourceName>&lt;NONE&gt;</SourceName>
-          <InstanceName>TextInstance</InstanceName>
-          <AttachToContainer>true</AttachToContainer>
-          <IndependentOfCamera>true</IndependentOfCamera>
-        </NamedObjectSave>
-      </NamedObjects>
-      <ReferencedFiles>
-        <ReferencedFileSave>
-          <Name>Entities/TextArial/SceneFile.scnx</Name>
-          <IsSharedStatic>true</IsSharedStatic>
-        </ReferencedFileSave>
-      </ReferencedFiles>
-      <Is2D>false</Is2D>
-    </EntitySave>
-    <EntitySave>
-      <Tags>
-        <string>GLUE</string>
-      </Tags>
-      <Source>GLUE</Source>
-      <CustomVariables>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
               <ValueAsString>float</ValueAsString>
             </PropertySave>
           </Properties>
@@ -1628,6 +1602,14 @@
     </TranslatedFileSave>
     <TranslatedFileSave>
       <FileName>Entities/CheckBox.Generated.Event.cs</FileName>
+      <TranslationStyle>PerformTranslate</TranslationStyle>
+    </TranslatedFileSave>
+    <TranslatedFileSave>
+      <FileName>Entities\TextArial.cs</FileName>
+      <TranslationStyle>PerformTranslate</TranslationStyle>
+    </TranslatedFileSave>
+    <TranslatedFileSave>
+      <FileName>Entities\TextArial.Generated.cs</FileName>
       <TranslationStyle>PerformTranslate</TranslationStyle>
     </TranslatedFileSave>
   </TranslatedFiles>

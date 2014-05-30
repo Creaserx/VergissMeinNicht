@@ -55,18 +55,7 @@ namespace VergissMeinNicht.Entities
 		private VergissMeinNicht.Entities.Frame FrameInstance;
 		private VergissMeinNicht.Entities.Button OkButton;
 		private VergissMeinNicht.Entities.Button CancelButton;
-		private VergissMeinNicht.Entities.TextArial MessageLabel;
-		public string MessageLabelDisplayText
-		{
-			get
-			{
-				return MessageLabel.DisplayText;
-			}
-			set
-			{
-				MessageLabel.DisplayText = value;
-			}
-		}
+		private VergissMeinNicht.Entities.TextArial TextArialInstance;
 		public event FlatRedBall.Gui.WindowEvent OkClick;
 		public event FlatRedBall.Gui.WindowEvent CancelClick;
 		public event EventHandler BeforeVisibleSet;
@@ -146,8 +135,8 @@ namespace VergissMeinNicht.Entities
 			OkButton.Name = "OkButton";
 			CancelButton = new VergissMeinNicht.Entities.Button(ContentManagerName, false);
 			CancelButton.Name = "CancelButton";
-			MessageLabel = new VergissMeinNicht.Entities.TextArial(ContentManagerName, false);
-			MessageLabel.Name = "MessageLabel";
+			TextArialInstance = new VergissMeinNicht.Entities.TextArial(ContentManagerName, false);
+			TextArialInstance.Name = "TextArialInstance";
 			
 			PostInitialize();
 			if (addToManagers)
@@ -166,7 +155,7 @@ namespace VergissMeinNicht.Entities
 			FrameInstance.ReAddToManagers(LayerProvidedByContainer);
 			OkButton.ReAddToManagers(LayerProvidedByContainer);
 			CancelButton.ReAddToManagers(LayerProvidedByContainer);
-			MessageLabel.ReAddToManagers(LayerProvidedByContainer);
+			TextArialInstance.ReAddToManagers(LayerProvidedByContainer);
 		}
 		public virtual void AddToManagers (Layer layerToAddTo)
 		{
@@ -175,7 +164,7 @@ namespace VergissMeinNicht.Entities
 			FrameInstance.AddToManagers(LayerProvidedByContainer);
 			OkButton.AddToManagers(LayerProvidedByContainer);
 			CancelButton.AddToManagers(LayerProvidedByContainer);
-			MessageLabel.AddToManagers(LayerProvidedByContainer);
+			TextArialInstance.AddToManagers(LayerProvidedByContainer);
 			AddToManagersBottomUp(layerToAddTo);
 			CustomInitialize();
 		}
@@ -187,7 +176,7 @@ namespace VergissMeinNicht.Entities
 			FrameInstance.Activity();
 			OkButton.Activity();
 			CancelButton.Activity();
-			MessageLabel.Activity();
+			TextArialInstance.Activity();
 			CustomActivity();
 			
 			// After Custom Activity
@@ -213,10 +202,10 @@ namespace VergissMeinNicht.Entities
 				CancelButton.Destroy();
 				CancelButton.Detach();
 			}
-			if (MessageLabel != null)
+			if (TextArialInstance != null)
 			{
-				MessageLabel.Destroy();
-				MessageLabel.Detach();
+				TextArialInstance.Destroy();
+				TextArialInstance.Detach();
 			}
 
 
@@ -277,26 +266,19 @@ namespace VergissMeinNicht.Entities
 			{
 				CancelButton.RelativeZ = 1f;
 			}
-			if (MessageLabel.Parent == null)
+			if (TextArialInstance.Parent == null)
 			{
-				MessageLabel.CopyAbsoluteToRelative();
-				MessageLabel.AttachTo(this, false);
+				TextArialInstance.CopyAbsoluteToRelative();
+				TextArialInstance.AttachTo(this, false);
 			}
-			if (MessageLabel.Parent == null)
+			TextArialInstance.DisplayText = "Do you really want to exit?";
+			if (TextArialInstance.Parent == null)
 			{
-				MessageLabel.Y = 40f;
-			}
-			else
-			{
-				MessageLabel.RelativeY = 40f;
-			}
-			if (MessageLabel.Parent == null)
-			{
-				MessageLabel.Z = 1f;
+				TextArialInstance.Y = 40f;
 			}
 			else
 			{
-				MessageLabel.RelativeZ = 1f;
+				TextArialInstance.RelativeY = 40f;
 			}
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
@@ -310,7 +292,7 @@ namespace VergissMeinNicht.Entities
 			FrameInstance.RemoveFromManagers();
 			OkButton.RemoveFromManagers();
 			CancelButton.RemoveFromManagers();
-			MessageLabel.RemoveFromManagers();
+			TextArialInstance.RemoveFromManagers();
 		}
 		public virtual void AssignCustomVariables (bool callOnContainedElements)
 		{
@@ -319,7 +301,7 @@ namespace VergissMeinNicht.Entities
 				FrameInstance.AssignCustomVariables(true);
 				OkButton.AssignCustomVariables(true);
 				CancelButton.AssignCustomVariables(true);
-				MessageLabel.AssignCustomVariables(true);
+				TextArialInstance.AssignCustomVariables(true);
 			}
 			FrameInstance.ScaleX = 96f;
 			FrameInstance.ScaleY = 64f;
@@ -351,23 +333,15 @@ namespace VergissMeinNicht.Entities
 			{
 				CancelButton.RelativeZ = 1f;
 			}
-			if (MessageLabel.Parent == null)
+			TextArialInstance.DisplayText = "Do you really want to exit?";
+			if (TextArialInstance.Parent == null)
 			{
-				MessageLabel.Y = 40f;
+				TextArialInstance.Y = 40f;
 			}
 			else
 			{
-				MessageLabel.RelativeY = 40f;
+				TextArialInstance.RelativeY = 40f;
 			}
-			if (MessageLabel.Parent == null)
-			{
-				MessageLabel.Z = 1f;
-			}
-			else
-			{
-				MessageLabel.RelativeZ = 1f;
-			}
-			MessageLabelDisplayText = "Change Display Text";
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
@@ -376,7 +350,7 @@ namespace VergissMeinNicht.Entities
 			FrameInstance.ConvertToManuallyUpdated();
 			OkButton.ConvertToManuallyUpdated();
 			CancelButton.ConvertToManuallyUpdated();
-			MessageLabel.ConvertToManuallyUpdated();
+			TextArialInstance.ConvertToManuallyUpdated();
 		}
 		public static void LoadStaticContent (string contentManagerName)
 		{
@@ -460,14 +434,14 @@ namespace VergissMeinNicht.Entities
 			FrameInstance.SetToIgnorePausing();
 			OkButton.SetToIgnorePausing();
 			CancelButton.SetToIgnorePausing();
-			MessageLabel.SetToIgnorePausing();
+			TextArialInstance.SetToIgnorePausing();
 		}
 		public virtual void MoveToLayer (Layer layerToMoveTo)
 		{
 			FrameInstance.MoveToLayer(layerToMoveTo);
 			OkButton.MoveToLayer(layerToMoveTo);
 			CancelButton.MoveToLayer(layerToMoveTo);
-			MessageLabel.MoveToLayer(layerToMoveTo);
+			TextArialInstance.MoveToLayer(layerToMoveTo);
 			LayerProvidedByContainer = layerToMoveTo;
 		}
 

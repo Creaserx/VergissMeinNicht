@@ -42,9 +42,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Entities\Button\AnimationChainListFile.achx">
+    <None Include="Entities\Button\animationchainlistfile.achx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Name>AnimationChainListFile</Name>
+      <Name>animationchainlistfile</Name>
     </None>
     <None Include="Entities\Button\button_click.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

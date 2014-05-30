@@ -304,6 +304,7 @@ namespace VergissMeinNicht.Screens
 			OkCancelInstance.OkClick += OnOkCancelInstanceOkClickTunnel;
 			OkCancelInstance.CancelClick += OnOkCancelInstanceCancelClick;
 			OkCancelInstance.CancelClick += OnOkCancelInstanceCancelClickTunnel;
+			NewGameButton.SpriteFrameInstanceCurrentChainName = "";
 			NewGameButton.DisplayText = "New Game";
 			if (NewGameButton.Parent == null)
 			{
@@ -332,7 +333,6 @@ namespace VergissMeinNicht.Screens
 			{
 				ExitGameButton.RelativeY = -80f;
 			}
-			OkCancelInstance.MessageLabelDisplayText = "Exit Game?";
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp ()
@@ -366,6 +366,7 @@ namespace VergissMeinNicht.Screens
 				ExitGameButton.AssignCustomVariables(true);
 				OkCancelInstance.AssignCustomVariables(true);
 			}
+			NewGameButton.SpriteFrameInstanceCurrentChainName = "";
 			NewGameButton.DisplayText = "New Game";
 			if (NewGameButton.Parent == null)
 			{
@@ -394,7 +395,6 @@ namespace VergissMeinNicht.Screens
 			{
 				ExitGameButton.RelativeY = -80f;
 			}
-			OkCancelInstance.MessageLabelDisplayText = "Exit Game?";
 			ExitGameButtonVisible = true;
 			LoadGameButtonVisible = true;
 			NewGameButtonVisible = true;

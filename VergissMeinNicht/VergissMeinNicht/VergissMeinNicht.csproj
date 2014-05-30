@@ -212,7 +212,13 @@
       <DependentUpon>Küche.cs</DependentUpon>
     </Compile>
     <Compile Include="Screens\LoadGameScreen.cs" />
+    <Compile Include="Screens\LoadGameScreen.Event.cs">
+      <DependentUpon>LoadGameScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screens\LoadGameScreen.Generated.cs">
+      <DependentUpon>LoadGameScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\LoadGameScreen.Generated.Event.cs">
       <DependentUpon>LoadGameScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Screens\MainMenu.cs" />

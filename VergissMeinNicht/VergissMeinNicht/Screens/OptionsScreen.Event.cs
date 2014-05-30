@@ -37,6 +37,10 @@ namespace VergissMeinNicht.Screens
             }
             
         }
+        void OnBackButtonClick (FlatRedBall.Gui.IWindow callingWindow)
+        {
+            this.MoveToScreen(typeof(MainMenu).FullName);
+        }
 
 	}
 }

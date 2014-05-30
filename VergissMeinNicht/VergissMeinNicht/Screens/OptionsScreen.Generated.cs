@@ -39,8 +39,10 @@ namespace VergissMeinNicht.Screens
 		
 		private VergissMeinNicht.Entities.CheckBox SoundEffectCheckBox;
 		private VergissMeinNicht.Entities.CheckBox SoundCheckBox;
+		private VergissMeinNicht.Entities.Button BackButton;
 		public event FlatRedBall.Gui.WindowEvent SoundEffectCheckBoxClick;
 		public event FlatRedBall.Gui.WindowEvent SoundCheckBoxClick;
+		public event FlatRedBall.Gui.WindowEvent BackButtonClick;
 
 		public OptionsScreen()
 			: base("OptionsScreen")
@@ -55,6 +57,8 @@ namespace VergissMeinNicht.Screens
 			SoundEffectCheckBox.Name = "SoundEffectCheckBox";
 			SoundCheckBox = new VergissMeinNicht.Entities.CheckBox(ContentManagerName, false);
 			SoundCheckBox.Name = "SoundCheckBox";
+			BackButton = new VergissMeinNicht.Entities.Button(ContentManagerName, false);
+			BackButton.Name = "BackButton";
 			
 			
 			PostInitialize();
@@ -71,6 +75,7 @@ namespace VergissMeinNicht.Screens
 		{
 			SoundEffectCheckBox.AddToManagers(mLayer);
 			SoundCheckBox.AddToManagers(mLayer);
+			BackButton.AddToManagers(mLayer);
 			base.AddToManagers();
 			AddToManagersBottomUp();
 			CustomInitialize();
@@ -85,6 +90,7 @@ namespace VergissMeinNicht.Screens
 				
 				SoundEffectCheckBox.Activity();
 				SoundCheckBox.Activity();
+				BackButton.Activity();
 			}
 			else
 			{
@@ -115,6 +121,11 @@ namespace VergissMeinNicht.Screens
 				SoundCheckBox.Destroy();
 				SoundCheckBox.Detach();
 			}
+			if (BackButton != null)
+			{
+				BackButton.Destroy();
+				BackButton.Detach();
+			}
 
 			base.Destroy();
 
@@ -131,6 +142,8 @@ namespace VergissMeinNicht.Screens
 			SoundEffectCheckBox.Click += OnSoundEffectCheckBoxClickTunnel;
 			SoundCheckBox.Click += OnSoundCheckBoxClick;
 			SoundCheckBox.Click += OnSoundCheckBoxClickTunnel;
+			BackButton.Click += OnBackButtonClick;
+			BackButton.Click += OnBackButtonClickTunnel;
 			if (SoundEffectCheckBox.Parent == null)
 			{
 				SoundEffectCheckBox.Y = -40f;
@@ -138,6 +151,15 @@ namespace VergissMeinNicht.Screens
 			else
 			{
 				SoundEffectCheckBox.RelativeY = -40f;
+			}
+			BackButton.DisplayText = "Back";
+			if (BackButton.Parent == null)
+			{
+				BackButton.Y = -120f;
+			}
+			else
+			{
+				BackButton.RelativeY = -120f;
 			}
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
@@ -150,6 +172,7 @@ namespace VergissMeinNicht.Screens
 		{
 			SoundEffectCheckBox.RemoveFromManagers();
 			SoundCheckBox.RemoveFromManagers();
+			BackButton.RemoveFromManagers();
 		}
 		public virtual void AssignCustomVariables (bool callOnContainedElements)
 		{
@@ -157,6 +180,7 @@ namespace VergissMeinNicht.Screens
 			{
 				SoundEffectCheckBox.AssignCustomVariables(true);
 				SoundCheckBox.AssignCustomVariables(true);
+				BackButton.AssignCustomVariables(true);
 			}
 			if (SoundEffectCheckBox.Parent == null)
 			{
@@ -166,11 +190,21 @@ namespace VergissMeinNicht.Screens
 			{
 				SoundEffectCheckBox.RelativeY = -40f;
 			}
+			BackButton.DisplayText = "Back";
+			if (BackButton.Parent == null)
+			{
+				BackButton.Y = -120f;
+			}
+			else
+			{
+				BackButton.RelativeY = -120f;
+			}
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
 			SoundEffectCheckBox.ConvertToManuallyUpdated();
 			SoundCheckBox.ConvertToManuallyUpdated();
+			BackButton.ConvertToManuallyUpdated();
 		}
 		public static void LoadStaticContent (string contentManagerName)
 		{
@@ -189,6 +223,7 @@ namespace VergissMeinNicht.Screens
 			}
 			#endif
 			VergissMeinNicht.Entities.CheckBox.LoadStaticContent(contentManagerName);
+			VergissMeinNicht.Entities.Button.LoadStaticContent(contentManagerName);
 			CustomLoadStaticContent(contentManagerName);
 		}
 		[System.Obsolete("Use GetFile instead")]

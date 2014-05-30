@@ -1,4 +1,4 @@
-Content\Entities\Button\AnimationChainListFile.achx
+Content\Entities\Button\animationchainlistfile.achx
 Content\Entities\Button\button_click.png
 Content\Entities\Button\button_hover.png
 Content\Entities\Button\button_inactive.png

@@ -40,6 +40,8 @@ namespace VergissMeinNicht.Screens
 		private VergissMeinNicht.Entities.Button Save1;
 		private VergissMeinNicht.Entities.Button Save2;
 		private VergissMeinNicht.Entities.Button Save3;
+		private VergissMeinNicht.Entities.Button BackButton;
+		public event FlatRedBall.Gui.WindowEvent BackButtonClick;
 
 		public LoadGameScreen()
 			: base("LoadGameScreen")
@@ -56,6 +58,8 @@ namespace VergissMeinNicht.Screens
 			Save2.Name = "Save2";
 			Save3 = new VergissMeinNicht.Entities.Button(ContentManagerName, false);
 			Save3.Name = "Save3";
+			BackButton = new VergissMeinNicht.Entities.Button(ContentManagerName, false);
+			BackButton.Name = "BackButton";
 			
 			
 			PostInitialize();
@@ -73,6 +77,7 @@ namespace VergissMeinNicht.Screens
 			Save1.AddToManagers(mLayer);
 			Save2.AddToManagers(mLayer);
 			Save3.AddToManagers(mLayer);
+			BackButton.AddToManagers(mLayer);
 			base.AddToManagers();
 			AddToManagersBottomUp();
 			CustomInitialize();
@@ -88,6 +93,7 @@ namespace VergissMeinNicht.Screens
 				Save1.Activity();
 				Save2.Activity();
 				Save3.Activity();
+				BackButton.Activity();
 			}
 			else
 			{
@@ -123,6 +129,11 @@ namespace VergissMeinNicht.Screens
 				Save3.Destroy();
 				Save3.Detach();
 			}
+			if (BackButton != null)
+			{
+				BackButton.Destroy();
+				BackButton.Detach();
+			}
 
 			base.Destroy();
 
@@ -135,6 +146,8 @@ namespace VergissMeinNicht.Screens
 		{
 			bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
+			BackButton.Click += OnBackButtonClick;
+			BackButton.Click += OnBackButtonClickTunnel;
 			Save1.DisplayText = "Save1";
 			if (Save1.Parent == null)
 			{
@@ -153,6 +166,15 @@ namespace VergissMeinNicht.Screens
 			else
 			{
 				Save3.RelativeY = -40f;
+			}
+			BackButton.DisplayText = "Back";
+			if (BackButton.Parent == null)
+			{
+				BackButton.Y = -120f;
+			}
+			else
+			{
+				BackButton.RelativeY = -120f;
 			}
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
@@ -166,6 +188,7 @@ namespace VergissMeinNicht.Screens
 			Save1.RemoveFromManagers();
 			Save2.RemoveFromManagers();
 			Save3.RemoveFromManagers();
+			BackButton.RemoveFromManagers();
 		}
 		public virtual void AssignCustomVariables (bool callOnContainedElements)
 		{
@@ -174,6 +197,7 @@ namespace VergissMeinNicht.Screens
 				Save1.AssignCustomVariables(true);
 				Save2.AssignCustomVariables(true);
 				Save3.AssignCustomVariables(true);
+				BackButton.AssignCustomVariables(true);
 			}
 			Save1.DisplayText = "Save1";
 			if (Save1.Parent == null)
@@ -194,12 +218,22 @@ namespace VergissMeinNicht.Screens
 			{
 				Save3.RelativeY = -40f;
 			}
+			BackButton.DisplayText = "Back";
+			if (BackButton.Parent == null)
+			{
+				BackButton.Y = -120f;
+			}
+			else
+			{
+				BackButton.RelativeY = -120f;
+			}
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
 			Save1.ConvertToManuallyUpdated();
 			Save2.ConvertToManuallyUpdated();
 			Save3.ConvertToManuallyUpdated();
+			BackButton.ConvertToManuallyUpdated();
 		}
 		public static void LoadStaticContent (string contentManagerName)
 		{

@@ -12,22 +12,8 @@ using VergissMeinNicht.Entities.Räume_Inhalt.Schlafraum;
 using VergissMeinNicht.Screens;
 namespace VergissMeinNicht.Screens
 {
-	public partial class OptionsScreen
+	public partial class LoadGameScreen
 	{
-		void OnSoundEffectCheckBoxClickTunnel (FlatRedBall.Gui.IWindow callingWindow)
-		{
-			if (this.SoundEffectCheckBoxClick != null)
-			{
-				SoundEffectCheckBoxClick(callingWindow);
-			}
-		}
-		void OnSoundCheckBoxClickTunnel (FlatRedBall.Gui.IWindow callingWindow)
-		{
-			if (this.SoundCheckBoxClick != null)
-			{
-				SoundCheckBoxClick(callingWindow);
-			}
-		}
 		void OnBackButtonClickTunnel (FlatRedBall.Gui.IWindow callingWindow)
 		{
 			if (this.BackButtonClick != null)
