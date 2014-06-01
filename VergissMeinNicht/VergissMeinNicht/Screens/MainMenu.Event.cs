@@ -42,6 +42,10 @@ namespace VergissMeinNicht.Screens
             //OnClick Cancel makes OkCancelInstance invisible
             this.CurrentState = MainMenu.VariableState.MainButtonsVisible;
         }
+        void OnZooLevelButtonClick (FlatRedBall.Gui.IWindow callingWindow)
+        {
+            this.MoveToScreen(typeof(ZooLevel).FullName);
+        }
 
 	}
 }

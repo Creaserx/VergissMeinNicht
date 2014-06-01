@@ -73,6 +73,7 @@ namespace VergissMeinNicht.Screens
 						LoadGameButtonVisible = true;
 						NewGameButtonVisible = true;
 						OptionsButtonVisible = true;
+						ZooLevelButtonVisible = true;
 						break;
 					case  VariableState.ExitOkCancelVisible:
 						OkCancelInstanceVisible = true;
@@ -80,12 +81,14 @@ namespace VergissMeinNicht.Screens
 						LoadGameButtonVisible = false;
 						NewGameButtonVisible = false;
 						OptionsButtonVisible = false;
+						ZooLevelButtonVisible = false;
 						break;
 				}
 			}
 		}
 		
 		private VergissMeinNicht.Entities.Button NewGameButton;
+		private VergissMeinNicht.Entities.Button ZooLevelButton;
 		private VergissMeinNicht.Entities.Button LoadGameButton;
 		private VergissMeinNicht.Entities.Button OptionsButton;
 		private VergissMeinNicht.Entities.Button ExitGameButton;
@@ -147,12 +150,24 @@ namespace VergissMeinNicht.Screens
 				OptionsButton.Visible = value;
 			}
 		}
+		public bool ZooLevelButtonVisible
+		{
+			get
+			{
+				return ZooLevelButton.Visible;
+			}
+			set
+			{
+				ZooLevelButton.Visible = value;
+			}
+		}
 		public event FlatRedBall.Gui.WindowEvent ExitGameButtonClick;
 		public event FlatRedBall.Gui.WindowEvent OptionsButtonClick;
 		public event FlatRedBall.Gui.WindowEvent NewGameButtonClick;
 		public event FlatRedBall.Gui.WindowEvent LoadGameButtonClick;
 		public event FlatRedBall.Gui.WindowEvent OkCancelInstanceOkClick;
 		public event FlatRedBall.Gui.WindowEvent OkCancelInstanceCancelClick;
+		public event FlatRedBall.Gui.WindowEvent ZooLevelButtonClick;
 
 		public MainMenu()
 			: base("MainMenu")
@@ -165,6 +180,8 @@ namespace VergissMeinNicht.Screens
 			LoadStaticContent(ContentManagerName);
 			NewGameButton = new VergissMeinNicht.Entities.Button(ContentManagerName, false);
 			NewGameButton.Name = "NewGameButton";
+			ZooLevelButton = new VergissMeinNicht.Entities.Button(ContentManagerName, false);
+			ZooLevelButton.Name = "ZooLevelButton";
 			LoadGameButton = new VergissMeinNicht.Entities.Button(ContentManagerName, false);
 			LoadGameButton.Name = "LoadGameButton";
 			OptionsButton = new VergissMeinNicht.Entities.Button(ContentManagerName, false);
@@ -206,6 +223,7 @@ namespace VergissMeinNicht.Screens
 				OkCancelLayer.LayerCameraSettings.OrthogonalHeight = FlatRedBall.SpriteManager.Camera.OrthogonalHeight;
 			}
 			NewGameButton.AddToManagers(Layer2D);
+			ZooLevelButton.AddToManagers(Layer2D);
 			LoadGameButton.AddToManagers(Layer2D);
 			OptionsButton.AddToManagers(Layer2D);
 			ExitGameButton.AddToManagers(Layer2D);
@@ -223,6 +241,7 @@ namespace VergissMeinNicht.Screens
 			{
 				
 				NewGameButton.Activity();
+				ZooLevelButton.Activity();
 				LoadGameButton.Activity();
 				OptionsButton.Activity();
 				ExitGameButton.Activity();
@@ -251,6 +270,11 @@ namespace VergissMeinNicht.Screens
 			{
 				NewGameButton.Destroy();
 				NewGameButton.Detach();
+			}
+			if (ZooLevelButton != null)
+			{
+				ZooLevelButton.Destroy();
+				ZooLevelButton.Detach();
 			}
 			if (LoadGameButton != null)
 			{
@@ -304,6 +328,8 @@ namespace VergissMeinNicht.Screens
 			OkCancelInstance.OkClick += OnOkCancelInstanceOkClickTunnel;
 			OkCancelInstance.CancelClick += OnOkCancelInstanceCancelClick;
 			OkCancelInstance.CancelClick += OnOkCancelInstanceCancelClickTunnel;
+			ZooLevelButton.Click += OnZooLevelButtonClick;
+			ZooLevelButton.Click += OnZooLevelButtonClickTunnel;
 			NewGameButton.SpriteFrameInstanceCurrentChainName = "";
 			NewGameButton.DisplayText = "New Game";
 			if (NewGameButton.Parent == null)
@@ -313,6 +339,16 @@ namespace VergissMeinNicht.Screens
 			else
 			{
 				NewGameButton.RelativeY = 40f;
+			}
+			ZooLevelButton.SpriteFrameInstanceCurrentChainName = "";
+			ZooLevelButton.DisplayText = "Enter ZooLevel";
+			if (ZooLevelButton.Parent == null)
+			{
+				ZooLevelButton.Y = 80f;
+			}
+			else
+			{
+				ZooLevelButton.RelativeY = 80f;
 			}
 			LoadGameButton.DisplayText = "Load Game";
 			OptionsButton.DisplayText = "Options";
@@ -343,6 +379,7 @@ namespace VergissMeinNicht.Screens
 		public virtual void RemoveFromManagers ()
 		{
 			NewGameButton.RemoveFromManagers();
+			ZooLevelButton.RemoveFromManagers();
 			LoadGameButton.RemoveFromManagers();
 			OptionsButton.RemoveFromManagers();
 			ExitGameButton.RemoveFromManagers();
@@ -361,6 +398,7 @@ namespace VergissMeinNicht.Screens
 			if (callOnContainedElements)
 			{
 				NewGameButton.AssignCustomVariables(true);
+				ZooLevelButton.AssignCustomVariables(true);
 				LoadGameButton.AssignCustomVariables(true);
 				OptionsButton.AssignCustomVariables(true);
 				ExitGameButton.AssignCustomVariables(true);
@@ -375,6 +413,16 @@ namespace VergissMeinNicht.Screens
 			else
 			{
 				NewGameButton.RelativeY = 40f;
+			}
+			ZooLevelButton.SpriteFrameInstanceCurrentChainName = "";
+			ZooLevelButton.DisplayText = "Enter ZooLevel";
+			if (ZooLevelButton.Parent == null)
+			{
+				ZooLevelButton.Y = 80f;
+			}
+			else
+			{
+				ZooLevelButton.RelativeY = 80f;
 			}
 			LoadGameButton.DisplayText = "Load Game";
 			OptionsButton.DisplayText = "Options";
@@ -400,10 +448,12 @@ namespace VergissMeinNicht.Screens
 			NewGameButtonVisible = true;
 			OptionsButtonVisible = true;
 			CurrentState = MainMenu.VariableState.MainButtonsVisible;
+			ZooLevelButtonVisible = true;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
 			NewGameButton.ConvertToManuallyUpdated();
+			ZooLevelButton.ConvertToManuallyUpdated();
 			LoadGameButton.ConvertToManuallyUpdated();
 			OptionsButton.ConvertToManuallyUpdated();
 			ExitGameButton.ConvertToManuallyUpdated();
@@ -497,6 +547,10 @@ namespace VergissMeinNicht.Screens
 					{
 						this.OptionsButtonVisible = true;
 					}
+					if (interpolationValue < 1)
+					{
+						this.ZooLevelButtonVisible = true;
+					}
 					break;
 				case  VariableState.ExitOkCancelVisible:
 					if (interpolationValue < 1)
@@ -518,6 +572,10 @@ namespace VergissMeinNicht.Screens
 					if (interpolationValue < 1)
 					{
 						this.OptionsButtonVisible = false;
+					}
+					if (interpolationValue < 1)
+					{
+						this.ZooLevelButtonVisible = false;
 					}
 					break;
 			}
@@ -544,6 +602,10 @@ namespace VergissMeinNicht.Screens
 					{
 						this.OptionsButtonVisible = true;
 					}
+					if (interpolationValue >= 1)
+					{
+						this.ZooLevelButtonVisible = true;
+					}
 					break;
 				case  VariableState.ExitOkCancelVisible:
 					if (interpolationValue >= 1)
@@ -565,6 +627,10 @@ namespace VergissMeinNicht.Screens
 					if (interpolationValue >= 1)
 					{
 						this.OptionsButtonVisible = false;
+					}
+					if (interpolationValue >= 1)
+					{
+						this.ZooLevelButtonVisible = false;
 					}
 					break;
 			}

@@ -14,6 +14,7 @@ Content\Entities\Frame\frame_02.png
 Content\Entities\Frame\frame_03.png
 Content\Entities\Frame\frame_04.png
 Content\Entities\Frame\SceneFile.scnx
+Content\Entities\PlatformerCharacterBase\MovementValues.csv
 Content\Entities\TextArial\arialfont.fnt
 Content\Entities\TextArial\ArialFont_0.png
 Content\Entities\TextArial\SceneFile.scnx

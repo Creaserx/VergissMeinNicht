@@ -14,6 +14,8 @@ using FlatRedBall.Screens;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using VergissMeinNicht.DataTypes;
+using FlatRedBall.IO.Csv;
 using FlatRedBall.Math.Geometry;
 
 #if XNA4 || WINDOWS_8
@@ -36,13 +38,13 @@ using Model = Microsoft.Xna.Framework.Graphics.Model;
 
 namespace VergissMeinNicht.Entities
 {
-	public partial class Theodor : VergissMeinNicht.Entities.PlatformerCharacterBase, IDestroyable
+	public partial class PlatformerCharacterBase : PositionedObject, IDestroyable
 	{
         // This is made global so that static lazy-loaded content can access it.
-        public static new string ContentManagerName
+        public static string ContentManagerName
         {
-            get{ return Entities.PlatformerCharacterBase.ContentManagerName;}
-            set{ Entities.PlatformerCharacterBase.ContentManagerName = value;}
+            get;
+            set;
         }
 
 		// Generated Fields
@@ -52,10 +54,24 @@ namespace VergissMeinNicht.Entities
 		static object mLockObject = new object();
 		static List<string> mRegisteredUnloads = new List<string>();
 		static List<string> LoadedContentManagers = new List<string>();
+		public static Dictionary<string, MovementValues> MovementValues;
 		
+		protected FlatRedBall.Math.Geometry.AxisAlignedRectangle mCollision;
+		public FlatRedBall.Math.Geometry.AxisAlignedRectangle Collision
+		{
+			get
+			{
+				return mCollision;
+			}
+			private set
+			{
+				mCollision = value;
+			}
+		}
 		public event EventHandler BeforeGroundMovementSet;
 		public event EventHandler AfterGroundMovementSet;
-		public override VergissMeinNicht.DataTypes.MovementValues GroundMovement
+		VergissMeinNicht.DataTypes.MovementValues mGroundMovement;
+		public virtual VergissMeinNicht.DataTypes.MovementValues GroundMovement
 		{
 			set
 			{
@@ -63,7 +79,7 @@ namespace VergissMeinNicht.Entities
 				{
 					BeforeGroundMovementSet(this, null);
 				}
-				base.GroundMovement = value;
+				mGroundMovement = value;
 				if (AfterGroundMovementSet != null)
 				{
 					AfterGroundMovementSet(this, null);
@@ -71,12 +87,13 @@ namespace VergissMeinNicht.Entities
 			}
 			get
 			{
-				return base.GroundMovement;
+				return mGroundMovement;
 			}
 		}
 		public event EventHandler BeforeAirMovementSet;
 		public event EventHandler AfterAirMovementSet;
-		public override VergissMeinNicht.DataTypes.MovementValues AirMovement
+		VergissMeinNicht.DataTypes.MovementValues mAirMovement;
+		public virtual VergissMeinNicht.DataTypes.MovementValues AirMovement
 		{
 			set
 			{
@@ -84,7 +101,7 @@ namespace VergissMeinNicht.Entities
 				{
 					BeforeAirMovementSet(this, null);
 				}
-				base.AirMovement = value;
+				mAirMovement = value;
 				if (AfterAirMovementSet != null)
 				{
 					AfterAirMovementSet(this, null);
@@ -92,12 +109,13 @@ namespace VergissMeinNicht.Entities
 			}
 			get
 			{
-				return base.AirMovement;
+				return mAirMovement;
 			}
 		}
 		public event EventHandler BeforeAfterDoubleJumpSet;
 		public event EventHandler AfterAfterDoubleJumpSet;
-		public override VergissMeinNicht.DataTypes.MovementValues AfterDoubleJump
+		VergissMeinNicht.DataTypes.MovementValues mAfterDoubleJump;
+		public virtual VergissMeinNicht.DataTypes.MovementValues AfterDoubleJump
 		{
 			set
 			{
@@ -105,7 +123,7 @@ namespace VergissMeinNicht.Entities
 				{
 					BeforeAfterDoubleJumpSet(this, null);
 				}
-				base.AfterDoubleJump = value;
+				mAfterDoubleJump = value;
 				if (AfterAfterDoubleJumpSet != null)
 				{
 					AfterAfterDoubleJumpSet(this, null);
@@ -113,79 +131,95 @@ namespace VergissMeinNicht.Entities
 			}
 			get
 			{
-				return base.AfterDoubleJump;
+				return mAfterDoubleJump;
 			}
 		}
+		protected Layer LayerProvidedByContainer = null;
 
-        public Theodor()
+        public PlatformerCharacterBase()
             : this(FlatRedBall.Screens.ScreenManager.CurrentScreen.ContentManagerName, true)
         {
 
         }
 
-        public Theodor(string contentManagerName) :
+        public PlatformerCharacterBase(string contentManagerName) :
             this(contentManagerName, true)
         {
         }
 
 
-        public Theodor(string contentManagerName, bool addToManagers) :
-			base(contentManagerName, addToManagers)
+        public PlatformerCharacterBase(string contentManagerName, bool addToManagers) :
+			base()
 		{
 			// Don't delete this:
             ContentManagerName = contentManagerName;
-           
+            InitializeEntity(addToManagers);
 
 		}
 
-		protected override void InitializeEntity(bool addToManagers)
+		protected virtual void InitializeEntity(bool addToManagers)
 		{
 			// Generated Initialize
 			LoadStaticContent(ContentManagerName);
+			mCollision = new FlatRedBall.Math.Geometry.AxisAlignedRectangle();
+			mCollision.Name = "mCollision";
 			
-			base.InitializeEntity(addToManagers);
+			PostInitialize();
+			if (addToManagers)
+			{
+				AddToManagers(null);
+			}
 
 
 		}
 
 // Generated AddToManagers
-		public override void ReAddToManagers (Layer layerToAddTo)
-		{
-			base.ReAddToManagers(layerToAddTo);
-		}
-		public override void AddToManagers (Layer layerToAddTo)
+		public virtual void ReAddToManagers (Layer layerToAddTo)
 		{
 			LayerProvidedByContainer = layerToAddTo;
-			base.AddToManagers(layerToAddTo);
+			SpriteManager.AddPositionedObject(this);
+			ShapeManager.AddToLayer(mCollision, LayerProvidedByContainer);
+		}
+		public virtual void AddToManagers (Layer layerToAddTo)
+		{
+			LayerProvidedByContainer = layerToAddTo;
+			SpriteManager.AddPositionedObject(this);
+			ShapeManager.AddToLayer(mCollision, LayerProvidedByContainer);
+			AddToManagersBottomUp(layerToAddTo);
 			CustomInitialize();
 		}
 
-		public override void Activity()
+		public virtual void Activity()
 		{
 			// Generated Activity
-			base.Activity();
 			
 			CustomActivity();
 			
 			// After Custom Activity
 		}
 
-		public override void Destroy()
+		public virtual void Destroy()
 		{
 			// Generated Destroy
-			base.Destroy();
+			SpriteManager.RemovePositionedObject(this);
 			
+			if (Collision != null)
+			{
+				ShapeManager.Remove(Collision);
+			}
 
 
 			CustomDestroy();
 		}
 
 		// Generated Methods
-		public override void PostInitialize ()
+		public virtual void PostInitialize ()
 		{
 			bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
-			base.PostInitialize();
+			this.AfterGroundMovementSet += OnAfterGroundMovementSet;
+			this.AfterAirMovementSet += OnAfterAirMovementSet;
+			this.AfterAfterDoubleJumpSet += OnAfterAfterDoubleJumpSet;
 			if (mCollision.Parent == null)
 			{
 				mCollision.CopyAbsoluteToRelative();
@@ -195,41 +229,38 @@ namespace VergissMeinNicht.Entities
 			Collision.Width = 32f;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
-		public override void AddToManagersBottomUp (Layer layerToAddTo)
+		public virtual void AddToManagersBottomUp (Layer layerToAddTo)
 		{
-			base.AddToManagersBottomUp(layerToAddTo);
+			AssignCustomVariables(false);
 		}
-		public override void RemoveFromManagers ()
+		public virtual void RemoveFromManagers ()
 		{
-			base.RemoveFromManagers();
-			base.RemoveFromManagers();
+			SpriteManager.ConvertToManuallyUpdated(this);
+			if (Collision != null)
+			{
+				ShapeManager.RemoveOneWay(Collision);
+			}
 		}
-		public override void AssignCustomVariables (bool callOnContainedElements)
+		public virtual void AssignCustomVariables (bool callOnContainedElements)
 		{
-			base.AssignCustomVariables(callOnContainedElements);
 			if (callOnContainedElements)
 			{
 			}
 			mCollision.Height = 48f;
 			mCollision.Width = 32f;
-			GroundMovement = Theodor.MovementValues["ImmediateVelocityOnGround"];
-			AirMovement = Theodor.MovementValues["ImmediateVelocityBeforeDoubleJump"];
-			AfterDoubleJump = Theodor.MovementValues["ImmediateVelocityInAir"];
 		}
-		public override void ConvertToManuallyUpdated ()
+		public virtual void ConvertToManuallyUpdated ()
 		{
-			base.ConvertToManuallyUpdated();
 			this.ForceUpdateDependenciesDeep();
 			SpriteManager.ConvertToManuallyUpdated(this);
 		}
-		public static new void LoadStaticContent (string contentManagerName)
+		public static void LoadStaticContent (string contentManagerName)
 		{
 			if (string.IsNullOrEmpty(contentManagerName))
 			{
 				throw new ArgumentException("contentManagerName cannot be empty or null");
 			}
 			ContentManagerName = contentManagerName;
-			PlatformerCharacterBase.LoadStaticContent(contentManagerName);
 			#if DEBUG
 			if (contentManagerName == FlatRedBallServices.GlobalContentManager)
 			{
@@ -248,8 +279,20 @@ namespace VergissMeinNicht.Entities
 				{
 					if (!mRegisteredUnloads.Contains(ContentManagerName) && ContentManagerName != FlatRedBallServices.GlobalContentManager)
 					{
-						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("TheodorStaticUnload", UnloadStaticContent);
+						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("PlatformerCharacterBaseStaticUnload", UnloadStaticContent);
 						mRegisteredUnloads.Add(ContentManagerName);
+					}
+				}
+				if (MovementValues == null)
+				{
+					{
+						// We put the { and } to limit the scope of oldDelimiter
+						char oldDelimiter = CsvFileManager.Delimiter;
+						CsvFileManager.Delimiter = ',';
+						Dictionary<string, MovementValues> temporaryCsvObject = new Dictionary<string, MovementValues>();
+						CsvFileManager.CsvDeserializeDictionary<string, MovementValues>("content/entities/platformercharacterbase/movementvalues.csv", temporaryCsvObject);
+						CsvFileManager.Delimiter = oldDelimiter;
+						MovementValues = temporaryCsvObject;
 					}
 				}
 			}
@@ -259,14 +302,14 @@ namespace VergissMeinNicht.Entities
 				{
 					if (!mRegisteredUnloads.Contains(ContentManagerName) && ContentManagerName != FlatRedBallServices.GlobalContentManager)
 					{
-						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("TheodorStaticUnload", UnloadStaticContent);
+						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("PlatformerCharacterBaseStaticUnload", UnloadStaticContent);
 						mRegisteredUnloads.Add(ContentManagerName);
 					}
 				}
 			}
 			CustomLoadStaticContent(contentManagerName);
 		}
-		public static new void UnloadStaticContent ()
+		public static void UnloadStaticContent ()
 		{
 			if (LoadedContentManagers.Count != 0)
 			{
@@ -275,29 +318,53 @@ namespace VergissMeinNicht.Entities
 			}
 			if (LoadedContentManagers.Count == 0)
 			{
+				if (MovementValues != null)
+				{
+					MovementValues= null;
+				}
 			}
 		}
 		[System.Obsolete("Use GetFile instead")]
-		public static new object GetStaticMember (string memberName)
+		public static object GetStaticMember (string memberName)
 		{
+			switch(memberName)
+			{
+				case  "MovementValues":
+					return MovementValues;
+			}
 			return null;
 		}
-		public static new object GetFile (string memberName)
+		public static object GetFile (string memberName)
 		{
+			switch(memberName)
+			{
+				case  "MovementValues":
+					return MovementValues;
+			}
 			return null;
 		}
 		object GetMember (string memberName)
 		{
+			switch(memberName)
+			{
+				case  "MovementValues":
+					return MovementValues;
+			}
 			return null;
 		}
-		public override void SetToIgnorePausing ()
+		protected bool mIsPaused;
+		public override void Pause (FlatRedBall.Instructions.InstructionList instructions)
 		{
-			base.SetToIgnorePausing();
+			base.Pause(instructions);
+			mIsPaused = true;
+		}
+		public virtual void SetToIgnorePausing ()
+		{
+			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(this);
 			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(Collision);
 		}
-		public override void MoveToLayer (Layer layerToMoveTo)
+		public virtual void MoveToLayer (Layer layerToMoveTo)
 		{
-			base.MoveToLayer(layerToMoveTo);
 			LayerProvidedByContainer = layerToMoveTo;
 		}
 

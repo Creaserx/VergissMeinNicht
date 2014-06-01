@@ -7,15 +7,15 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Joel\Documents\GitHub\VergissMeinNicht\VergissMeinNicht\VergissMeinNichtContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Joel\Documents\GitHub\VergissMeinNicht\VergissMeinNicht\VergissMeinNicht\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Joel\Documents\GitHub\VergissMeinNicht\VergissMeinNicht\VergissMeinNichtContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Joel\Documents\GitHub\VergissMeinNicht\VergissMeinNicht\VergissMeinNicht\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Wur\Documents\GitHub\VergissMeinNicht\VergissMeinNicht\VergissMeinNichtContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Wur\Documents\GitHub\VergissMeinNicht\VergissMeinNicht\VergissMeinNicht\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Wur\Documents\GitHub\VergissMeinNicht\VergissMeinNicht\VergissMeinNichtContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Wur\Documents\GitHub\VergissMeinNicht\VergissMeinNicht\VergissMeinNicht\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2014-04-22T00:19:21.570917+02:00</Value>
+        <Value>2014-04-27T15:42:17.2987345+02:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

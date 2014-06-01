@@ -56,5 +56,12 @@ namespace VergissMeinNicht.Screens
 				OkCancelInstanceCancelClick(callingWindow);
 			}
 		}
+		void OnZooLevelButtonClickTunnel (FlatRedBall.Gui.IWindow callingWindow)
+		{
+			if (this.ZooLevelButtonClick != null)
+			{
+				ZooLevelButtonClick(callingWindow);
+			}
+		}
 	}
 }
