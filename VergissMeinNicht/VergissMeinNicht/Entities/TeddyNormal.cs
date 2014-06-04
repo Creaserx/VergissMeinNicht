@@ -26,7 +26,7 @@ using Texture2D = Microsoft.Xna.Framework.Graphics.Texture2D;
 
 namespace VergissMeinNicht.Entities
 {
-	public partial class Teddy
+	public partial class TeddyNormal
 	{
 		private void CustomInitialize()
 		{
