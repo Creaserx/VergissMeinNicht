@@ -155,19 +155,19 @@ namespace VergissMeinNicht.Screens
 			MainMenuButton.DisplayText = "MainMenu";
 			if (MainMenuButton.Parent == null)
 			{
-				MainMenuButton.Y = 260f;
-			}
-			else
-			{
-				MainMenuButton.RelativeY = 260f;
-			}
-			if (MainMenuButton.Parent == null)
-			{
 				MainMenuButton.X = 300f;
 			}
 			else
 			{
 				MainMenuButton.RelativeX = 300f;
+			}
+			if (MainMenuButton.Parent == null)
+			{
+				MainMenuButton.Y = 260f;
+			}
+			else
+			{
+				MainMenuButton.RelativeY = 260f;
 			}
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
@@ -199,19 +199,19 @@ namespace VergissMeinNicht.Screens
 			MainMenuButton.DisplayText = "MainMenu";
 			if (MainMenuButton.Parent == null)
 			{
-				MainMenuButton.Y = 260f;
-			}
-			else
-			{
-				MainMenuButton.RelativeY = 260f;
-			}
-			if (MainMenuButton.Parent == null)
-			{
 				MainMenuButton.X = 300f;
 			}
 			else
 			{
 				MainMenuButton.RelativeX = 300f;
+			}
+			if (MainMenuButton.Parent == null)
+			{
+				MainMenuButton.Y = 260f;
+			}
+			else
+			{
+				MainMenuButton.RelativeY = 260f;
 			}
 		}
 		public virtual void ConvertToManuallyUpdated ()
