@@ -42,21 +42,39 @@ namespace VergissMeinNicht.Entities
             // don't do anything if it's 0, just leave it to what it was before
 
             // check whether in air or on ground
-            /*if (IsOnGround)
-            {
-
-            }
-            else // in the air
-            {
-                if (DirectionFacing == LeftOrRight.Left)
-                {
-                    this.SpriteInstance.CurrentChainName = "JumpLeft";
-                }
-                else
-                {
-                    this.SpriteInstance.CurrentChainName = "JumpRight";
-                }
-            }*/
+            if (IsOnGround)
+              {
+                  if (HorizontalRatio > 0)
+                  {
+                      this.SpriteInstance.CurrentChainName = "WalkRight";
+                  }
+                  else if (HorizontalRatio < 0)
+                  {
+                      this.SpriteInstance.CurrentChainName = "WalkLeft";
+                  }
+                  else
+                  {
+                      if (DirectionFacing == LeftOrRight.Right)
+                      {
+                          this.SpriteInstance.CurrentChainName = "IdleRight";
+                      }
+                      else
+                      {
+                          this.SpriteInstance.CurrentChainName = "IdleLeft";
+                      }
+                  }
+              }
+              else // in the air
+              {
+                  if (DirectionFacing == LeftOrRight.Left)
+                  {
+                      this.SpriteInstance.CurrentChainName = "JumpLeft";
+                  }
+                  else
+                  {
+                      this.SpriteInstance.CurrentChainName = "JumpRight";
+                  }
+              }
         }
 
         public enum LeftOrRight

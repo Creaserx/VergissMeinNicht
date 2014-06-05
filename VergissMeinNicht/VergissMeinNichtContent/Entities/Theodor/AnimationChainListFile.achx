@@ -355,5 +355,37 @@
       <RelativeY>0</RelativeY>
     </Frame>
   </AnimationChain>
+  <AnimationChain>
+    <Name>JumpRight</Name>
+    <ColorKey>0</ColorKey>
+    <Frame>
+      <FlipHorizontal>false</FlipHorizontal>
+      <FlipVertical>false</FlipVertical>
+      <TextureName>Theodor_Dummy_SpriteSheet.png</TextureName>
+      <FrameLength>0.1</FrameLength>
+      <LeftCoordinate>648</LeftCoordinate>
+      <RightCoordinate>729</RightCoordinate>
+      <TopCoordinate>0</TopCoordinate>
+      <BottomCoordinate>150</BottomCoordinate>
+      <RelativeX>0</RelativeX>
+      <RelativeY>0</RelativeY>
+    </Frame>
+  </AnimationChain>
+  <AnimationChain>
+    <Name>JumpLeft</Name>
+    <ColorKey>0</ColorKey>
+    <Frame>
+      <FlipHorizontal>true</FlipHorizontal>
+      <FlipVertical>false</FlipVertical>
+      <TextureName>Theodor_Dummy_SpriteSheet.png</TextureName>
+      <FrameLength>0.1</FrameLength>
+      <LeftCoordinate>648</LeftCoordinate>
+      <RightCoordinate>729</RightCoordinate>
+      <TopCoordinate>0</TopCoordinate>
+      <BottomCoordinate>150</BottomCoordinate>
+      <RelativeX>-0</RelativeX>
+      <RelativeY>0</RelativeY>
+    </Frame>
+  </AnimationChain>
   <FileName>C:/Users/Wur/Documents/GitHub/VergissMeinNicht/VergissMeinNicht/VergissMeinNichtContent/Entities/Theodor/AnimationChainListFile.achx</FileName>
 </AnimationChainArraySave>
