@@ -7,3 +7,4 @@ ImmediateVelocityOnGround,170,0,0,-1000,400,400,0.3,TRUE
 ImmediateVelocityBeforeDoubleJump,170,0,0,-1000,400,400,0,FALSE
 ImmediateVelocityInAir,170,0,0,-1000,400,0,0,FALSE
 TheodorOnGround,110,0,0,-1000,400,270,0.2,TRUE
+TheodorInAir,110,0,0,-1000,300,260,0,FALSE

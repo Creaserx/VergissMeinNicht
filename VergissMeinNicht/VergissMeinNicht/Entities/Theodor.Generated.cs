@@ -239,7 +239,7 @@ namespace VergissMeinNicht.Entities
 			SpriteInstance.TextureScale = 1f;
 			SpriteInstance.CurrentChainName = "IdleRight";
 			GroundMovement = Theodor.MovementValues["TheodorOnGround"];
-			AirMovement = Theodor.MovementValues["ImmediateVelocityBeforeDoubleJump"];
+			AirMovement = Theodor.MovementValues["TheodorInAir"];
 			AfterDoubleJump = Theodor.MovementValues["ImmediateVelocityInAir"];
 		}
 		public override void ConvertToManuallyUpdated ()
