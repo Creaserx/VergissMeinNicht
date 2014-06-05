@@ -1772,7 +1772,7 @@
           </Properties>
           <Name>GroundMovement</Name>
           <Type>Entities/PlatformerCharacterBase/MovementValues.csv</Type>
-          <DefaultValue xsi:type="xsd:string">ImmediateVelocityOnGround</DefaultValue>
+          <DefaultValue xsi:type="xsd:string">TheodorOnGround in MovementValues.csv</DefaultValue>
           <DefinedByBase>true</DefinedByBase>
           <CreatesEvent>true</CreatesEvent>
         </CustomVariable>

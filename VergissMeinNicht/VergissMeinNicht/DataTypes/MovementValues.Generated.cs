@@ -19,6 +19,7 @@ namespace VergissMeinNicht.DataTypes
 		public const string ImmediateVelocityOnGround = "ImmediateVelocityOnGround";
 		public const string ImmediateVelocityBeforeDoubleJump = "ImmediateVelocityBeforeDoubleJump";
 		public const string ImmediateVelocityInAir = "ImmediateVelocityInAir";
+		public const string TheodorOnGround = "TheodorOnGround";
 		public static System.Collections.Generic.List<System.String> OrderedList = new System.Collections.Generic.List<System.String>
 		{
 		AccelerationOnGround
@@ -28,6 +29,7 @@ namespace VergissMeinNicht.DataTypes
 		,ImmediateVelocityOnGround
 		,ImmediateVelocityBeforeDoubleJump
 		,ImmediateVelocityInAir
+		,TheodorOnGround
 		};
 		
 		
