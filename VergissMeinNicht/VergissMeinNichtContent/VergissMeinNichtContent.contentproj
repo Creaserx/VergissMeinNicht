@@ -134,6 +134,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>AnimationChainListFile</Name>
     </None>
+    <None Include="Entities\Theodor\Theodor_Dummy_SpriteSheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Theodor_Dummy_SpriteSheet</Name>
+    </None>
     <None Include="Entities\Theodor\Theodor_Idle.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Theodor_Idle</Name>

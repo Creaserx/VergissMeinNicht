@@ -28,6 +28,49 @@ namespace VergissMeinNicht.Entities
 {
 	public partial class Theodor
 	{
+        private void AnimationActivity()
+        {
+            // check facing direction
+            if (HorizontalRatio > 0)
+            {
+                this.DirectionFacing = LeftOrRight.Right;
+            }
+            else if (HorizontalRatio < 0)
+            {
+                this.DirectionFacing = LeftOrRight.Left;
+            }
+            // don't do anything if it's 0, just leave it to what it was before
+
+            // check whether in air or on ground
+            /*if (IsOnGround)
+            {
+
+            }
+            else // in the air
+            {
+                if (DirectionFacing == LeftOrRight.Left)
+                {
+                    this.SpriteInstance.CurrentChainName = "JumpLeft";
+                }
+                else
+                {
+                    this.SpriteInstance.CurrentChainName = "JumpRight";
+                }
+            }*/
+        }
+
+        public enum LeftOrRight
+        {
+            Left,
+            Right
+        }
+
+        public LeftOrRight DirectionFacing
+        {
+            get;
+            private set;
+        }
+
 		private void CustomInitialize()
 		{
 
@@ -36,7 +79,7 @@ namespace VergissMeinNicht.Entities
 
 		private void CustomActivity()
 		{
-
+            AnimationActivity();
 
 		}
 
