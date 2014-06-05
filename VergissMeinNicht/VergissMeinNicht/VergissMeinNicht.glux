@@ -595,6 +595,7 @@
           <SourceClassType>Entities\Button</SourceClassType>
           <InstanceName>MainMenuButton</InstanceName>
           <AttachToContainer>true</AttachToContainer>
+          <AttachToCamera>true</AttachToCamera>
           <IndependentOfCamera>true</IndependentOfCamera>
           <LayerOn>Layer2D</LayerOn>
         </NamedObjectSave>

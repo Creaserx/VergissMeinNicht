@@ -152,6 +152,12 @@ namespace VergissMeinNicht.Screens
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
 			MainMenuButton.Click += OnMainMenuButtonClick;
 			MainMenuButton.Click += OnMainMenuButtonClickTunnel;
+			if (MainMenuButton.Parent == null)
+			{
+				MainMenuButton.CopyAbsoluteToRelative();
+				MainMenuButton.RelativeZ += -40;
+				MainMenuButton.AttachTo(SpriteManager.Camera, false);
+			}
 			MainMenuButton.DisplayText = "MainMenu";
 			if (MainMenuButton.Parent == null)
 			{
