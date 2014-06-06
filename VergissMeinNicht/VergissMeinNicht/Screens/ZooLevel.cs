@@ -34,8 +34,9 @@ namespace VergissMeinNicht.Screens
 		{
             // Create a rectnagle
             AxisAlignedRectangle rectangle = new AxisAlignedRectangle();
-            rectangle.ScaleX = 500;
+            rectangle.ScaleX = 800;
             rectangle.ScaleY = 50;
+            //rectangle.Y = -50;
 
             // Add it to the ShapeCollection so the player can collide against it
             this.SolidCollisions.AxisAlignedRectangles.Add(rectangle);

@@ -574,6 +574,13 @@
         </EventResponseSave>
       </Events>
       <Name>Screens\ZooLevel</Name>
+      <ReferencedFiles>
+        <ReferencedFileSave>
+          <Name>Screens/ZooLevel/SceneFile.scnx</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>FlatRedBall.Scene</RuntimeType>
+        </ReferencedFileSave>
+      </ReferencedFiles>
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
