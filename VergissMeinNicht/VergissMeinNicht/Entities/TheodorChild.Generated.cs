@@ -37,7 +37,7 @@ using Model = Microsoft.Xna.Framework.Graphics.Model;
 
 namespace VergissMeinNicht.Entities
 {
-	public partial class Theodor : VergissMeinNicht.Entities.PlatformerCharacterBase, IDestroyable
+	public partial class TheodorChild : VergissMeinNicht.Entities.PlatformerCharacterBase, IDestroyable
 	{
         // This is made global so that static lazy-loaded content can access it.
         public static new string ContentManagerName
@@ -120,19 +120,19 @@ namespace VergissMeinNicht.Entities
 			}
 		}
 
-        public Theodor()
+        public TheodorChild()
             : this(FlatRedBall.Screens.ScreenManager.CurrentScreen.ContentManagerName, true)
         {
 
         }
 
-        public Theodor(string contentManagerName) :
+        public TheodorChild(string contentManagerName) :
             this(contentManagerName, true)
         {
         }
 
 
-        public Theodor(string contentManagerName, bool addToManagers) :
+        public TheodorChild(string contentManagerName, bool addToManagers) :
 			base(contentManagerName, addToManagers)
 		{
 			// Don't delete this:
@@ -202,8 +202,8 @@ namespace VergissMeinNicht.Entities
 				mCollision.CopyAbsoluteToRelative();
 				mCollision.AttachTo(this, false);
 			}
-			base.Collision.Height = 150f;
-			base.Collision.Width = 80f;
+			Collision.Height = 150f;
+			Collision.Width = 80f;
 			if (SpriteInstance.Parent == null)
 			{
 				SpriteInstance.CopyAbsoluteToRelative();
@@ -233,14 +233,14 @@ namespace VergissMeinNicht.Entities
 			if (callOnContainedElements)
 			{
 			}
-			base.mCollision.Height = 150f;
-			base.mCollision.Width = 80f;
+			mCollision.Height = 150f;
+			mCollision.Width = 80f;
 			SpriteInstance.AnimationChains = AnimationChainListFile;
 			SpriteInstance.TextureScale = 1f;
 			SpriteInstance.CurrentChainName = "IdleRight";
-			GroundMovement = Theodor.MovementValues["TheodorOnGround"];
-			AirMovement = Theodor.MovementValues["TheodorInAir"];
-			AfterDoubleJump = Theodor.MovementValues["ImmediateVelocityInAir"];
+			GroundMovement = TheodorChild.MovementValues["TheodorOnGround"];
+			AirMovement = TheodorChild.MovementValues["TheodorInAir"];
+			AfterDoubleJump = TheodorChild.MovementValues["ImmediateVelocityInAir"];
 		}
 		public override void ConvertToManuallyUpdated ()
 		{
@@ -275,7 +275,7 @@ namespace VergissMeinNicht.Entities
 				{
 					if (!mRegisteredUnloads.Contains(ContentManagerName) && ContentManagerName != FlatRedBallServices.GlobalContentManager)
 					{
-						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("TheodorStaticUnload", UnloadStaticContent);
+						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("TheodorChildStaticUnload", UnloadStaticContent);
 						mRegisteredUnloads.Add(ContentManagerName);
 					}
 				}
@@ -291,7 +291,7 @@ namespace VergissMeinNicht.Entities
 				{
 					if (!mRegisteredUnloads.Contains(ContentManagerName) && ContentManagerName != FlatRedBallServices.GlobalContentManager)
 					{
-						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("TheodorStaticUnload", UnloadStaticContent);
+						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("TheodorChildStaticUnload", UnloadStaticContent);
 						mRegisteredUnloads.Add(ContentManagerName);
 					}
 				}

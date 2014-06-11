@@ -191,9 +191,9 @@
     <Compile Include="Entities\TextArial.Generated.cs">
       <DependentUpon>TextArial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Theodor.cs" />
-    <Compile Include="Entities\Theodor.Generated.cs">
-      <DependentUpon>Theodor.cs</DependentUpon>
+    <Compile Include="Entities\TheodorChild.cs" />
+    <Compile Include="Entities\TheodorChild.Generated.cs">
+      <DependentUpon>theodorchild.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\TheodorGrownUp.cs" />
     <Compile Include="Entities\TheodorGrownUp.Generated.cs">

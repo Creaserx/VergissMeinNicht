@@ -154,8 +154,8 @@ namespace VergissMeinNicht.Entities
 				Sprite.CopyAbsoluteToRelative();
 				Sprite.AttachTo(this, false);
 			}
-			Sprite.TextureScale = 1f;
 			Sprite.Texture = teddy_fucked;
+			Sprite.TextureScale = 1f;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp (Layer layerToAddTo)
@@ -175,8 +175,8 @@ namespace VergissMeinNicht.Entities
 			if (callOnContainedElements)
 			{
 			}
-			Sprite.TextureScale = 1f;
 			Sprite.Texture = teddy_fucked;
+			Sprite.TextureScale = 1f;
 			SpriteVisible = false;
 		}
 		public virtual void ConvertToManuallyUpdated ()

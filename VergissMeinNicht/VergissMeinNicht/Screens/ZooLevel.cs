@@ -45,26 +45,26 @@ namespace VergissMeinNicht.Screens
             SolidCollisions.AddToManagers();
 
             // Let's make the character appear on top of the rectangle:
-            this.TheodorInstance.Y = 200;
+            this.TheodorChildInstance.Y = 200;
 		}
 
 		void CustomActivity(bool firstTimeCalled)
 		{
             //Theodor Collisions & Movement
-            TheodorInstance.CollideAgainst(SolidCollisions);
-            TheodorInstance.DetermineMovementValues();
+            TheodorChildInstance.CollideAgainst(SolidCollisions);
+            TheodorChildInstance.DetermineMovementValues();
 
             TeddyText();
 
             //Camera Movement following Theodor
-            SpriteManager.Camera.XVelocity = TheodorInstance.X - SpriteManager.Camera.X;
-            SpriteManager.Camera.YVelocity = TheodorInstance.Y - SpriteManager.Camera.Y;
+            SpriteManager.Camera.XVelocity = TheodorChildInstance.X - SpriteManager.Camera.X;
+            SpriteManager.Camera.YVelocity = TheodorChildInstance.Y - SpriteManager.Camera.Y;
 		}
 
         void TeddyText()
         {
             //Makes Text Visible / Invisible in front of a Teddy
-            if (TheodorInstance.X < (TeddyNormalInstance.X + 75) && TheodorInstance.X > (TeddyNormalInstance.X - 75))
+            if (TheodorChildInstance.X < (TeddyNormalInstance.X + 75) && TheodorChildInstance.X > (TeddyNormalInstance.X - 75))
             {
                 SaveText.Visible = true;
                 InteractText.Visible = true;

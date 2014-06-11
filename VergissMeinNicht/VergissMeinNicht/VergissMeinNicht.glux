@@ -642,8 +642,8 @@
         </NamedObjectSave>
         <NamedObjectSave>
           <SourceType>Entity</SourceType>
-          <SourceClassType>Entities\Theodor</SourceClassType>
-          <InstanceName>TheodorInstance</InstanceName>
+          <SourceClassType>Entities\TheodorChild</SourceClassType>
+          <InstanceName>TheodorChildInstance</InstanceName>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
           <LayerOn />
@@ -679,6 +679,11 @@
         </NamedObjectSave>
         <NamedObjectSave>
           <CustomProperty>
+            <Type>string</Type>
+            <Member>DisplayText</Member>
+            <ValueAsString>Press E to Interact</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
             <Type>float</Type>
             <Member>X</Member>
             <ValueAsFloat>-350</ValueAsFloat>
@@ -687,11 +692,6 @@
             <Type>float</Type>
             <Member>Y</Member>
             <ValueAsFloat>-150</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>string</Type>
-            <Member>DisplayText</Member>
-            <ValueAsString>Press E to Interact</ValueAsString>
           </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\TextArial</SourceClassType>
@@ -1683,14 +1683,14 @@
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
-            <Type>float</Type>
-            <Member>TextureScale</Member>
-            <ValueAsFloat>1</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
             <Type>Texture2D</Type>
             <Member>Texture</Member>
             <ValueAsString>teddy_fucked</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>TextureScale</Member>
+            <ValueAsFloat>1</ValueAsFloat>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile />
@@ -1764,14 +1764,14 @@
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
-            <Type>float</Type>
-            <Member>TextureScale</Member>
-            <ValueAsFloat>1</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
             <Type>Texture2D</Type>
             <Member>Texture</Member>
             <ValueAsString>teddy_normal</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>TextureScale</Member>
+            <ValueAsFloat>1</ValueAsFloat>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile />
@@ -1968,7 +1968,7 @@
         </CustomVariable>
       </CustomVariables>
       <BaseEntity>Entities\PlatformerCharacterBase</BaseEntity>
-      <Name>Entities\Theodor</Name>
+      <Name>Entities\TheodorChild</Name>
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
@@ -2098,7 +2098,6 @@
         </InstructionSave>
       </RequiredProperties>
       <Name>TileMapInfo</Name>
-      <GenerateCode>true</GenerateCode>
     </CustomClassSave>
   </CustomClasses>
   <TranslatedFiles>

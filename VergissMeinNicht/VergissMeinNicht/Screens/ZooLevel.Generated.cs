@@ -44,7 +44,7 @@ namespace VergissMeinNicht.Screens
 		private FlatRedBall.Graphics.Layer Layer2D;
 		private VergissMeinNicht.Entities.TeddyNormal TeddyNormalInstance;
 		private VergissMeinNicht.Entities.TeddyFuckedUp TeddyFuckedUpInstance;
-		private VergissMeinNicht.Entities.Theodor TheodorInstance;
+		private VergissMeinNicht.Entities.TheodorChild TheodorChildInstance;
 		private VergissMeinNicht.Entities.TheodorGrownUp TheodorGrownUpInstance;
 		private VergissMeinNicht.Entities.TextArial SaveText;
 		private VergissMeinNicht.Entities.TextArial InteractText;
@@ -68,8 +68,8 @@ namespace VergissMeinNicht.Screens
 			TeddyNormalInstance.Name = "TeddyNormalInstance";
 			TeddyFuckedUpInstance = new VergissMeinNicht.Entities.TeddyFuckedUp(ContentManagerName, false);
 			TeddyFuckedUpInstance.Name = "TeddyFuckedUpInstance";
-			TheodorInstance = new VergissMeinNicht.Entities.Theodor(ContentManagerName, false);
-			TheodorInstance.Name = "TheodorInstance";
+			TheodorChildInstance = new VergissMeinNicht.Entities.TheodorChild(ContentManagerName, false);
+			TheodorChildInstance.Name = "TheodorChildInstance";
 			TheodorGrownUpInstance = new VergissMeinNicht.Entities.TheodorGrownUp(ContentManagerName, false);
 			TheodorGrownUpInstance.Name = "TheodorGrownUpInstance";
 			SaveText = new VergissMeinNicht.Entities.TextArial(ContentManagerName, false);
@@ -103,7 +103,7 @@ namespace VergissMeinNicht.Screens
 			MainMenuButton.AddToManagers(Layer2D);
 			TeddyNormalInstance.AddToManagers(mLayer);
 			TeddyFuckedUpInstance.AddToManagers(mLayer);
-			TheodorInstance.AddToManagers(mLayer);
+			TheodorChildInstance.AddToManagers(mLayer);
 			TheodorGrownUpInstance.AddToManagers(mLayer);
 			SaveText.AddToManagers(mLayer);
 			InteractText.AddToManagers(mLayer);
@@ -123,7 +123,7 @@ namespace VergissMeinNicht.Screens
 				MainMenuButton.Activity();
 				TeddyNormalInstance.Activity();
 				TeddyFuckedUpInstance.Activity();
-				TheodorInstance.Activity();
+				TheodorChildInstance.Activity();
 				TheodorGrownUpInstance.Activity();
 				SaveText.Activity();
 				InteractText.Activity();
@@ -182,10 +182,10 @@ namespace VergissMeinNicht.Screens
 				TeddyFuckedUpInstance.Destroy();
 				TeddyFuckedUpInstance.Detach();
 			}
-			if (TheodorInstance != null)
+			if (TheodorChildInstance != null)
 			{
-				TheodorInstance.Destroy();
-				TheodorInstance.Detach();
+				TheodorChildInstance.Destroy();
+				TheodorChildInstance.Detach();
 			}
 			if (TheodorGrownUpInstance != null)
 			{
@@ -276,6 +276,7 @@ namespace VergissMeinNicht.Screens
 			{
 				SaveText.RelativeY = -100f;
 			}
+			InteractText.DisplayText = "Press E to Interact";
 			if (InteractText.Parent == null)
 			{
 				InteractText.X = -350f;
@@ -292,7 +293,6 @@ namespace VergissMeinNicht.Screens
 			{
 				InteractText.RelativeY = -150f;
 			}
-			InteractText.DisplayText = "Press E to Interact";
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp ()
@@ -309,7 +309,7 @@ namespace VergissMeinNicht.Screens
 			}
 			TeddyNormalInstance.RemoveFromManagers();
 			TeddyFuckedUpInstance.RemoveFromManagers();
-			TheodorInstance.RemoveFromManagers();
+			TheodorChildInstance.RemoveFromManagers();
 			TheodorGrownUpInstance.RemoveFromManagers();
 			SaveText.RemoveFromManagers();
 			InteractText.RemoveFromManagers();
@@ -325,7 +325,7 @@ namespace VergissMeinNicht.Screens
 				MainMenuButton.AssignCustomVariables(true);
 				TeddyNormalInstance.AssignCustomVariables(true);
 				TeddyFuckedUpInstance.AssignCustomVariables(true);
-				TheodorInstance.AssignCustomVariables(true);
+				TheodorChildInstance.AssignCustomVariables(true);
 				TheodorGrownUpInstance.AssignCustomVariables(true);
 				SaveText.AssignCustomVariables(true);
 				InteractText.AssignCustomVariables(true);
@@ -380,6 +380,7 @@ namespace VergissMeinNicht.Screens
 			{
 				SaveText.RelativeY = -100f;
 			}
+			InteractText.DisplayText = "Press E to Interact";
 			if (InteractText.Parent == null)
 			{
 				InteractText.X = -350f;
@@ -396,14 +397,13 @@ namespace VergissMeinNicht.Screens
 			{
 				InteractText.RelativeY = -150f;
 			}
-			InteractText.DisplayText = "Press E to Interact";
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
 			MainMenuButton.ConvertToManuallyUpdated();
 			TeddyNormalInstance.ConvertToManuallyUpdated();
 			TeddyFuckedUpInstance.ConvertToManuallyUpdated();
-			TheodorInstance.ConvertToManuallyUpdated();
+			TheodorChildInstance.ConvertToManuallyUpdated();
 			TheodorGrownUpInstance.ConvertToManuallyUpdated();
 			SaveText.ConvertToManuallyUpdated();
 			InteractText.ConvertToManuallyUpdated();
@@ -431,7 +431,7 @@ namespace VergissMeinNicht.Screens
 			VergissMeinNicht.Entities.Button.LoadStaticContent(contentManagerName);
 			VergissMeinNicht.Entities.TeddyNormal.LoadStaticContent(contentManagerName);
 			VergissMeinNicht.Entities.TeddyFuckedUp.LoadStaticContent(contentManagerName);
-			VergissMeinNicht.Entities.Theodor.LoadStaticContent(contentManagerName);
+			VergissMeinNicht.Entities.TheodorChild.LoadStaticContent(contentManagerName);
 			VergissMeinNicht.Entities.TheodorGrownUp.LoadStaticContent(contentManagerName);
 			VergissMeinNicht.Entities.TextArial.LoadStaticContent(contentManagerName);
 			CustomLoadStaticContent(contentManagerName);
