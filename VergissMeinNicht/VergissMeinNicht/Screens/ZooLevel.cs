@@ -54,10 +54,28 @@ namespace VergissMeinNicht.Screens
             TheodorInstance.CollideAgainst(SolidCollisions);
             TheodorInstance.DetermineMovementValues();
 
+            TeddyText();
+
             //Camera Movement following Theodor
             SpriteManager.Camera.XVelocity = TheodorInstance.X - SpriteManager.Camera.X;
             SpriteManager.Camera.YVelocity = TheodorInstance.Y - SpriteManager.Camera.Y;
 		}
+
+        void TeddyText()
+        {
+            //Makes Text Visible / Invisible in front of a Teddy
+            if (TheodorInstance.X < (TeddyNormalInstance.X + 75) && TheodorInstance.X > (TeddyNormalInstance.X - 75))
+            {
+                SaveText.Visible = true;
+                InteractText.Visible = true;
+            }
+            else
+            {
+                SaveText.Visible = false;
+                InteractText.Visible = false;
+            }
+
+        }
 
 		void CustomDestroy()
 		{
