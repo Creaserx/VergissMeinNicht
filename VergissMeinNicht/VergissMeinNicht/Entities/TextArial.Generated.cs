@@ -77,6 +77,17 @@ namespace VergissMeinNicht.Entities
 				TextInstance.HorizontalAlignment = value;
 			}
 		}
+		public bool TextInstanceVisible
+		{
+			get
+			{
+				return TextInstance.Visible;
+			}
+			set
+			{
+				TextInstance.Visible = value;
+			}
+		}
 		public event EventHandler BeforeVisibleSet;
 		public event EventHandler AfterVisibleSet;
 		protected bool mVisible = true;
@@ -259,6 +270,7 @@ namespace VergissMeinNicht.Entities
 				RelativeZ = 0f;
 			}
 			HorizontalAlignment = FlatRedBall.Graphics.HorizontalAlignment.Center;
+			TextInstanceVisible = true;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{

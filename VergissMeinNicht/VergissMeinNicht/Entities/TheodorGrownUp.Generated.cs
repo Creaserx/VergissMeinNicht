@@ -14,9 +14,6 @@ using FlatRedBall.Screens;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using VergissMeinNicht.DataTypes;
-using FlatRedBall.IO.Csv;
-using FlatRedBall.Math.Geometry;
 
 #if XNA4 || WINDOWS_8
 using Color = Microsoft.Xna.Framework.Color;
@@ -38,7 +35,7 @@ using Model = Microsoft.Xna.Framework.Graphics.Model;
 
 namespace VergissMeinNicht.Entities
 {
-	public partial class PlatformerCharacterBase : PositionedObject, IDestroyable
+	public partial class TheodorGrownUp : PositionedObject, IDestroyable
 	{
         // This is made global so that static lazy-loaded content can access it.
         public static string ContentManagerName
@@ -54,101 +51,22 @@ namespace VergissMeinNicht.Entities
 		static object mLockObject = new object();
 		static List<string> mRegisteredUnloads = new List<string>();
 		static List<string> LoadedContentManagers = new List<string>();
-		public static Dictionary<string, VergissMeinNicht.DataTypes.MovementValues> MovementValues;
 		
-		protected FlatRedBall.Math.Geometry.AxisAlignedRectangle mCollision;
-		public FlatRedBall.Math.Geometry.AxisAlignedRectangle Collision
-		{
-			get
-			{
-				return mCollision;
-			}
-			private set
-			{
-				mCollision = value;
-			}
-		}
-		public event EventHandler BeforeGroundMovementSet;
-		public event EventHandler AfterGroundMovementSet;
-		VergissMeinNicht.DataTypes.MovementValues mGroundMovement;
-		public virtual VergissMeinNicht.DataTypes.MovementValues GroundMovement
-		{
-			set
-			{
-				if (BeforeGroundMovementSet != null)
-				{
-					BeforeGroundMovementSet(this, null);
-				}
-				mGroundMovement = value;
-				if (AfterGroundMovementSet != null)
-				{
-					AfterGroundMovementSet(this, null);
-				}
-			}
-			get
-			{
-				return mGroundMovement;
-			}
-		}
-		public event EventHandler BeforeAirMovementSet;
-		public event EventHandler AfterAirMovementSet;
-		VergissMeinNicht.DataTypes.MovementValues mAirMovement;
-		public virtual VergissMeinNicht.DataTypes.MovementValues AirMovement
-		{
-			set
-			{
-				if (BeforeAirMovementSet != null)
-				{
-					BeforeAirMovementSet(this, null);
-				}
-				mAirMovement = value;
-				if (AfterAirMovementSet != null)
-				{
-					AfterAirMovementSet(this, null);
-				}
-			}
-			get
-			{
-				return mAirMovement;
-			}
-		}
-		public event EventHandler BeforeAfterDoubleJumpSet;
-		public event EventHandler AfterAfterDoubleJumpSet;
-		VergissMeinNicht.DataTypes.MovementValues mAfterDoubleJump;
-		public virtual VergissMeinNicht.DataTypes.MovementValues AfterDoubleJump
-		{
-			set
-			{
-				if (BeforeAfterDoubleJumpSet != null)
-				{
-					BeforeAfterDoubleJumpSet(this, null);
-				}
-				mAfterDoubleJump = value;
-				if (AfterAfterDoubleJumpSet != null)
-				{
-					AfterAfterDoubleJumpSet(this, null);
-				}
-			}
-			get
-			{
-				return mAfterDoubleJump;
-			}
-		}
 		protected Layer LayerProvidedByContainer = null;
 
-        public PlatformerCharacterBase()
+        public TheodorGrownUp()
             : this(FlatRedBall.Screens.ScreenManager.CurrentScreen.ContentManagerName, true)
         {
 
         }
 
-        public PlatformerCharacterBase(string contentManagerName) :
+        public TheodorGrownUp(string contentManagerName) :
             this(contentManagerName, true)
         {
         }
 
 
-        public PlatformerCharacterBase(string contentManagerName, bool addToManagers) :
+        public TheodorGrownUp(string contentManagerName, bool addToManagers) :
 			base()
 		{
 			// Don't delete this:
@@ -161,8 +79,6 @@ namespace VergissMeinNicht.Entities
 		{
 			// Generated Initialize
 			LoadStaticContent(ContentManagerName);
-			mCollision = new FlatRedBall.Math.Geometry.AxisAlignedRectangle();
-			mCollision.Name = "mCollision";
 			
 			PostInitialize();
 			if (addToManagers)
@@ -178,13 +94,11 @@ namespace VergissMeinNicht.Entities
 		{
 			LayerProvidedByContainer = layerToAddTo;
 			SpriteManager.AddPositionedObject(this);
-			ShapeManager.AddToLayer(mCollision, LayerProvidedByContainer);
 		}
 		public virtual void AddToManagers (Layer layerToAddTo)
 		{
 			LayerProvidedByContainer = layerToAddTo;
 			SpriteManager.AddPositionedObject(this);
-			ShapeManager.AddToLayer(mCollision, LayerProvidedByContainer);
 			AddToManagersBottomUp(layerToAddTo);
 			CustomInitialize();
 		}
@@ -203,10 +117,6 @@ namespace VergissMeinNicht.Entities
 			// Generated Destroy
 			SpriteManager.RemovePositionedObject(this);
 			
-			if (Collision != null)
-			{
-				ShapeManager.Remove(Collision);
-			}
 
 
 			CustomDestroy();
@@ -217,16 +127,6 @@ namespace VergissMeinNicht.Entities
 		{
 			bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
-			this.AfterGroundMovementSet += OnAfterGroundMovementSet;
-			this.AfterAirMovementSet += OnAfterAirMovementSet;
-			this.AfterAfterDoubleJumpSet += OnAfterAfterDoubleJumpSet;
-			if (mCollision.Parent == null)
-			{
-				mCollision.CopyAbsoluteToRelative();
-				mCollision.AttachTo(this, false);
-			}
-			Collision.Height = 48f;
-			Collision.Width = 32f;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp (Layer layerToAddTo)
@@ -236,18 +136,12 @@ namespace VergissMeinNicht.Entities
 		public virtual void RemoveFromManagers ()
 		{
 			SpriteManager.ConvertToManuallyUpdated(this);
-			if (Collision != null)
-			{
-				ShapeManager.RemoveOneWay(Collision);
-			}
 		}
 		public virtual void AssignCustomVariables (bool callOnContainedElements)
 		{
 			if (callOnContainedElements)
 			{
 			}
-			mCollision.Height = 48f;
-			mCollision.Width = 32f;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
@@ -279,20 +173,8 @@ namespace VergissMeinNicht.Entities
 				{
 					if (!mRegisteredUnloads.Contains(ContentManagerName) && ContentManagerName != FlatRedBallServices.GlobalContentManager)
 					{
-						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("PlatformerCharacterBaseStaticUnload", UnloadStaticContent);
+						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("TheodorGrownUpStaticUnload", UnloadStaticContent);
 						mRegisteredUnloads.Add(ContentManagerName);
-					}
-				}
-				if (MovementValues == null)
-				{
-					{
-						// We put the { and } to limit the scope of oldDelimiter
-						char oldDelimiter = CsvFileManager.Delimiter;
-						CsvFileManager.Delimiter = ',';
-						Dictionary<string, VergissMeinNicht.DataTypes.MovementValues> temporaryCsvObject = new Dictionary<string, VergissMeinNicht.DataTypes.MovementValues>();
-						CsvFileManager.CsvDeserializeDictionary<string, VergissMeinNicht.DataTypes.MovementValues>("content/entities/platformercharacterbase/movementvalues.csv", temporaryCsvObject);
-						CsvFileManager.Delimiter = oldDelimiter;
-						MovementValues = temporaryCsvObject;
 					}
 				}
 			}
@@ -302,7 +184,7 @@ namespace VergissMeinNicht.Entities
 				{
 					if (!mRegisteredUnloads.Contains(ContentManagerName) && ContentManagerName != FlatRedBallServices.GlobalContentManager)
 					{
-						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("PlatformerCharacterBaseStaticUnload", UnloadStaticContent);
+						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("TheodorGrownUpStaticUnload", UnloadStaticContent);
 						mRegisteredUnloads.Add(ContentManagerName);
 					}
 				}
@@ -318,29 +200,15 @@ namespace VergissMeinNicht.Entities
 			}
 			if (LoadedContentManagers.Count == 0)
 			{
-				if (MovementValues != null)
-				{
-					MovementValues= null;
-				}
 			}
 		}
 		[System.Obsolete("Use GetFile instead")]
 		public static object GetStaticMember (string memberName)
 		{
-			switch(memberName)
-			{
-				case  "MovementValues":
-					return MovementValues;
-			}
 			return null;
 		}
 		public static object GetFile (string memberName)
 		{
-			switch(memberName)
-			{
-				case  "MovementValues":
-					return MovementValues;
-			}
 			return null;
 		}
 		object GetMember (string memberName)
@@ -356,7 +224,6 @@ namespace VergissMeinNicht.Entities
 		public virtual void SetToIgnorePausing ()
 		{
 			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(this);
-			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(Collision);
 		}
 		public virtual void MoveToLayer (Layer layerToMoveTo)
 		{

@@ -202,8 +202,8 @@ namespace VergissMeinNicht.Entities
 				mCollision.CopyAbsoluteToRelative();
 				mCollision.AttachTo(this, false);
 			}
-			Collision.Height = 150f;
-			Collision.Width = 80f;
+			base.Collision.Height = 150f;
+			base.Collision.Width = 80f;
 			if (SpriteInstance.Parent == null)
 			{
 				SpriteInstance.CopyAbsoluteToRelative();
@@ -233,8 +233,8 @@ namespace VergissMeinNicht.Entities
 			if (callOnContainedElements)
 			{
 			}
-			mCollision.Height = 150f;
-			mCollision.Width = 80f;
+			base.mCollision.Height = 150f;
+			base.mCollision.Width = 80f;
 			SpriteInstance.AnimationChains = AnimationChainListFile;
 			SpriteInstance.TextureScale = 1f;
 			SpriteInstance.CurrentChainName = "IdleRight";

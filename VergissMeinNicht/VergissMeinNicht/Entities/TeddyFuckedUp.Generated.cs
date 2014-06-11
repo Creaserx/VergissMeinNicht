@@ -54,6 +54,18 @@ namespace VergissMeinNicht.Entities
 		static List<string> LoadedContentManagers = new List<string>();
 		protected static Microsoft.Xna.Framework.Graphics.Texture2D teddy_fucked;
 		
+		private FlatRedBall.Sprite Sprite;
+		public bool SpriteVisible
+		{
+			get
+			{
+				return Sprite.Visible;
+			}
+			set
+			{
+				Sprite.Visible = value;
+			}
+		}
 		protected Layer LayerProvidedByContainer = null;
 
         public TeddyFuckedUp()
@@ -81,6 +93,8 @@ namespace VergissMeinNicht.Entities
 		{
 			// Generated Initialize
 			LoadStaticContent(ContentManagerName);
+			Sprite = new FlatRedBall.Sprite();
+			Sprite.Name = "Sprite";
 			
 			PostInitialize();
 			if (addToManagers)
@@ -96,11 +110,13 @@ namespace VergissMeinNicht.Entities
 		{
 			LayerProvidedByContainer = layerToAddTo;
 			SpriteManager.AddPositionedObject(this);
+			SpriteManager.AddToLayer(Sprite, LayerProvidedByContainer);
 		}
 		public virtual void AddToManagers (Layer layerToAddTo)
 		{
 			LayerProvidedByContainer = layerToAddTo;
 			SpriteManager.AddPositionedObject(this);
+			SpriteManager.AddToLayer(Sprite, LayerProvidedByContainer);
 			AddToManagersBottomUp(layerToAddTo);
 			CustomInitialize();
 		}
@@ -119,6 +135,10 @@ namespace VergissMeinNicht.Entities
 			// Generated Destroy
 			SpriteManager.RemovePositionedObject(this);
 			
+			if (Sprite != null)
+			{
+				SpriteManager.RemoveSprite(Sprite);
+			}
 
 
 			CustomDestroy();
@@ -129,6 +149,13 @@ namespace VergissMeinNicht.Entities
 		{
 			bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
+			if (Sprite.Parent == null)
+			{
+				Sprite.CopyAbsoluteToRelative();
+				Sprite.AttachTo(this, false);
+			}
+			Sprite.TextureScale = 1f;
+			Sprite.Texture = teddy_fucked;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp (Layer layerToAddTo)
@@ -138,17 +165,25 @@ namespace VergissMeinNicht.Entities
 		public virtual void RemoveFromManagers ()
 		{
 			SpriteManager.ConvertToManuallyUpdated(this);
+			if (Sprite != null)
+			{
+				SpriteManager.RemoveSpriteOneWay(Sprite);
+			}
 		}
 		public virtual void AssignCustomVariables (bool callOnContainedElements)
 		{
 			if (callOnContainedElements)
 			{
 			}
+			Sprite.TextureScale = 1f;
+			Sprite.Texture = teddy_fucked;
+			SpriteVisible = false;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
 			this.ForceUpdateDependenciesDeep();
 			SpriteManager.ConvertToManuallyUpdated(this);
+			SpriteManager.ConvertToManuallyUpdated(Sprite);
 		}
 		public static void LoadStaticContent (string contentManagerName)
 		{
@@ -250,9 +285,15 @@ namespace VergissMeinNicht.Entities
 		public virtual void SetToIgnorePausing ()
 		{
 			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(this);
+			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(Sprite);
 		}
 		public virtual void MoveToLayer (Layer layerToMoveTo)
 		{
+			if (LayerProvidedByContainer != null)
+			{
+				LayerProvidedByContainer.Remove(Sprite);
+			}
+			SpriteManager.AddToLayer(Sprite, layerToMoveTo);
 			LayerProvidedByContainer = layerToMoveTo;
 		}
 
