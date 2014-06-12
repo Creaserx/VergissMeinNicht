@@ -46,6 +46,7 @@ namespace VergissMeinNicht.Screens
 
             // Let's make the character appear on top of the rectangle:
             this.TheodorChildInstance.Y = 200;
+            this.TheodorGrownUpInstance.Y = 200;
 
             //reference where Theodor is
             this.TeddyNormalInstance.TheodorChildInstance = this.TheodorChildInstance;
@@ -57,6 +58,9 @@ namespace VergissMeinNicht.Screens
             //Theodor Collisions & Movement
             TheodorChildInstance.CollideAgainst(SolidCollisions);
             TheodorChildInstance.DetermineMovementValues();
+
+            TheodorGrownUpInstance.CollideAgainst(SolidCollisions);
+            TheodorGrownUpInstance.DetermineMovementValues();
 
 
             //Camera Movement following Theodor

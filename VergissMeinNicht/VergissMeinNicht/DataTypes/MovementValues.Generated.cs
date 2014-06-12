@@ -18,9 +18,12 @@ namespace VergissMeinNicht.DataTypes
 		public const string Water = "Water";
 		public const string ImmediateVelocityOnGround = "ImmediateVelocityOnGround";
 		public const string ImmediateVelocityBeforeDoubleJump = "ImmediateVelocityBeforeDoubleJump";
-		public const string ImmediateVelocityInAir = "ImmediateVelocityInAir";
-		public const string TheodorOnGround = "TheodorOnGround";
-		public const string TheodorInAir = "TheodorInAir";
+		public const string ImmediateVelocityInAirChild = "ImmediateVelocityInAirChild";
+		public const string TheodorChildOnGround = "TheodorChildOnGround";
+		public const string TheodorChildInAir = "TheodorChildInAir";
+		public const string TheodorGrownUpInAir = "TheodorGrownUpInAir";
+		public const string TheodorGrownUpOnGround = "TheodorGrownUpOnGround";
+		public const string ImmediateVelocityInAirGrownUp = "ImmediateVelocityInAirGrownUp";
 		public static System.Collections.Generic.List<System.String> OrderedList = new System.Collections.Generic.List<System.String>
 		{
 		AccelerationOnGround
@@ -29,9 +32,12 @@ namespace VergissMeinNicht.DataTypes
 		,Water
 		,ImmediateVelocityOnGround
 		,ImmediateVelocityBeforeDoubleJump
-		,ImmediateVelocityInAir
-		,TheodorOnGround
-		,TheodorInAir
+		,ImmediateVelocityInAirChild
+		,TheodorChildOnGround
+		,TheodorChildInAir
+		,TheodorGrownUpInAir
+		,TheodorGrownUpOnGround
+		,ImmediateVelocityInAirGrownUp
 		};
 		
 		
