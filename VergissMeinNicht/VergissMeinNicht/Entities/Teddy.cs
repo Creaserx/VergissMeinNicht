@@ -26,7 +26,7 @@ using Texture2D = Microsoft.Xna.Framework.Graphics.Texture2D;
 
 namespace VergissMeinNicht.Entities
 {
-	public partial class TeddyNormal
+	public partial class Teddy
 	{
         public TheodorChild TheodorChildInstance = null;
         public TheodorGrownUp TheodorGrownUpInstance = null;
@@ -50,8 +50,11 @@ namespace VergissMeinNicht.Entities
             {
                 if (InputManager.Keyboard.KeyPushed(Keys.E))
                 {
-                    TheodorChildInstance.Destroy();
-                    
+                    TheodorGrownUpInstance = new TheodorGrownUp();
+                    this.TheodorGrownUpInstance.X = TheodorChildInstance.X;
+                    this.TheodorGrownUpInstance.Y = TheodorChildInstance.Y;                    
+                    TheodorChildInstance.Destroy();                    
+                    TheodorChildInstance = null;
                 }
 
                 if (InputManager.Keyboard.KeyPushed(Keys.S))

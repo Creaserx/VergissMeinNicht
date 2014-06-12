@@ -628,15 +628,8 @@
             <ValueAsFloat>250</ValueAsFloat>
           </CustomProperty>
           <SourceType>Entity</SourceType>
-          <SourceClassType>Entities\TeddyNormal</SourceClassType>
+          <SourceClassType>Entities\Teddy</SourceClassType>
           <InstanceName>TeddyNormalInstance</InstanceName>
-          <AttachToContainer>true</AttachToContainer>
-          <IndependentOfCamera>true</IndependentOfCamera>
-        </NamedObjectSave>
-        <NamedObjectSave>
-          <SourceType>Entity</SourceType>
-          <SourceClassType>Entities\TeddyFuckedUp</SourceClassType>
-          <InstanceName>TeddyFuckedUpInstance</InstanceName>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
@@ -649,18 +642,18 @@
           <LayerOn />
         </NamedObjectSave>
         <NamedObjectSave>
-          <SourceType>Entity</SourceType>
-          <SourceClassType>Entities\TheodorGrownUp</SourceClassType>
-          <InstanceName>TheodorGrownUpInstance</InstanceName>
-          <AttachToContainer>true</AttachToContainer>
-          <IndependentOfCamera>true</IndependentOfCamera>
-        </NamedObjectSave>
-        <NamedObjectSave>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile />
           <SourceName />
           <SourceClassType>ShapeCollection</SourceClassType>
           <InstanceName>SolidCollisions</InstanceName>
+          <AttachToContainer>true</AttachToContainer>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+        <NamedObjectSave>
+          <SourceType>Entity</SourceType>
+          <SourceClassType>Entities\TheodorGrownUp</SourceClassType>
+          <InstanceName>TheodorGrownUpInstance</InstanceName>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
@@ -1630,93 +1623,12 @@
           </Properties>
           <Name>SpriteVisible</Name>
           <Type>bool</Type>
-          <DefaultValue xsi:type="xsd:boolean">false</DefaultValue>
-          <SourceObject>Sprite</SourceObject>
-          <SourceObjectProperty>Visible</SourceObjectProperty>
-        </CustomVariable>
-      </CustomVariables>
-      <Name>Entities\TeddyFuckedUp</Name>
-      <NamedObjects>
-        <NamedObjectSave>
-          <CustomProperty>
-            <Type>Texture2D</Type>
-            <Member>Texture</Member>
-            <ValueAsString>teddy_fucked</ValueAsString>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>TextureScale</Member>
-            <ValueAsFloat>1</ValueAsFloat>
-          </CustomProperty>
-          <SourceType>FlatRedBallType</SourceType>
-          <SourceFile />
-          <SourceName />
-          <SourceClassType>Sprite</SourceClassType>
-          <InstanceName>Sprite</InstanceName>
-          <AttachToContainer>true</AttachToContainer>
-          <IndependentOfCamera>true</IndependentOfCamera>
-        </NamedObjectSave>
-      </NamedObjects>
-      <ReferencedFiles>
-        <ReferencedFileSave>
-          <Name>Entities/TeddyFuckedUp/teddy_fucked.png</Name>
-          <IsSharedStatic>true</IsSharedStatic>
-          <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
-        </ReferencedFileSave>
-      </ReferencedFiles>
-      <Is2D>true</Is2D>
-    </EntitySave>
-    <EntitySave>
-      <Tags>
-        <string>GLUE</string>
-      </Tags>
-      <Source>GLUE</Source>
-      <CustomVariables>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
-              <ValueAsString>float</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>X</Name>
-          <Type>float</Type>
-        </CustomVariable>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
-              <ValueAsString>float</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>Y</Name>
-          <Type>float</Type>
-        </CustomVariable>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
-              <ValueAsString>float</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>Z</Name>
-          <Type>float</Type>
-        </CustomVariable>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
-              <ValueAsString>bool</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>SpriteVisible</Name>
-          <Type>bool</Type>
           <DefaultValue xsi:type="xsd:boolean">true</DefaultValue>
           <SourceObject>Sprite</SourceObject>
           <SourceObjectProperty>Visible</SourceObjectProperty>
         </CustomVariable>
       </CustomVariables>
-      <Name>Entities\TeddyNormal</Name>
+      <Name>Entities\Teddy</Name>
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
@@ -1785,6 +1697,11 @@
       <ReferencedFiles>
         <ReferencedFileSave>
           <Name>Entities/TeddyNormal/teddy_normal.png</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
+        </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>Entities/TeddyFuckedUp/teddy_fucked.png</Name>
           <IsSharedStatic>true</IsSharedStatic>
           <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
         </ReferencedFileSave>
@@ -2063,6 +1980,34 @@
         </CustomVariable>
       </CustomVariables>
       <Name>Entities\TheodorGrownUp</Name>
+      <NamedObjects>
+        <NamedObjectSave>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>TextureScale</Member>
+            <ValueAsFloat>1</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>Texture2D</Type>
+            <Member>Texture</Member>
+            <ValueAsString>viktor_ibarbo</ValueAsString>
+          </CustomProperty>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceFile />
+          <SourceName />
+          <SourceClassType>Sprite</SourceClassType>
+          <InstanceName>Sprite</InstanceName>
+          <AttachToContainer>true</AttachToContainer>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+      </NamedObjects>
+      <ReferencedFiles>
+        <ReferencedFileSave>
+          <Name>Entities/TheodorGrownUp/viktor_ibarbo.jpg</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
+        </ReferencedFileSave>
+      </ReferencedFiles>
       <Is2D>true</Is2D>
     </EntitySave>
   </Entities>

@@ -151,10 +151,6 @@
     <Compile Include="Entities\Frame.Generated.cs">
       <DependentUpon>Frame.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\TeddyFuckedUp.cs" />
-    <Compile Include="Entities\TeddyFuckedUp.Generated.cs">
-      <DependentUpon>TeddyFuckedUp.cs</DependentUpon>
-    </Compile>
     <Compile Include="Entities\OkCancel.cs" />
     <Compile Include="Entities\OkCancel.Event.cs">
       <DependentUpon>OkCancel.cs</DependentUpon>
@@ -183,9 +179,9 @@
     <Compile Include="Entities\Räume_Inhalt\Schlafraum\Doppelbett.Generated.cs">
       <DependentUpon>Doppelbett.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\TeddyNormal.cs" />
-    <Compile Include="Entities\TeddyNormal.Generated.cs">
-      <DependentUpon>TeddyNormal.cs</DependentUpon>
+    <Compile Include="Entities\Teddy.cs" />
+    <Compile Include="Entities\Teddy.Generated.cs">
+      <DependentUpon>teddy.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\TextArial.cs" />
     <Compile Include="Entities\TextArial.Generated.cs">

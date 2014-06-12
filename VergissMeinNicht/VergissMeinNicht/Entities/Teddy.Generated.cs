@@ -36,7 +36,7 @@ using Model = Microsoft.Xna.Framework.Graphics.Model;
 
 namespace VergissMeinNicht.Entities
 {
-	public partial class TeddyNormal : PositionedObject, IDestroyable
+	public partial class Teddy : PositionedObject, IDestroyable
 	{
         // This is made global so that static lazy-loaded content can access it.
         public static string ContentManagerName
@@ -53,6 +53,7 @@ namespace VergissMeinNicht.Entities
 		static List<string> mRegisteredUnloads = new List<string>();
 		static List<string> LoadedContentManagers = new List<string>();
 		protected static Microsoft.Xna.Framework.Graphics.Texture2D teddy_normal;
+		protected static Microsoft.Xna.Framework.Graphics.Texture2D teddy_fucked;
 		
 		private FlatRedBall.Sprite Sprite;
 		private VergissMeinNicht.Entities.TextArial SaveText;
@@ -70,19 +71,19 @@ namespace VergissMeinNicht.Entities
 		}
 		protected Layer LayerProvidedByContainer = null;
 
-        public TeddyNormal()
+        public Teddy()
             : this(FlatRedBall.Screens.ScreenManager.CurrentScreen.ContentManagerName, true)
         {
 
         }
 
-        public TeddyNormal(string contentManagerName) :
+        public Teddy(string contentManagerName) :
             this(contentManagerName, true)
         {
         }
 
 
-        public TeddyNormal(string contentManagerName, bool addToManagers) :
+        public Teddy(string contentManagerName, bool addToManagers) :
 			base()
 		{
 			// Don't delete this:
@@ -316,7 +317,7 @@ namespace VergissMeinNicht.Entities
 				{
 					if (!mRegisteredUnloads.Contains(ContentManagerName) && ContentManagerName != FlatRedBallServices.GlobalContentManager)
 					{
-						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("TeddyNormalStaticUnload", UnloadStaticContent);
+						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("TeddyStaticUnload", UnloadStaticContent);
 						mRegisteredUnloads.Add(ContentManagerName);
 					}
 				}
@@ -325,6 +326,11 @@ namespace VergissMeinNicht.Entities
 					registerUnload = true;
 				}
 				teddy_normal = FlatRedBallServices.Load<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/entities/teddynormal/teddy_normal.png", ContentManagerName);
+				if (!FlatRedBallServices.IsLoaded<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/entities/teddyfuckedup/teddy_fucked.png", ContentManagerName))
+				{
+					registerUnload = true;
+				}
+				teddy_fucked = FlatRedBallServices.Load<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/entities/teddyfuckedup/teddy_fucked.png", ContentManagerName);
 			}
 			VergissMeinNicht.Entities.TextArial.LoadStaticContent(contentManagerName);
 			if (registerUnload && ContentManagerName != FlatRedBallServices.GlobalContentManager)
@@ -333,7 +339,7 @@ namespace VergissMeinNicht.Entities
 				{
 					if (!mRegisteredUnloads.Contains(ContentManagerName) && ContentManagerName != FlatRedBallServices.GlobalContentManager)
 					{
-						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("TeddyNormalStaticUnload", UnloadStaticContent);
+						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("TeddyStaticUnload", UnloadStaticContent);
 						mRegisteredUnloads.Add(ContentManagerName);
 					}
 				}
@@ -353,6 +359,10 @@ namespace VergissMeinNicht.Entities
 				{
 					teddy_normal= null;
 				}
+				if (teddy_fucked != null)
+				{
+					teddy_fucked= null;
+				}
 			}
 		}
 		[System.Obsolete("Use GetFile instead")]
@@ -362,6 +372,8 @@ namespace VergissMeinNicht.Entities
 			{
 				case  "teddy_normal":
 					return teddy_normal;
+				case  "teddy_fucked":
+					return teddy_fucked;
 			}
 			return null;
 		}
@@ -371,6 +383,8 @@ namespace VergissMeinNicht.Entities
 			{
 				case  "teddy_normal":
 					return teddy_normal;
+				case  "teddy_fucked":
+					return teddy_fucked;
 			}
 			return null;
 		}
@@ -380,6 +394,8 @@ namespace VergissMeinNicht.Entities
 			{
 				case  "teddy_normal":
 					return teddy_normal;
+				case  "teddy_fucked":
+					return teddy_fucked;
 			}
 			return null;
 		}

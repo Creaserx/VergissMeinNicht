@@ -42,11 +42,10 @@ namespace VergissMeinNicht.Screens
 		
 		private VergissMeinNicht.Entities.Button MainMenuButton;
 		private FlatRedBall.Graphics.Layer Layer2D;
-		private VergissMeinNicht.Entities.TeddyNormal TeddyNormalInstance;
-		private VergissMeinNicht.Entities.TeddyFuckedUp TeddyFuckedUpInstance;
+		private VergissMeinNicht.Entities.Teddy TeddyNormalInstance;
 		private VergissMeinNicht.Entities.TheodorChild TheodorChildInstance;
-		private VergissMeinNicht.Entities.TheodorGrownUp TheodorGrownUpInstance;
 		private FlatRedBall.Math.Geometry.ShapeCollection SolidCollisions;
+		private VergissMeinNicht.Entities.TheodorGrownUp TheodorGrownUpInstance;
 		public event FlatRedBall.Gui.WindowEvent MainMenuButtonClick;
 
 		public ZooLevel()
@@ -62,16 +61,14 @@ namespace VergissMeinNicht.Screens
 			MainMenuButton.Name = "MainMenuButton";
 			Layer2D = new FlatRedBall.Graphics.Layer();
 			Layer2D.Name = "Layer2D";
-			TeddyNormalInstance = new VergissMeinNicht.Entities.TeddyNormal(ContentManagerName, false);
+			TeddyNormalInstance = new VergissMeinNicht.Entities.Teddy(ContentManagerName, false);
 			TeddyNormalInstance.Name = "TeddyNormalInstance";
-			TeddyFuckedUpInstance = new VergissMeinNicht.Entities.TeddyFuckedUp(ContentManagerName, false);
-			TeddyFuckedUpInstance.Name = "TeddyFuckedUpInstance";
 			TheodorChildInstance = new VergissMeinNicht.Entities.TheodorChild(ContentManagerName, false);
 			TheodorChildInstance.Name = "TheodorChildInstance";
-			TheodorGrownUpInstance = new VergissMeinNicht.Entities.TheodorGrownUp(ContentManagerName, false);
-			TheodorGrownUpInstance.Name = "TheodorGrownUpInstance";
 			SolidCollisions = new FlatRedBall.Math.Geometry.ShapeCollection();
 			SolidCollisions.Name = "SolidCollisions";
+			TheodorGrownUpInstance = new VergissMeinNicht.Entities.TheodorGrownUp(ContentManagerName, false);
+			TheodorGrownUpInstance.Name = "TheodorGrownUpInstance";
 			
 			
 			PostInitialize();
@@ -96,10 +93,9 @@ namespace VergissMeinNicht.Screens
 			}
 			MainMenuButton.AddToManagers(Layer2D);
 			TeddyNormalInstance.AddToManagers(mLayer);
-			TeddyFuckedUpInstance.AddToManagers(mLayer);
 			TheodorChildInstance.AddToManagers(mLayer);
-			TheodorGrownUpInstance.AddToManagers(mLayer);
 			SolidCollisions.AddToManagers();
+			TheodorGrownUpInstance.AddToManagers(mLayer);
 			base.AddToManagers();
 			AddToManagersBottomUp();
 			CustomInitialize();
@@ -114,7 +110,6 @@ namespace VergissMeinNicht.Screens
 				
 				MainMenuButton.Activity();
 				TeddyNormalInstance.Activity();
-				TeddyFuckedUpInstance.Activity();
 				TheodorChildInstance.Activity();
 				TheodorGrownUpInstance.Activity();
 			}
@@ -167,24 +162,19 @@ namespace VergissMeinNicht.Screens
 				TeddyNormalInstance.Destroy();
 				TeddyNormalInstance.Detach();
 			}
-			if (TeddyFuckedUpInstance != null)
-			{
-				TeddyFuckedUpInstance.Destroy();
-				TeddyFuckedUpInstance.Detach();
-			}
 			if (TheodorChildInstance != null)
 			{
 				TheodorChildInstance.Destroy();
 				TheodorChildInstance.Detach();
 			}
+			if (SolidCollisions != null)
+			{
+				SolidCollisions.RemoveFromManagers(ContentManagerName != "Global");
+			}
 			if (TheodorGrownUpInstance != null)
 			{
 				TheodorGrownUpInstance.Destroy();
 				TheodorGrownUpInstance.Detach();
-			}
-			if (SolidCollisions != null)
-			{
-				SolidCollisions.RemoveFromManagers(ContentManagerName != "Global");
 			}
 
 			base.Destroy();
@@ -254,13 +244,12 @@ namespace VergissMeinNicht.Screens
 				SpriteManager.RemoveLayer(Layer2D);
 			}
 			TeddyNormalInstance.RemoveFromManagers();
-			TeddyFuckedUpInstance.RemoveFromManagers();
 			TheodorChildInstance.RemoveFromManagers();
-			TheodorGrownUpInstance.RemoveFromManagers();
 			if (SolidCollisions != null)
 			{
 				SolidCollisions.RemoveFromManagers(false);
 			}
+			TheodorGrownUpInstance.RemoveFromManagers();
 		}
 		public virtual void AssignCustomVariables (bool callOnContainedElements)
 		{
@@ -268,7 +257,6 @@ namespace VergissMeinNicht.Screens
 			{
 				MainMenuButton.AssignCustomVariables(true);
 				TeddyNormalInstance.AssignCustomVariables(true);
-				TeddyFuckedUpInstance.AssignCustomVariables(true);
 				TheodorChildInstance.AssignCustomVariables(true);
 				TheodorGrownUpInstance.AssignCustomVariables(true);
 			}
@@ -310,7 +298,6 @@ namespace VergissMeinNicht.Screens
 		{
 			MainMenuButton.ConvertToManuallyUpdated();
 			TeddyNormalInstance.ConvertToManuallyUpdated();
-			TeddyFuckedUpInstance.ConvertToManuallyUpdated();
 			TheodorChildInstance.ConvertToManuallyUpdated();
 			TheodorGrownUpInstance.ConvertToManuallyUpdated();
 		}
@@ -335,8 +322,7 @@ namespace VergissMeinNicht.Screens
 			}
 			SceneFile = FlatRedBallServices.Load<FlatRedBall.Scene>(@"content/screens/zoolevel/scenefile.scnx", contentManagerName);
 			VergissMeinNicht.Entities.Button.LoadStaticContent(contentManagerName);
-			VergissMeinNicht.Entities.TeddyNormal.LoadStaticContent(contentManagerName);
-			VergissMeinNicht.Entities.TeddyFuckedUp.LoadStaticContent(contentManagerName);
+			VergissMeinNicht.Entities.Teddy.LoadStaticContent(contentManagerName);
 			VergissMeinNicht.Entities.TheodorChild.LoadStaticContent(contentManagerName);
 			VergissMeinNicht.Entities.TheodorGrownUp.LoadStaticContent(contentManagerName);
 			CustomLoadStaticContent(contentManagerName);
