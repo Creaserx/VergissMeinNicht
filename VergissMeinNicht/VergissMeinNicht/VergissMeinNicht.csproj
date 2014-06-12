@@ -193,7 +193,7 @@
     </Compile>
     <Compile Include="Entities\TheodorChild.cs" />
     <Compile Include="Entities\TheodorChild.Generated.cs">
-      <DependentUpon>theodorchild.cs</DependentUpon>
+      <DependentUpon>TheodorChild.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\TheodorGrownUp.cs" />
     <Compile Include="Entities\TheodorGrownUp.Generated.cs">

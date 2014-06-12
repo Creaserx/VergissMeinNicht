@@ -26,11 +26,9 @@ using Texture2D = Microsoft.Xna.Framework.Graphics.Texture2D;
 
 namespace VergissMeinNicht.Entities
 {
-	public partial class TeddyNormal
+	public partial class NormalTeddy
 	{
-        public TheodorChild TheodorChildInstance = null;
-        
-        private void CustomInitialize()
+		private void CustomInitialize()
 		{
 
 
@@ -39,24 +37,8 @@ namespace VergissMeinNicht.Entities
 		private void CustomActivity()
 		{
 
-            TeddyText();
+
 		}
-
-        void TeddyText()
-        {
-            //Makes Text Visible / Invisible in front of a Teddy
-            if (TheodorChildInstance.X < (Sprite.X + 75) && TheodorChildInstance.X > (Sprite.X - 75))
-            {
-                SaveText.Visible = true;
-                InteractText.Visible = true;
-            }
-            else
-            {
-                SaveText.Visible = false;
-                InteractText.Visible = false;
-            }
-
-        }
 
 		private void CustomDestroy()
 		{

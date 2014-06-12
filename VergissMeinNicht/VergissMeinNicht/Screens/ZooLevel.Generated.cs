@@ -46,8 +46,6 @@ namespace VergissMeinNicht.Screens
 		private VergissMeinNicht.Entities.TeddyFuckedUp TeddyFuckedUpInstance;
 		private VergissMeinNicht.Entities.TheodorChild TheodorChildInstance;
 		private VergissMeinNicht.Entities.TheodorGrownUp TheodorGrownUpInstance;
-		private VergissMeinNicht.Entities.TextArial SaveText;
-		private VergissMeinNicht.Entities.TextArial InteractText;
 		private FlatRedBall.Math.Geometry.ShapeCollection SolidCollisions;
 		public event FlatRedBall.Gui.WindowEvent MainMenuButtonClick;
 
@@ -72,10 +70,6 @@ namespace VergissMeinNicht.Screens
 			TheodorChildInstance.Name = "TheodorChildInstance";
 			TheodorGrownUpInstance = new VergissMeinNicht.Entities.TheodorGrownUp(ContentManagerName, false);
 			TheodorGrownUpInstance.Name = "TheodorGrownUpInstance";
-			SaveText = new VergissMeinNicht.Entities.TextArial(ContentManagerName, false);
-			SaveText.Name = "SaveText";
-			InteractText = new VergissMeinNicht.Entities.TextArial(ContentManagerName, false);
-			InteractText.Name = "InteractText";
 			SolidCollisions = new FlatRedBall.Math.Geometry.ShapeCollection();
 			SolidCollisions.Name = "SolidCollisions";
 			
@@ -105,8 +99,6 @@ namespace VergissMeinNicht.Screens
 			TeddyFuckedUpInstance.AddToManagers(mLayer);
 			TheodorChildInstance.AddToManagers(mLayer);
 			TheodorGrownUpInstance.AddToManagers(mLayer);
-			SaveText.AddToManagers(mLayer);
-			InteractText.AddToManagers(mLayer);
 			SolidCollisions.AddToManagers();
 			base.AddToManagers();
 			AddToManagersBottomUp();
@@ -125,8 +117,6 @@ namespace VergissMeinNicht.Screens
 				TeddyFuckedUpInstance.Activity();
 				TheodorChildInstance.Activity();
 				TheodorGrownUpInstance.Activity();
-				SaveText.Activity();
-				InteractText.Activity();
 			}
 			else
 			{
@@ -192,16 +182,6 @@ namespace VergissMeinNicht.Screens
 				TheodorGrownUpInstance.Destroy();
 				TheodorGrownUpInstance.Detach();
 			}
-			if (SaveText != null)
-			{
-				SaveText.Destroy();
-				SaveText.Detach();
-			}
-			if (InteractText != null)
-			{
-				InteractText.Destroy();
-				InteractText.Detach();
-			}
 			if (SolidCollisions != null)
 			{
 				SolidCollisions.RemoveFromManagers(ContentManagerName != "Global");
@@ -259,40 +239,6 @@ namespace VergissMeinNicht.Screens
 			{
 				TeddyNormalInstance.RelativeY = 250f;
 			}
-			SaveText.DisplayText = "Press S To Save";
-			if (SaveText.Parent == null)
-			{
-				SaveText.X = -350f;
-			}
-			else
-			{
-				SaveText.RelativeX = -350f;
-			}
-			if (SaveText.Parent == null)
-			{
-				SaveText.Y = -100f;
-			}
-			else
-			{
-				SaveText.RelativeY = -100f;
-			}
-			InteractText.DisplayText = "Press E to Interact";
-			if (InteractText.Parent == null)
-			{
-				InteractText.X = -350f;
-			}
-			else
-			{
-				InteractText.RelativeX = -350f;
-			}
-			if (InteractText.Parent == null)
-			{
-				InteractText.Y = -150f;
-			}
-			else
-			{
-				InteractText.RelativeY = -150f;
-			}
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp ()
@@ -311,8 +257,6 @@ namespace VergissMeinNicht.Screens
 			TeddyFuckedUpInstance.RemoveFromManagers();
 			TheodorChildInstance.RemoveFromManagers();
 			TheodorGrownUpInstance.RemoveFromManagers();
-			SaveText.RemoveFromManagers();
-			InteractText.RemoveFromManagers();
 			if (SolidCollisions != null)
 			{
 				SolidCollisions.RemoveFromManagers(false);
@@ -327,8 +271,6 @@ namespace VergissMeinNicht.Screens
 				TeddyFuckedUpInstance.AssignCustomVariables(true);
 				TheodorChildInstance.AssignCustomVariables(true);
 				TheodorGrownUpInstance.AssignCustomVariables(true);
-				SaveText.AssignCustomVariables(true);
-				InteractText.AssignCustomVariables(true);
 			}
 			MainMenuButton.DisplayText = "MainMenu";
 			if (MainMenuButton.Parent == null)
@@ -363,40 +305,6 @@ namespace VergissMeinNicht.Screens
 			{
 				TeddyNormalInstance.RelativeY = 250f;
 			}
-			SaveText.DisplayText = "Press S To Save";
-			if (SaveText.Parent == null)
-			{
-				SaveText.X = -350f;
-			}
-			else
-			{
-				SaveText.RelativeX = -350f;
-			}
-			if (SaveText.Parent == null)
-			{
-				SaveText.Y = -100f;
-			}
-			else
-			{
-				SaveText.RelativeY = -100f;
-			}
-			InteractText.DisplayText = "Press E to Interact";
-			if (InteractText.Parent == null)
-			{
-				InteractText.X = -350f;
-			}
-			else
-			{
-				InteractText.RelativeX = -350f;
-			}
-			if (InteractText.Parent == null)
-			{
-				InteractText.Y = -150f;
-			}
-			else
-			{
-				InteractText.RelativeY = -150f;
-			}
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
@@ -405,8 +313,6 @@ namespace VergissMeinNicht.Screens
 			TeddyFuckedUpInstance.ConvertToManuallyUpdated();
 			TheodorChildInstance.ConvertToManuallyUpdated();
 			TheodorGrownUpInstance.ConvertToManuallyUpdated();
-			SaveText.ConvertToManuallyUpdated();
-			InteractText.ConvertToManuallyUpdated();
 		}
 		public static void LoadStaticContent (string contentManagerName)
 		{
@@ -433,7 +339,6 @@ namespace VergissMeinNicht.Screens
 			VergissMeinNicht.Entities.TeddyFuckedUp.LoadStaticContent(contentManagerName);
 			VergissMeinNicht.Entities.TheodorChild.LoadStaticContent(contentManagerName);
 			VergissMeinNicht.Entities.TheodorGrownUp.LoadStaticContent(contentManagerName);
-			VergissMeinNicht.Entities.TextArial.LoadStaticContent(contentManagerName);
 			CustomLoadStaticContent(contentManagerName);
 		}
 		[System.Obsolete("Use GetFile instead")]

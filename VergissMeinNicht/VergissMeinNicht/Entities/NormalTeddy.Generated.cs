@@ -14,7 +14,6 @@ using FlatRedBall.Screens;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Microsoft.Xna.Framework.Graphics;
 
 #if XNA4 || WINDOWS_8
 using Color = Microsoft.Xna.Framework.Color;
@@ -36,7 +35,7 @@ using Model = Microsoft.Xna.Framework.Graphics.Model;
 
 namespace VergissMeinNicht.Entities
 {
-	public partial class TeddyNormal : PositionedObject, IDestroyable
+	public partial class NormalTeddy : PositionedObject, IDestroyable
 	{
         // This is made global so that static lazy-loaded content can access it.
         public static string ContentManagerName
@@ -52,37 +51,22 @@ namespace VergissMeinNicht.Entities
 		static object mLockObject = new object();
 		static List<string> mRegisteredUnloads = new List<string>();
 		static List<string> LoadedContentManagers = new List<string>();
-		protected static Microsoft.Xna.Framework.Graphics.Texture2D teddy_normal;
 		
-		private FlatRedBall.Sprite Sprite;
-		private VergissMeinNicht.Entities.TextArial SaveText;
-		private VergissMeinNicht.Entities.TextArial InteractText;
-		public bool SpriteVisible
-		{
-			get
-			{
-				return Sprite.Visible;
-			}
-			set
-			{
-				Sprite.Visible = value;
-			}
-		}
 		protected Layer LayerProvidedByContainer = null;
 
-        public TeddyNormal()
+        public NormalTeddy()
             : this(FlatRedBall.Screens.ScreenManager.CurrentScreen.ContentManagerName, true)
         {
 
         }
 
-        public TeddyNormal(string contentManagerName) :
+        public NormalTeddy(string contentManagerName) :
             this(contentManagerName, true)
         {
         }
 
 
-        public TeddyNormal(string contentManagerName, bool addToManagers) :
+        public NormalTeddy(string contentManagerName, bool addToManagers) :
 			base()
 		{
 			// Don't delete this:
@@ -95,12 +79,6 @@ namespace VergissMeinNicht.Entities
 		{
 			// Generated Initialize
 			LoadStaticContent(ContentManagerName);
-			Sprite = new FlatRedBall.Sprite();
-			Sprite.Name = "Sprite";
-			SaveText = new VergissMeinNicht.Entities.TextArial(ContentManagerName, false);
-			SaveText.Name = "SaveText";
-			InteractText = new VergissMeinNicht.Entities.TextArial(ContentManagerName, false);
-			InteractText.Name = "InteractText";
 			
 			PostInitialize();
 			if (addToManagers)
@@ -116,17 +94,11 @@ namespace VergissMeinNicht.Entities
 		{
 			LayerProvidedByContainer = layerToAddTo;
 			SpriteManager.AddPositionedObject(this);
-			SpriteManager.AddToLayer(Sprite, LayerProvidedByContainer);
-			SaveText.ReAddToManagers(LayerProvidedByContainer);
-			InteractText.ReAddToManagers(LayerProvidedByContainer);
 		}
 		public virtual void AddToManagers (Layer layerToAddTo)
 		{
 			LayerProvidedByContainer = layerToAddTo;
 			SpriteManager.AddPositionedObject(this);
-			SpriteManager.AddToLayer(Sprite, LayerProvidedByContainer);
-			SaveText.AddToManagers(LayerProvidedByContainer);
-			InteractText.AddToManagers(LayerProvidedByContainer);
 			AddToManagersBottomUp(layerToAddTo);
 			CustomInitialize();
 		}
@@ -135,8 +107,6 @@ namespace VergissMeinNicht.Entities
 		{
 			// Generated Activity
 			
-			SaveText.Activity();
-			InteractText.Activity();
 			CustomActivity();
 			
 			// After Custom Activity
@@ -147,20 +117,6 @@ namespace VergissMeinNicht.Entities
 			// Generated Destroy
 			SpriteManager.RemovePositionedObject(this);
 			
-			if (Sprite != null)
-			{
-				SpriteManager.RemoveSprite(Sprite);
-			}
-			if (SaveText != null)
-			{
-				SaveText.Destroy();
-				SaveText.Detach();
-			}
-			if (InteractText != null)
-			{
-				InteractText.Destroy();
-				InteractText.Detach();
-			}
 
 
 			CustomDestroy();
@@ -171,57 +127,6 @@ namespace VergissMeinNicht.Entities
 		{
 			bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
-			if (Sprite.Parent == null)
-			{
-				Sprite.CopyAbsoluteToRelative();
-				Sprite.AttachTo(this, false);
-			}
-			Sprite.Texture = teddy_normal;
-			Sprite.TextureScale = 1f;
-			if (SaveText.Parent == null)
-			{
-				SaveText.CopyAbsoluteToRelative();
-				SaveText.AttachTo(this, false);
-			}
-			SaveText.DisplayText = "Press S To Save";
-			if (SaveText.Parent == null)
-			{
-				SaveText.X = -150f;
-			}
-			else
-			{
-				SaveText.RelativeX = -150f;
-			}
-			if (SaveText.Parent == null)
-			{
-				SaveText.Y = -300f;
-			}
-			else
-			{
-				SaveText.RelativeY = -300f;
-			}
-			if (InteractText.Parent == null)
-			{
-				InteractText.CopyAbsoluteToRelative();
-				InteractText.AttachTo(this, false);
-			}
-			InteractText.DisplayText = "Press E to Interact";
-			if (InteractText.Parent == null)
-			{
-				InteractText.X = -150f;
-			}
-			else
-			{
-				InteractText.RelativeX = -150f;
-			}
-			if (InteractText.Parent == null)
-			{
-				InteractText.Y = -350f;
-			}
-			else
-			{
-				InteractText.RelativeY = -350f;
-			}
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp (Layer layerToAddTo)
@@ -231,65 +136,17 @@ namespace VergissMeinNicht.Entities
 		public virtual void RemoveFromManagers ()
 		{
 			SpriteManager.ConvertToManuallyUpdated(this);
-			if (Sprite != null)
-			{
-				SpriteManager.RemoveSpriteOneWay(Sprite);
-			}
-			SaveText.RemoveFromManagers();
-			InteractText.RemoveFromManagers();
 		}
 		public virtual void AssignCustomVariables (bool callOnContainedElements)
 		{
 			if (callOnContainedElements)
 			{
-				SaveText.AssignCustomVariables(true);
-				InteractText.AssignCustomVariables(true);
 			}
-			Sprite.Texture = teddy_normal;
-			Sprite.TextureScale = 1f;
-			SaveText.DisplayText = "Press S To Save";
-			if (SaveText.Parent == null)
-			{
-				SaveText.X = -150f;
-			}
-			else
-			{
-				SaveText.RelativeX = -150f;
-			}
-			if (SaveText.Parent == null)
-			{
-				SaveText.Y = -300f;
-			}
-			else
-			{
-				SaveText.RelativeY = -300f;
-			}
-			InteractText.DisplayText = "Press E to Interact";
-			if (InteractText.Parent == null)
-			{
-				InteractText.X = -150f;
-			}
-			else
-			{
-				InteractText.RelativeX = -150f;
-			}
-			if (InteractText.Parent == null)
-			{
-				InteractText.Y = -350f;
-			}
-			else
-			{
-				InteractText.RelativeY = -350f;
-			}
-			SpriteVisible = true;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
 			this.ForceUpdateDependenciesDeep();
 			SpriteManager.ConvertToManuallyUpdated(this);
-			SpriteManager.ConvertToManuallyUpdated(Sprite);
-			SaveText.ConvertToManuallyUpdated();
-			InteractText.ConvertToManuallyUpdated();
 		}
 		public static void LoadStaticContent (string contentManagerName)
 		{
@@ -316,24 +173,18 @@ namespace VergissMeinNicht.Entities
 				{
 					if (!mRegisteredUnloads.Contains(ContentManagerName) && ContentManagerName != FlatRedBallServices.GlobalContentManager)
 					{
-						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("TeddyNormalStaticUnload", UnloadStaticContent);
+						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("NormalTeddyStaticUnload", UnloadStaticContent);
 						mRegisteredUnloads.Add(ContentManagerName);
 					}
 				}
-				if (!FlatRedBallServices.IsLoaded<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/entities/teddynormal/teddy_normal.png", ContentManagerName))
-				{
-					registerUnload = true;
-				}
-				teddy_normal = FlatRedBallServices.Load<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/entities/teddynormal/teddy_normal.png", ContentManagerName);
 			}
-			VergissMeinNicht.Entities.TextArial.LoadStaticContent(contentManagerName);
 			if (registerUnload && ContentManagerName != FlatRedBallServices.GlobalContentManager)
 			{
 				lock (mLockObject)
 				{
 					if (!mRegisteredUnloads.Contains(ContentManagerName) && ContentManagerName != FlatRedBallServices.GlobalContentManager)
 					{
-						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("TeddyNormalStaticUnload", UnloadStaticContent);
+						FlatRedBallServices.GetContentManagerByName(ContentManagerName).AddUnloadMethod("NormalTeddyStaticUnload", UnloadStaticContent);
 						mRegisteredUnloads.Add(ContentManagerName);
 					}
 				}
@@ -349,38 +200,19 @@ namespace VergissMeinNicht.Entities
 			}
 			if (LoadedContentManagers.Count == 0)
 			{
-				if (teddy_normal != null)
-				{
-					teddy_normal= null;
-				}
 			}
 		}
 		[System.Obsolete("Use GetFile instead")]
 		public static object GetStaticMember (string memberName)
 		{
-			switch(memberName)
-			{
-				case  "teddy_normal":
-					return teddy_normal;
-			}
 			return null;
 		}
 		public static object GetFile (string memberName)
 		{
-			switch(memberName)
-			{
-				case  "teddy_normal":
-					return teddy_normal;
-			}
 			return null;
 		}
 		object GetMember (string memberName)
 		{
-			switch(memberName)
-			{
-				case  "teddy_normal":
-					return teddy_normal;
-			}
 			return null;
 		}
 		protected bool mIsPaused;
@@ -392,19 +224,9 @@ namespace VergissMeinNicht.Entities
 		public virtual void SetToIgnorePausing ()
 		{
 			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(this);
-			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(Sprite);
-			SaveText.SetToIgnorePausing();
-			InteractText.SetToIgnorePausing();
 		}
 		public virtual void MoveToLayer (Layer layerToMoveTo)
 		{
-			if (LayerProvidedByContainer != null)
-			{
-				LayerProvidedByContainer.Remove(Sprite);
-			}
-			SpriteManager.AddToLayer(Sprite, layerToMoveTo);
-			SaveText.MoveToLayer(layerToMoveTo);
-			InteractText.MoveToLayer(layerToMoveTo);
 			LayerProvidedByContainer = layerToMoveTo;
 		}
 
