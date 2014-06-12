@@ -22,7 +22,6 @@ using FlatRedBall.Localization;
 using Keys = Microsoft.Xna.Framework.Input.Keys;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
 using Texture2D = Microsoft.Xna.Framework.Graphics.Texture2D;
-using VergissMeinNicht.Entities;
 #endif
 #endregion
 
@@ -45,42 +44,39 @@ namespace VergissMeinNicht.Screens
             // Add the ShapeColleciton to the ShapeManager so it's visible
             SolidCollisions.AddToManagers();
 
-            
-
-            TheodorChild Temp = new VergissMeinNicht.Entities.TheodorChild(ContentManagerName, false);
-            Temp.Name = "TheodorChildInstance";
-            PlatformerCharacterBase.updateinstance(Temp);
-            Temp.AddToManagers(mLayer);
-            
-
-
-
             // Let's make the character appear on top of the rectangle:
-            PlatformerCharacterBase.getInstance().Y = 200;
+            this.TheodorChildInstance.Y = 200;
+            this.TheodorGrownUpInstance.Y = 200;
 
+            //reference where Theodor is
+            this.TeddyNormalInstance.TheodorChildInstance = this.TheodorChildInstance;
+            this.TeddyNormalInstance.TheodorGrownUpInstance = this.TheodorGrownUpInstance;
 		}
 
 		void CustomActivity(bool firstTimeCalled)
 		{
             //Theodor Collisions & Movement
-            PlatformerCharacterBase.getInstance().CollideAgainst(SolidCollisions);
-            PlatformerCharacterBase.getInstance().DetermineMovementValues();
+            TheodorChildInstance.CollideAgainst(SolidCollisions);
+            TheodorChildInstance.DetermineMovementValues();
 
-            if (!IsPaused)
-            {
-                PlatformerCharacterBase.getInstance().Activity();
-            }
+<<<<<<< HEAD
+=======
+            TheodorGrownUpInstance.CollideAgainst(SolidCollisions);
+            TheodorGrownUpInstance.DetermineMovementValues();
 
+            //TeddyText();
+>>>>>>> 19b3aeec59663515c83de30477a9982642e2d21d
 
             //Camera Movement following Theodor
-            SpriteManager.Camera.XVelocity = PlatformerCharacterBase.getInstance().X - SpriteManager.Camera.X;
-            SpriteManager.Camera.YVelocity = PlatformerCharacterBase.getInstance().Y - SpriteManager.Camera.Y;
+            SpriteManager.Camera.XVelocity = TheodorChildInstance.X - SpriteManager.Camera.X;
+            SpriteManager.Camera.YVelocity = TheodorChildInstance.Y - SpriteManager.Camera.Y;
 		}
 
 
 		void CustomDestroy()
 		{
-            PlatformerCharacterBase.updateinstance(null);
+
+
 		}
 
         static void CustomLoadStaticContent(string contentManagerName)

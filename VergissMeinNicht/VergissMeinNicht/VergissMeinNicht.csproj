@@ -181,7 +181,7 @@
     </Compile>
     <Compile Include="Entities\Teddy.cs" />
     <Compile Include="Entities\Teddy.Generated.cs">
-      <DependentUpon>teddy.cs</DependentUpon>
+      <DependentUpon>Teddy.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\TextArial.cs" />
     <Compile Include="Entities\TextArial.Generated.cs">

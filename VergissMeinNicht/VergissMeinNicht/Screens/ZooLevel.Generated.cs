@@ -43,9 +43,7 @@ namespace VergissMeinNicht.Screens
 		private VergissMeinNicht.Entities.Button MainMenuButton;
 		private FlatRedBall.Graphics.Layer Layer2D;
 		private VergissMeinNicht.Entities.Teddy TeddyNormalInstance;
-		private VergissMeinNicht.Entities.TheodorChild TheodorChildInstance;
 		private FlatRedBall.Math.Geometry.ShapeCollection SolidCollisions;
-		private VergissMeinNicht.Entities.TheodorGrownUp TheodorGrownUpInstance;
 		public event FlatRedBall.Gui.WindowEvent MainMenuButtonClick;
 
 		public ZooLevel()
@@ -63,12 +61,8 @@ namespace VergissMeinNicht.Screens
 			Layer2D.Name = "Layer2D";
 			TeddyNormalInstance = new VergissMeinNicht.Entities.Teddy(ContentManagerName, false);
 			TeddyNormalInstance.Name = "TeddyNormalInstance";
-			TheodorChildInstance = new VergissMeinNicht.Entities.TheodorChild(ContentManagerName, false);
-			TheodorChildInstance.Name = "TheodorChildInstance";
 			SolidCollisions = new FlatRedBall.Math.Geometry.ShapeCollection();
 			SolidCollisions.Name = "SolidCollisions";
-			TheodorGrownUpInstance = new VergissMeinNicht.Entities.TheodorGrownUp(ContentManagerName, false);
-			TheodorGrownUpInstance.Name = "TheodorGrownUpInstance";
 			
 			
 			PostInitialize();
@@ -93,9 +87,7 @@ namespace VergissMeinNicht.Screens
 			}
 			MainMenuButton.AddToManagers(Layer2D);
 			TeddyNormalInstance.AddToManagers(mLayer);
-			TheodorChildInstance.AddToManagers(mLayer);
 			SolidCollisions.AddToManagers();
-			TheodorGrownUpInstance.AddToManagers(mLayer);
 			base.AddToManagers();
 			AddToManagersBottomUp();
 			CustomInitialize();
@@ -110,8 +102,6 @@ namespace VergissMeinNicht.Screens
 				
 				MainMenuButton.Activity();
 				TeddyNormalInstance.Activity();
-				TheodorChildInstance.Activity();
-				TheodorGrownUpInstance.Activity();
 			}
 			else
 			{
@@ -162,19 +152,9 @@ namespace VergissMeinNicht.Screens
 				TeddyNormalInstance.Destroy();
 				TeddyNormalInstance.Detach();
 			}
-			if (TheodorChildInstance != null)
-			{
-				TheodorChildInstance.Destroy();
-				TheodorChildInstance.Detach();
-			}
 			if (SolidCollisions != null)
 			{
 				SolidCollisions.RemoveFromManagers(ContentManagerName != "Global");
-			}
-			if (TheodorGrownUpInstance != null)
-			{
-				TheodorGrownUpInstance.Destroy();
-				TheodorGrownUpInstance.Detach();
 			}
 
 			base.Destroy();
@@ -244,12 +224,10 @@ namespace VergissMeinNicht.Screens
 				SpriteManager.RemoveLayer(Layer2D);
 			}
 			TeddyNormalInstance.RemoveFromManagers();
-			TheodorChildInstance.RemoveFromManagers();
 			if (SolidCollisions != null)
 			{
 				SolidCollisions.RemoveFromManagers(false);
 			}
-			TheodorGrownUpInstance.RemoveFromManagers();
 		}
 		public virtual void AssignCustomVariables (bool callOnContainedElements)
 		{
@@ -257,8 +235,6 @@ namespace VergissMeinNicht.Screens
 			{
 				MainMenuButton.AssignCustomVariables(true);
 				TeddyNormalInstance.AssignCustomVariables(true);
-				TheodorChildInstance.AssignCustomVariables(true);
-				TheodorGrownUpInstance.AssignCustomVariables(true);
 			}
 			MainMenuButton.DisplayText = "MainMenu";
 			if (MainMenuButton.Parent == null)
@@ -298,8 +274,6 @@ namespace VergissMeinNicht.Screens
 		{
 			MainMenuButton.ConvertToManuallyUpdated();
 			TeddyNormalInstance.ConvertToManuallyUpdated();
-			TheodorChildInstance.ConvertToManuallyUpdated();
-			TheodorGrownUpInstance.ConvertToManuallyUpdated();
 		}
 		public static void LoadStaticContent (string contentManagerName)
 		{
@@ -323,8 +297,6 @@ namespace VergissMeinNicht.Screens
 			SceneFile = FlatRedBallServices.Load<FlatRedBall.Scene>(@"content/screens/zoolevel/scenefile.scnx", contentManagerName);
 			VergissMeinNicht.Entities.Button.LoadStaticContent(contentManagerName);
 			VergissMeinNicht.Entities.Teddy.LoadStaticContent(contentManagerName);
-			VergissMeinNicht.Entities.TheodorChild.LoadStaticContent(contentManagerName);
-			VergissMeinNicht.Entities.TheodorGrownUp.LoadStaticContent(contentManagerName);
 			CustomLoadStaticContent(contentManagerName);
 		}
 		[System.Obsolete("Use GetFile instead")]

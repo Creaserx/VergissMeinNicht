@@ -193,6 +193,23 @@ namespace VergissMeinNicht.Entities
 
 		}
 
+        private static PlatformerCharacterBase instance;
+
+        public static PlatformerCharacterBase getInstance()
+        {
+            return instance;
+        }
+        
+
+        public static void updateinstance(PlatformerCharacterBase newInstance)
+        {
+            if (instance != null)
+            {
+                instance.Destroy();
+            }
+            instance = newInstance;
+        }
+
 		private void CustomActivity()
 		{
             InputActivity();

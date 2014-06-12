@@ -14,8 +14,11 @@ using FlatRedBall.Screens;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using FlatRedBall.Math.Geometry;
+<<<<<<< HEAD
 using Microsoft.Xna.Framework.Graphics;
+=======
+using FlatRedBall.Math.Geometry;
+>>>>>>> 19b3aeec59663515c83de30477a9982642e2d21d
 
 #if XNA4 || WINDOWS_8
 using Color = Microsoft.Xna.Framework.Color;
@@ -55,7 +58,10 @@ namespace VergissMeinNicht.Entities
 		static List<string> LoadedContentManagers = new List<string>();
 		protected static Microsoft.Xna.Framework.Graphics.Texture2D viktor_ibarbo;
 		
+<<<<<<< HEAD
 		private FlatRedBall.Sprite Sprite;
+		protected Layer LayerProvidedByContainer = null;
+=======
 		public event EventHandler BeforeGroundMovementSet;
 		public event EventHandler AfterGroundMovementSet;
 		public override VergissMeinNicht.DataTypes.MovementValues GroundMovement
@@ -119,6 +125,7 @@ namespace VergissMeinNicht.Entities
 				return base.AfterDoubleJump;
 			}
 		}
+>>>>>>> 19b3aeec59663515c83de30477a9982642e2d21d
 
         public TheodorGrownUp()
             : this(FlatRedBall.Screens.ScreenManager.CurrentScreen.ContentManagerName, true)
@@ -156,14 +163,24 @@ namespace VergissMeinNicht.Entities
 // Generated AddToManagers
 		public override void ReAddToManagers (Layer layerToAddTo)
 		{
-			base.ReAddToManagers(layerToAddTo);
+<<<<<<< HEAD
+			LayerProvidedByContainer = layerToAddTo;
+			SpriteManager.AddPositionedObject(this);
 			SpriteManager.AddToLayer(Sprite, LayerProvidedByContainer);
+=======
+			base.ReAddToManagers(layerToAddTo);
+>>>>>>> 19b3aeec59663515c83de30477a9982642e2d21d
 		}
 		public override void AddToManagers (Layer layerToAddTo)
 		{
 			LayerProvidedByContainer = layerToAddTo;
+<<<<<<< HEAD
+			SpriteManager.AddPositionedObject(this);
 			SpriteManager.AddToLayer(Sprite, LayerProvidedByContainer);
+			AddToManagersBottomUp(layerToAddTo);
+=======
 			base.AddToManagers(layerToAddTo);
+>>>>>>> 19b3aeec59663515c83de30477a9982642e2d21d
 			CustomInitialize();
 		}
 
@@ -196,7 +213,7 @@ namespace VergissMeinNicht.Entities
 		{
 			bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
-			base.PostInitialize();
+<<<<<<< HEAD
 			if (Sprite.Parent == null)
 			{
 				Sprite.CopyAbsoluteToRelative();
@@ -204,13 +221,16 @@ namespace VergissMeinNicht.Entities
 			}
 			Sprite.TextureScale = 1f;
 			Sprite.Texture = viktor_ibarbo;
+=======
+			base.PostInitialize();
 			if (mCollision.Parent == null)
 			{
 				mCollision.CopyAbsoluteToRelative();
 				mCollision.AttachTo(this, false);
 			}
-			Collision.Height = 48f;
-			Collision.Width = 32f;
+			Collision.Height = 200f;
+			Collision.Width = 80f;
+>>>>>>> 19b3aeec59663515c83de30477a9982642e2d21d
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public override void AddToManagersBottomUp (Layer layerToAddTo)
@@ -219,12 +239,16 @@ namespace VergissMeinNicht.Entities
 		}
 		public override void RemoveFromManagers ()
 		{
-			base.RemoveFromManagers();
-			base.RemoveFromManagers();
+<<<<<<< HEAD
+			SpriteManager.ConvertToManuallyUpdated(this);
 			if (Sprite != null)
 			{
 				SpriteManager.RemoveSpriteOneWay(Sprite);
 			}
+=======
+			base.RemoveFromManagers();
+			base.RemoveFromManagers();
+>>>>>>> 19b3aeec59663515c83de30477a9982642e2d21d
 		}
 		public override void AssignCustomVariables (bool callOnContainedElements)
 		{
@@ -232,13 +256,16 @@ namespace VergissMeinNicht.Entities
 			if (callOnContainedElements)
 			{
 			}
+<<<<<<< HEAD
 			Sprite.TextureScale = 1f;
 			Sprite.Texture = viktor_ibarbo;
-			mCollision.Height = 48f;
-			mCollision.Width = 32f;
+=======
+			mCollision.Height = 200f;
+			mCollision.Width = 80f;
 			GroundMovement = TheodorGrownUp.MovementValues["TheodorGrownUpOnGround"];
 			AirMovement = TheodorGrownUp.MovementValues["TheodorGrownUpInAir"];
 			AfterDoubleJump = TheodorGrownUp.MovementValues["ImmediateVelocityInAirGrownUp"];
+>>>>>>> 19b3aeec59663515c83de30477a9982642e2d21d
 		}
 		public override void ConvertToManuallyUpdated ()
 		{
@@ -341,18 +368,25 @@ namespace VergissMeinNicht.Entities
 		}
 		public override void SetToIgnorePausing ()
 		{
-			base.SetToIgnorePausing();
+<<<<<<< HEAD
+			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(this);
 			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(Sprite);
+=======
+			base.SetToIgnorePausing();
 			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(Collision);
+>>>>>>> 19b3aeec59663515c83de30477a9982642e2d21d
 		}
 		public override void MoveToLayer (Layer layerToMoveTo)
 		{
-			base.MoveToLayer(layerToMoveTo);
+<<<<<<< HEAD
 			if (LayerProvidedByContainer != null)
 			{
 				LayerProvidedByContainer.Remove(Sprite);
 			}
 			SpriteManager.AddToLayer(Sprite, layerToMoveTo);
+=======
+			base.MoveToLayer(layerToMoveTo);
+>>>>>>> 19b3aeec59663515c83de30477a9982642e2d21d
 			LayerProvidedByContainer = layerToMoveTo;
 		}
 
