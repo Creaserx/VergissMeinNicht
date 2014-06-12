@@ -32,7 +32,7 @@ using FlatRedBall.Math.Geometry;
 
 namespace VergissMeinNicht.Screens
 {
-	public partial class ZooLevel : Screen
+	public partial class ZooLevel : LevelBase
 	{
 		// Generated Fields
 		#if DEBUG
@@ -47,7 +47,7 @@ namespace VergissMeinNicht.Screens
 		public event FlatRedBall.Gui.WindowEvent MainMenuButtonClick;
 
 		public ZooLevel()
-			: base("ZooLevel")
+			: base()
 		{
 		}
 
@@ -65,12 +65,7 @@ namespace VergissMeinNicht.Screens
 			SolidCollisions.Name = "SolidCollisions";
 			
 			
-			PostInitialize();
 			base.Initialize(addToManagers);
-			if (addToManagers)
-			{
-				AddToManagers();
-			}
 
         }
         
@@ -89,7 +84,6 @@ namespace VergissMeinNicht.Screens
 			TeddyNormalInstance.AddToManagers(mLayer);
 			SolidCollisions.AddToManagers();
 			base.AddToManagers();
-			AddToManagersBottomUp();
 			CustomInitialize();
 		}
 
@@ -164,12 +158,13 @@ namespace VergissMeinNicht.Screens
 		}
 
 		// Generated Methods
-		public virtual void PostInitialize ()
+		public override void PostInitialize ()
 		{
 			bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
 			MainMenuButton.Click += OnMainMenuButtonClick;
 			MainMenuButton.Click += OnMainMenuButtonClickTunnel;
+			base.PostInitialize();
 			if (MainMenuButton.Parent == null)
 			{
 				MainMenuButton.CopyAbsoluteToRelative();
@@ -211,13 +206,13 @@ namespace VergissMeinNicht.Screens
 			}
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
-		public virtual void AddToManagersBottomUp ()
+		public override void AddToManagersBottomUp ()
 		{
-			CameraSetup.ResetCamera(SpriteManager.Camera);
-			AssignCustomVariables(false);
+			base.AddToManagersBottomUp();
 		}
-		public virtual void RemoveFromManagers ()
+		public override void RemoveFromManagers ()
 		{
+			base.RemoveFromManagers();
 			MainMenuButton.RemoveFromManagers();
 			if (Layer2D != null)
 			{
@@ -229,8 +224,9 @@ namespace VergissMeinNicht.Screens
 				SolidCollisions.RemoveFromManagers(false);
 			}
 		}
-		public virtual void AssignCustomVariables (bool callOnContainedElements)
+		public override void AssignCustomVariables (bool callOnContainedElements)
 		{
+			base.AssignCustomVariables(callOnContainedElements);
 			if (callOnContainedElements)
 			{
 				MainMenuButton.AssignCustomVariables(true);
@@ -270,17 +266,19 @@ namespace VergissMeinNicht.Screens
 				TeddyNormalInstance.RelativeY = 250f;
 			}
 		}
-		public virtual void ConvertToManuallyUpdated ()
+		public override void ConvertToManuallyUpdated ()
 		{
+			base.ConvertToManuallyUpdated();
 			MainMenuButton.ConvertToManuallyUpdated();
 			TeddyNormalInstance.ConvertToManuallyUpdated();
 		}
-		public static void LoadStaticContent (string contentManagerName)
+		public static new void LoadStaticContent (string contentManagerName)
 		{
 			if (string.IsNullOrEmpty(contentManagerName))
 			{
 				throw new ArgumentException("contentManagerName cannot be empty or null");
 			}
+			LevelBase.LoadStaticContent(contentManagerName);
 			#if DEBUG
 			if (contentManagerName == FlatRedBallServices.GlobalContentManager)
 			{
@@ -300,7 +298,7 @@ namespace VergissMeinNicht.Screens
 			CustomLoadStaticContent(contentManagerName);
 		}
 		[System.Obsolete("Use GetFile instead")]
-		public static object GetStaticMember (string memberName)
+		public static new object GetStaticMember (string memberName)
 		{
 			switch(memberName)
 			{
@@ -309,7 +307,7 @@ namespace VergissMeinNicht.Screens
 			}
 			return null;
 		}
-		public static object GetFile (string memberName)
+		public static new object GetFile (string memberName)
 		{
 			switch(memberName)
 			{

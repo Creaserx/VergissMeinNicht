@@ -31,9 +31,11 @@ namespace VergissMeinNicht.Screens
 	public partial class ZooLevel
 	{
 
-		void CustomInitialize()
+		public override void CustomInitialize()
 		{
-            // Create a rectnagle
+            base.CustomInitialize();
+
+            // Create a rectangle
             AxisAlignedRectangle rectangle = new AxisAlignedRectangle();
             rectangle.ScaleX = 800;
             rectangle.ScaleY = 50;
@@ -45,42 +47,25 @@ namespace VergissMeinNicht.Screens
             // Add the ShapeColleciton to the ShapeManager so it's visible
             SolidCollisions.AddToManagers();
 
-            
 
-            TheodorChild Temp = new VergissMeinNicht.Entities.TheodorChild(ContentManagerName, false);
-            Temp.Name = "TheodorChildInstance";
-            PlatformerCharacterBase.updateinstance(Temp);
-            Temp.AddToManagers(mLayer);
-            
-
-
-
-            // Let's make the character appear on top of the rectangle:
+            // Make the character appear on top of the rectangle:
             PlatformerCharacterBase.getInstance().Y = 200;
 
 		}
 
-		void CustomActivity(bool firstTimeCalled)
+		public override void CustomActivity(bool firstTimeCalled)
 		{
-            //Theodor Collisions & Movement
+            base.CustomActivity(firstTimeCalled);
+
+            //Theodor Collisions
             PlatformerCharacterBase.getInstance().CollideAgainst(SolidCollisions);
-            PlatformerCharacterBase.getInstance().DetermineMovementValues();
 
-            if (!IsPaused)
-            {
-                PlatformerCharacterBase.getInstance().Activity();
-            }
+        }
 
 
-            //Camera Movement following Theodor
-            SpriteManager.Camera.XVelocity = PlatformerCharacterBase.getInstance().X - SpriteManager.Camera.X;
-            SpriteManager.Camera.YVelocity = PlatformerCharacterBase.getInstance().Y - SpriteManager.Camera.Y;
-		}
-
-
-		void CustomDestroy()
+        public override void CustomDestroy()
 		{
-            PlatformerCharacterBase.updateinstance(null);
+            base.CustomDestroy();
 		}
 
         static void CustomLoadStaticContent(string contentManagerName)

@@ -210,6 +210,13 @@ namespace VergissMeinNicht.Entities
             instance = newInstance;
         }
 
+        public static bool isChild()
+        {
+            if (PlatformerCharacterBase.getInstance() is TheodorChild) return true;
+            else return false;
+        }
+ 
+
 		private void CustomActivity()
 		{
             InputActivity();

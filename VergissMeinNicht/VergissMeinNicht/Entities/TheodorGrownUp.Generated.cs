@@ -202,8 +202,8 @@ namespace VergissMeinNicht.Entities
 				Sprite.CopyAbsoluteToRelative();
 				Sprite.AttachTo(this, false);
 			}
-			Sprite.TextureScale = 1f;
 			Sprite.Texture = viktor_ibarbo;
+			Sprite.TextureScale = 1f;
 			if (mCollision.Parent == null)
 			{
 				mCollision.CopyAbsoluteToRelative();
@@ -232,8 +232,8 @@ namespace VergissMeinNicht.Entities
 			if (callOnContainedElements)
 			{
 			}
-			Sprite.TextureScale = 1f;
 			Sprite.Texture = viktor_ibarbo;
+			Sprite.TextureScale = 1f;
 			mCollision.Height = 48f;
 			mCollision.Width = 32f;
 			GroundMovement = TheodorGrownUp.MovementValues["TheodorGrownUpOnGround"];

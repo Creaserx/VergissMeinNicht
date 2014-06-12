@@ -46,16 +46,17 @@ namespace VergissMeinNicht.Entities
             //Makes Text Visible / Invisible in front of a Teddy
             if (PlatformerCharacterBase.getInstance().X < (Sprite.X + 75) && PlatformerCharacterBase.getInstance().X > (Sprite.X - 75))
             {
+                //--Transform Character
                 if (InputManager.Keyboard.KeyPushed(Keys.E))
                 {
-                    if (PlatformerCharacterBase.getInstance() is TheodorChild)
+                    if (PlatformerCharacterBase.isChild())                            
                     {
                         TheodorGrownUp Temp = new TheodorGrownUp();
                         Temp.X = PlatformerCharacterBase.getInstance().X;
                         Temp.Y = PlatformerCharacterBase.getInstance().Y;
                         PlatformerCharacterBase.updateinstance(Temp);
                     }
-                    else if (PlatformerCharacterBase.getInstance() is TheodorGrownUp)
+                    else
                     {
                         TheodorChild Temp = new TheodorChild();
                         Temp.X = PlatformerCharacterBase.getInstance().X;
