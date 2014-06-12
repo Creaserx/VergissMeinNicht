@@ -14,6 +14,7 @@ using FlatRedBall.Screens;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using FlatRedBall.Math.Geometry;
 
 #if XNA4 || WINDOWS_8
 using Color = Microsoft.Xna.Framework.Color;
@@ -35,13 +36,13 @@ using Model = Microsoft.Xna.Framework.Graphics.Model;
 
 namespace VergissMeinNicht.Entities
 {
-	public partial class TheodorGrownUp : PositionedObject, IDestroyable
+	public partial class TheodorGrownUp : VergissMeinNicht.Entities.PlatformerCharacterBase, IDestroyable
 	{
         // This is made global so that static lazy-loaded content can access it.
-        public static string ContentManagerName
+        public static new string ContentManagerName
         {
-            get;
-            set;
+            get{ return Entities.PlatformerCharacterBase.ContentManagerName;}
+            set{ Entities.PlatformerCharacterBase.ContentManagerName = value;}
         }
 
 		// Generated Fields
@@ -52,7 +53,69 @@ namespace VergissMeinNicht.Entities
 		static List<string> mRegisteredUnloads = new List<string>();
 		static List<string> LoadedContentManagers = new List<string>();
 		
-		protected Layer LayerProvidedByContainer = null;
+		public event EventHandler BeforeGroundMovementSet;
+		public event EventHandler AfterGroundMovementSet;
+		public override VergissMeinNicht.DataTypes.MovementValues GroundMovement
+		{
+			set
+			{
+				if (BeforeGroundMovementSet != null)
+				{
+					BeforeGroundMovementSet(this, null);
+				}
+				base.GroundMovement = value;
+				if (AfterGroundMovementSet != null)
+				{
+					AfterGroundMovementSet(this, null);
+				}
+			}
+			get
+			{
+				return base.GroundMovement;
+			}
+		}
+		public event EventHandler BeforeAirMovementSet;
+		public event EventHandler AfterAirMovementSet;
+		public override VergissMeinNicht.DataTypes.MovementValues AirMovement
+		{
+			set
+			{
+				if (BeforeAirMovementSet != null)
+				{
+					BeforeAirMovementSet(this, null);
+				}
+				base.AirMovement = value;
+				if (AfterAirMovementSet != null)
+				{
+					AfterAirMovementSet(this, null);
+				}
+			}
+			get
+			{
+				return base.AirMovement;
+			}
+		}
+		public event EventHandler BeforeAfterDoubleJumpSet;
+		public event EventHandler AfterAfterDoubleJumpSet;
+		public override VergissMeinNicht.DataTypes.MovementValues AfterDoubleJump
+		{
+			set
+			{
+				if (BeforeAfterDoubleJumpSet != null)
+				{
+					BeforeAfterDoubleJumpSet(this, null);
+				}
+				base.AfterDoubleJump = value;
+				if (AfterAfterDoubleJumpSet != null)
+				{
+					AfterAfterDoubleJumpSet(this, null);
+				}
+			}
+			get
+			{
+				return base.AfterDoubleJump;
+			}
+		}
 
         public TheodorGrownUp()
             : this(FlatRedBall.Screens.ScreenManager.CurrentScreen.ContentManagerName, true)
@@ -67,55 +130,50 @@ namespace VergissMeinNicht.Entities
 
 
         public TheodorGrownUp(string contentManagerName, bool addToManagers) :
-			base()
+			base(contentManagerName, addToManagers)
 		{
 			// Don't delete this:
             ContentManagerName = contentManagerName;
-            InitializeEntity(addToManagers);
+           
 
 		}
 
-		protected virtual void InitializeEntity(bool addToManagers)
+		protected override void InitializeEntity(bool addToManagers)
 		{
 			// Generated Initialize
 			LoadStaticContent(ContentManagerName);
 			
-			PostInitialize();
-			if (addToManagers)
-			{
-				AddToManagers(null);
-			}
+			base.InitializeEntity(addToManagers);
 
 
 		}
 
 // Generated AddToManagers
-		public virtual void ReAddToManagers (Layer layerToAddTo)
+		public override void ReAddToManagers (Layer layerToAddTo)
 		{
-			LayerProvidedByContainer = layerToAddTo;
-			SpriteManager.AddPositionedObject(this);
+			base.ReAddToManagers(layerToAddTo);
 		}
-		public virtual void AddToManagers (Layer layerToAddTo)
+		public override void AddToManagers (Layer layerToAddTo)
 		{
 			LayerProvidedByContainer = layerToAddTo;
-			SpriteManager.AddPositionedObject(this);
-			AddToManagersBottomUp(layerToAddTo);
+			base.AddToManagers(layerToAddTo);
 			CustomInitialize();
 		}
 
-		public virtual void Activity()
+		public override void Activity()
 		{
 			// Generated Activity
+			base.Activity();
 			
 			CustomActivity();
 			
 			// After Custom Activity
 		}
 
-		public virtual void Destroy()
+		public override void Destroy()
 		{
 			// Generated Destroy
-			SpriteManager.RemovePositionedObject(this);
+			base.Destroy();
 			
 
 
@@ -123,38 +181,55 @@ namespace VergissMeinNicht.Entities
 		}
 
 		// Generated Methods
-		public virtual void PostInitialize ()
+		public override void PostInitialize ()
 		{
 			bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
+			base.PostInitialize();
+			if (mCollision.Parent == null)
+			{
+				mCollision.CopyAbsoluteToRelative();
+				mCollision.AttachTo(this, false);
+			}
+			Collision.Height = 48f;
+			Collision.Width = 32f;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
-		public virtual void AddToManagersBottomUp (Layer layerToAddTo)
+		public override void AddToManagersBottomUp (Layer layerToAddTo)
 		{
-			AssignCustomVariables(false);
+			base.AddToManagersBottomUp(layerToAddTo);
 		}
-		public virtual void RemoveFromManagers ()
+		public override void RemoveFromManagers ()
 		{
-			SpriteManager.ConvertToManuallyUpdated(this);
+			base.RemoveFromManagers();
+			base.RemoveFromManagers();
 		}
-		public virtual void AssignCustomVariables (bool callOnContainedElements)
+		public override void AssignCustomVariables (bool callOnContainedElements)
 		{
+			base.AssignCustomVariables(callOnContainedElements);
 			if (callOnContainedElements)
 			{
 			}
+			mCollision.Height = 48f;
+			mCollision.Width = 32f;
+			GroundMovement = TheodorGrownUp.MovementValues["TheodorGrownUpOnGround"];
+			AirMovement = TheodorGrownUp.MovementValues["TheodorGrownUpInAir"];
+			AfterDoubleJump = TheodorGrownUp.MovementValues["ImmediateVelocityInAirGrownUp"];
 		}
-		public virtual void ConvertToManuallyUpdated ()
+		public override void ConvertToManuallyUpdated ()
 		{
+			base.ConvertToManuallyUpdated();
 			this.ForceUpdateDependenciesDeep();
 			SpriteManager.ConvertToManuallyUpdated(this);
 		}
-		public static void LoadStaticContent (string contentManagerName)
+		public static new void LoadStaticContent (string contentManagerName)
 		{
 			if (string.IsNullOrEmpty(contentManagerName))
 			{
 				throw new ArgumentException("contentManagerName cannot be empty or null");
 			}
 			ContentManagerName = contentManagerName;
+			PlatformerCharacterBase.LoadStaticContent(contentManagerName);
 			#if DEBUG
 			if (contentManagerName == FlatRedBallServices.GlobalContentManager)
 			{
@@ -191,7 +266,7 @@ namespace VergissMeinNicht.Entities
 			}
 			CustomLoadStaticContent(contentManagerName);
 		}
-		public static void UnloadStaticContent ()
+		public static new void UnloadStaticContent ()
 		{
 			if (LoadedContentManagers.Count != 0)
 			{
@@ -203,11 +278,11 @@ namespace VergissMeinNicht.Entities
 			}
 		}
 		[System.Obsolete("Use GetFile instead")]
-		public static object GetStaticMember (string memberName)
+		public static new object GetStaticMember (string memberName)
 		{
 			return null;
 		}
-		public static object GetFile (string memberName)
+		public static new object GetFile (string memberName)
 		{
 			return null;
 		}
@@ -215,18 +290,14 @@ namespace VergissMeinNicht.Entities
 		{
 			return null;
 		}
-		protected bool mIsPaused;
-		public override void Pause (FlatRedBall.Instructions.InstructionList instructions)
+		public override void SetToIgnorePausing ()
 		{
-			base.Pause(instructions);
-			mIsPaused = true;
+			base.SetToIgnorePausing();
+			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(Collision);
 		}
-		public virtual void SetToIgnorePausing ()
+		public override void MoveToLayer (Layer layerToMoveTo)
 		{
-			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(this);
-		}
-		public virtual void MoveToLayer (Layer layerToMoveTo)
-		{
+			base.MoveToLayer(layerToMoveTo);
 			LayerProvidedByContainer = layerToMoveTo;
 		}
 
