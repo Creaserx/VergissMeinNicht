@@ -27,6 +27,7 @@ using FlatRedBall.Screens;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using FlatRedBall.Graphics;
 
 namespace VergissMeinNicht.Screens
 {
@@ -37,6 +38,20 @@ namespace VergissMeinNicht.Screens
 		static bool HasBeenLoadedWithGlobalContentManager = false;
 		#endif
 		
+		private VergissMeinNicht.Entities.Button mMainMenuButton;
+		public VergissMeinNicht.Entities.Button MainMenuButton
+		{
+			get
+			{
+				return mMainMenuButton;
+			}
+			private set
+			{
+				mMainMenuButton = value;
+			}
+		}
+		private FlatRedBall.Graphics.Layer Layer2D;
+		public event FlatRedBall.Gui.WindowEvent MainMenuButtonClick;
 
 		public LevelBase()
 			: base("LevelBase")
@@ -47,6 +62,10 @@ namespace VergissMeinNicht.Screens
         {
 			// Generated Initialize
 			LoadStaticContent(ContentManagerName);
+			mMainMenuButton = new VergissMeinNicht.Entities.Button(ContentManagerName, false);
+			mMainMenuButton.Name = "mMainMenuButton";
+			Layer2D = new FlatRedBall.Graphics.Layer();
+			Layer2D.Name = "Layer2D";
 			
 			
 			PostInitialize();
@@ -61,6 +80,14 @@ namespace VergissMeinNicht.Screens
 // Generated AddToManagers
 		public override void AddToManagers ()
 		{
+			SpriteManager.AddLayer(Layer2D);
+			Layer2D.UsePixelCoordinates();
+			if (SpriteManager.Camera.Orthogonal)
+			{
+				Layer2D.LayerCameraSettings.OrthogonalWidth = FlatRedBall.SpriteManager.Camera.OrthogonalWidth;
+				Layer2D.LayerCameraSettings.OrthogonalHeight = FlatRedBall.SpriteManager.Camera.OrthogonalHeight;
+			}
+			mMainMenuButton.AddToManagers(mLayer);
 			base.AddToManagers();
 			AddToManagersBottomUp();
 			CustomInitialize();
@@ -73,6 +100,7 @@ namespace VergissMeinNicht.Screens
 			if (!IsPaused)
 			{
 				
+				MainMenuButton.Activity();
 			}
 			else
 			{
@@ -93,6 +121,15 @@ namespace VergissMeinNicht.Screens
 		{
 			// Generated Destroy
 			
+			if (MainMenuButton != null)
+			{
+				MainMenuButton.Destroy();
+				MainMenuButton.Detach();
+			}
+			if (Layer2D != null)
+			{
+				SpriteManager.RemoveLayer(Layer2D);
+			}
 
 			base.Destroy();
 
@@ -105,6 +142,31 @@ namespace VergissMeinNicht.Screens
 		{
 			bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
+			MainMenuButton.Click += OnMainMenuButtonClick;
+			MainMenuButton.Click += OnMainMenuButtonClickTunnel;
+			if (mMainMenuButton.Parent == null)
+			{
+				mMainMenuButton.CopyAbsoluteToRelative();
+				mMainMenuButton.RelativeZ += -40;
+				mMainMenuButton.AttachTo(SpriteManager.Camera, false);
+			}
+			MainMenuButton.DisplayText = "MainMenu";
+			if (MainMenuButton.Parent == null)
+			{
+				MainMenuButton.X = 300f;
+			}
+			else
+			{
+				MainMenuButton.RelativeX = 300f;
+			}
+			if (MainMenuButton.Parent == null)
+			{
+				MainMenuButton.Y = 260f;
+			}
+			else
+			{
+				MainMenuButton.RelativeY = 260f;
+			}
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp ()
@@ -114,15 +176,39 @@ namespace VergissMeinNicht.Screens
 		}
 		public virtual void RemoveFromManagers ()
 		{
+			MainMenuButton.RemoveFromManagers();
+			if (Layer2D != null)
+			{
+				SpriteManager.RemoveLayer(Layer2D);
+			}
 		}
 		public virtual void AssignCustomVariables (bool callOnContainedElements)
 		{
 			if (callOnContainedElements)
 			{
+				MainMenuButton.AssignCustomVariables(true);
+			}
+			mMainMenuButton.DisplayText = "MainMenu";
+			if (mMainMenuButton.Parent == null)
+			{
+				mMainMenuButton.X = 300f;
+			}
+			else
+			{
+				mMainMenuButton.RelativeX = 300f;
+			}
+			if (mMainMenuButton.Parent == null)
+			{
+				mMainMenuButton.Y = 260f;
+			}
+			else
+			{
+				mMainMenuButton.RelativeY = 260f;
 			}
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
+			MainMenuButton.ConvertToManuallyUpdated();
 		}
 		public static void LoadStaticContent (string contentManagerName)
 		{
@@ -140,6 +226,7 @@ namespace VergissMeinNicht.Screens
 				throw new Exception("This type has been loaded with a Global content manager, then loaded with a non-global.  This can lead to a lot of bugs");
 			}
 			#endif
+			VergissMeinNicht.Entities.Button.LoadStaticContent(contentManagerName);
 			CustomLoadStaticContent(contentManagerName);
 		}
 		[System.Obsolete("Use GetFile instead")]

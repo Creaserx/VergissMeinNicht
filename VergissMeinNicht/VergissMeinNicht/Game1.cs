@@ -47,7 +47,7 @@ namespace VergissMeinNicht
             IsMouseVisible = true;
 
             //initializing the MainMenu Screen first
-			FlatRedBall.Screens.ScreenManager.Start(typeof(VergissMeinNicht.Screens.MainMenu));
+			FlatRedBall.Screens.ScreenManager.Start(typeof(VergissMeinNicht.Screens.Empfang));
 
             base.Initialize();
         }

@@ -44,15 +44,13 @@ namespace VergissMeinNicht.Screens
 		{
             //Theodor Movement      
             PlatformerCharacterBase.getInstance().DetermineMovementValues();        //Collision muss extra aufgerufen werden
+            CameraMovement();
 
             if (!IsPaused)
             {
                 PlatformerCharacterBase.getInstance().Activity();
             }
-
-            CameraMovement();
-
-
+                    
 		}
 
         public virtual void CustomDestroy()

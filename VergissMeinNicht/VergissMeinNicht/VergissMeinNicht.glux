@@ -35,7 +35,26 @@
         <string>GLUE</string>
       </Tags>
       <Source>GLUE</Source>
+      <BaseScreen>Screens\LevelBase</BaseScreen>
       <Name>Screens\Empfang</Name>
+      <ReferencedFiles>
+        <ReferencedFileSave>
+          <Name>Screens/Empfang/Hintergrund.scnx</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>FlatRedBall.Scene</RuntimeType>
+        </ReferencedFileSave>
+      </ReferencedFiles>
+      <NamedObjects>
+        <NamedObjectSave>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceFile />
+          <SourceName />
+          <SourceClassType>ShapeCollection</SourceClassType>
+          <InstanceName>SolidCollisions</InstanceName>
+          <AttachToContainer>false</AttachToContainer>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+      </NamedObjects>
     </ScreenSave>
     <ScreenSave>
       <Tags>
@@ -56,7 +75,52 @@
         <string>GLUE</string>
       </Tags>
       <Source>GLUE</Source>
+      <Events>
+        <EventResponseSave>
+          <EventName>MainMenuButtonClick</EventName>
+          <SourceObject>MainMenuButton</SourceObject>
+          <SourceObjectEvent>Click</SourceObjectEvent>
+          <BeforeOrAfter>Before</BeforeOrAfter>
+          <DelegateType />
+        </EventResponseSave>
+      </Events>
       <Name>Screens\LevelBase</Name>
+      <NamedObjects>
+        <NamedObjectSave>
+          <CustomProperty>
+            <Type>string</Type>
+            <Member>DisplayText</Member>
+            <ValueAsString>MainMenu</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>X</Member>
+            <ValueAsFloat>300</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Y</Member>
+            <ValueAsFloat>260</ValueAsFloat>
+          </CustomProperty>
+          <SourceType>Entity</SourceType>
+          <SourceClassType>Entities\Button</SourceClassType>
+          <InstanceName>MainMenuButton</InstanceName>
+          <HasPublicProperty>true</HasPublicProperty>
+          <AttachToContainer>false</AttachToContainer>
+          <AttachToCamera>true</AttachToCamera>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+        <NamedObjectSave>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceFile />
+          <SourceName />
+          <SourceClassType>Layer</SourceClassType>
+          <InstanceName>Layer2D</InstanceName>
+          <AttachToContainer>false</AttachToContainer>
+          <IndependentOfCamera>true</IndependentOfCamera>
+          <Is2D>true</Is2D>
+        </NamedObjectSave>
+      </NamedObjects>
     </ScreenSave>
     <ScreenSave>
       <Tags>
@@ -571,15 +635,6 @@
         <string>GLUE</string>
       </Tags>
       <Source>GLUE</Source>
-      <Events>
-        <EventResponseSave>
-          <EventName>MainMenuButtonClick</EventName>
-          <SourceObject>MainMenuButton</SourceObject>
-          <SourceObjectEvent>Click</SourceObjectEvent>
-          <BeforeOrAfter>Before</BeforeOrAfter>
-          <DelegateType />
-        </EventResponseSave>
-      </Events>
       <BaseScreen>Screens\LevelBase</BaseScreen>
       <Name>Screens\ZooLevel</Name>
       <ReferencedFiles>
@@ -590,40 +645,6 @@
         </ReferencedFileSave>
       </ReferencedFiles>
       <NamedObjects>
-        <NamedObjectSave>
-          <CustomProperty>
-            <Type>string</Type>
-            <Member>DisplayText</Member>
-            <ValueAsString>MainMenu</ValueAsString>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>X</Member>
-            <ValueAsFloat>300</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>Y</Member>
-            <ValueAsFloat>260</ValueAsFloat>
-          </CustomProperty>
-          <SourceType>Entity</SourceType>
-          <SourceClassType>Entities\Button</SourceClassType>
-          <InstanceName>MainMenuButton</InstanceName>
-          <AttachToContainer>true</AttachToContainer>
-          <AttachToCamera>true</AttachToCamera>
-          <IndependentOfCamera>true</IndependentOfCamera>
-          <LayerOn>Layer2D</LayerOn>
-        </NamedObjectSave>
-        <NamedObjectSave>
-          <SourceType>FlatRedBallType</SourceType>
-          <SourceFile />
-          <SourceName />
-          <SourceClassType>Layer</SourceClassType>
-          <InstanceName>Layer2D</InstanceName>
-          <AttachToContainer>true</AttachToContainer>
-          <IndependentOfCamera>true</IndependentOfCamera>
-          <Is2D>true</Is2D>
-        </NamedObjectSave>
         <NamedObjectSave>
           <CustomProperty>
             <Type>float</Type>
@@ -2071,7 +2092,7 @@
     <RecordLockContention>false</RecordLockContention>
   </GlobalContentSettingsSave>
   <SyncedProjects />
-  <StartUpScreen>Screens\MainMenu</StartUpScreen>
+  <StartUpScreen>Screens\Empfang</StartUpScreen>
   <ResolutionPresets />
   <PerformanceSettingsSave>
     <ThrowExceptionOnPostInitializeContentLoad>false</ThrowExceptionOnPostInitializeContentLoad>

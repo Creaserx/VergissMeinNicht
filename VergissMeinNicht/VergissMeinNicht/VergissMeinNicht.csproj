@@ -227,7 +227,13 @@
       <DependentUpon>Küche.cs</DependentUpon>
     </Compile>
     <Compile Include="Screens\LevelBase.cs" />
+    <Compile Include="Screens\LevelBase.Event.cs">
+      <DependentUpon>LevelBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screens\LevelBase.Generated.cs">
+      <DependentUpon>LevelBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\LevelBase.Generated.Event.cs">
       <DependentUpon>LevelBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Screens\LoadGameScreen.cs" />

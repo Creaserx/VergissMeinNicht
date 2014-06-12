@@ -27,7 +27,6 @@ using FlatRedBall.Screens;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using FlatRedBall.Graphics;
 using FlatRedBall.Math.Geometry;
 
 namespace VergissMeinNicht.Screens
@@ -40,11 +39,8 @@ namespace VergissMeinNicht.Screens
 		#endif
 		protected static FlatRedBall.Scene SceneFile;
 		
-		private VergissMeinNicht.Entities.Button MainMenuButton;
-		private FlatRedBall.Graphics.Layer Layer2D;
 		private VergissMeinNicht.Entities.Teddy TeddyNormalInstance;
 		private FlatRedBall.Math.Geometry.ShapeCollection SolidCollisions;
-		public event FlatRedBall.Gui.WindowEvent MainMenuButtonClick;
 
 		public ZooLevel()
 			: base()
@@ -55,10 +51,6 @@ namespace VergissMeinNicht.Screens
         {
 			// Generated Initialize
 			LoadStaticContent(ContentManagerName);
-			MainMenuButton = new VergissMeinNicht.Entities.Button(ContentManagerName, false);
-			MainMenuButton.Name = "MainMenuButton";
-			Layer2D = new FlatRedBall.Graphics.Layer();
-			Layer2D.Name = "Layer2D";
 			TeddyNormalInstance = new VergissMeinNicht.Entities.Teddy(ContentManagerName, false);
 			TeddyNormalInstance.Name = "TeddyNormalInstance";
 			SolidCollisions = new FlatRedBall.Math.Geometry.ShapeCollection();
@@ -73,14 +65,6 @@ namespace VergissMeinNicht.Screens
 		public override void AddToManagers ()
 		{
 			SceneFile.AddToManagers(mLayer);
-			SpriteManager.AddLayer(Layer2D);
-			Layer2D.UsePixelCoordinates();
-			if (SpriteManager.Camera.Orthogonal)
-			{
-				Layer2D.LayerCameraSettings.OrthogonalWidth = FlatRedBall.SpriteManager.Camera.OrthogonalWidth;
-				Layer2D.LayerCameraSettings.OrthogonalHeight = FlatRedBall.SpriteManager.Camera.OrthogonalHeight;
-			}
-			MainMenuButton.AddToManagers(Layer2D);
 			TeddyNormalInstance.AddToManagers(mLayer);
 			SolidCollisions.AddToManagers();
 			base.AddToManagers();
@@ -94,7 +78,6 @@ namespace VergissMeinNicht.Screens
 			if (!IsPaused)
 			{
 				
-				MainMenuButton.Activity();
 				TeddyNormalInstance.Activity();
 			}
 			else
@@ -132,15 +115,6 @@ namespace VergissMeinNicht.Screens
 				SceneFile.MakeOneWay();
 			}
 			
-			if (MainMenuButton != null)
-			{
-				MainMenuButton.Destroy();
-				MainMenuButton.Detach();
-			}
-			if (Layer2D != null)
-			{
-				SpriteManager.RemoveLayer(Layer2D);
-			}
 			if (TeddyNormalInstance != null)
 			{
 				TeddyNormalInstance.Destroy();
@@ -162,32 +136,7 @@ namespace VergissMeinNicht.Screens
 		{
 			bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
-			MainMenuButton.Click += OnMainMenuButtonClick;
-			MainMenuButton.Click += OnMainMenuButtonClickTunnel;
 			base.PostInitialize();
-			if (MainMenuButton.Parent == null)
-			{
-				MainMenuButton.CopyAbsoluteToRelative();
-				MainMenuButton.RelativeZ += -40;
-				MainMenuButton.AttachTo(SpriteManager.Camera, false);
-			}
-			MainMenuButton.DisplayText = "MainMenu";
-			if (MainMenuButton.Parent == null)
-			{
-				MainMenuButton.X = 300f;
-			}
-			else
-			{
-				MainMenuButton.RelativeX = 300f;
-			}
-			if (MainMenuButton.Parent == null)
-			{
-				MainMenuButton.Y = 260f;
-			}
-			else
-			{
-				MainMenuButton.RelativeY = 260f;
-			}
 			if (TeddyNormalInstance.Parent == null)
 			{
 				TeddyNormalInstance.X = -250f;
@@ -213,11 +162,6 @@ namespace VergissMeinNicht.Screens
 		public override void RemoveFromManagers ()
 		{
 			base.RemoveFromManagers();
-			MainMenuButton.RemoveFromManagers();
-			if (Layer2D != null)
-			{
-				SpriteManager.RemoveLayer(Layer2D);
-			}
 			TeddyNormalInstance.RemoveFromManagers();
 			if (SolidCollisions != null)
 			{
@@ -229,25 +173,7 @@ namespace VergissMeinNicht.Screens
 			base.AssignCustomVariables(callOnContainedElements);
 			if (callOnContainedElements)
 			{
-				MainMenuButton.AssignCustomVariables(true);
 				TeddyNormalInstance.AssignCustomVariables(true);
-			}
-			MainMenuButton.DisplayText = "MainMenu";
-			if (MainMenuButton.Parent == null)
-			{
-				MainMenuButton.X = 300f;
-			}
-			else
-			{
-				MainMenuButton.RelativeX = 300f;
-			}
-			if (MainMenuButton.Parent == null)
-			{
-				MainMenuButton.Y = 260f;
-			}
-			else
-			{
-				MainMenuButton.RelativeY = 260f;
 			}
 			if (TeddyNormalInstance.Parent == null)
 			{
@@ -269,7 +195,6 @@ namespace VergissMeinNicht.Screens
 		public override void ConvertToManuallyUpdated ()
 		{
 			base.ConvertToManuallyUpdated();
-			MainMenuButton.ConvertToManuallyUpdated();
 			TeddyNormalInstance.ConvertToManuallyUpdated();
 		}
 		public static new void LoadStaticContent (string contentManagerName)
@@ -293,7 +218,6 @@ namespace VergissMeinNicht.Screens
 			{
 			}
 			SceneFile = FlatRedBallServices.Load<FlatRedBall.Scene>(@"content/screens/zoolevel/scenefile.scnx", contentManagerName);
-			VergissMeinNicht.Entities.Button.LoadStaticContent(contentManagerName);
 			VergissMeinNicht.Entities.Teddy.LoadStaticContent(contentManagerName);
 			CustomLoadStaticContent(contentManagerName);
 		}

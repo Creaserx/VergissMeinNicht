@@ -22,6 +22,7 @@ using FlatRedBall.Localization;
 using Keys = Microsoft.Xna.Framework.Input.Keys;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
 using Texture2D = Microsoft.Xna.Framework.Graphics.Texture2D;
+using VergissMeinNicht.Entities;
 #endif
 #endregion
 
@@ -30,21 +31,38 @@ namespace VergissMeinNicht.Screens
 	public partial class Empfang
 	{
 
-		void CustomInitialize()
+		public override void CustomInitialize()
 		{
+            base.CustomInitialize();
+            // Create a rectangle
+            AxisAlignedRectangle rectangle = new AxisAlignedRectangle();
+            rectangle.ScaleX = 800;
+            rectangle.ScaleY = 50;
+            //rectangle.Y = -50;
 
+            // Add it to the ShapeCollection so the player can collide against it
+            this.SolidCollisions.AxisAlignedRectangles.Add(rectangle);
+
+            // Add the ShapeColleciton to the ShapeManager so it's visible
+            SolidCollisions.AddToManagers();
+
+
+            // Make the character appear on top of the rectangle:
+            PlatformerCharacterBase.getInstance().Y = 200;
+		}
+
+        public override void CustomActivity(bool firstTimeCalled)
+		{
+            base.CustomActivity(firstTimeCalled);
+
+            //Theodor Collisions
+            PlatformerCharacterBase.getInstance().CollideAgainst(SolidCollisions);
 
 		}
 
-		void CustomActivity(bool firstTimeCalled)
+        public override void CustomDestroy()
 		{
-
-
-		}
-
-		void CustomDestroy()
-		{
-
+            base.CustomDestroy();
 
 		}
 

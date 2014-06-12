@@ -150,6 +150,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Theodor_Idle_Right</Name>
     </None>
+    <None Include="Screens\Empfang\aufenthaltsraum_hintergrund.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>aufenthaltsraum_hintergrund</Name>
+    </None>
+    <None Include="Screens\Empfang\Hintergrund.scnx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Hintergrund</Name>
+    </None>
     <None Include="Screens\ZooLevel\10382537_889952597687392_1592239203505348189_o.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>10382537_889952597687392_1592239203505348189_o</Name>

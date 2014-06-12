@@ -27,19 +27,22 @@ using FlatRedBall.Screens;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using FlatRedBall.Math.Geometry;
 
 namespace VergissMeinNicht.Screens
 {
-	public partial class Empfang : Screen
+	public partial class Empfang : LevelBase
 	{
 		// Generated Fields
 		#if DEBUG
 		static bool HasBeenLoadedWithGlobalContentManager = false;
 		#endif
+		protected static FlatRedBall.Scene Hintergrund;
 		
+		private FlatRedBall.Math.Geometry.ShapeCollection SolidCollisions;
 
 		public Empfang()
-			: base("Empfang")
+			: base()
 		{
 		}
 
@@ -47,22 +50,20 @@ namespace VergissMeinNicht.Screens
         {
 			// Generated Initialize
 			LoadStaticContent(ContentManagerName);
+			SolidCollisions = new FlatRedBall.Math.Geometry.ShapeCollection();
+			SolidCollisions.Name = "SolidCollisions";
 			
 			
-			PostInitialize();
 			base.Initialize(addToManagers);
-			if (addToManagers)
-			{
-				AddToManagers();
-			}
 
         }
         
 // Generated AddToManagers
 		public override void AddToManagers ()
 		{
+			Hintergrund.AddToManagers(mLayer);
+			SolidCollisions.AddToManagers();
 			base.AddToManagers();
-			AddToManagersBottomUp();
 			CustomInitialize();
 		}
 
@@ -92,7 +93,27 @@ namespace VergissMeinNicht.Screens
 		public override void Destroy()
 		{
 			// Generated Destroy
+			if (this.UnloadsContentManagerWhenDestroyed && ContentManagerName != "Global")
+			{
+				Hintergrund.RemoveFromManagers(ContentManagerName != "Global");
+			}
+			else
+			{
+				Hintergrund.RemoveFromManagers(false);
+			}
+			if (this.UnloadsContentManagerWhenDestroyed && ContentManagerName != "Global")
+			{
+				Hintergrund = null;
+			}
+			else
+			{
+				Hintergrund.MakeOneWay();
+			}
 			
+			if (SolidCollisions != null)
+			{
+				SolidCollisions.RemoveFromManagers(ContentManagerName != "Global");
+			}
 
 			base.Destroy();
 
@@ -101,35 +122,43 @@ namespace VergissMeinNicht.Screens
 		}
 
 		// Generated Methods
-		public virtual void PostInitialize ()
+		public override void PostInitialize ()
 		{
 			bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
+			base.PostInitialize();
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
-		public virtual void AddToManagersBottomUp ()
+		public override void AddToManagersBottomUp ()
 		{
-			CameraSetup.ResetCamera(SpriteManager.Camera);
-			AssignCustomVariables(false);
+			base.AddToManagersBottomUp();
 		}
-		public virtual void RemoveFromManagers ()
+		public override void RemoveFromManagers ()
 		{
+			base.RemoveFromManagers();
+			if (SolidCollisions != null)
+			{
+				SolidCollisions.RemoveFromManagers(false);
+			}
 		}
-		public virtual void AssignCustomVariables (bool callOnContainedElements)
+		public override void AssignCustomVariables (bool callOnContainedElements)
 		{
+			base.AssignCustomVariables(callOnContainedElements);
 			if (callOnContainedElements)
 			{
 			}
 		}
-		public virtual void ConvertToManuallyUpdated ()
+		public override void ConvertToManuallyUpdated ()
 		{
+			base.ConvertToManuallyUpdated();
 		}
-		public static void LoadStaticContent (string contentManagerName)
+		public static new void LoadStaticContent (string contentManagerName)
 		{
 			if (string.IsNullOrEmpty(contentManagerName))
 			{
 				throw new ArgumentException("contentManagerName cannot be empty or null");
 			}
+			LevelBase.LoadStaticContent(contentManagerName);
 			#if DEBUG
 			if (contentManagerName == FlatRedBallServices.GlobalContentManager)
 			{
@@ -140,19 +169,38 @@ namespace VergissMeinNicht.Screens
 				throw new Exception("This type has been loaded with a Global content manager, then loaded with a non-global.  This can lead to a lot of bugs");
 			}
 			#endif
+			if (!FlatRedBallServices.IsLoaded<FlatRedBall.Scene>(@"content/screens/empfang/hintergrund.scnx", contentManagerName))
+			{
+			}
+			Hintergrund = FlatRedBallServices.Load<FlatRedBall.Scene>(@"content/screens/empfang/hintergrund.scnx", contentManagerName);
 			CustomLoadStaticContent(contentManagerName);
 		}
 		[System.Obsolete("Use GetFile instead")]
-		public static object GetStaticMember (string memberName)
+		public static new object GetStaticMember (string memberName)
 		{
+			switch(memberName)
+			{
+				case  "Hintergrund":
+					return Hintergrund;
+			}
 			return null;
 		}
-		public static object GetFile (string memberName)
+		public static new object GetFile (string memberName)
 		{
+			switch(memberName)
+			{
+				case  "Hintergrund":
+					return Hintergrund;
+			}
 			return null;
 		}
 		object GetMember (string memberName)
 		{
+			switch(memberName)
+			{
+				case  "Hintergrund":
+					return Hintergrund;
+			}
 			return null;
 		}
 
