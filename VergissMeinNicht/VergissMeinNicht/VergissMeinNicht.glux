@@ -1936,7 +1936,7 @@
           </Properties>
           <Name>GroundMovement</Name>
           <Type>Entities/PlatformerCharacterBase/MovementValues.csv</Type>
-          <DefaultValue xsi:type="xsd:string">TheodorOnGround in MovementValues.csv</DefaultValue>
+          <DefaultValue xsi:type="xsd:string">TheodorChildOnGround in MovementValues.csv</DefaultValue>
           <DefinedByBase>true</DefinedByBase>
           <CreatesEvent>true</CreatesEvent>
         </CustomVariable>
@@ -1949,7 +1949,7 @@
           </Properties>
           <Name>AirMovement</Name>
           <Type>Entities/PlatformerCharacterBase/MovementValues.csv</Type>
-          <DefaultValue xsi:type="xsd:string">TheodorInAir in MovementValues.csv</DefaultValue>
+          <DefaultValue xsi:type="xsd:string">TheodorChildInAir in MovementValues.csv</DefaultValue>
           <DefinedByBase>true</DefinedByBase>
           <CreatesEvent>true</CreatesEvent>
         </CustomVariable>
@@ -1962,7 +1962,7 @@
           </Properties>
           <Name>AfterDoubleJump</Name>
           <Type>Entities/PlatformerCharacterBase/MovementValues.csv</Type>
-          <DefaultValue xsi:type="xsd:string">ImmediateVelocityInAir</DefaultValue>
+          <DefaultValue xsi:type="xsd:string">ImmediateVelocityInAirChild in MovementValues.csv</DefaultValue>
           <DefinedByBase>true</DefinedByBase>
           <CreatesEvent>true</CreatesEvent>
         </CustomVariable>
