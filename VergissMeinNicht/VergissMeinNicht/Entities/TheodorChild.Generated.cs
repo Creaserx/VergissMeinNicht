@@ -238,9 +238,9 @@ namespace VergissMeinNicht.Entities
 			SpriteInstance.AnimationChains = AnimationChainListFile;
 			SpriteInstance.TextureScale = 1f;
 			SpriteInstance.CurrentChainName = "IdleRight";
-			GroundMovement = TheodorChild.MovementValues["TheodorOnGround"];
-			AirMovement = TheodorChild.MovementValues["TheodorInAir"];
-			AfterDoubleJump = TheodorChild.MovementValues["ImmediateVelocityInAir"];
+			GroundMovement = TheodorChild.MovementValues["TheodorChildOnGround"];
+			AirMovement = TheodorChild.MovementValues["TheodorChildInAir"];
+			AfterDoubleJump = TheodorChild.MovementValues["ImmediateVelocityInAirChild"];
 		}
 		public override void ConvertToManuallyUpdated ()
 		{

@@ -167,13 +167,13 @@
     </Compile>
     <Compile Include="Entities\PlatformerCharacterBase.cs" />
     <Compile Include="Entities\PlatformerCharacterBase.Event.cs">
-      <DependentUpon>TheodorChildBase.cs</DependentUpon>
+      <DependentUpon>PlatformerCharacterBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\PlatformerCharacterBase.Generated.cs">
-      <DependentUpon>platformercharacterbase.cs</DependentUpon>
+      <DependentUpon>PlatformerCharacterBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\PlatformerCharacterBase.Generated.Event.cs">
-      <DependentUpon>TheodorChildBase.cs</DependentUpon>
+      <DependentUpon>PlatformerCharacterBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\Räume_Inhalt\Schlafraum\Bett.cs" />
     <Compile Include="Entities\Räume_Inhalt\Schlafraum\Bett.Generated.cs">

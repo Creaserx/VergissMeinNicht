@@ -8,6 +8,6 @@ ImmediateVelocityBeforeDoubleJump,170,0,0,-1000,400,400,0,FALSE
 ImmediateVelocityInAirChild,170,0,0,-1000,400,0,0,FALSE
 TheodorChildOnGround,170,0,0,-1000,400,270,0.2,TRUE
 TheodorChildInAir,110,0,0,-1000,300,260,0,FALSE
-TheodorGrownUpInAir,110,0,0,-1000,300,260,0,FALSE
-TheodorGrownUpOnGround,170,0,0,-1000,400,270,0.2,TRUE
+TheodorGrownUpInAir,0,0,0,-1000,300,0,0,FALSE
+TheodorGrownUpOnGround,170,0,0,-1000,400,0,0,TRUE
 ImmediateVelocityInAirGrownUp,170,0,0,-1000,400,0,0,FALSE
