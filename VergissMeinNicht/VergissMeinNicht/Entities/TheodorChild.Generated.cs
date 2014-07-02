@@ -55,7 +55,6 @@ namespace VergissMeinNicht.Entities
 		static List<string> LoadedContentManagers = new List<string>();
 		protected static FlatRedBall.Graphics.Animation.AnimationChainList AnimationChainListFile;
 		
-		private FlatRedBall.Sprite SpriteInstance;
 		public event EventHandler BeforeGroundMovementSet;
 		public event EventHandler AfterGroundMovementSet;
 		public override VergissMeinNicht.DataTypes.MovementValues GroundMovement
@@ -145,8 +144,8 @@ namespace VergissMeinNicht.Entities
 		{
 			// Generated Initialize
 			LoadStaticContent(ContentManagerName);
-			SpriteInstance = new FlatRedBall.Sprite();
-			SpriteInstance.Name = "SpriteInstance";
+			mSpriteInstance = new FlatRedBall.Sprite();
+			mSpriteInstance.Name = "mSpriteInstance";
 			
 			base.InitializeEntity(addToManagers);
 
@@ -157,12 +156,12 @@ namespace VergissMeinNicht.Entities
 		public override void ReAddToManagers (Layer layerToAddTo)
 		{
 			base.ReAddToManagers(layerToAddTo);
-			SpriteManager.AddToLayer(SpriteInstance, LayerProvidedByContainer);
+			SpriteManager.AddToLayer(mSpriteInstance, LayerProvidedByContainer);
 		}
 		public override void AddToManagers (Layer layerToAddTo)
 		{
 			LayerProvidedByContainer = layerToAddTo;
-			SpriteManager.AddToLayer(SpriteInstance, LayerProvidedByContainer);
+			SpriteManager.AddToLayer(mSpriteInstance, LayerProvidedByContainer);
 			base.AddToManagers(layerToAddTo);
 			CustomInitialize();
 		}
@@ -204,14 +203,14 @@ namespace VergissMeinNicht.Entities
 			}
 			base.Collision.Height = 150f;
 			base.Collision.Width = 80f;
-			if (SpriteInstance.Parent == null)
+			if (mSpriteInstance.Parent == null)
 			{
-				SpriteInstance.CopyAbsoluteToRelative();
-				SpriteInstance.AttachTo(this, false);
+				mSpriteInstance.CopyAbsoluteToRelative();
+				mSpriteInstance.AttachTo(this, false);
 			}
-			SpriteInstance.AnimationChains = AnimationChainListFile;
-			SpriteInstance.TextureScale = 1f;
-			SpriteInstance.CurrentChainName = "IdleRight";
+			base.SpriteInstance.AnimationChains = AnimationChainListFile;
+			base.SpriteInstance.TextureScale = 1f;
+			base.SpriteInstance.CurrentChainName = "IdleRight";
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public override void AddToManagersBottomUp (Layer layerToAddTo)
@@ -235,9 +234,9 @@ namespace VergissMeinNicht.Entities
 			}
 			base.mCollision.Height = 150f;
 			base.mCollision.Width = 80f;
-			SpriteInstance.AnimationChains = AnimationChainListFile;
-			SpriteInstance.TextureScale = 1f;
-			SpriteInstance.CurrentChainName = "IdleRight";
+			base.mSpriteInstance.AnimationChains = AnimationChainListFile;
+			base.mSpriteInstance.TextureScale = 1f;
+			base.mSpriteInstance.CurrentChainName = "IdleRight";
 			GroundMovement = TheodorChild.MovementValues["TheodorChildOnGround"];
 			AirMovement = TheodorChild.MovementValues["TheodorChildInAir"];
 			AfterDoubleJump = TheodorChild.MovementValues["ImmediateVelocityInAirChild"];

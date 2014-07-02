@@ -63,9 +63,21 @@ namespace VergissMeinNicht.Entities
 			{
 				return mCollision;
 			}
-			private set
+			protected set
 			{
 				mCollision = value;
+			}
+		}
+		protected FlatRedBall.Sprite mSpriteInstance;
+		public FlatRedBall.Sprite SpriteInstance
+		{
+			get
+			{
+				return mSpriteInstance;
+			}
+			protected set
+			{
+				mSpriteInstance = value;
 			}
 		}
 		public event EventHandler BeforeGroundMovementSet;
@@ -161,8 +173,6 @@ namespace VergissMeinNicht.Entities
 		{
 			// Generated Initialize
 			LoadStaticContent(ContentManagerName);
-			mCollision = new FlatRedBall.Math.Geometry.AxisAlignedRectangle();
-			mCollision.Name = "mCollision";
 			
 			PostInitialize();
 			if (addToManagers)
@@ -178,13 +188,11 @@ namespace VergissMeinNicht.Entities
 		{
 			LayerProvidedByContainer = layerToAddTo;
 			SpriteManager.AddPositionedObject(this);
-			ShapeManager.AddToLayer(mCollision, LayerProvidedByContainer);
 		}
 		public virtual void AddToManagers (Layer layerToAddTo)
 		{
 			LayerProvidedByContainer = layerToAddTo;
 			SpriteManager.AddPositionedObject(this);
-			ShapeManager.AddToLayer(mCollision, LayerProvidedByContainer);
 			AddToManagersBottomUp(layerToAddTo);
 			CustomInitialize();
 		}
@@ -203,10 +211,6 @@ namespace VergissMeinNicht.Entities
 			// Generated Destroy
 			SpriteManager.RemovePositionedObject(this);
 			
-			if (Collision != null)
-			{
-				ShapeManager.Remove(Collision);
-			}
 
 
 			CustomDestroy();
@@ -220,13 +224,25 @@ namespace VergissMeinNicht.Entities
 			this.AfterGroundMovementSet += OnAfterGroundMovementSet;
 			this.AfterAirMovementSet += OnAfterAirMovementSet;
 			this.AfterAfterDoubleJumpSet += OnAfterAfterDoubleJumpSet;
-			if (mCollision.Parent == null)
+			if (Collision!= null)
 			{
-				mCollision.CopyAbsoluteToRelative();
-				mCollision.AttachTo(this, false);
+				if (mCollision.Parent == null)
+				{
+					mCollision.CopyAbsoluteToRelative();
+					mCollision.AttachTo(this, false);
+				}
+				Collision.Height = 48f;
+				Collision.Width = 32f;
 			}
-			Collision.Height = 48f;
-			Collision.Width = 32f;
+			if (SpriteInstance!= null)
+			{
+				if (mSpriteInstance.Parent == null)
+				{
+					mSpriteInstance.CopyAbsoluteToRelative();
+					mSpriteInstance.AttachTo(this, false);
+				}
+				SpriteInstance.TextureScale = 1f;
+			}
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp (Layer layerToAddTo)
@@ -236,23 +252,24 @@ namespace VergissMeinNicht.Entities
 		public virtual void RemoveFromManagers ()
 		{
 			SpriteManager.ConvertToManuallyUpdated(this);
-			if (Collision != null)
-			{
-				ShapeManager.RemoveOneWay(Collision);
-			}
 		}
 		public virtual void AssignCustomVariables (bool callOnContainedElements)
 		{
 			if (callOnContainedElements)
 			{
 			}
-			mCollision.Height = 48f;
-			mCollision.Width = 32f;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
 			this.ForceUpdateDependenciesDeep();
 			SpriteManager.ConvertToManuallyUpdated(this);
+			if (Collision != null)
+			{
+			}
+			if (SpriteInstance != null)
+			{
+				SpriteManager.ConvertToManuallyUpdated(SpriteInstance);
+			}
 		}
 		public static void LoadStaticContent (string contentManagerName)
 		{
@@ -356,10 +373,22 @@ namespace VergissMeinNicht.Entities
 		public virtual void SetToIgnorePausing ()
 		{
 			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(this);
-			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(Collision);
+			if (Collision != null)
+			{
+				FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(Collision);
+			}
+			if (SpriteInstance != null)
+			{
+				FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(SpriteInstance);
+			}
 		}
 		public virtual void MoveToLayer (Layer layerToMoveTo)
 		{
+			if (LayerProvidedByContainer != null)
+			{
+				LayerProvidedByContainer.Remove(SpriteInstance);
+			}
+			SpriteManager.AddToLayer(SpriteInstance, layerToMoveTo);
 			LayerProvidedByContainer = layerToMoveTo;
 		}
 

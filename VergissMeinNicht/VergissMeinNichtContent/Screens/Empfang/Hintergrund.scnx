@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SpriteEditorScene xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Sprite>
-    <Y>238</Y>
-    <RotationZ>6.976538E-06</RotationZ>
-    <ScaleX>512</ScaleX>
-    <ScaleY>238</ScaleY>
-    <Name>aufenthaltsraum_hintergrund1</Name>
-    <Texture>aufenthaltsraum_hintergrund.jpg</Texture>
+    <X>-5.74474825E-06</X>
+    <Y>255.935074</Y>
+    <RotationZ>2.04890984E-08</RotationZ>
+    <ScaleX>567.7352</ScaleX>
+    <ScaleY>263.906464</ScaleY>
+    <Name>empfangraum_v_2-wiederhergestellt1</Name>
+    <Texture>empfangraum_v_2-wiederhergestellt.jpg</Texture>
     <ConstantPixelSize>0.5</ConstantPixelSize>
   </Sprite>
   <Camera>

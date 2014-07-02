@@ -28,6 +28,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using FlatRedBall.Graphics;
+using FlatRedBall.Math.Geometry;
 
 namespace VergissMeinNicht.Screens
 {
@@ -51,6 +52,7 @@ namespace VergissMeinNicht.Screens
 			}
 		}
 		private FlatRedBall.Graphics.Layer Layer2D;
+		private FlatRedBall.Math.Geometry.ShapeCollection SolidCollisions;
 		public event FlatRedBall.Gui.WindowEvent MainMenuButtonClick;
 
 		public LevelBase()
@@ -66,6 +68,8 @@ namespace VergissMeinNicht.Screens
 			mMainMenuButton.Name = "mMainMenuButton";
 			Layer2D = new FlatRedBall.Graphics.Layer();
 			Layer2D.Name = "Layer2D";
+			SolidCollisions = new FlatRedBall.Math.Geometry.ShapeCollection();
+			SolidCollisions.Name = "SolidCollisions";
 			
 			
 			PostInitialize();
@@ -88,6 +92,7 @@ namespace VergissMeinNicht.Screens
 				Layer2D.LayerCameraSettings.OrthogonalHeight = FlatRedBall.SpriteManager.Camera.OrthogonalHeight;
 			}
 			mMainMenuButton.AddToManagers(mLayer);
+			SolidCollisions.AddToManagers();
 			base.AddToManagers();
 			AddToManagersBottomUp();
 			CustomInitialize();
@@ -129,6 +134,10 @@ namespace VergissMeinNicht.Screens
 			if (Layer2D != null)
 			{
 				SpriteManager.RemoveLayer(Layer2D);
+			}
+			if (SolidCollisions != null)
+			{
+				SolidCollisions.RemoveFromManagers(ContentManagerName != "Global");
 			}
 
 			base.Destroy();
@@ -180,6 +189,10 @@ namespace VergissMeinNicht.Screens
 			if (Layer2D != null)
 			{
 				SpriteManager.RemoveLayer(Layer2D);
+			}
+			if (SolidCollisions != null)
+			{
+				SolidCollisions.RemoveFromManagers(false);
 			}
 		}
 		public virtual void AssignCustomVariables (bool callOnContainedElements)

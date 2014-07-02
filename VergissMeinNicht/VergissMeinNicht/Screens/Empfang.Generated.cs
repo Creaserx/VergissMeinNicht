@@ -27,7 +27,6 @@ using FlatRedBall.Screens;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using FlatRedBall.Math.Geometry;
 
 namespace VergissMeinNicht.Screens
 {
@@ -39,7 +38,6 @@ namespace VergissMeinNicht.Screens
 		#endif
 		protected static FlatRedBall.Scene Hintergrund;
 		
-		private FlatRedBall.Math.Geometry.ShapeCollection SolidCollisions;
 
 		public Empfang()
 			: base()
@@ -50,8 +48,6 @@ namespace VergissMeinNicht.Screens
         {
 			// Generated Initialize
 			LoadStaticContent(ContentManagerName);
-			SolidCollisions = new FlatRedBall.Math.Geometry.ShapeCollection();
-			SolidCollisions.Name = "SolidCollisions";
 			
 			
 			base.Initialize(addToManagers);
@@ -62,7 +58,6 @@ namespace VergissMeinNicht.Screens
 		public override void AddToManagers ()
 		{
 			Hintergrund.AddToManagers(mLayer);
-			SolidCollisions.AddToManagers();
 			base.AddToManagers();
 			CustomInitialize();
 		}
@@ -110,10 +105,6 @@ namespace VergissMeinNicht.Screens
 				Hintergrund.MakeOneWay();
 			}
 			
-			if (SolidCollisions != null)
-			{
-				SolidCollisions.RemoveFromManagers(ContentManagerName != "Global");
-			}
 
 			base.Destroy();
 
@@ -136,10 +127,6 @@ namespace VergissMeinNicht.Screens
 		public override void RemoveFromManagers ()
 		{
 			base.RemoveFromManagers();
-			if (SolidCollisions != null)
-			{
-				SolidCollisions.RemoveFromManagers(false);
-			}
 		}
 		public override void AssignCustomVariables (bool callOnContainedElements)
 		{

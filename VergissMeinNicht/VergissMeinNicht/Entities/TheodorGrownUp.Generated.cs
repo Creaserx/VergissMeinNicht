@@ -147,6 +147,8 @@ namespace VergissMeinNicht.Entities
 			LoadStaticContent(ContentManagerName);
 			Sprite = new FlatRedBall.Sprite();
 			Sprite.Name = "Sprite";
+			mSpriteInstance = new FlatRedBall.Sprite();
+			mSpriteInstance.Name = "mSpriteInstance";
 			
 			base.InitializeEntity(addToManagers);
 
@@ -158,11 +160,13 @@ namespace VergissMeinNicht.Entities
 		{
 			base.ReAddToManagers(layerToAddTo);
 			SpriteManager.AddToLayer(Sprite, LayerProvidedByContainer);
+			SpriteManager.AddToLayer(mSpriteInstance, LayerProvidedByContainer);
 		}
 		public override void AddToManagers (Layer layerToAddTo)
 		{
 			LayerProvidedByContainer = layerToAddTo;
 			SpriteManager.AddToLayer(Sprite, LayerProvidedByContainer);
+			SpriteManager.AddToLayer(mSpriteInstance, LayerProvidedByContainer);
 			base.AddToManagers(layerToAddTo);
 			CustomInitialize();
 		}
@@ -185,6 +189,10 @@ namespace VergissMeinNicht.Entities
 			if (Sprite != null)
 			{
 				SpriteManager.RemoveSprite(Sprite);
+			}
+			if (SpriteInstance != null)
+			{
+				SpriteManager.RemoveSprite(SpriteInstance);
 			}
 
 
@@ -211,6 +219,12 @@ namespace VergissMeinNicht.Entities
 			}
 			base.Collision.Height = 48f;
 			base.Collision.Width = 32f;
+			if (mSpriteInstance.Parent == null)
+			{
+				mSpriteInstance.CopyAbsoluteToRelative();
+				mSpriteInstance.AttachTo(this, false);
+			}
+			base.SpriteInstance.TextureScale = 1f;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public override void AddToManagersBottomUp (Layer layerToAddTo)
@@ -225,6 +239,10 @@ namespace VergissMeinNicht.Entities
 			{
 				SpriteManager.RemoveSpriteOneWay(Sprite);
 			}
+			if (SpriteInstance != null)
+			{
+				SpriteManager.RemoveSpriteOneWay(SpriteInstance);
+			}
 		}
 		public override void AssignCustomVariables (bool callOnContainedElements)
 		{
@@ -236,6 +254,7 @@ namespace VergissMeinNicht.Entities
 			Sprite.TextureScale = 1f;
 			base.mCollision.Height = 48f;
 			base.mCollision.Width = 32f;
+			base.mSpriteInstance.TextureScale = 1f;
 			GroundMovement = TheodorGrownUp.MovementValues["TheodorGrownUpOnGround"];
 			AirMovement = TheodorGrownUp.MovementValues["TheodorGrownUpInAir"];
 			AfterDoubleJump = TheodorGrownUp.MovementValues["ImmediateVelocityInAirGrownUp"];
@@ -246,6 +265,7 @@ namespace VergissMeinNicht.Entities
 			this.ForceUpdateDependenciesDeep();
 			SpriteManager.ConvertToManuallyUpdated(this);
 			SpriteManager.ConvertToManuallyUpdated(Sprite);
+			SpriteManager.ConvertToManuallyUpdated(SpriteInstance);
 		}
 		public static new void LoadStaticContent (string contentManagerName)
 		{
@@ -344,6 +364,7 @@ namespace VergissMeinNicht.Entities
 			base.SetToIgnorePausing();
 			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(Sprite);
 			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(Collision);
+			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(SpriteInstance);
 		}
 		public override void MoveToLayer (Layer layerToMoveTo)
 		{
@@ -353,6 +374,11 @@ namespace VergissMeinNicht.Entities
 				LayerProvidedByContainer.Remove(Sprite);
 			}
 			SpriteManager.AddToLayer(Sprite, layerToMoveTo);
+			if (LayerProvidedByContainer != null)
+			{
+				LayerProvidedByContainer.Remove(SpriteInstance);
+			}
+			SpriteManager.AddToLayer(SpriteInstance, layerToMoveTo);
 			LayerProvidedByContainer = layerToMoveTo;
 		}
 

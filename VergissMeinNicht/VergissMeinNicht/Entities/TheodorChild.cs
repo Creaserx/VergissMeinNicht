@@ -20,6 +20,7 @@ using GuiManager = FlatRedBall.Gui.GuiManager;
 using Keys = Microsoft.Xna.Framework.Input.Keys;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
 using Texture2D = Microsoft.Xna.Framework.Graphics.Texture2D;
+using StateInterpolationPlugin;
 
 #endif
 #endregion
@@ -33,11 +34,11 @@ namespace VergissMeinNicht.Entities
             // check facing direction
             if (HorizontalRatio > 0)
             {
-                this.DirectionFacing = LeftOrRight.Right;
+                base.DirectionFacing = LeftOrRight.Right;
             }
             else if (HorizontalRatio < 0)
             {
-                this.DirectionFacing = LeftOrRight.Left;
+                base.DirectionFacing = LeftOrRight.Left;
             }
             // don't do anything if it's 0, just leave it to what it was before
 
@@ -77,17 +78,7 @@ namespace VergissMeinNicht.Entities
               }
         }
 
-        public enum LeftOrRight
-        {
-            Left,
-            Right
-        }
-
-        public LeftOrRight DirectionFacing
-        {
-            get;
-            private set;
-        }
+       
 
 		private void CustomInitialize()
 		{
@@ -96,9 +87,8 @@ namespace VergissMeinNicht.Entities
 		}
 
 		private void CustomActivity()
-		{
-            AnimationActivity();
-            //SwitchLayer();
+		{            
+            AnimationActivity();            
 		}        
 
         /*private void SwitchLayer()
@@ -138,6 +128,8 @@ namespace VergissMeinNicht.Entities
             }
             
         }*/
+
+        
 
 		private void CustomDestroy()
 		{
