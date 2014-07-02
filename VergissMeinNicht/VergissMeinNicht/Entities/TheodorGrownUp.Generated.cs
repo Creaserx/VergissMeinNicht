@@ -209,8 +209,8 @@ namespace VergissMeinNicht.Entities
 				mCollision.CopyAbsoluteToRelative();
 				mCollision.AttachTo(this, false);
 			}
-			base.Collision.Height = 48f;
-			base.Collision.Width = 32f;
+			Collision.Height = 48f;
+			Collision.Width = 32f;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public override void AddToManagersBottomUp (Layer layerToAddTo)
@@ -234,8 +234,8 @@ namespace VergissMeinNicht.Entities
 			}
 			Sprite.Texture = viktor_ibarbo;
 			Sprite.TextureScale = 1f;
-			base.mCollision.Height = 48f;
-			base.mCollision.Width = 32f;
+			mCollision.Height = 48f;
+			mCollision.Width = 32f;
 			GroundMovement = TheodorGrownUp.MovementValues["TheodorGrownUpOnGround"];
 			AirMovement = TheodorGrownUp.MovementValues["TheodorGrownUpInAir"];
 			AfterDoubleJump = TheodorGrownUp.MovementValues["ImmediateVelocityInAirGrownUp"];
