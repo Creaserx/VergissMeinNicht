@@ -72,6 +72,10 @@ namespace VergissMeinNicht.Entities
 
                 SaveText.Visible = true;
                 InteractText.Visible = true;
+                SaveText.Position.X = PlatformerCharacterBase.getInstance().Position.X;
+                SaveText.Position.Y = PlatformerCharacterBase.getInstance().Y + 80;
+                InteractText.Position.X = PlatformerCharacterBase.getInstance().Position.X;
+                InteractText.Position.Y = PlatformerCharacterBase.getInstance().Y + 100;
             }
             else
             {

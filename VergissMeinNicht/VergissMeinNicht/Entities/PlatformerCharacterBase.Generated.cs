@@ -227,6 +227,7 @@ namespace VergissMeinNicht.Entities
 			}
 			Collision.Height = 48f;
 			Collision.Width = 32f;
+			Collision.Visible = true;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp (Layer layerToAddTo)
@@ -248,6 +249,7 @@ namespace VergissMeinNicht.Entities
 			}
 			mCollision.Height = 48f;
 			mCollision.Width = 32f;
+			mCollision.Visible = true;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{

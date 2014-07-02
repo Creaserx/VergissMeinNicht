@@ -30,6 +30,7 @@ namespace VergissMeinNicht.Screens
 {
 	public partial class LevelBase
 	{
+        bool Waiter = false;
 
 		public virtual void CustomInitialize()
 		{
@@ -44,12 +45,13 @@ namespace VergissMeinNicht.Screens
 		{
             //Theodor Movement      
             PlatformerCharacterBase.getInstance().DetermineMovementValues();        //Collision muss extra aufgerufen werden
-            CameraMovement();
+            CameraMovement();         
 
             if (!IsPaused)
             {
                 PlatformerCharacterBase.getInstance().Activity();
             }
+            PauseGame();
                     
 		}
 
@@ -58,6 +60,32 @@ namespace VergissMeinNicht.Screens
             PlatformerCharacterBase.updateinstance(null);
 
 		}
+
+        void PauseGame()
+        {
+            if (InputManager.Keyboard.KeyReleased(Keys.Escape))
+            {
+                Waiter = false;
+            }
+
+            if (Waiter) return;
+
+            if (InputManager.Keyboard.KeyPushed(Keys.Escape))
+            {
+                Waiter = true;
+
+                if (IsPaused)
+                {
+                    UnpauseThisScreen();
+                    PauseButton.Visible = false;
+                }
+                else
+                {
+                    PauseThisScreen();
+                    PauseButton.Visible = true;
+                }
+            }
+        }
 
         static void CustomLoadStaticContent(string contentManagerName)
         {

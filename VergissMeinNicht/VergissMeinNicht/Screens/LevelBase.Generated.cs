@@ -51,6 +51,7 @@ namespace VergissMeinNicht.Screens
 			}
 		}
 		private FlatRedBall.Graphics.Layer Layer2D;
+		private VergissMeinNicht.Entities.Button PauseButton;
 		public event FlatRedBall.Gui.WindowEvent MainMenuButtonClick;
 
 		public LevelBase()
@@ -66,6 +67,8 @@ namespace VergissMeinNicht.Screens
 			mMainMenuButton.Name = "mMainMenuButton";
 			Layer2D = new FlatRedBall.Graphics.Layer();
 			Layer2D.Name = "Layer2D";
+			PauseButton = new VergissMeinNicht.Entities.Button(ContentManagerName, false);
+			PauseButton.Name = "PauseButton";
 			
 			
 			PostInitialize();
@@ -88,6 +91,7 @@ namespace VergissMeinNicht.Screens
 				Layer2D.LayerCameraSettings.OrthogonalHeight = FlatRedBall.SpriteManager.Camera.OrthogonalHeight;
 			}
 			mMainMenuButton.AddToManagers(mLayer);
+			PauseButton.AddToManagers(mLayer);
 			base.AddToManagers();
 			AddToManagersBottomUp();
 			CustomInitialize();
@@ -101,6 +105,7 @@ namespace VergissMeinNicht.Screens
 			{
 				
 				MainMenuButton.Activity();
+				PauseButton.Activity();
 			}
 			else
 			{
@@ -129,6 +134,11 @@ namespace VergissMeinNicht.Screens
 			if (Layer2D != null)
 			{
 				SpriteManager.RemoveLayer(Layer2D);
+			}
+			if (PauseButton != null)
+			{
+				PauseButton.Destroy();
+				PauseButton.Detach();
 			}
 
 			base.Destroy();
@@ -167,6 +177,30 @@ namespace VergissMeinNicht.Screens
 			{
 				MainMenuButton.RelativeY = 260f;
 			}
+			if (PauseButton.Parent == null)
+			{
+				PauseButton.CopyAbsoluteToRelative();
+				PauseButton.RelativeZ += -40;
+				PauseButton.AttachTo(SpriteManager.Camera, false);
+			}
+			PauseButton.DisplayText = "Pause";
+			PauseButton.Visible = false;
+			if (PauseButton.Parent == null)
+			{
+				PauseButton.X = 0f;
+			}
+			else
+			{
+				PauseButton.RelativeX = 0f;
+			}
+			if (PauseButton.Parent == null)
+			{
+				PauseButton.Y = 0f;
+			}
+			else
+			{
+				PauseButton.RelativeY = 0f;
+			}
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp ()
@@ -181,12 +215,14 @@ namespace VergissMeinNicht.Screens
 			{
 				SpriteManager.RemoveLayer(Layer2D);
 			}
+			PauseButton.RemoveFromManagers();
 		}
 		public virtual void AssignCustomVariables (bool callOnContainedElements)
 		{
 			if (callOnContainedElements)
 			{
 				MainMenuButton.AssignCustomVariables(true);
+				PauseButton.AssignCustomVariables(true);
 			}
 			mMainMenuButton.DisplayText = "MainMenu";
 			if (mMainMenuButton.Parent == null)
@@ -205,10 +241,29 @@ namespace VergissMeinNicht.Screens
 			{
 				mMainMenuButton.RelativeY = 260f;
 			}
+			PauseButton.DisplayText = "Pause";
+			PauseButton.Visible = false;
+			if (PauseButton.Parent == null)
+			{
+				PauseButton.X = 0f;
+			}
+			else
+			{
+				PauseButton.RelativeX = 0f;
+			}
+			if (PauseButton.Parent == null)
+			{
+				PauseButton.Y = 0f;
+			}
+			else
+			{
+				PauseButton.RelativeY = 0f;
+			}
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
 			MainMenuButton.ConvertToManuallyUpdated();
+			PauseButton.ConvertToManuallyUpdated();
 		}
 		public static void LoadStaticContent (string contentManagerName)
 		{

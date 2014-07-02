@@ -179,11 +179,6 @@ namespace VergissMeinNicht.Entities
 			}
 			Sprite.Texture = teddy_normal;
 			Sprite.TextureScale = 1f;
-			if (SaveText.Parent == null)
-			{
-				SaveText.CopyAbsoluteToRelative();
-				SaveText.AttachTo(this, false);
-			}
 			SaveText.DisplayText = "Press S To Save";
 			if (SaveText.Parent == null)
 			{
@@ -200,11 +195,6 @@ namespace VergissMeinNicht.Entities
 			else
 			{
 				SaveText.RelativeY = -300f;
-			}
-			if (InteractText.Parent == null)
-			{
-				InteractText.CopyAbsoluteToRelative();
-				InteractText.AttachTo(this, false);
 			}
 			InteractText.DisplayText = "Press E to Interact";
 			if (InteractText.Parent == null)
