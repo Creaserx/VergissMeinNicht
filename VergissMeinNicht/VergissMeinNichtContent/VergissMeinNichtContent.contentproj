@@ -154,6 +154,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>aufenthaltsraum_hintergrund</Name>
     </None>
+    <None Include="Screens\Empfang\empfangraum_v_2-wiederhergestellt.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>empfangraum_v_2-wiederhergestellt</Name>
+    </None>
     <None Include="Screens\Empfang\Hintergrund.scnx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Hintergrund</Name>

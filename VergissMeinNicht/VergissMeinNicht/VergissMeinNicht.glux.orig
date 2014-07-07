@@ -35,7 +35,15 @@
         <string>GLUE</string>
       </Tags>
       <Source>GLUE</Source>
+      <BaseScreen>Screens\LevelBase</BaseScreen>
       <Name>Screens\Empfang</Name>
+      <ReferencedFiles>
+        <ReferencedFileSave>
+          <Name>Screens/Empfang/Hintergrund.scnx</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>FlatRedBall.Scene</RuntimeType>
+        </ReferencedFileSave>
+      </ReferencedFiles>
     </ScreenSave>
     <ScreenSave>
       <Tags>
@@ -50,6 +58,95 @@
       </Tags>
       <Source>GLUE</Source>
       <Name>Screens\Küche</Name>
+    </ScreenSave>
+    <ScreenSave>
+      <Tags>
+        <string>GLUE</string>
+      </Tags>
+      <Source>GLUE</Source>
+      <Events>
+        <EventResponseSave>
+          <EventName>MainMenuButtonClick</EventName>
+          <SourceObject>MainMenuButton</SourceObject>
+          <SourceObjectEvent>Click</SourceObjectEvent>
+          <BeforeOrAfter>Before</BeforeOrAfter>
+          <DelegateType />
+        </EventResponseSave>
+      </Events>
+      <Name>Screens\LevelBase</Name>
+      <NamedObjects>
+        <NamedObjectSave>
+          <CustomProperty>
+            <Type>string</Type>
+            <Member>DisplayText</Member>
+            <ValueAsString>MainMenu</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>X</Member>
+            <ValueAsFloat>300</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Y</Member>
+            <ValueAsFloat>260</ValueAsFloat>
+          </CustomProperty>
+          <SourceType>Entity</SourceType>
+          <SourceClassType>Entities\Button</SourceClassType>
+          <InstanceName>MainMenuButton</InstanceName>
+          <HasPublicProperty>true</HasPublicProperty>
+          <AttachToContainer>false</AttachToContainer>
+          <AttachToCamera>true</AttachToCamera>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+        <NamedObjectSave>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceFile />
+          <SourceName />
+          <SourceClassType>Layer</SourceClassType>
+          <InstanceName>Layer2D</InstanceName>
+          <AttachToContainer>false</AttachToContainer>
+          <IndependentOfCamera>true</IndependentOfCamera>
+          <Is2D>true</Is2D>
+        </NamedObjectSave>
+        <NamedObjectSave>
+<<<<<<< HEAD
+          <CustomProperty>
+            <Type>string</Type>
+            <Member>DisplayText</Member>
+            <ValueAsString>Pause</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>bool</Type>
+            <Member>Visible</Member>
+            <ValueAsBool>false</ValueAsBool>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>X</Member>
+            <ValueAsFloat>0</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Y</Member>
+            <ValueAsFloat>0</ValueAsFloat>
+          </CustomProperty>
+          <SourceType>Entity</SourceType>
+          <SourceClassType>Entities\Button</SourceClassType>
+          <InstanceName>PauseButton</InstanceName>
+          <AttachToContainer>true</AttachToContainer>
+          <AttachToCamera>true</AttachToCamera>
+=======
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceFile />
+          <SourceName />
+          <SourceClassType>ShapeCollection</SourceClassType>
+          <InstanceName>SolidCollisions</InstanceName>
+          <AttachToContainer>false</AttachToContainer>
+>>>>>>> 741a9318cc66ac949b7e88241dedc4cdef81bcc3
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+      </NamedObjects>
     </ScreenSave>
     <ScreenSave>
       <Tags>
@@ -564,15 +661,7 @@
         <string>GLUE</string>
       </Tags>
       <Source>GLUE</Source>
-      <Events>
-        <EventResponseSave>
-          <EventName>MainMenuButtonClick</EventName>
-          <SourceObject>MainMenuButton</SourceObject>
-          <SourceObjectEvent>Click</SourceObjectEvent>
-          <BeforeOrAfter>Before</BeforeOrAfter>
-          <DelegateType />
-        </EventResponseSave>
-      </Events>
+      <BaseScreen>Screens\LevelBase</BaseScreen>
       <Name>Screens\ZooLevel</Name>
       <ReferencedFiles>
         <ReferencedFileSave>
@@ -582,40 +671,6 @@
         </ReferencedFileSave>
       </ReferencedFiles>
       <NamedObjects>
-        <NamedObjectSave>
-          <CustomProperty>
-            <Type>string</Type>
-            <Member>DisplayText</Member>
-            <ValueAsString>MainMenu</ValueAsString>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>X</Member>
-            <ValueAsFloat>300</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>Y</Member>
-            <ValueAsFloat>260</ValueAsFloat>
-          </CustomProperty>
-          <SourceType>Entity</SourceType>
-          <SourceClassType>Entities\Button</SourceClassType>
-          <InstanceName>MainMenuButton</InstanceName>
-          <AttachToContainer>true</AttachToContainer>
-          <AttachToCamera>true</AttachToCamera>
-          <IndependentOfCamera>true</IndependentOfCamera>
-          <LayerOn>Layer2D</LayerOn>
-        </NamedObjectSave>
-        <NamedObjectSave>
-          <SourceType>FlatRedBallType</SourceType>
-          <SourceFile />
-          <SourceName />
-          <SourceClassType>Layer</SourceClassType>
-          <InstanceName>Layer2D</InstanceName>
-          <AttachToContainer>true</AttachToContainer>
-          <IndependentOfCamera>true</IndependentOfCamera>
-          <Is2D>true</Is2D>
-        </NamedObjectSave>
         <NamedObjectSave>
           <CustomProperty>
             <Type>float</Type>
@@ -634,26 +689,11 @@
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
         <NamedObjectSave>
-          <SourceType>Entity</SourceType>
-          <SourceClassType>Entities\TheodorChild</SourceClassType>
-          <InstanceName>TheodorChildInstance</InstanceName>
-          <AttachToContainer>true</AttachToContainer>
-          <IndependentOfCamera>true</IndependentOfCamera>
-          <LayerOn />
-        </NamedObjectSave>
-        <NamedObjectSave>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile />
           <SourceName />
           <SourceClassType>ShapeCollection</SourceClassType>
           <InstanceName>SolidCollisions</InstanceName>
-          <AttachToContainer>true</AttachToContainer>
-          <IndependentOfCamera>true</IndependentOfCamera>
-        </NamedObjectSave>
-        <NamedObjectSave>
-          <SourceType>Entity</SourceType>
-          <SourceClassType>Entities\TheodorGrownUp</SourceClassType>
-          <InstanceName>TheodorGrownUpInstance</InstanceName>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
@@ -820,6 +860,16 @@
           <Name>Z</Name>
           <Type>float</Type>
           <DefaultValue xsi:type="xsd:float">0</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>bool</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>Visible</Name>
+          <Type>bool</Type>
         </CustomVariable>
       </CustomVariables>
       <ImplementsIVisible>true</ImplementsIVisible>
@@ -1460,11 +1510,32 @@
             <Member>Width</Member>
             <ValueAsFloat>32</ValueAsFloat>
           </CustomProperty>
+          <CustomProperty>
+            <Type>bool</Type>
+            <Member>Visible</Member>
+            <ValueAsBool>true</ValueAsBool>
+          </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceClassType>AxisAlignedRectangle</SourceClassType>
           <InstanceName>Collision</InstanceName>
           <HasPublicProperty>true</HasPublicProperty>
-          <ExposedInDerived>true</ExposedInDerived>
+          <SetByDerived>true</SetByDerived>
+          <AttachToContainer>true</AttachToContainer>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+        <NamedObjectSave>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>TextureScale</Member>
+            <ValueAsFloat>1</ValueAsFloat>
+          </CustomProperty>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceFile />
+          <SourceName />
+          <SourceClassType>Sprite</SourceClassType>
+          <InstanceName>SpriteInstance</InstanceName>
+          <HasPublicProperty>true</HasPublicProperty>
+          <SetByDerived>true</SetByDerived>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
@@ -1668,7 +1739,7 @@
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\TextArial</SourceClassType>
           <InstanceName>SaveText</InstanceName>
-          <AttachToContainer>true</AttachToContainer>
+          <AttachToContainer>false</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
         <NamedObjectSave>
@@ -1690,7 +1761,7 @@
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\TextArial</SourceClassType>
           <InstanceName>InteractText</InstanceName>
-          <AttachToContainer>true</AttachToContainer>
+          <AttachToContainer>false</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
       </NamedObjects>
@@ -1853,7 +1924,7 @@
           </Properties>
           <Name>GroundMovement</Name>
           <Type>Entities/PlatformerCharacterBase/MovementValues.csv</Type>
-          <DefaultValue xsi:type="xsd:string">TheodorOnGround in MovementValues.csv</DefaultValue>
+          <DefaultValue xsi:type="xsd:string">TheodorChildOnGround in MovementValues.csv</DefaultValue>
           <DefinedByBase>true</DefinedByBase>
           <CreatesEvent>true</CreatesEvent>
         </CustomVariable>
@@ -1866,7 +1937,7 @@
           </Properties>
           <Name>AirMovement</Name>
           <Type>Entities/PlatformerCharacterBase/MovementValues.csv</Type>
-          <DefaultValue xsi:type="xsd:string">TheodorInAir in MovementValues.csv</DefaultValue>
+          <DefaultValue xsi:type="xsd:string">TheodorChildInAir in MovementValues.csv</DefaultValue>
           <DefinedByBase>true</DefinedByBase>
           <CreatesEvent>true</CreatesEvent>
         </CustomVariable>
@@ -1879,7 +1950,7 @@
           </Properties>
           <Name>AfterDoubleJump</Name>
           <Type>Entities/PlatformerCharacterBase/MovementValues.csv</Type>
-          <DefaultValue xsi:type="xsd:string">ImmediateVelocityInAir</DefaultValue>
+          <DefaultValue xsi:type="xsd:string">ImmediateVelocityInAirChild in MovementValues.csv</DefaultValue>
           <DefinedByBase>true</DefinedByBase>
           <CreatesEvent>true</CreatesEvent>
         </CustomVariable>
@@ -1929,7 +2000,9 @@
           <SourceName />
           <SourceClassType>Sprite</SourceClassType>
           <InstanceName>SpriteInstance</InstanceName>
+          <HasPublicProperty>true</HasPublicProperty>
           <AttachToContainer>true</AttachToContainer>
+          <DefinedByBase>true</DefinedByBase>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
       </NamedObjects>
@@ -2023,15 +2096,14 @@
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
-            <Type>float</Type>
-<<<<<<< HEAD
-            <Member>TextureScale</Member>
-            <ValueAsFloat>1</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
             <Type>Texture2D</Type>
             <Member>Texture</Member>
             <ValueAsString>viktor_ibarbo</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>TextureScale</Member>
+            <ValueAsFloat>1</ValueAsFloat>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile />
@@ -2041,22 +2113,16 @@
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
-      </NamedObjects>
-      <ReferencedFiles>
-        <ReferencedFileSave>
-          <Name>Entities/TheodorGrownUp/viktor_ibarbo.jpg</Name>
-          <IsSharedStatic>true</IsSharedStatic>
-          <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
-        </ReferencedFileSave>
-      </ReferencedFiles>
-=======
+        <NamedObjectSave>
+          <CustomProperty>
+            <Type>float</Type>
             <Member>Height</Member>
-            <ValueAsFloat>200</ValueAsFloat>
+            <ValueAsFloat>48</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
             <Member>Width</Member>
-            <ValueAsFloat>80</ValueAsFloat>
+            <ValueAsFloat>32</ValueAsFloat>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceClassType>AxisAlignedRectangle</SourceClassType>
@@ -2068,8 +2134,31 @@
           <InstantiatedByBase>true</InstantiatedByBase>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
+        <NamedObjectSave>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>TextureScale</Member>
+            <ValueAsFloat>1</ValueAsFloat>
+          </CustomProperty>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceFile />
+          <SourceName />
+          <SourceClassType>Sprite</SourceClassType>
+          <InstanceName>SpriteInstance</InstanceName>
+          <HasPublicProperty>true</HasPublicProperty>
+          <ExposedInDerived>true</ExposedInDerived>
+          <AttachToContainer>true</AttachToContainer>
+          <DefinedByBase>true</DefinedByBase>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
       </NamedObjects>
->>>>>>> 19b3aeec59663515c83de30477a9982642e2d21d
+      <ReferencedFiles>
+        <ReferencedFileSave>
+          <Name>Entities/TheodorGrownUp/viktor_ibarbo.jpg</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
+        </ReferencedFileSave>
+      </ReferencedFiles>
       <Is2D>true</Is2D>
     </EntitySave>
   </Entities>
@@ -2079,7 +2168,7 @@
     <RecordLockContention>false</RecordLockContention>
   </GlobalContentSettingsSave>
   <SyncedProjects />
-  <StartUpScreen>Screens\MainMenu</StartUpScreen>
+  <StartUpScreen>Screens\Empfang</StartUpScreen>
   <ResolutionPresets />
   <PerformanceSettingsSave>
     <ThrowExceptionOnPostInitializeContentLoad>false</ThrowExceptionOnPostInitializeContentLoad>
@@ -2186,14 +2275,6 @@
     </TranslatedFileSave>
     <TranslatedFileSave>
       <FileName>Screens/MainMenu.Generated.cs</FileName>
-      <TranslationStyle>PerformTranslate</TranslationStyle>
-    </TranslatedFileSave>
-    <TranslatedFileSave>
-      <FileName>Entities/TheodorChildBase.Event.cs</FileName>
-      <TranslationStyle>PerformTranslate</TranslationStyle>
-    </TranslatedFileSave>
-    <TranslatedFileSave>
-      <FileName>Entities/TheodorChildBase.Generated.Event.cs</FileName>
       <TranslationStyle>PerformTranslate</TranslationStyle>
     </TranslatedFileSave>
   </TranslatedFiles>

@@ -193,6 +193,18 @@ namespace VergissMeinNicht.Entities
 
 		}
 
+        public enum LeftOrRight
+        {
+            Left,
+            Right
+        }
+
+        public LeftOrRight DirectionFacing
+        {
+            get;
+            set;
+        }
+
         private static PlatformerCharacterBase instance;
 
         public static PlatformerCharacterBase getInstance()

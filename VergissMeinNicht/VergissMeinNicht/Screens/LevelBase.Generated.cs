@@ -28,6 +28,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using FlatRedBall.Graphics;
+using FlatRedBall.Math.Geometry;
 
 namespace VergissMeinNicht.Screens
 {
@@ -52,6 +53,7 @@ namespace VergissMeinNicht.Screens
 		}
 		private FlatRedBall.Graphics.Layer Layer2D;
 		private VergissMeinNicht.Entities.Button PauseButton;
+		private FlatRedBall.Math.Geometry.ShapeCollection SolidCollisions;
 		public event FlatRedBall.Gui.WindowEvent MainMenuButtonClick;
 
 		public LevelBase()
@@ -69,6 +71,8 @@ namespace VergissMeinNicht.Screens
 			Layer2D.Name = "Layer2D";
 			PauseButton = new VergissMeinNicht.Entities.Button(ContentManagerName, false);
 			PauseButton.Name = "PauseButton";
+			SolidCollisions = new FlatRedBall.Math.Geometry.ShapeCollection();
+			SolidCollisions.Name = "SolidCollisions";
 			
 			
 			PostInitialize();
@@ -92,6 +96,7 @@ namespace VergissMeinNicht.Screens
 			}
 			mMainMenuButton.AddToManagers(mLayer);
 			PauseButton.AddToManagers(mLayer);
+			SolidCollisions.AddToManagers();
 			base.AddToManagers();
 			AddToManagersBottomUp();
 			CustomInitialize();
@@ -139,6 +144,10 @@ namespace VergissMeinNicht.Screens
 			{
 				PauseButton.Destroy();
 				PauseButton.Detach();
+			}
+			if (SolidCollisions != null)
+			{
+				SolidCollisions.RemoveFromManagers(ContentManagerName != "Global");
 			}
 
 			base.Destroy();
@@ -214,6 +223,10 @@ namespace VergissMeinNicht.Screens
 			if (Layer2D != null)
 			{
 				SpriteManager.RemoveLayer(Layer2D);
+			}
+			if (SolidCollisions != null)
+			{
+				SolidCollisions.RemoveFromManagers(false);
 			}
 			PauseButton.RemoveFromManagers();
 		}
