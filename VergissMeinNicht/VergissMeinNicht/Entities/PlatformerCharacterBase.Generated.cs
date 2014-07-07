@@ -54,7 +54,7 @@ namespace VergissMeinNicht.Entities
 		static object mLockObject = new object();
 		static List<string> mRegisteredUnloads = new List<string>();
 		static List<string> LoadedContentManagers = new List<string>();
-		public static Dictionary<string, MovementValues> MovementValues;
+		public static Dictionary<string, VergissMeinNicht.DataTypes.MovementValues> MovementValues;
 		
 		protected FlatRedBall.Math.Geometry.AxisAlignedRectangle mCollision;
 		public FlatRedBall.Math.Geometry.AxisAlignedRectangle Collision
@@ -226,8 +226,8 @@ namespace VergissMeinNicht.Entities
 				mCollision.AttachTo(this, false);
 			}
 			Collision.Height = 48f;
-			Collision.Width = 32f;
 			Collision.Visible = true;
+			Collision.Width = 32f;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp (Layer layerToAddTo)
@@ -248,8 +248,8 @@ namespace VergissMeinNicht.Entities
 			{
 			}
 			mCollision.Height = 48f;
-			mCollision.Width = 32f;
 			mCollision.Visible = true;
+			mCollision.Width = 32f;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
@@ -291,8 +291,8 @@ namespace VergissMeinNicht.Entities
 						// We put the { and } to limit the scope of oldDelimiter
 						char oldDelimiter = CsvFileManager.Delimiter;
 						CsvFileManager.Delimiter = ',';
-						Dictionary<string, MovementValues> temporaryCsvObject = new Dictionary<string, MovementValues>();
-						CsvFileManager.CsvDeserializeDictionary<string, MovementValues>("content/entities/platformercharacterbase/movementvalues.csv", temporaryCsvObject);
+						Dictionary<string, VergissMeinNicht.DataTypes.MovementValues> temporaryCsvObject = new Dictionary<string, VergissMeinNicht.DataTypes.MovementValues>();
+						CsvFileManager.CsvDeserializeDictionary<string, VergissMeinNicht.DataTypes.MovementValues>("content/entities/platformercharacterbase/movementvalues.csv", temporaryCsvObject);
 						CsvFileManager.Delimiter = oldDelimiter;
 						MovementValues = temporaryCsvObject;
 					}
@@ -347,11 +347,6 @@ namespace VergissMeinNicht.Entities
 		}
 		object GetMember (string memberName)
 		{
-			switch(memberName)
-			{
-				case  "MovementValues":
-					return MovementValues;
-			}
 			return null;
 		}
 		protected bool mIsPaused;

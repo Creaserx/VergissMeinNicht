@@ -184,7 +184,6 @@ namespace VergissMeinNicht.Screens
 				PauseButton.AttachTo(SpriteManager.Camera, false);
 			}
 			PauseButton.DisplayText = "Pause";
-			PauseButton.Visible = false;
 			if (PauseButton.Parent == null)
 			{
 				PauseButton.X = 0f;
@@ -201,6 +200,7 @@ namespace VergissMeinNicht.Screens
 			{
 				PauseButton.RelativeY = 0f;
 			}
+			PauseButton.Visible = false;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp ()
@@ -242,7 +242,6 @@ namespace VergissMeinNicht.Screens
 				mMainMenuButton.RelativeY = 260f;
 			}
 			PauseButton.DisplayText = "Pause";
-			PauseButton.Visible = false;
 			if (PauseButton.Parent == null)
 			{
 				PauseButton.X = 0f;
@@ -259,6 +258,7 @@ namespace VergissMeinNicht.Screens
 			{
 				PauseButton.RelativeY = 0f;
 			}
+			PauseButton.Visible = false;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
