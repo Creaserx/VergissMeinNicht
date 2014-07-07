@@ -63,7 +63,7 @@ namespace VergissMeinNicht.Entities
 			{
 				return mCollision;
 			}
-			protected set
+			private set
 			{
 				mCollision = value;
 			}
@@ -173,6 +173,8 @@ namespace VergissMeinNicht.Entities
 		{
 			// Generated Initialize
 			LoadStaticContent(ContentManagerName);
+			mCollision = new FlatRedBall.Math.Geometry.AxisAlignedRectangle();
+			mCollision.Name = "mCollision";
 			
 			PostInitialize();
 			if (addToManagers)
@@ -188,11 +190,13 @@ namespace VergissMeinNicht.Entities
 		{
 			LayerProvidedByContainer = layerToAddTo;
 			SpriteManager.AddPositionedObject(this);
+			ShapeManager.AddToLayer(mCollision, LayerProvidedByContainer);
 		}
 		public virtual void AddToManagers (Layer layerToAddTo)
 		{
 			LayerProvidedByContainer = layerToAddTo;
 			SpriteManager.AddPositionedObject(this);
+			ShapeManager.AddToLayer(mCollision, LayerProvidedByContainer);
 			AddToManagersBottomUp(layerToAddTo);
 			CustomInitialize();
 		}
@@ -211,6 +215,10 @@ namespace VergissMeinNicht.Entities
 			// Generated Destroy
 			SpriteManager.RemovePositionedObject(this);
 			
+			if (Collision != null)
+			{
+				ShapeManager.Remove(Collision);
+			}
 
 
 			CustomDestroy();
@@ -224,17 +232,14 @@ namespace VergissMeinNicht.Entities
 			this.AfterGroundMovementSet += OnAfterGroundMovementSet;
 			this.AfterAirMovementSet += OnAfterAirMovementSet;
 			this.AfterAfterDoubleJumpSet += OnAfterAfterDoubleJumpSet;
-			if (Collision!= null)
+			if (mCollision.Parent == null)
 			{
-				if (mCollision.Parent == null)
-				{
-					mCollision.CopyAbsoluteToRelative();
-					mCollision.AttachTo(this, false);
-				}
-				Collision.Height = 48f;
-			Collision.Visible = true;
-				Collision.Width = 32f;
+				mCollision.CopyAbsoluteToRelative();
+				mCollision.AttachTo(this, false);
 			}
+			Collision.Height = 48f;
+			Collision.Visible = true;
+			Collision.Width = 32f;
 			if (SpriteInstance!= null)
 			{
 				if (mSpriteInstance.Parent == null)
@@ -253,21 +258,24 @@ namespace VergissMeinNicht.Entities
 		public virtual void RemoveFromManagers ()
 		{
 			SpriteManager.ConvertToManuallyUpdated(this);
+			if (Collision != null)
+			{
+				ShapeManager.RemoveOneWay(Collision);
+			}
 		}
 		public virtual void AssignCustomVariables (bool callOnContainedElements)
 		{
 			if (callOnContainedElements)
 			{
 			}
+			mCollision.Height = 48f;
 			mCollision.Visible = true;
+			mCollision.Width = 32f;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
 			this.ForceUpdateDependenciesDeep();
 			SpriteManager.ConvertToManuallyUpdated(this);
-			if (Collision != null)
-			{
-			}
 			if (SpriteInstance != null)
 			{
 				SpriteManager.ConvertToManuallyUpdated(SpriteInstance);
@@ -375,10 +383,7 @@ namespace VergissMeinNicht.Entities
 		public virtual void SetToIgnorePausing ()
 		{
 			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(this);
-			if (Collision != null)
-			{
-				FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(Collision);
-			}
+			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(Collision);
 			if (SpriteInstance != null)
 			{
 				FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(SpriteInstance);

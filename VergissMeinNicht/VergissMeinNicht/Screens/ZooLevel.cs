@@ -33,32 +33,13 @@ namespace VergissMeinNicht.Screens
 
 		public override void CustomInitialize()
 		{
-            base.CustomInitialize();
-
-            // Create a rectangle
-            AxisAlignedRectangle rectangle = new AxisAlignedRectangle();
-            rectangle.ScaleX = 800;
-            rectangle.ScaleY = 50;
-            //rectangle.Y = -50;
-
-            // Add it to the ShapeCollection so the player can collide against it
-            this.SolidCollisions.AxisAlignedRectangles.Add(rectangle);
-
-            // Add the ShapeColleciton to the ShapeManager so it's visible
-            SolidCollisions.AddToManagers();
-
-
-            // Make the character appear on top of the rectangle:
-            PlatformerCharacterBase.getInstance().Y = 200;
+            base.CustomInitialize();            
 
 		}
 
 		public override void CustomActivity(bool firstTimeCalled)
 		{
             base.CustomActivity(firstTimeCalled);
-
-            //Theodor Collisions
-            PlatformerCharacterBase.getInstance().CollideAgainst(SolidCollisions);
 
         }
 

@@ -116,11 +116,6 @@
             <ValueAsString>Pause</ValueAsString>
           </CustomProperty>
           <CustomProperty>
-            <Type>bool</Type>
-            <Member>Visible</Member>
-            <ValueAsBool>false</ValueAsBool>
-          </CustomProperty>
-          <CustomProperty>
             <Type>float</Type>
             <Member>X</Member>
             <ValueAsFloat>0</ValueAsFloat>
@@ -130,11 +125,25 @@
             <Member>Y</Member>
             <ValueAsFloat>0</ValueAsFloat>
           </CustomProperty>
+          <CustomProperty>
+            <Type>bool</Type>
+            <Member>Visible</Member>
+            <ValueAsBool>false</ValueAsBool>
+          </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\Button</SourceClassType>
           <InstanceName>PauseButton</InstanceName>
           <AttachToContainer>true</AttachToContainer>
           <AttachToCamera>true</AttachToCamera>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+        <NamedObjectSave>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceFile />
+          <SourceName />
+          <SourceClassType>ShapeCollection</SourceClassType>
+          <InstanceName>SolidCollisions</InstanceName>
+          <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
       </NamedObjects>
@@ -1497,20 +1506,20 @@
             <ValueAsFloat>48</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
-            <Type>float</Type>
-            <Member>Width</Member>
-            <ValueAsFloat>32</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
             <Type>bool</Type>
             <Member>Visible</Member>
             <ValueAsBool>true</ValueAsBool>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Width</Member>
+            <ValueAsFloat>32</ValueAsFloat>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceClassType>AxisAlignedRectangle</SourceClassType>
           <InstanceName>Collision</InstanceName>
           <HasPublicProperty>true</HasPublicProperty>
-          <SetByDerived>true</SetByDerived>
+          <ExposedInDerived>true</ExposedInDerived>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
@@ -2185,6 +2194,7 @@
         </InstructionSave>
       </RequiredProperties>
       <Name>TileMapInfo</Name>
+      <GenerateCode>true</GenerateCode>
     </CustomClassSave>
   </CustomClasses>
   <TranslatedFiles>

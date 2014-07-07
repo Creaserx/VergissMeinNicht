@@ -224,11 +224,11 @@ namespace VergissMeinNicht.Screens
 			{
 				SpriteManager.RemoveLayer(Layer2D);
 			}
+			PauseButton.RemoveFromManagers();
 			if (SolidCollisions != null)
 			{
 				SolidCollisions.RemoveFromManagers(false);
 			}
-			PauseButton.RemoveFromManagers();
 		}
 		public virtual void AssignCustomVariables (bool callOnContainedElements)
 		{
