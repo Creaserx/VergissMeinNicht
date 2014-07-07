@@ -15,7 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using FlatRedBall.Math.Geometry;
-using Microsoft.Xna.Framework.Graphics;
+using FlatRedBall.Graphics.Animation;
 
 #if XNA4 || WINDOWS_8
 using Color = Microsoft.Xna.Framework.Color;
@@ -53,9 +53,8 @@ namespace VergissMeinNicht.Entities
 		static object mLockObject = new object();
 		static List<string> mRegisteredUnloads = new List<string>();
 		static List<string> LoadedContentManagers = new List<string>();
-		protected static Microsoft.Xna.Framework.Graphics.Texture2D viktor_ibarbo;
+		protected static FlatRedBall.Graphics.Animation.AnimationChainList AnimationChainListFile;
 		
-		private FlatRedBall.Sprite Sprite;
 		public event EventHandler BeforeGroundMovementSet;
 		public event EventHandler AfterGroundMovementSet;
 		public override VergissMeinNicht.DataTypes.MovementValues GroundMovement
@@ -145,8 +144,6 @@ namespace VergissMeinNicht.Entities
 		{
 			// Generated Initialize
 			LoadStaticContent(ContentManagerName);
-			Sprite = new FlatRedBall.Sprite();
-			Sprite.Name = "Sprite";
 			mSpriteInstance = new FlatRedBall.Sprite();
 			mSpriteInstance.Name = "mSpriteInstance";
 			
@@ -159,13 +156,11 @@ namespace VergissMeinNicht.Entities
 		public override void ReAddToManagers (Layer layerToAddTo)
 		{
 			base.ReAddToManagers(layerToAddTo);
-			SpriteManager.AddToLayer(Sprite, LayerProvidedByContainer);
 			SpriteManager.AddToLayer(mSpriteInstance, LayerProvidedByContainer);
 		}
 		public override void AddToManagers (Layer layerToAddTo)
 		{
 			LayerProvidedByContainer = layerToAddTo;
-			SpriteManager.AddToLayer(Sprite, LayerProvidedByContainer);
 			SpriteManager.AddToLayer(mSpriteInstance, LayerProvidedByContainer);
 			base.AddToManagers(layerToAddTo);
 			CustomInitialize();
@@ -186,10 +181,6 @@ namespace VergissMeinNicht.Entities
 			// Generated Destroy
 			base.Destroy();
 			
-			if (Sprite != null)
-			{
-				SpriteManager.RemoveSprite(Sprite);
-			}
 			if (SpriteInstance != null)
 			{
 				SpriteManager.RemoveSprite(SpriteInstance);
@@ -205,26 +196,21 @@ namespace VergissMeinNicht.Entities
 			bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
 			base.PostInitialize();
-			if (Sprite.Parent == null)
-			{
-				Sprite.CopyAbsoluteToRelative();
-				Sprite.AttachTo(this, false);
-			}
-			Sprite.Texture = viktor_ibarbo;
-			Sprite.TextureScale = 1f;
 			if (mCollision.Parent == null)
 			{
 				mCollision.CopyAbsoluteToRelative();
 				mCollision.AttachTo(this, false);
 			}
-			base.Collision.Height = 48f;
-			base.Collision.Width = 32f;
+			base.Collision.Height = 200f;
+			base.Collision.Width = 107f;
 			if (mSpriteInstance.Parent == null)
 			{
 				mSpriteInstance.CopyAbsoluteToRelative();
 				mSpriteInstance.AttachTo(this, false);
 			}
-			base.SpriteInstance.TextureScale = 1f;
+			base.SpriteInstance.TextureScale = 1.3f;
+			base.SpriteInstance.AnimationChains = AnimationChainListFile;
+			base.SpriteInstance.CurrentChainName = "IdleRight";
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public override void AddToManagersBottomUp (Layer layerToAddTo)
@@ -235,10 +221,6 @@ namespace VergissMeinNicht.Entities
 		{
 			base.RemoveFromManagers();
 			base.RemoveFromManagers();
-			if (Sprite != null)
-			{
-				SpriteManager.RemoveSpriteOneWay(Sprite);
-			}
 			if (SpriteInstance != null)
 			{
 				SpriteManager.RemoveSpriteOneWay(SpriteInstance);
@@ -250,11 +232,11 @@ namespace VergissMeinNicht.Entities
 			if (callOnContainedElements)
 			{
 			}
-			Sprite.Texture = viktor_ibarbo;
-			Sprite.TextureScale = 1f;
-			base.mCollision.Height = 48f;
-			base.mCollision.Width = 32f;
-			base.mSpriteInstance.TextureScale = 1f;
+			base.mCollision.Height = 200f;
+			base.mCollision.Width = 107f;
+			base.mSpriteInstance.TextureScale = 1.3f;
+			base.mSpriteInstance.AnimationChains = AnimationChainListFile;
+			base.mSpriteInstance.CurrentChainName = "IdleRight";
 			GroundMovement = TheodorGrownUp.MovementValues["TheodorGrownUpOnGround"];
 			AirMovement = TheodorGrownUp.MovementValues["TheodorGrownUpInAir"];
 			AfterDoubleJump = TheodorGrownUp.MovementValues["ImmediateVelocityInAirGrownUp"];
@@ -264,7 +246,6 @@ namespace VergissMeinNicht.Entities
 			base.ConvertToManuallyUpdated();
 			this.ForceUpdateDependenciesDeep();
 			SpriteManager.ConvertToManuallyUpdated(this);
-			SpriteManager.ConvertToManuallyUpdated(Sprite);
 			SpriteManager.ConvertToManuallyUpdated(SpriteInstance);
 		}
 		public static new void LoadStaticContent (string contentManagerName)
@@ -297,11 +278,11 @@ namespace VergissMeinNicht.Entities
 						mRegisteredUnloads.Add(ContentManagerName);
 					}
 				}
-				if (!FlatRedBallServices.IsLoaded<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/entities/theodorgrownup/viktor_ibarbo.jpg", ContentManagerName))
+				if (!FlatRedBallServices.IsLoaded<FlatRedBall.Graphics.Animation.AnimationChainList>(@"content/entities/theodor/animationchainlistfile.achx", ContentManagerName))
 				{
 					registerUnload = true;
 				}
-				viktor_ibarbo = FlatRedBallServices.Load<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/entities/theodorgrownup/viktor_ibarbo.jpg", ContentManagerName);
+				AnimationChainListFile = FlatRedBallServices.Load<FlatRedBall.Graphics.Animation.AnimationChainList>(@"content/entities/theodor/animationchainlistfile.achx", ContentManagerName);
 			}
 			if (registerUnload && ContentManagerName != FlatRedBallServices.GlobalContentManager)
 			{
@@ -325,9 +306,9 @@ namespace VergissMeinNicht.Entities
 			}
 			if (LoadedContentManagers.Count == 0)
 			{
-				if (viktor_ibarbo != null)
+				if (AnimationChainListFile != null)
 				{
-					viktor_ibarbo= null;
+					AnimationChainListFile= null;
 				}
 			}
 		}
@@ -336,8 +317,8 @@ namespace VergissMeinNicht.Entities
 		{
 			switch(memberName)
 			{
-				case  "viktor_ibarbo":
-					return viktor_ibarbo;
+				case  "AnimationChainListFile":
+					return AnimationChainListFile;
 			}
 			return null;
 		}
@@ -345,8 +326,8 @@ namespace VergissMeinNicht.Entities
 		{
 			switch(memberName)
 			{
-				case  "viktor_ibarbo":
-					return viktor_ibarbo;
+				case  "AnimationChainListFile":
+					return AnimationChainListFile;
 			}
 			return null;
 		}
@@ -354,26 +335,20 @@ namespace VergissMeinNicht.Entities
 		{
 			switch(memberName)
 			{
-				case  "viktor_ibarbo":
-					return viktor_ibarbo;
+				case  "AnimationChainListFile":
+					return AnimationChainListFile;
 			}
 			return null;
 		}
 		public override void SetToIgnorePausing ()
 		{
 			base.SetToIgnorePausing();
-			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(Sprite);
 			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(Collision);
 			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(SpriteInstance);
 		}
 		public override void MoveToLayer (Layer layerToMoveTo)
 		{
 			base.MoveToLayer(layerToMoveTo);
-			if (LayerProvidedByContainer != null)
-			{
-				LayerProvidedByContainer.Remove(Sprite);
-			}
-			SpriteManager.AddToLayer(Sprite, layerToMoveTo);
 			if (LayerProvidedByContainer != null)
 			{
 				LayerProvidedByContainer.Remove(SpriteInstance);
