@@ -208,8 +208,8 @@ namespace VergissMeinNicht.Entities
 				mSpriteInstance.CopyAbsoluteToRelative();
 				mSpriteInstance.AttachTo(this, false);
 			}
-			base.SpriteInstance.TextureScale = 1.3f;
 			base.SpriteInstance.AnimationChains = AnimationChainListFile;
+			base.SpriteInstance.TextureScale = 1.3f;
 			base.SpriteInstance.CurrentChainName = "IdleRight";
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
@@ -234,8 +234,8 @@ namespace VergissMeinNicht.Entities
 			}
 			base.mCollision.Height = 200f;
 			base.mCollision.Width = 107f;
-			base.mSpriteInstance.TextureScale = 1.3f;
 			base.mSpriteInstance.AnimationChains = AnimationChainListFile;
+			base.mSpriteInstance.TextureScale = 1.3f;
 			base.mSpriteInstance.CurrentChainName = "IdleRight";
 			GroundMovement = TheodorGrownUp.MovementValues["TheodorGrownUpOnGround"];
 			AirMovement = TheodorGrownUp.MovementValues["TheodorGrownUpInAir"];

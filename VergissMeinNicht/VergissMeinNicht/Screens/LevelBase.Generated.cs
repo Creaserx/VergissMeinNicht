@@ -54,6 +54,8 @@ namespace VergissMeinNicht.Screens
 		private FlatRedBall.Graphics.Layer Layer2D;
 		private VergissMeinNicht.Entities.Button PauseButton;
 		private FlatRedBall.Math.Geometry.ShapeCollection SolidCollisions;
+		public static float SizeFirstDiff = 0.9f;
+		public static float SizeSecondDiff = 0.8f;
 		public event FlatRedBall.Gui.WindowEvent MainMenuButtonClick;
 
 		public LevelBase()

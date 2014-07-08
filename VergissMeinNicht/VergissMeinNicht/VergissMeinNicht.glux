@@ -73,6 +73,32 @@
           <DelegateType />
         </EventResponseSave>
       </Events>
+      <CustomVariables>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>SizeFirstDiff</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">0.9</DefaultValue>
+          <IsShared>true</IsShared>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>SizeSecondDiff</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">0.8</DefaultValue>
+          <IsShared>true</IsShared>
+        </CustomVariable>
+      </CustomVariables>
       <Name>Screens\LevelBase</Name>
       <NamedObjects>
         <NamedObjectSave>
@@ -2117,11 +2143,6 @@
         </NamedObjectSave>
         <NamedObjectSave>
           <CustomProperty>
-            <Type>float</Type>
-            <Member>TextureScale</Member>
-            <ValueAsFloat>1.3</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
             <Type>AnimationChainList</Type>
             <Member>AnimationChains</Member>
             <ValueAsString>AnimationChainListFile</ValueAsString>
@@ -2130,6 +2151,11 @@
             <Type>string</Type>
             <Member>CurrentChainName</Member>
             <ValueAsString>IdleRight</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>TextureScale</Member>
+            <ValueAsFloat>1.3</ValueAsFloat>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile />
