@@ -55,6 +55,7 @@ namespace VergissMeinNicht.Entities
                         Temp.X = PlatformerCharacterBase.getInstance().X;
                         Temp.Y = PlatformerCharacterBase.getInstance().Y;
                         PlatformerCharacterBase.updateinstance(Temp);
+
                     }
                     else
                     {
@@ -63,19 +64,25 @@ namespace VergissMeinNicht.Entities
                         Temp.Y = PlatformerCharacterBase.getInstance().Y;
                         PlatformerCharacterBase.updateinstance(Temp);
                     }
+                                                          
+                                           
                 }
 
                 if (InputManager.Keyboard.KeyPushed(Keys.S))
                 {
 
                 }
+                
 
-                SaveText.Visible = true;
-                InteractText.Visible = true;
-                SaveText.Position.X = PlatformerCharacterBase.getInstance().Position.X;
-                SaveText.Position.Y = PlatformerCharacterBase.getInstance().Y + 80;
-                InteractText.Position.X = PlatformerCharacterBase.getInstance().Position.X;
-                InteractText.Position.Y = PlatformerCharacterBase.getInstance().Y + 100;
+                    SaveText.Visible = true;
+                    InteractText.Visible = true;
+                    SaveText.Position.X = PlatformerCharacterBase.getInstance().Position.X + 100;
+                    SaveText.Position.Y = PlatformerCharacterBase.getInstance().Y + 80;
+                    InteractText.Position.X = PlatformerCharacterBase.getInstance().Position.X + 100;
+                    InteractText.Position.Y = PlatformerCharacterBase.getInstance().Y + 100;
+                
+
+                
             }
             else
             {

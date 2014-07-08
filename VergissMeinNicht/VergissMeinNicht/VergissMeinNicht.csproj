@@ -147,6 +147,10 @@
     <Compile Include="Entities\Enemies\Schattenwesen.Generated.cs">
       <DependentUpon>Schattenwesen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Flash.cs" />
+    <Compile Include="Entities\Flash.Generated.cs">
+      <DependentUpon>Flash.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Frame.cs" />
     <Compile Include="Entities\Frame.Generated.cs">
       <DependentUpon>Frame.cs</DependentUpon>
