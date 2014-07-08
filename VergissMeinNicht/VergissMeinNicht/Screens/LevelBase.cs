@@ -141,97 +141,26 @@ namespace VergissMeinNicht.Screens
         }
 
         void LayerManagement()
-        {                  
+        {
 
-            if (InputManager.Keyboard.KeyPushed(Keys.Up) && PlatformerCharacterBase.getInstance().Y < 175)
+            if (InputManager.Keyboard.KeyPushed(Keys.Up) && PlatformerCharacterBase.getInstance().Y < 210 && (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 1 || PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 0.9f || PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 0.8f))
             {
                 if (PlatformerCharacterBase.getInstance().DirectionFacing == PlatformerCharacterBase.LeftOrRight.Left)
                 {
-                    switch (CurrentLayer)
-                    {
-                        case 1:
-                            PlatformerCharacterBase.getInstance().SpriteInstance
-                                .Tween("TextureScale")
-                                .To(SizeFirstDiff)
-                                .During(1)
-                                .Using(
-                                    FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
-                                    FlatRedBall.Glue.StateInterpolation.Easing.Out);
-
-                            PlatformerCharacterBase.getInstance().Collision
-                                .Tween("Height")
-                                .To(CollisionHeightLayer2)
-                                .During(1)
-                                .Using(
-                                    FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
-                                    FlatRedBall.Glue.StateInterpolation.Easing.Out);
-
-                            PlatformerCharacterBase.getInstance().Collision
-                                .Tween("Width")
-                                .To(CollisionWidthLayer2)
-                                .During(1)
-                                .Using(
-                                    FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
-                                    FlatRedBall.Glue.StateInterpolation.Easing.Out);
-
-                            break;
-
-                        case 2:
-                            PlatformerCharacterBase.getInstance().SpriteInstance
-                            .Tween("TextureScale")
-                            .To(SizeSecondDiff)
-                            .During(1)
-                            .Using(
-                                FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
-                                FlatRedBall.Glue.StateInterpolation.Easing.Out);
-
-                            PlatformerCharacterBase.getInstance().Collision
-                                .Tween("Height")
-                                .To(CollisionHeightLayer3)
-                                .During(1)
-                                .Using(
-                                    FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
-                                    FlatRedBall.Glue.StateInterpolation.Easing.Out);
-
-                            PlatformerCharacterBase.getInstance().Collision
-                                .Tween("Width")
-                                .To(CollisionWidthLayer3)
-                                .During(1)
-                                .Using(
-                                    FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
-                                    FlatRedBall.Glue.StateInterpolation.Easing.Out);
-
-                            break;
-
-                        default:
-
-                            break;
-                    }
-
-                    if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 1)
-                    {
-                        CurrentLayer = 1;
-                    }
-
-                    else if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == SizeFirstDiff)
-                    {
-                        CurrentLayer = 2;
-                    }
-
-                    if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == SizeSecondDiff)
-                    {
-                        CurrentLayer = 3;
-                    }
-
+                    PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName = "IdleLeft";
                 }
-            
 
-                /*switch (PlatformerCharacterBase.getInstance().DirectionFacing)
-                {                        
-                    case PlatformerCharacterBase.LeftOrRight.Left:
+                else
+                {
+                    PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName = "IdleRight";
+                }
+
+                switch (CurrentLayer)
+                {
+                    case 1:
                         PlatformerCharacterBase.getInstance().SpriteInstance
                             .Tween("TextureScale")
-                            .To(0.8f)
+                            .To(SizeFirstDiff)
                             .During(1)
                             .Using(
                                 FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
@@ -239,35 +168,69 @@ namespace VergissMeinNicht.Screens
 
                         PlatformerCharacterBase.getInstance().Collision
                             .Tween("Height")
-                            .To(CollisionLayer2)
+                            .To(CollisionHeightLayer2)
                             .During(1)
                             .Using(
                                 FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
                                 FlatRedBall.Glue.StateInterpolation.Easing.Out);
-                        PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName = "IdleLeft";
-                        PlatformerCharacterBase.getInstance().SpriteInstance.AnimationSpeed -= SpriteDiff;
-                        PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale -= SpriteDiff;
-                        PlatformerCharacterBase.getInstance().Collision.Height -= CollisionHeightDiff;
-                        PlatformerCharacterBase.getInstance().Collision.Width -= CollisionWidthDiff;
-                        InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Up);
-                        InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Down);
-                        InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Left);
-                        InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Right);
+
+                        PlatformerCharacterBase.getInstance().Collision
+                            .Tween("Width")
+                            .To(CollisionWidthLayer2)
+                            .During(1)
+                            .Using(
+                                FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
                         break;
 
-                    case PlatformerCharacterBase.LeftOrRight.Right:
-                        PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName = "IdleRight";
-                        PlatformerCharacterBase.getInstance().SpriteInstance.AnimationSpeed -= SpriteDiff;
-                        PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale -= SpriteDiff;
-                        PlatformerCharacterBase.getInstance().Collision.Height -= CollisionHeightDiff;
-                        PlatformerCharacterBase.getInstance().Collision.Width -= CollisionWidthDiff;
-                        InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Up);
-                        InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Down);
-                        InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Left);
-                        InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Right);
-                        break;
-                }*/
+                    case 2:
+                        PlatformerCharacterBase.getInstance().SpriteInstance
+                        .Tween("TextureScale")
+                        .To(SizeSecondDiff)
+                        .During(1)
+                        .Using(
+                            FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                            FlatRedBall.Glue.StateInterpolation.Easing.Out);
 
+                        PlatformerCharacterBase.getInstance().Collision
+                            .Tween("Height")
+                            .To(CollisionHeightLayer3)
+                            .During(1)
+                            .Using(
+                                FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                        PlatformerCharacterBase.getInstance().Collision
+                            .Tween("Width")
+                            .To(CollisionWidthLayer3)
+                            .During(1)
+                            .Using(
+                                FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                        break;
+
+                    default:
+
+                        break;
+                }
+
+                if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 1)
+                {
+                    CurrentLayer = 1;
+                }
+
+                else if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == SizeFirstDiff)
+                {
+                    CurrentLayer = 2;
+                }
+
+                else if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == SizeSecondDiff)
+                {
+                    CurrentLayer = 3;
+                }
+                               
                 Boden
                     .Tween("Y")
                     .To(Boden.Y + 75)
@@ -281,6 +244,92 @@ namespace VergissMeinNicht.Screens
 
             if (InputManager.Keyboard.KeyPushed(Keys.Down) && PlatformerCharacterBase.getInstance().Y > 75)
             {
+                if (PlatformerCharacterBase.getInstance().DirectionFacing == PlatformerCharacterBase.LeftOrRight.Left)
+                {
+                    PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName = "IdleLeft";
+                }
+
+                else
+                {
+                    PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName = "IdleRight";
+                }
+
+                switch (CurrentLayer)
+                {
+                    case 2:
+                        PlatformerCharacterBase.getInstance().SpriteInstance
+                        .Tween("TextureScale")
+                        .To(1)
+                        .During(1)
+                        .Using(
+                            FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                            FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                        PlatformerCharacterBase.getInstance().Collision
+                            .Tween("Height")
+                            .To(CollisionHeightLayer1)
+                            .During(1)
+                            .Using(
+                                FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                        PlatformerCharacterBase.getInstance().Collision
+                            .Tween("Width")
+                            .To(CollisionWidthLayer1)
+                            .During(1)
+                            .Using(
+                                FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                        break;
+
+                    case 3:
+                        PlatformerCharacterBase.getInstance().SpriteInstance
+                            .Tween("TextureScale")
+                            .To(SizeFirstDiff)
+                            .During(1)
+                            .Using(
+                                FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                        PlatformerCharacterBase.getInstance().Collision
+                            .Tween("Height")
+                            .To(CollisionHeightLayer2)
+                            .During(1)
+                            .Using(
+                                FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                        PlatformerCharacterBase.getInstance().Collision
+                            .Tween("Width")
+                            .To(CollisionWidthLayer2)
+                            .During(1)
+                            .Using(
+                                FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                        break;
+
+                    default:
+
+                        break;
+                }
+
+                if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 1)
+                {
+                    CurrentLayer = 1;
+                }
+
+                else if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == SizeFirstDiff)
+                {
+                    CurrentLayer = 2;
+                }
+
+                else if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == SizeSecondDiff)
+                {
+                    CurrentLayer = 3;
+                }
+
                 Boden
                     .Tween("Y")
                     .To(Boden.Y - 75)
@@ -288,14 +337,6 @@ namespace VergissMeinNicht.Screens
                     .Using(
                         FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
                         FlatRedBall.Glue.StateInterpolation.Easing.Out);
-
-                PlatformerCharacterBase.getInstance()
-                    .Tween("Y")
-                    .To(PlatformerCharacterBase.getInstance().Y - 75)
-                    .During(1)
-                    .Using(
-                        FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
-                        FlatRedBall.Glue.StateInterpolation.Easing.Out);            
             }
         }
 

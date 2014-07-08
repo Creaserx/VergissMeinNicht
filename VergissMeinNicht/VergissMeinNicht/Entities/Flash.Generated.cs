@@ -143,8 +143,8 @@ namespace VergissMeinNicht.Entities
 				SpriteInstance.CopyAbsoluteToRelative();
 				SpriteInstance.AttachTo(this, false);
 			}
-			SpriteInstance.TextureScale = 1f;
 			SpriteInstance.Texture = White_square;
+			SpriteInstance.TextureScale = 1f;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp (Layer layerToAddTo)
@@ -164,8 +164,8 @@ namespace VergissMeinNicht.Entities
 			if (callOnContainedElements)
 			{
 			}
-			SpriteInstance.TextureScale = 1f;
 			SpriteInstance.Texture = White_square;
+			SpriteInstance.TextureScale = 1f;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
