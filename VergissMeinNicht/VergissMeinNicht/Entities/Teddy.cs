@@ -9,6 +9,7 @@ using FlatRedBall.Instructions;
 using FlatRedBall.AI.Pathfinding;
 using FlatRedBall.Graphics.Animation;
 using FlatRedBall.Graphics.Particle;
+using StateInterpolationPlugin;
 
 using FlatRedBall.Math.Geometry;
 using FlatRedBall.Math.Splines;
@@ -44,13 +45,28 @@ namespace VergissMeinNicht.Entities
         void TeddyText()
         {
             //Makes Text Visible / Invisible in front of a Teddy
-            if (PlatformerCharacterBase.getInstance().X < (Sprite.X + 75) && PlatformerCharacterBase.getInstance().X > (Sprite.X - 75))
+            if (PlatformerCharacterBase.getInstance().X < (Sprite.X + 75) && PlatformerCharacterBase.getInstance().X > (Sprite.X - 75) && FlashInstance.Alpha == 0)
             {
                 //--Transform Character
                 if (InputManager.Keyboard.KeyPushed(Keys.E))
                 {
                     if (PlatformerCharacterBase.isChild())                            
                     {
+                        if (FlashInstance.Alpha == 0)
+                        {
+                            FlashInstance.Visible = false;
+                            FlashInstance.Alpha = 1;
+                        }
+
+                        FlashInstance.Visible = true;
+                        FlashInstance.SpriteInstance
+                            .Tween("Alpha")
+                            .To(0)
+                            .During(1)
+                            .Using(
+                                FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
                         TheodorGrownUp Temp = new TheodorGrownUp();
                         Temp.X = PlatformerCharacterBase.getInstance().X;
                         Temp.Y = PlatformerCharacterBase.getInstance().Y;
@@ -59,6 +75,21 @@ namespace VergissMeinNicht.Entities
                     }
                     else
                     {
+                        if (FlashInstance.Alpha == 0)
+                        {
+                            FlashInstance.Visible = false;
+                            FlashInstance.Alpha = 1;
+                        }
+
+                        FlashInstance.Visible = true;
+                        FlashInstance.SpriteInstance
+                            .Tween("Alpha")
+                            .To(0)
+                            .During(1)
+                            .Using(
+                                FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                FlatRedBall.Glue.StateInterpolation.Easing.Out);                        
+
                         TheodorChild Temp = new TheodorChild();
                         Temp.X = PlatformerCharacterBase.getInstance().X;
                         Temp.Y = PlatformerCharacterBase.getInstance().Y;
@@ -71,8 +102,7 @@ namespace VergissMeinNicht.Entities
                 if (InputManager.Keyboard.KeyPushed(Keys.S))
                 {
 
-                }
-                
+                }                
 
                     SaveText.Visible = true;
                     InteractText.Visible = true;
@@ -80,7 +110,7 @@ namespace VergissMeinNicht.Entities
                     SaveText.Position.Y = PlatformerCharacterBase.getInstance().Y + 80;
                     InteractText.Position.X = PlatformerCharacterBase.getInstance().Position.X + 100;
                     InteractText.Position.Y = PlatformerCharacterBase.getInstance().Y + 100;
-                
+                                
 
                 
             }

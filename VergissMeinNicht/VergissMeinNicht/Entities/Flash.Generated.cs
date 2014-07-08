@@ -54,7 +54,40 @@ namespace VergissMeinNicht.Entities
 		static List<string> LoadedContentManagers = new List<string>();
 		protected static Microsoft.Xna.Framework.Graphics.Texture2D White_square;
 		
-		private FlatRedBall.Sprite SpriteInstance;
+		private FlatRedBall.Sprite mSpriteInstance;
+		public FlatRedBall.Sprite SpriteInstance
+		{
+			get
+			{
+				return mSpriteInstance;
+			}
+			private set
+			{
+				mSpriteInstance = value;
+			}
+		}
+		public bool Visible
+		{
+			get
+			{
+				return SpriteInstance.Visible;
+			}
+			set
+			{
+				SpriteInstance.Visible = value;
+			}
+		}
+		public float Alpha
+		{
+			get
+			{
+				return SpriteInstance.Alpha;
+			}
+			set
+			{
+				SpriteInstance.Alpha = value;
+			}
+		}
 		protected Layer LayerProvidedByContainer = null;
 
         public Flash()
@@ -82,8 +115,8 @@ namespace VergissMeinNicht.Entities
 		{
 			// Generated Initialize
 			LoadStaticContent(ContentManagerName);
-			SpriteInstance = new FlatRedBall.Sprite();
-			SpriteInstance.Name = "SpriteInstance";
+			mSpriteInstance = new FlatRedBall.Sprite();
+			mSpriteInstance.Name = "mSpriteInstance";
 			
 			PostInitialize();
 			if (addToManagers)
@@ -99,13 +132,13 @@ namespace VergissMeinNicht.Entities
 		{
 			LayerProvidedByContainer = layerToAddTo;
 			SpriteManager.AddPositionedObject(this);
-			SpriteManager.AddToLayer(SpriteInstance, LayerProvidedByContainer);
+			SpriteManager.AddToLayer(mSpriteInstance, LayerProvidedByContainer);
 		}
 		public virtual void AddToManagers (Layer layerToAddTo)
 		{
 			LayerProvidedByContainer = layerToAddTo;
 			SpriteManager.AddPositionedObject(this);
-			SpriteManager.AddToLayer(SpriteInstance, LayerProvidedByContainer);
+			SpriteManager.AddToLayer(mSpriteInstance, LayerProvidedByContainer);
 			AddToManagersBottomUp(layerToAddTo);
 			CustomInitialize();
 		}
@@ -138,13 +171,13 @@ namespace VergissMeinNicht.Entities
 		{
 			bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
-			if (SpriteInstance.Parent == null)
+			if (mSpriteInstance.Parent == null)
 			{
-				SpriteInstance.CopyAbsoluteToRelative();
-				SpriteInstance.AttachTo(this, false);
+				mSpriteInstance.CopyAbsoluteToRelative();
+				mSpriteInstance.AttachTo(this, false);
 			}
-			SpriteInstance.TextureScale = 1f;
 			SpriteInstance.Texture = White_square;
+			SpriteInstance.TextureScale = 4f;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp (Layer layerToAddTo)
@@ -164,8 +197,10 @@ namespace VergissMeinNicht.Entities
 			if (callOnContainedElements)
 			{
 			}
-			SpriteInstance.TextureScale = 1f;
-			SpriteInstance.Texture = White_square;
+			mSpriteInstance.Texture = White_square;
+			mSpriteInstance.TextureScale = 4f;
+			Visible = false;
+			Alpha = 0f;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
