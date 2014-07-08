@@ -134,7 +134,7 @@ namespace VergissMeinNicht.Screens
             float CollisionHeightDiff = 0.15f;
             float CollisionWidthDiff = 0.08f;
 
-            if (InputManager.Keyboard.KeyPushed(Keys.Up) && PlatformerCharacterBase.getInstance().Y < 225)
+            if (InputManager.Keyboard.KeyPushed(Keys.Up) && PlatformerCharacterBase.getInstance().Y < 225 && !IsPaused)
             {
                 switch (PlatformerCharacterBase.getInstance().DirectionFacing)
                 {                        
@@ -172,7 +172,7 @@ namespace VergissMeinNicht.Screens
                         FlatRedBall.Glue.StateInterpolation.Easing.Out);               
             }
 
-            if (InputManager.Keyboard.KeyPushed(Keys.Down) && PlatformerCharacterBase.getInstance().Y > 75)
+            if (InputManager.Keyboard.KeyPushed(Keys.Down) && PlatformerCharacterBase.getInstance().Y > 75 && !IsPaused)
             {
                 Boden
                     .Tween("Y")

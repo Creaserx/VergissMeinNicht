@@ -201,16 +201,16 @@ namespace VergissMeinNicht.Entities
 				mCollision.CopyAbsoluteToRelative();
 				mCollision.AttachTo(this, false);
 			}
-			base.Collision.Height = 200f;
-			base.Collision.Width = 107f;
+			Collision.Height = 200f;
+			Collision.Width = 107f;
 			if (mSpriteInstance.Parent == null)
 			{
 				mSpriteInstance.CopyAbsoluteToRelative();
 				mSpriteInstance.AttachTo(this, false);
 			}
-			base.SpriteInstance.TextureScale = 1.3f;
-			base.SpriteInstance.AnimationChains = AnimationChainListFile;
-			base.SpriteInstance.CurrentChainName = "IdleRight";
+			SpriteInstance.AnimationChains = AnimationChainListFile;
+			SpriteInstance.TextureScale = 1.3f;
+			SpriteInstance.CurrentChainName = "IdleRight";
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public override void AddToManagersBottomUp (Layer layerToAddTo)
@@ -232,11 +232,11 @@ namespace VergissMeinNicht.Entities
 			if (callOnContainedElements)
 			{
 			}
-			base.mCollision.Height = 200f;
-			base.mCollision.Width = 107f;
-			base.mSpriteInstance.TextureScale = 1.3f;
-			base.mSpriteInstance.AnimationChains = AnimationChainListFile;
-			base.mSpriteInstance.CurrentChainName = "IdleRight";
+			mCollision.Height = 200f;
+			mCollision.Width = 107f;
+			mSpriteInstance.AnimationChains = AnimationChainListFile;
+			mSpriteInstance.TextureScale = 1.3f;
+			mSpriteInstance.CurrentChainName = "IdleRight";
 			GroundMovement = TheodorGrownUp.MovementValues["TheodorGrownUpOnGround"];
 			AirMovement = TheodorGrownUp.MovementValues["TheodorGrownUpInAir"];
 			AfterDoubleJump = TheodorGrownUp.MovementValues["ImmediateVelocityInAirGrownUp"];
