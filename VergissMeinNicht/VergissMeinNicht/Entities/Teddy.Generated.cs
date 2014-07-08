@@ -58,6 +58,7 @@ namespace VergissMeinNicht.Entities
 		private FlatRedBall.Sprite Sprite;
 		private VergissMeinNicht.Entities.TextArial SaveText;
 		private VergissMeinNicht.Entities.TextArial InteractText;
+		private VergissMeinNicht.Entities.Flash FlashInstance;
 		public bool SpriteVisible
 		{
 			get
@@ -102,6 +103,8 @@ namespace VergissMeinNicht.Entities
 			SaveText.Name = "SaveText";
 			InteractText = new VergissMeinNicht.Entities.TextArial(ContentManagerName, false);
 			InteractText.Name = "InteractText";
+			FlashInstance = new VergissMeinNicht.Entities.Flash(ContentManagerName, false);
+			FlashInstance.Name = "FlashInstance";
 			
 			PostInitialize();
 			if (addToManagers)
@@ -120,6 +123,7 @@ namespace VergissMeinNicht.Entities
 			SpriteManager.AddToLayer(Sprite, LayerProvidedByContainer);
 			SaveText.ReAddToManagers(LayerProvidedByContainer);
 			InteractText.ReAddToManagers(LayerProvidedByContainer);
+			FlashInstance.ReAddToManagers(LayerProvidedByContainer);
 		}
 		public virtual void AddToManagers (Layer layerToAddTo)
 		{
@@ -128,6 +132,7 @@ namespace VergissMeinNicht.Entities
 			SpriteManager.AddToLayer(Sprite, LayerProvidedByContainer);
 			SaveText.AddToManagers(LayerProvidedByContainer);
 			InteractText.AddToManagers(LayerProvidedByContainer);
+			FlashInstance.AddToManagers(LayerProvidedByContainer);
 			AddToManagersBottomUp(layerToAddTo);
 			CustomInitialize();
 		}
@@ -138,6 +143,7 @@ namespace VergissMeinNicht.Entities
 			
 			SaveText.Activity();
 			InteractText.Activity();
+			FlashInstance.Activity();
 			CustomActivity();
 			
 			// After Custom Activity
@@ -161,6 +167,11 @@ namespace VergissMeinNicht.Entities
 			{
 				InteractText.Destroy();
 				InteractText.Detach();
+			}
+			if (FlashInstance != null)
+			{
+				FlashInstance.Destroy();
+				FlashInstance.Detach();
 			}
 
 
@@ -213,6 +224,11 @@ namespace VergissMeinNicht.Entities
 			{
 				InteractText.RelativeY = -350f;
 			}
+			if (FlashInstance.Parent == null)
+			{
+				FlashInstance.CopyAbsoluteToRelative();
+				FlashInstance.AttachTo(this, false);
+			}
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp (Layer layerToAddTo)
@@ -228,6 +244,7 @@ namespace VergissMeinNicht.Entities
 			}
 			SaveText.RemoveFromManagers();
 			InteractText.RemoveFromManagers();
+			FlashInstance.RemoveFromManagers();
 		}
 		public virtual void AssignCustomVariables (bool callOnContainedElements)
 		{
@@ -235,6 +252,7 @@ namespace VergissMeinNicht.Entities
 			{
 				SaveText.AssignCustomVariables(true);
 				InteractText.AssignCustomVariables(true);
+				FlashInstance.AssignCustomVariables(true);
 			}
 			Sprite.Texture = teddy_normal;
 			Sprite.TextureScale = 1f;
@@ -281,6 +299,7 @@ namespace VergissMeinNicht.Entities
 			SpriteManager.ConvertToManuallyUpdated(Sprite);
 			SaveText.ConvertToManuallyUpdated();
 			InteractText.ConvertToManuallyUpdated();
+			FlashInstance.ConvertToManuallyUpdated();
 		}
 		public static void LoadStaticContent (string contentManagerName)
 		{
@@ -323,6 +342,7 @@ namespace VergissMeinNicht.Entities
 				teddy_fucked = FlatRedBallServices.Load<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/entities/teddyfuckedup/teddy_fucked.png", ContentManagerName);
 			}
 			VergissMeinNicht.Entities.TextArial.LoadStaticContent(contentManagerName);
+			VergissMeinNicht.Entities.Flash.LoadStaticContent(contentManagerName);
 			if (registerUnload && ContentManagerName != FlatRedBallServices.GlobalContentManager)
 			{
 				lock (mLockObject)
@@ -401,6 +421,7 @@ namespace VergissMeinNicht.Entities
 			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(Sprite);
 			SaveText.SetToIgnorePausing();
 			InteractText.SetToIgnorePausing();
+			FlashInstance.SetToIgnorePausing();
 		}
 		public virtual void MoveToLayer (Layer layerToMoveTo)
 		{
@@ -411,6 +432,7 @@ namespace VergissMeinNicht.Entities
 			SpriteManager.AddToLayer(Sprite, layerToMoveTo);
 			SaveText.MoveToLayer(layerToMoveTo);
 			InteractText.MoveToLayer(layerToMoveTo);
+			FlashInstance.MoveToLayer(layerToMoveTo);
 			LayerProvidedByContainer = layerToMoveTo;
 		}
 
