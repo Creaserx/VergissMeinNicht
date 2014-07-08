@@ -143,11 +143,7 @@ namespace VergissMeinNicht.Screens
         void LayerManagement()
         {                  
 
-<<<<<<< HEAD
             if (InputManager.Keyboard.KeyPushed(Keys.Up) && PlatformerCharacterBase.getInstance().Y < 175)
-=======
-            if (InputManager.Keyboard.KeyPushed(Keys.Up) && PlatformerCharacterBase.getInstance().Y < 225 && !IsPaused)
->>>>>>> 56f267fa64ba78a003b50f87534ad8bcf8503c39
             {
                 if (PlatformerCharacterBase.getInstance().DirectionFacing == PlatformerCharacterBase.LeftOrRight.Left)
                 {
@@ -281,13 +277,9 @@ namespace VergissMeinNicht.Screens
                         FlatRedBall.Glue.StateInterpolation.Easing.Out);               
             }
 
-<<<<<<< HEAD
 
 
             if (InputManager.Keyboard.KeyPushed(Keys.Down) && PlatformerCharacterBase.getInstance().Y > 75)
-=======
-            if (InputManager.Keyboard.KeyPushed(Keys.Down) && PlatformerCharacterBase.getInstance().Y > 75 && !IsPaused)
->>>>>>> 56f267fa64ba78a003b50f87534ad8bcf8503c39
             {
                 Boden
                     .Tween("Y")
