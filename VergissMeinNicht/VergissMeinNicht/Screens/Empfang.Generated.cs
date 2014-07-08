@@ -156,10 +156,10 @@ namespace VergissMeinNicht.Screens
 				throw new Exception("This type has been loaded with a Global content manager, then loaded with a non-global.  This can lead to a lot of bugs");
 			}
 			#endif
-			if (!FlatRedBallServices.IsLoaded<FlatRedBall.Scene>(@"content/screens/empfang/hintergrund.scnx", ContentManagerName))
+			if (!FlatRedBallServices.IsLoaded<FlatRedBall.Scene>(@"content/screens/empfang/hintergrund.scnx", contentManagerName))
 			{
 			}
-			Hintergrund = FlatRedBallServices.Load<FlatRedBall.Scene>(@"content/screens/empfang/hintergrund.scnx", ContentManagerName);
+			Hintergrund = FlatRedBallServices.Load<FlatRedBall.Scene>(@"content/screens/empfang/hintergrund.scnx", contentManagerName);
 			CustomLoadStaticContent(contentManagerName);
 		}
 		[System.Obsolete("Use GetFile instead")]

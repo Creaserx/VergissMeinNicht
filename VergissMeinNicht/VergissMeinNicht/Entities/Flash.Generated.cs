@@ -14,6 +14,7 @@ using FlatRedBall.Screens;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Xna.Framework.Graphics;
 
 #if XNA4 || WINDOWS_8
 using Color = Microsoft.Xna.Framework.Color;
@@ -51,8 +52,9 @@ namespace VergissMeinNicht.Entities
 		static object mLockObject = new object();
 		static List<string> mRegisteredUnloads = new List<string>();
 		static List<string> LoadedContentManagers = new List<string>();
+		protected static Microsoft.Xna.Framework.Graphics.Texture2D White_square;
 		
-		private FlatRedBall.Sprite Sprite;
+		private FlatRedBall.Sprite SpriteInstance;
 		protected Layer LayerProvidedByContainer = null;
 
         public Flash()
@@ -80,8 +82,8 @@ namespace VergissMeinNicht.Entities
 		{
 			// Generated Initialize
 			LoadStaticContent(ContentManagerName);
-			Sprite = new FlatRedBall.Sprite();
-			Sprite.Name = "Sprite";
+			SpriteInstance = new FlatRedBall.Sprite();
+			SpriteInstance.Name = "SpriteInstance";
 			
 			PostInitialize();
 			if (addToManagers)
@@ -97,13 +99,13 @@ namespace VergissMeinNicht.Entities
 		{
 			LayerProvidedByContainer = layerToAddTo;
 			SpriteManager.AddPositionedObject(this);
-			SpriteManager.AddToLayer(Sprite, LayerProvidedByContainer);
+			SpriteManager.AddToLayer(SpriteInstance, LayerProvidedByContainer);
 		}
 		public virtual void AddToManagers (Layer layerToAddTo)
 		{
 			LayerProvidedByContainer = layerToAddTo;
 			SpriteManager.AddPositionedObject(this);
-			SpriteManager.AddToLayer(Sprite, LayerProvidedByContainer);
+			SpriteManager.AddToLayer(SpriteInstance, LayerProvidedByContainer);
 			AddToManagersBottomUp(layerToAddTo);
 			CustomInitialize();
 		}
@@ -122,9 +124,9 @@ namespace VergissMeinNicht.Entities
 			// Generated Destroy
 			SpriteManager.RemovePositionedObject(this);
 			
-			if (Sprite != null)
+			if (SpriteInstance != null)
 			{
-				SpriteManager.RemoveSprite(Sprite);
+				SpriteManager.RemoveSprite(SpriteInstance);
 			}
 
 
@@ -136,12 +138,13 @@ namespace VergissMeinNicht.Entities
 		{
 			bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
-			if (Sprite.Parent == null)
+			if (SpriteInstance.Parent == null)
 			{
-				Sprite.CopyAbsoluteToRelative();
-				Sprite.AttachTo(this, false);
+				SpriteInstance.CopyAbsoluteToRelative();
+				SpriteInstance.AttachTo(this, false);
 			}
-			Sprite.TextureScale = 1f;
+			SpriteInstance.TextureScale = 1f;
+			SpriteInstance.Texture = White_square;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp (Layer layerToAddTo)
@@ -151,9 +154,9 @@ namespace VergissMeinNicht.Entities
 		public virtual void RemoveFromManagers ()
 		{
 			SpriteManager.ConvertToManuallyUpdated(this);
-			if (Sprite != null)
+			if (SpriteInstance != null)
 			{
-				SpriteManager.RemoveSpriteOneWay(Sprite);
+				SpriteManager.RemoveSpriteOneWay(SpriteInstance);
 			}
 		}
 		public virtual void AssignCustomVariables (bool callOnContainedElements)
@@ -161,13 +164,14 @@ namespace VergissMeinNicht.Entities
 			if (callOnContainedElements)
 			{
 			}
-			Sprite.TextureScale = 1f;
+			SpriteInstance.TextureScale = 1f;
+			SpriteInstance.Texture = White_square;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
 			this.ForceUpdateDependenciesDeep();
 			SpriteManager.ConvertToManuallyUpdated(this);
-			SpriteManager.ConvertToManuallyUpdated(Sprite);
+			SpriteManager.ConvertToManuallyUpdated(SpriteInstance);
 		}
 		public static void LoadStaticContent (string contentManagerName)
 		{
@@ -198,6 +202,11 @@ namespace VergissMeinNicht.Entities
 						mRegisteredUnloads.Add(ContentManagerName);
 					}
 				}
+				if (!FlatRedBallServices.IsLoaded<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/entities/flash/white_square.png", ContentManagerName))
+				{
+					registerUnload = true;
+				}
+				White_square = FlatRedBallServices.Load<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/entities/flash/white_square.png", ContentManagerName);
 			}
 			if (registerUnload && ContentManagerName != FlatRedBallServices.GlobalContentManager)
 			{
@@ -221,19 +230,38 @@ namespace VergissMeinNicht.Entities
 			}
 			if (LoadedContentManagers.Count == 0)
 			{
+				if (White_square != null)
+				{
+					White_square= null;
+				}
 			}
 		}
 		[System.Obsolete("Use GetFile instead")]
 		public static object GetStaticMember (string memberName)
 		{
+			switch(memberName)
+			{
+				case  "White_square":
+					return White_square;
+			}
 			return null;
 		}
 		public static object GetFile (string memberName)
 		{
+			switch(memberName)
+			{
+				case  "White_square":
+					return White_square;
+			}
 			return null;
 		}
 		object GetMember (string memberName)
 		{
+			switch(memberName)
+			{
+				case  "White_square":
+					return White_square;
+			}
 			return null;
 		}
 		protected bool mIsPaused;
@@ -245,15 +273,15 @@ namespace VergissMeinNicht.Entities
 		public virtual void SetToIgnorePausing ()
 		{
 			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(this);
-			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(Sprite);
+			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(SpriteInstance);
 		}
 		public virtual void MoveToLayer (Layer layerToMoveTo)
 		{
 			if (LayerProvidedByContainer != null)
 			{
-				LayerProvidedByContainer.Remove(Sprite);
+				LayerProvidedByContainer.Remove(SpriteInstance);
 			}
-			SpriteManager.AddToLayer(Sprite, layerToMoveTo);
+			SpriteManager.AddToLayer(SpriteInstance, layerToMoveTo);
 			LayerProvidedByContainer = layerToMoveTo;
 		}
 
