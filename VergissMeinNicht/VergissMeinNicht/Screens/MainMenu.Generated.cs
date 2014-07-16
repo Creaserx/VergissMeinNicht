@@ -28,6 +28,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using FlatRedBall.Graphics;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace VergissMeinNicht.Screens
 {
@@ -86,9 +87,11 @@ namespace VergissMeinNicht.Screens
 				}
 			}
 		}
+		protected static Microsoft.Xna.Framework.Graphics.Texture2D HauptmenüFinal;
 		
-		private VergissMeinNicht.Entities.Button NewGameButton;
 		private VergissMeinNicht.Entities.Button ZooLevelButton;
+		private FlatRedBall.Sprite SpriteInstance;
+		private VergissMeinNicht.Entities.Button NewGameButton;
 		private VergissMeinNicht.Entities.Button LoadGameButton;
 		private VergissMeinNicht.Entities.Button OptionsButton;
 		private VergissMeinNicht.Entities.Button ExitGameButton;
@@ -178,10 +181,12 @@ namespace VergissMeinNicht.Screens
         {
 			// Generated Initialize
 			LoadStaticContent(ContentManagerName);
-			NewGameButton = new VergissMeinNicht.Entities.Button(ContentManagerName, false);
-			NewGameButton.Name = "NewGameButton";
 			ZooLevelButton = new VergissMeinNicht.Entities.Button(ContentManagerName, false);
 			ZooLevelButton.Name = "ZooLevelButton";
+			SpriteInstance = new FlatRedBall.Sprite();
+			SpriteInstance.Name = "SpriteInstance";
+			NewGameButton = new VergissMeinNicht.Entities.Button(ContentManagerName, false);
+			NewGameButton.Name = "NewGameButton";
 			LoadGameButton = new VergissMeinNicht.Entities.Button(ContentManagerName, false);
 			LoadGameButton.Name = "LoadGameButton";
 			OptionsButton = new VergissMeinNicht.Entities.Button(ContentManagerName, false);
@@ -222,11 +227,12 @@ namespace VergissMeinNicht.Screens
 				OkCancelLayer.LayerCameraSettings.OrthogonalWidth = FlatRedBall.SpriteManager.Camera.OrthogonalWidth;
 				OkCancelLayer.LayerCameraSettings.OrthogonalHeight = FlatRedBall.SpriteManager.Camera.OrthogonalHeight;
 			}
-			NewGameButton.AddToManagers(Layer2D);
 			ZooLevelButton.AddToManagers(Layer2D);
-			LoadGameButton.AddToManagers(Layer2D);
-			OptionsButton.AddToManagers(Layer2D);
-			ExitGameButton.AddToManagers(Layer2D);
+			SpriteManager.AddSprite(SpriteInstance);
+			NewGameButton.AddToManagers(SpriteManager.UnderAllDrawnLayer);
+			LoadGameButton.AddToManagers(SpriteManager.UnderAllDrawnLayer);
+			OptionsButton.AddToManagers(SpriteManager.UnderAllDrawnLayer);
+			ExitGameButton.AddToManagers(SpriteManager.UnderAllDrawnLayer);
 			OkCancelInstance.AddToManagers(OkCancelLayer);
 			base.AddToManagers();
 			AddToManagersBottomUp();
@@ -240,8 +246,8 @@ namespace VergissMeinNicht.Screens
 			if (!IsPaused)
 			{
 				
-				NewGameButton.Activity();
 				ZooLevelButton.Activity();
+				NewGameButton.Activity();
 				LoadGameButton.Activity();
 				OptionsButton.Activity();
 				ExitGameButton.Activity();
@@ -265,16 +271,21 @@ namespace VergissMeinNicht.Screens
 		public override void Destroy()
 		{
 			// Generated Destroy
+			HauptmenüFinal = null;
 			
-			if (NewGameButton != null)
-			{
-				NewGameButton.Destroy();
-				NewGameButton.Detach();
-			}
 			if (ZooLevelButton != null)
 			{
 				ZooLevelButton.Destroy();
 				ZooLevelButton.Detach();
+			}
+			if (SpriteInstance != null)
+			{
+				SpriteManager.RemoveSprite(SpriteInstance);
+			}
+			if (NewGameButton != null)
+			{
+				NewGameButton.Destroy();
+				NewGameButton.Detach();
 			}
 			if (LoadGameButton != null)
 			{
@@ -330,16 +341,6 @@ namespace VergissMeinNicht.Screens
 			OkCancelInstance.CancelClick += OnOkCancelInstanceCancelClickTunnel;
 			ZooLevelButton.Click += OnZooLevelButtonClick;
 			ZooLevelButton.Click += OnZooLevelButtonClickTunnel;
-			NewGameButton.SpriteFrameInstanceCurrentChainName = "";
-			NewGameButton.DisplayText = "New Game";
-			if (NewGameButton.Parent == null)
-			{
-				NewGameButton.Y = 40f;
-			}
-			else
-			{
-				NewGameButton.RelativeY = 40f;
-			}
 			ZooLevelButton.SpriteFrameInstanceCurrentChainName = "";
 			ZooLevelButton.DisplayText = "Enter ZooLevel";
 			if (ZooLevelButton.Parent == null)
@@ -350,25 +351,127 @@ namespace VergissMeinNicht.Screens
 			{
 				ZooLevelButton.RelativeY = 80f;
 			}
+			ZooLevelButton.ScaleX = 100f;
+			if (ZooLevelButton.Parent == null)
+			{
+				ZooLevelButton.X = 0f;
+			}
+			else
+			{
+				ZooLevelButton.RelativeX = 0f;
+			}
+			ZooLevelButton.Visible = true;
+			SpriteInstance.TextureScale = 1f;
+			SpriteInstance.Texture = HauptmenüFinal;
+			NewGameButton.SpriteFrameInstanceCurrentChainName = "";
+			NewGameButton.DisplayText = "New Game";
+			NewGameButton.ScaleX = 120f;
+			if (NewGameButton.Parent == null)
+			{
+				NewGameButton.X = 200f;
+			}
+			else
+			{
+				NewGameButton.RelativeX = 200f;
+			}
+			if (NewGameButton.Parent == null)
+			{
+				NewGameButton.Y = 20f;
+			}
+			else
+			{
+				NewGameButton.RelativeY = 20f;
+			}
+			if (NewGameButton.Parent == null)
+			{
+				NewGameButton.RotationZ = 0.25f;
+			}
+			else
+			{
+				NewGameButton.RelativeRotationZ = 0.25f;
+			}
+			NewGameButton.Visible = false;
 			LoadGameButton.DisplayText = "Load Game";
+			if (LoadGameButton.Parent == null)
+			{
+				LoadGameButton.X = 200f;
+			}
+			else
+			{
+				LoadGameButton.RelativeX = 200f;
+			}
+			LoadGameButton.ScaleX = 120f;
+			if (LoadGameButton.Parent == null)
+			{
+				LoadGameButton.RotationZ = 0.2f;
+			}
+			else
+			{
+				LoadGameButton.RelativeRotationZ = 0.2f;
+			}
+			if (LoadGameButton.Parent == null)
+			{
+				LoadGameButton.Y = -40f;
+			}
+			else
+			{
+				LoadGameButton.RelativeY = -40f;
+			}
+			LoadGameButton.Visible = false;
 			OptionsButton.DisplayText = "Options";
 			if (OptionsButton.Parent == null)
 			{
-				OptionsButton.Y = -40f;
+				OptionsButton.Y = -100f;
 			}
 			else
 			{
-				OptionsButton.RelativeY = -40f;
+				OptionsButton.RelativeY = -100f;
 			}
+			if (OptionsButton.Parent == null)
+			{
+				OptionsButton.RotationZ = 0.1f;
+			}
+			else
+			{
+				OptionsButton.RelativeRotationZ = 0.1f;
+			}
+			if (OptionsButton.Parent == null)
+			{
+				OptionsButton.X = 200f;
+			}
+			else
+			{
+				OptionsButton.RelativeX = 200f;
+			}
+			OptionsButton.ScaleX = 120f;
+			OptionsButton.Visible = false;
 			ExitGameButton.DisplayText = "Exit Game";
 			if (ExitGameButton.Parent == null)
 			{
-				ExitGameButton.Y = -80f;
+				ExitGameButton.Y = -170f;
 			}
 			else
 			{
-				ExitGameButton.RelativeY = -80f;
+				ExitGameButton.RelativeY = -170f;
 			}
+			if (ExitGameButton.Parent == null)
+			{
+				ExitGameButton.RotationZ = 0f;
+			}
+			else
+			{
+				ExitGameButton.RelativeRotationZ = 0f;
+			}
+			ExitGameButton.ScaleX = 120f;
+			if (ExitGameButton.Parent == null)
+			{
+				ExitGameButton.X = 200f;
+			}
+			else
+			{
+				ExitGameButton.RelativeX = 200f;
+			}
+			ExitGameButton.Visible = false;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp ()
@@ -378,8 +481,12 @@ namespace VergissMeinNicht.Screens
 		}
 		public virtual void RemoveFromManagers ()
 		{
-			NewGameButton.RemoveFromManagers();
 			ZooLevelButton.RemoveFromManagers();
+			if (SpriteInstance != null)
+			{
+				SpriteManager.RemoveSpriteOneWay(SpriteInstance);
+			}
+			NewGameButton.RemoveFromManagers();
 			LoadGameButton.RemoveFromManagers();
 			OptionsButton.RemoveFromManagers();
 			ExitGameButton.RemoveFromManagers();
@@ -397,22 +504,12 @@ namespace VergissMeinNicht.Screens
 		{
 			if (callOnContainedElements)
 			{
-				NewGameButton.AssignCustomVariables(true);
 				ZooLevelButton.AssignCustomVariables(true);
+				NewGameButton.AssignCustomVariables(true);
 				LoadGameButton.AssignCustomVariables(true);
 				OptionsButton.AssignCustomVariables(true);
 				ExitGameButton.AssignCustomVariables(true);
 				OkCancelInstance.AssignCustomVariables(true);
-			}
-			NewGameButton.SpriteFrameInstanceCurrentChainName = "";
-			NewGameButton.DisplayText = "New Game";
-			if (NewGameButton.Parent == null)
-			{
-				NewGameButton.Y = 40f;
-			}
-			else
-			{
-				NewGameButton.RelativeY = 40f;
 			}
 			ZooLevelButton.SpriteFrameInstanceCurrentChainName = "";
 			ZooLevelButton.DisplayText = "Enter ZooLevel";
@@ -424,36 +521,139 @@ namespace VergissMeinNicht.Screens
 			{
 				ZooLevelButton.RelativeY = 80f;
 			}
+			ZooLevelButton.ScaleX = 100f;
+			if (ZooLevelButton.Parent == null)
+			{
+				ZooLevelButton.X = 0f;
+			}
+			else
+			{
+				ZooLevelButton.RelativeX = 0f;
+			}
+			ZooLevelButton.Visible = true;
+			SpriteInstance.TextureScale = 1f;
+			SpriteInstance.Texture = HauptmenüFinal;
+			NewGameButton.SpriteFrameInstanceCurrentChainName = "";
+			NewGameButton.DisplayText = "New Game";
+			NewGameButton.ScaleX = 120f;
+			if (NewGameButton.Parent == null)
+			{
+				NewGameButton.X = 200f;
+			}
+			else
+			{
+				NewGameButton.RelativeX = 200f;
+			}
+			if (NewGameButton.Parent == null)
+			{
+				NewGameButton.Y = 20f;
+			}
+			else
+			{
+				NewGameButton.RelativeY = 20f;
+			}
+			if (NewGameButton.Parent == null)
+			{
+				NewGameButton.RotationZ = 0.25f;
+			}
+			else
+			{
+				NewGameButton.RelativeRotationZ = 0.25f;
+			}
+			NewGameButton.Visible = false;
 			LoadGameButton.DisplayText = "Load Game";
+			if (LoadGameButton.Parent == null)
+			{
+				LoadGameButton.X = 200f;
+			}
+			else
+			{
+				LoadGameButton.RelativeX = 200f;
+			}
+			LoadGameButton.ScaleX = 120f;
+			if (LoadGameButton.Parent == null)
+			{
+				LoadGameButton.RotationZ = 0.2f;
+			}
+			else
+			{
+				LoadGameButton.RelativeRotationZ = 0.2f;
+			}
+			if (LoadGameButton.Parent == null)
+			{
+				LoadGameButton.Y = -40f;
+			}
+			else
+			{
+				LoadGameButton.RelativeY = -40f;
+			}
+			LoadGameButton.Visible = false;
 			OptionsButton.DisplayText = "Options";
 			if (OptionsButton.Parent == null)
 			{
-				OptionsButton.Y = -40f;
+				OptionsButton.Y = -100f;
 			}
 			else
 			{
-				OptionsButton.RelativeY = -40f;
+				OptionsButton.RelativeY = -100f;
 			}
+			if (OptionsButton.Parent == null)
+			{
+				OptionsButton.RotationZ = 0.1f;
+			}
+			else
+			{
+				OptionsButton.RelativeRotationZ = 0.1f;
+			}
+			if (OptionsButton.Parent == null)
+			{
+				OptionsButton.X = 200f;
+			}
+			else
+			{
+				OptionsButton.RelativeX = 200f;
+			}
+			OptionsButton.ScaleX = 120f;
+			OptionsButton.Visible = false;
 			ExitGameButton.DisplayText = "Exit Game";
 			if (ExitGameButton.Parent == null)
 			{
-				ExitGameButton.Y = -80f;
+				ExitGameButton.Y = -170f;
 			}
 			else
 			{
-				ExitGameButton.RelativeY = -80f;
+				ExitGameButton.RelativeY = -170f;
 			}
-			ExitGameButtonVisible = true;
-			LoadGameButtonVisible = true;
-			NewGameButtonVisible = true;
-			OptionsButtonVisible = true;
+			if (ExitGameButton.Parent == null)
+			{
+				ExitGameButton.RotationZ = 0f;
+			}
+			else
+			{
+				ExitGameButton.RelativeRotationZ = 0f;
+			}
+			ExitGameButton.ScaleX = 120f;
+			if (ExitGameButton.Parent == null)
+			{
+				ExitGameButton.X = 200f;
+			}
+			else
+			{
+				ExitGameButton.RelativeX = 200f;
+			}
+			ExitGameButton.Visible = false;
+			ExitGameButtonVisible = false;
+			LoadGameButtonVisible = false;
+			NewGameButtonVisible = false;
+			OptionsButtonVisible = false;
 			CurrentState = MainMenu.VariableState.MainButtonsVisible;
 			ZooLevelButtonVisible = true;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
-			NewGameButton.ConvertToManuallyUpdated();
 			ZooLevelButton.ConvertToManuallyUpdated();
+			SpriteManager.ConvertToManuallyUpdated(SpriteInstance);
+			NewGameButton.ConvertToManuallyUpdated();
 			LoadGameButton.ConvertToManuallyUpdated();
 			OptionsButton.ConvertToManuallyUpdated();
 			ExitGameButton.ConvertToManuallyUpdated();
@@ -475,6 +675,10 @@ namespace VergissMeinNicht.Screens
 				throw new Exception("This type has been loaded with a Global content manager, then loaded with a non-global.  This can lead to a lot of bugs");
 			}
 			#endif
+			if (!FlatRedBallServices.IsLoaded<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/screens/mainmenu/hauptmenüfinal.jpg", contentManagerName))
+			{
+			}
+			HauptmenüFinal = FlatRedBallServices.Load<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/screens/mainmenu/hauptmenüfinal.jpg", contentManagerName);
 			VergissMeinNicht.Entities.Button.LoadStaticContent(contentManagerName);
 			VergissMeinNicht.Entities.OkCancel.LoadStaticContent(contentManagerName);
 			CustomLoadStaticContent(contentManagerName);
@@ -660,14 +864,29 @@ namespace VergissMeinNicht.Screens
 		[System.Obsolete("Use GetFile instead")]
 		public static object GetStaticMember (string memberName)
 		{
+			switch(memberName)
+			{
+				case  "HauptmenüFinal":
+					return HauptmenüFinal;
+			}
 			return null;
 		}
 		public static object GetFile (string memberName)
 		{
+			switch(memberName)
+			{
+				case  "HauptmenüFinal":
+					return HauptmenüFinal;
+			}
 			return null;
 		}
 		object GetMember (string memberName)
 		{
+			switch(memberName)
+			{
+				case  "HauptmenüFinal":
+					return HauptmenüFinal;
+			}
 			return null;
 		}
 

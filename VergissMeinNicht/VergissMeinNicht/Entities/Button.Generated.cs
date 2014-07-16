@@ -364,6 +364,15 @@ namespace VergissMeinNicht.Entities
 			{
 				RelativeZ = 0f;
 			}
+			Visible = true;
+			if (Parent == null)
+			{
+				RotationZ = 0f;
+			}
+			else
+			{
+				RelativeRotationZ = 0f;
+			}
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{

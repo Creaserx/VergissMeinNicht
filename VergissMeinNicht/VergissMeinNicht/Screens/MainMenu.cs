@@ -32,8 +32,9 @@ namespace VergissMeinNicht.Screens
 
 		void CustomInitialize()
 		{
-
-
+            // Size the sprite to match the size of the camera
+            SpriteInstance.ScaleX = FlatRedBall.SpriteManager.Camera.RelativeXEdgeAt(SpriteInstance.Z);
+            SpriteInstance.ScaleY = FlatRedBall.SpriteManager.Camera.RelativeYEdgeAt(SpriteInstance.Z);            
 		}
 
 		void CustomActivity(bool firstTimeCalled)

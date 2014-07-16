@@ -162,6 +162,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Hintergrund</Name>
     </None>
+    <None Include="Screens\MainMenu\HauptmenüFinal.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>HauptmenüFinal</Name>
+    </None>
     <None Include="Screens\ZooLevel\10382537_889952597687392_1592239203505348189_o.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>10382537_889952597687392_1592239203505348189_o</Name>
