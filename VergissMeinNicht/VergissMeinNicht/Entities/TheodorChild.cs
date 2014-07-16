@@ -47,11 +47,11 @@ namespace VergissMeinNicht.Entities
               {
                   if (HorizontalRatio > 0)
                   {
-                      this.SpriteInstance.CurrentChainName = "WalkRight2";
+                      this.SpriteInstance.CurrentChainName = "WalkRight";
                   }
                   else if (HorizontalRatio < 0)
                   {
-                      this.SpriteInstance.CurrentChainName = "WalkLeft2";
+                      this.SpriteInstance.CurrentChainName = "WalkLeft";
                   }
                   else
                   {
