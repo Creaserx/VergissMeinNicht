@@ -343,14 +343,6 @@ namespace VergissMeinNicht.Screens
 			ZooLevelButton.Click += OnZooLevelButtonClickTunnel;
 			ZooLevelButton.SpriteFrameInstanceCurrentChainName = "";
 			ZooLevelButton.DisplayText = "Enter ZooLevel";
-			if (ZooLevelButton.Parent == null)
-			{
-				ZooLevelButton.Y = 80f;
-			}
-			else
-			{
-				ZooLevelButton.RelativeY = 80f;
-			}
 			ZooLevelButton.ScaleX = 100f;
 			if (ZooLevelButton.Parent == null)
 			{
@@ -360,9 +352,17 @@ namespace VergissMeinNicht.Screens
 			{
 				ZooLevelButton.RelativeX = 0f;
 			}
+			if (ZooLevelButton.Parent == null)
+			{
+				ZooLevelButton.Y = 80f;
+			}
+			else
+			{
+				ZooLevelButton.RelativeY = 80f;
+			}
 			ZooLevelButton.Visible = true;
-			SpriteInstance.TextureScale = 1f;
 			SpriteInstance.Texture = HauptmenüFinal;
+			SpriteInstance.TextureScale = 1f;
 			NewGameButton.SpriteFrameInstanceCurrentChainName = "";
 			NewGameButton.DisplayText = "New Game";
 			NewGameButton.ScaleX = 120f;
@@ -382,6 +382,7 @@ namespace VergissMeinNicht.Screens
 			{
 				NewGameButton.RelativeY = 20f;
 			}
+			NewGameButton.Visible = false;
 			if (NewGameButton.Parent == null)
 			{
 				NewGameButton.RotationZ = 0.25f;
@@ -390,8 +391,8 @@ namespace VergissMeinNicht.Screens
 			{
 				NewGameButton.RelativeRotationZ = 0.25f;
 			}
-			NewGameButton.Visible = false;
 			LoadGameButton.DisplayText = "Load Game";
+			LoadGameButton.ScaleX = 120f;
 			if (LoadGameButton.Parent == null)
 			{
 				LoadGameButton.X = 200f;
@@ -399,15 +400,6 @@ namespace VergissMeinNicht.Screens
 			else
 			{
 				LoadGameButton.RelativeX = 200f;
-			}
-			LoadGameButton.ScaleX = 120f;
-			if (LoadGameButton.Parent == null)
-			{
-				LoadGameButton.RotationZ = 0.2f;
-			}
-			else
-			{
-				LoadGameButton.RelativeRotationZ = 0.2f;
 			}
 			if (LoadGameButton.Parent == null)
 			{
@@ -418,23 +410,16 @@ namespace VergissMeinNicht.Screens
 				LoadGameButton.RelativeY = -40f;
 			}
 			LoadGameButton.Visible = false;
+			if (LoadGameButton.Parent == null)
+			{
+				LoadGameButton.RotationZ = 0.2f;
+			}
+			else
+			{
+				LoadGameButton.RelativeRotationZ = 0.2f;
+			}
 			OptionsButton.DisplayText = "Options";
-			if (OptionsButton.Parent == null)
-			{
-				OptionsButton.Y = -100f;
-			}
-			else
-			{
-				OptionsButton.RelativeY = -100f;
-			}
-			if (OptionsButton.Parent == null)
-			{
-				OptionsButton.RotationZ = 0.1f;
-			}
-			else
-			{
-				OptionsButton.RelativeRotationZ = 0.1f;
-			}
+			OptionsButton.ScaleX = 120f;
 			if (OptionsButton.Parent == null)
 			{
 				OptionsButton.X = 200f;
@@ -443,25 +428,24 @@ namespace VergissMeinNicht.Screens
 			{
 				OptionsButton.RelativeX = 200f;
 			}
-			OptionsButton.ScaleX = 120f;
+			if (OptionsButton.Parent == null)
+			{
+				OptionsButton.Y = -100f;
+			}
+			else
+			{
+				OptionsButton.RelativeY = -100f;
+			}
 			OptionsButton.Visible = false;
+			if (OptionsButton.Parent == null)
+			{
+				OptionsButton.RotationZ = 0.1f;
+			}
+			else
+			{
+				OptionsButton.RelativeRotationZ = 0.1f;
+			}
 			ExitGameButton.DisplayText = "Exit Game";
-			if (ExitGameButton.Parent == null)
-			{
-				ExitGameButton.Y = -170f;
-			}
-			else
-			{
-				ExitGameButton.RelativeY = -170f;
-			}
-			if (ExitGameButton.Parent == null)
-			{
-				ExitGameButton.RotationZ = 0f;
-			}
-			else
-			{
-				ExitGameButton.RelativeRotationZ = 0f;
-			}
 			ExitGameButton.ScaleX = 120f;
 			if (ExitGameButton.Parent == null)
 			{
@@ -471,7 +455,23 @@ namespace VergissMeinNicht.Screens
 			{
 				ExitGameButton.RelativeX = 200f;
 			}
+			if (ExitGameButton.Parent == null)
+			{
+				ExitGameButton.Y = -170f;
+			}
+			else
+			{
+				ExitGameButton.RelativeY = -170f;
+			}
 			ExitGameButton.Visible = false;
+			if (ExitGameButton.Parent == null)
+			{
+				ExitGameButton.RotationZ = 0f;
+			}
+			else
+			{
+				ExitGameButton.RelativeRotationZ = 0f;
+			}
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp ()
@@ -513,14 +513,6 @@ namespace VergissMeinNicht.Screens
 			}
 			ZooLevelButton.SpriteFrameInstanceCurrentChainName = "";
 			ZooLevelButton.DisplayText = "Enter ZooLevel";
-			if (ZooLevelButton.Parent == null)
-			{
-				ZooLevelButton.Y = 80f;
-			}
-			else
-			{
-				ZooLevelButton.RelativeY = 80f;
-			}
 			ZooLevelButton.ScaleX = 100f;
 			if (ZooLevelButton.Parent == null)
 			{
@@ -530,9 +522,17 @@ namespace VergissMeinNicht.Screens
 			{
 				ZooLevelButton.RelativeX = 0f;
 			}
+			if (ZooLevelButton.Parent == null)
+			{
+				ZooLevelButton.Y = 80f;
+			}
+			else
+			{
+				ZooLevelButton.RelativeY = 80f;
+			}
 			ZooLevelButton.Visible = true;
-			SpriteInstance.TextureScale = 1f;
 			SpriteInstance.Texture = HauptmenüFinal;
+			SpriteInstance.TextureScale = 1f;
 			NewGameButton.SpriteFrameInstanceCurrentChainName = "";
 			NewGameButton.DisplayText = "New Game";
 			NewGameButton.ScaleX = 120f;
@@ -552,6 +552,7 @@ namespace VergissMeinNicht.Screens
 			{
 				NewGameButton.RelativeY = 20f;
 			}
+			NewGameButton.Visible = false;
 			if (NewGameButton.Parent == null)
 			{
 				NewGameButton.RotationZ = 0.25f;
@@ -560,8 +561,8 @@ namespace VergissMeinNicht.Screens
 			{
 				NewGameButton.RelativeRotationZ = 0.25f;
 			}
-			NewGameButton.Visible = false;
 			LoadGameButton.DisplayText = "Load Game";
+			LoadGameButton.ScaleX = 120f;
 			if (LoadGameButton.Parent == null)
 			{
 				LoadGameButton.X = 200f;
@@ -569,15 +570,6 @@ namespace VergissMeinNicht.Screens
 			else
 			{
 				LoadGameButton.RelativeX = 200f;
-			}
-			LoadGameButton.ScaleX = 120f;
-			if (LoadGameButton.Parent == null)
-			{
-				LoadGameButton.RotationZ = 0.2f;
-			}
-			else
-			{
-				LoadGameButton.RelativeRotationZ = 0.2f;
 			}
 			if (LoadGameButton.Parent == null)
 			{
@@ -588,23 +580,16 @@ namespace VergissMeinNicht.Screens
 				LoadGameButton.RelativeY = -40f;
 			}
 			LoadGameButton.Visible = false;
+			if (LoadGameButton.Parent == null)
+			{
+				LoadGameButton.RotationZ = 0.2f;
+			}
+			else
+			{
+				LoadGameButton.RelativeRotationZ = 0.2f;
+			}
 			OptionsButton.DisplayText = "Options";
-			if (OptionsButton.Parent == null)
-			{
-				OptionsButton.Y = -100f;
-			}
-			else
-			{
-				OptionsButton.RelativeY = -100f;
-			}
-			if (OptionsButton.Parent == null)
-			{
-				OptionsButton.RotationZ = 0.1f;
-			}
-			else
-			{
-				OptionsButton.RelativeRotationZ = 0.1f;
-			}
+			OptionsButton.ScaleX = 120f;
 			if (OptionsButton.Parent == null)
 			{
 				OptionsButton.X = 200f;
@@ -613,25 +598,24 @@ namespace VergissMeinNicht.Screens
 			{
 				OptionsButton.RelativeX = 200f;
 			}
-			OptionsButton.ScaleX = 120f;
+			if (OptionsButton.Parent == null)
+			{
+				OptionsButton.Y = -100f;
+			}
+			else
+			{
+				OptionsButton.RelativeY = -100f;
+			}
 			OptionsButton.Visible = false;
+			if (OptionsButton.Parent == null)
+			{
+				OptionsButton.RotationZ = 0.1f;
+			}
+			else
+			{
+				OptionsButton.RelativeRotationZ = 0.1f;
+			}
 			ExitGameButton.DisplayText = "Exit Game";
-			if (ExitGameButton.Parent == null)
-			{
-				ExitGameButton.Y = -170f;
-			}
-			else
-			{
-				ExitGameButton.RelativeY = -170f;
-			}
-			if (ExitGameButton.Parent == null)
-			{
-				ExitGameButton.RotationZ = 0f;
-			}
-			else
-			{
-				ExitGameButton.RelativeRotationZ = 0f;
-			}
 			ExitGameButton.ScaleX = 120f;
 			if (ExitGameButton.Parent == null)
 			{
@@ -641,7 +625,23 @@ namespace VergissMeinNicht.Screens
 			{
 				ExitGameButton.RelativeX = 200f;
 			}
+			if (ExitGameButton.Parent == null)
+			{
+				ExitGameButton.Y = -170f;
+			}
+			else
+			{
+				ExitGameButton.RelativeY = -170f;
+			}
 			ExitGameButton.Visible = false;
+			if (ExitGameButton.Parent == null)
+			{
+				ExitGameButton.RotationZ = 0f;
+			}
+			else
+			{
+				ExitGameButton.RelativeRotationZ = 0f;
+			}
 			ExitGameButtonVisible = false;
 			LoadGameButtonVisible = false;
 			NewGameButtonVisible = false;

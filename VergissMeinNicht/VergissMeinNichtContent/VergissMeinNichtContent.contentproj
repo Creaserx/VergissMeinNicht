@@ -138,6 +138,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>AnimationChainListFile</Name>
     </None>
+    <None Include="Entities\Theodor\TheodorChild_WalkAnimationChain.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>TheodorChild_WalkAnimationChain</Name>
+    </None>
     <None Include="Entities\Theodor\Theodor_Dummy_SpriteSheet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Theodor_Dummy_SpriteSheet</Name>
@@ -169,10 +173,6 @@
     <None Include="Screens\Flur\flur_1-1-1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>flur_1-1-1</Name>
-    </None>
-     <None Include="Screens\Flur\SceneFile.scnx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Name>SceneFile</Name>
     </None>
     <None Include="Screens\MainMenu\HauptmenüFinal.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
