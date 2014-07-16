@@ -36,7 +36,7 @@ namespace VergissMeinNicht.Screens
 		#if DEBUG
 		static bool HasBeenLoadedWithGlobalContentManager = false;
 		#endif
-		protected static FlatRedBall.Scene Hintergrund;
+		protected static FlatRedBall.Scene Background;
 		
 
 		public Empfang()
@@ -57,7 +57,7 @@ namespace VergissMeinNicht.Screens
 // Generated AddToManagers
 		public override void AddToManagers ()
 		{
-			Hintergrund.AddToManagers(mLayer);
+			Background.AddToManagers(mLayer);
 			base.AddToManagers();
 			CustomInitialize();
 		}
@@ -90,19 +90,19 @@ namespace VergissMeinNicht.Screens
 			// Generated Destroy
 			if (this.UnloadsContentManagerWhenDestroyed && ContentManagerName != "Global")
 			{
-				Hintergrund.RemoveFromManagers(ContentManagerName != "Global");
+				Background.RemoveFromManagers(ContentManagerName != "Global");
 			}
 			else
 			{
-				Hintergrund.RemoveFromManagers(false);
+				Background.RemoveFromManagers(false);
 			}
 			if (this.UnloadsContentManagerWhenDestroyed && ContentManagerName != "Global")
 			{
-				Hintergrund = null;
+				Background = null;
 			}
 			else
 			{
-				Hintergrund.MakeOneWay();
+				Background.MakeOneWay();
 			}
 			
 
@@ -156,10 +156,10 @@ namespace VergissMeinNicht.Screens
 				throw new Exception("This type has been loaded with a Global content manager, then loaded with a non-global.  This can lead to a lot of bugs");
 			}
 			#endif
-			if (!FlatRedBallServices.IsLoaded<FlatRedBall.Scene>(@"content/screens/empfang/hintergrund.scnx", contentManagerName))
+			if (!FlatRedBallServices.IsLoaded<FlatRedBall.Scene>(@"content/screens/empfang/background.scnx", contentManagerName))
 			{
 			}
-			Hintergrund = FlatRedBallServices.Load<FlatRedBall.Scene>(@"content/screens/empfang/hintergrund.scnx", contentManagerName);
+			Background = FlatRedBallServices.Load<FlatRedBall.Scene>(@"content/screens/empfang/background.scnx", contentManagerName);
 			CustomLoadStaticContent(contentManagerName);
 		}
 		[System.Obsolete("Use GetFile instead")]
@@ -167,8 +167,8 @@ namespace VergissMeinNicht.Screens
 		{
 			switch(memberName)
 			{
-				case  "Hintergrund":
-					return Hintergrund;
+				case  "Background":
+					return Background;
 			}
 			return null;
 		}
@@ -176,8 +176,8 @@ namespace VergissMeinNicht.Screens
 		{
 			switch(memberName)
 			{
-				case  "Hintergrund":
-					return Hintergrund;
+				case  "Background":
+					return Background;
 			}
 			return null;
 		}
@@ -185,8 +185,8 @@ namespace VergissMeinNicht.Screens
 		{
 			switch(memberName)
 			{
-				case  "Hintergrund":
-					return Hintergrund;
+				case  "Background":
+					return Background;
 			}
 			return null;
 		}

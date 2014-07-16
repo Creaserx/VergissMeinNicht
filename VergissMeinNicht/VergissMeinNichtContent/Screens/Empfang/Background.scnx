@@ -1,13 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SpriteEditorScene xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Sprite>
-    <X>-5.74474825E-06</X>
-    <Y>255.935074</Y>
-    <RotationZ>2.04890984E-08</RotationZ>
-    <ScaleX>567.7352</ScaleX>
-    <ScaleY>263.906464</ScaleY>
-    <Name>empfangraum_v_2-wiederhergestellt1</Name>
-    <Texture>empfangraum_v_2-wiederhergestellt.jpg</Texture>
+    <Y>304.983337</Y>
+    <ScaleX>834</ScaleX>
+    <ScaleY>319</ScaleY>
+    <Name>!theoneempfang1</Name>
+    <Texture>!theoneempfang.jpg</Texture>
     <ConstantPixelSize>0.5</ConstantPixelSize>
   </Sprite>
   <Camera>

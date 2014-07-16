@@ -33,7 +33,8 @@ namespace VergissMeinNicht.Screens
 
 		public override void CustomInitialize()
 		{
-            base.CustomInitialize();            
+            base.CustomInitialize();
+
 		}
 
         public override void CustomActivity(bool firstTimeCalled)

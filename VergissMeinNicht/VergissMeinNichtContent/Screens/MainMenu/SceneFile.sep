@@ -16,7 +16,7 @@
     <Y>0</Y>
     <Z>-40</Z>
     <Orthogonal>true</Orthogonal>
-    <OrthogonalHeight>541.717834</OrthogonalHeight>
+    <OrthogonalHeight>4884.16748</OrthogonalHeight>
     <OrthogonalWidth>-1</OrthogonalWidth>
     <NearClipPlane>1</NearClipPlane>
     <FarClipPlane>1000</FarClipPlane>
@@ -28,7 +28,7 @@
   <FilesToMakeDotDotSlashRelative />
   <TextureDisplayRegionsList>
     <TextureDisplayRegionsSave>
-      <TextureName>flur_1-1-1.png</TextureName>
+      <TextureName>hauptmenüfinal.jpg</TextureName>
       <DisplayRegions />
     </TextureDisplayRegionsSave>
   </TextureDisplayRegionsList>

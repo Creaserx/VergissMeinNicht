@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SpriteEditorScene xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Sprite>
-    <Y>240</Y>
+    <Y>200</Y>
     <ScaleX>1356</ScaleX>
     <ScaleY>251</ScaleY>
     <Name>flur_1-1-11</Name>

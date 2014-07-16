@@ -50,7 +50,7 @@ namespace VergissMeinNicht
             //FlatRedBallServices.GraphicsOptions.SetResolution(GraphicsDevice.DisplayMode.Width,GraphicsDevice.DisplayMode.Height);
 
             //initializing the MainMenu Screen first
-			FlatRedBall.Screens.ScreenManager.Start(typeof(VergissMeinNicht.Screens.Flur));
+			FlatRedBall.Screens.ScreenManager.Start(typeof(VergissMeinNicht.Screens.Empfang));
 
             base.Initialize();
         }
