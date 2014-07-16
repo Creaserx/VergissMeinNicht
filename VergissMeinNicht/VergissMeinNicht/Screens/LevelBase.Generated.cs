@@ -188,6 +188,7 @@ namespace VergissMeinNicht.Screens
 			{
 				MainMenuButton.RelativeY = 260f;
 			}
+			MainMenuButton.Visible = true;
 			if (PauseButton.Parent == null)
 			{
 				PauseButton.CopyAbsoluteToRelative();
@@ -256,6 +257,7 @@ namespace VergissMeinNicht.Screens
 			{
 				mMainMenuButton.RelativeY = 260f;
 			}
+			mMainMenuButton.Visible = true;
 			PauseButton.DisplayText = "Pause";
 			if (PauseButton.Parent == null)
 			{

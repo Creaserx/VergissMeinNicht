@@ -41,6 +41,7 @@
         <ReferencedFileSave>
           <Name>Screens/Empfang/Hintergrund.scnx</Name>
           <IsSharedStatic>true</IsSharedStatic>
+          <HasPublicProperty>true</HasPublicProperty>
           <RuntimeType>FlatRedBall.Scene</RuntimeType>
         </ReferencedFileSave>
       </ReferencedFiles>
@@ -125,6 +126,11 @@
             <Member>Y</Member>
             <ValueAsFloat>260</ValueAsFloat>
           </CustomProperty>
+          <CustomProperty>
+            <Type>bool</Type>
+            <Member>Visible</Member>
+            <ValueAsBool>true</ValueAsBool>
+          </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\Button</SourceClassType>
           <InstanceName>MainMenuButton</InstanceName>
@@ -183,6 +189,12 @@
       </NamedObjects>
     </ScreenSave>
     <ScreenSave>
+      <Properties>
+        <PropertySave>
+          <Name>IsLoadingScreen</Name>
+          <ValueAsBool>true</ValueAsBool>
+        </PropertySave>
+      </Properties>
       <Tags>
         <string>GLUE</string>
       </Tags>
@@ -391,6 +403,7 @@
           <DelegateType />
         </EventResponseSave>
       </Events>
+      <BaseScreen />
       <CustomVariables>
         <CustomVariable>
           <Properties>
@@ -413,7 +426,7 @@
           </Properties>
           <Name>ExitGameButtonVisible</Name>
           <Type>bool</Type>
-          <DefaultValue xsi:type="xsd:boolean">true</DefaultValue>
+          <DefaultValue xsi:type="xsd:boolean">false</DefaultValue>
           <SourceObject>ExitGameButton</SourceObject>
           <SourceObjectProperty>Visible</SourceObjectProperty>
         </CustomVariable>
@@ -426,7 +439,7 @@
           </Properties>
           <Name>LoadGameButtonVisible</Name>
           <Type>bool</Type>
-          <DefaultValue xsi:type="xsd:boolean">true</DefaultValue>
+          <DefaultValue xsi:type="xsd:boolean">false</DefaultValue>
           <SourceObject>LoadGameButton</SourceObject>
           <SourceObjectProperty>Visible</SourceObjectProperty>
         </CustomVariable>
@@ -439,7 +452,7 @@
           </Properties>
           <Name>NewGameButtonVisible</Name>
           <Type>bool</Type>
-          <DefaultValue xsi:type="xsd:boolean">true</DefaultValue>
+          <DefaultValue xsi:type="xsd:boolean">false</DefaultValue>
           <SourceObject>NewGameButton</SourceObject>
           <SourceObjectProperty>Visible</SourceObjectProperty>
         </CustomVariable>
@@ -452,7 +465,7 @@
           </Properties>
           <Name>OptionsButtonVisible</Name>
           <Type>bool</Type>
-          <DefaultValue xsi:type="xsd:boolean">true</DefaultValue>
+          <DefaultValue xsi:type="xsd:boolean">false</DefaultValue>
           <SourceObject>OptionsButton</SourceObject>
           <SourceObjectProperty>Visible</SourceObjectProperty>
         </CustomVariable>
@@ -482,30 +495,14 @@
         </CustomVariable>
       </CustomVariables>
       <Name>Screens\MainMenu</Name>
+      <ReferencedFiles>
+        <ReferencedFileSave>
+          <Name>Screens/MainMenu/HauptmenüFinal.jpg</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
+        </ReferencedFileSave>
+      </ReferencedFiles>
       <NamedObjects>
-        <NamedObjectSave>
-          <CustomProperty>
-            <Type>string</Type>
-            <Member>SpriteFrameInstanceCurrentChainName</Member>
-            <ValueAsString />
-          </CustomProperty>
-          <CustomProperty>
-            <Type>string</Type>
-            <Member>DisplayText</Member>
-            <ValueAsString>New Game</ValueAsString>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>Y</Member>
-            <ValueAsFloat>40</ValueAsFloat>
-          </CustomProperty>
-          <SourceType>Entity</SourceType>
-          <SourceClassType>Entities\Button</SourceClassType>
-          <InstanceName>NewGameButton</InstanceName>
-          <AttachToContainer>true</AttachToContainer>
-          <IndependentOfCamera>true</IndependentOfCamera>
-          <LayerOn>Layer2D</LayerOn>
-        </NamedObjectSave>
         <NamedObjectSave>
           <CustomProperty>
             <Type>string</Type>
@@ -522,6 +519,21 @@
             <Member>Y</Member>
             <ValueAsFloat>80</ValueAsFloat>
           </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>ScaleX</Member>
+            <ValueAsFloat>100</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>X</Member>
+            <ValueAsFloat>0</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>bool</Type>
+            <Member>Visible</Member>
+            <ValueAsBool>true</ValueAsBool>
+          </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\Button</SourceClassType>
           <InstanceName>ZooLevelButton</InstanceName>
@@ -531,16 +543,103 @@
         </NamedObjectSave>
         <NamedObjectSave>
           <CustomProperty>
+            <Type>float</Type>
+            <Member>TextureScale</Member>
+            <ValueAsFloat>1</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>Texture2D</Type>
+            <Member>Texture</Member>
+            <ValueAsString>HauptmenüFinal</ValueAsString>
+          </CustomProperty>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceFile />
+          <SourceName />
+          <SourceClassType>Sprite</SourceClassType>
+          <InstanceName>SpriteInstance</InstanceName>
+          <AttachToContainer>true</AttachToContainer>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+        <NamedObjectSave>
+          <CustomProperty>
+            <Type>string</Type>
+            <Member>SpriteFrameInstanceCurrentChainName</Member>
+            <ValueAsString />
+          </CustomProperty>
+          <CustomProperty>
+            <Type>string</Type>
+            <Member>DisplayText</Member>
+            <ValueAsString>New Game</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>ScaleX</Member>
+            <ValueAsFloat>120</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>X</Member>
+            <ValueAsFloat>200</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Y</Member>
+            <ValueAsFloat>20</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>RotationZ</Member>
+            <ValueAsFloat>0.25</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>bool</Type>
+            <Member>Visible</Member>
+            <ValueAsBool>false</ValueAsBool>
+          </CustomProperty>
+          <SourceType>Entity</SourceType>
+          <SourceClassType>Entities\Button</SourceClassType>
+          <InstanceName>NewGameButton</InstanceName>
+          <AttachToContainer>true</AttachToContainer>
+          <IndependentOfCamera>true</IndependentOfCamera>
+          <LayerOn>Under Everything (Engine Layer)</LayerOn>
+        </NamedObjectSave>
+        <NamedObjectSave>
+          <CustomProperty>
             <Type>string</Type>
             <Member>DisplayText</Member>
             <ValueAsString>Load Game</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>X</Member>
+            <ValueAsFloat>200</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>ScaleX</Member>
+            <ValueAsFloat>120</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>RotationZ</Member>
+            <ValueAsFloat>0.2</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Y</Member>
+            <ValueAsFloat>-40</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>bool</Type>
+            <Member>Visible</Member>
+            <ValueAsBool>false</ValueAsBool>
           </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\Button</SourceClassType>
           <InstanceName>LoadGameButton</InstanceName>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
-          <LayerOn>Layer2D</LayerOn>
+          <LayerOn>Under Everything (Engine Layer)</LayerOn>
         </NamedObjectSave>
         <NamedObjectSave>
           <CustomProperty>
@@ -551,14 +650,34 @@
           <CustomProperty>
             <Type>float</Type>
             <Member>Y</Member>
-            <ValueAsFloat>-40</ValueAsFloat>
+            <ValueAsFloat>-100</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>RotationZ</Member>
+            <ValueAsFloat>0.1</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>X</Member>
+            <ValueAsFloat>200</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>ScaleX</Member>
+            <ValueAsFloat>120</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>bool</Type>
+            <Member>Visible</Member>
+            <ValueAsBool>false</ValueAsBool>
           </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\Button</SourceClassType>
           <InstanceName>OptionsButton</InstanceName>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
-          <LayerOn>Layer2D</LayerOn>
+          <LayerOn>Under Everything (Engine Layer)</LayerOn>
         </NamedObjectSave>
         <NamedObjectSave>
           <CustomProperty>
@@ -569,14 +688,34 @@
           <CustomProperty>
             <Type>float</Type>
             <Member>Y</Member>
-            <ValueAsFloat>-80</ValueAsFloat>
+            <ValueAsFloat>-170</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>RotationZ</Member>
+            <ValueAsFloat>0</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>ScaleX</Member>
+            <ValueAsFloat>120</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>X</Member>
+            <ValueAsFloat>200</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>bool</Type>
+            <Member>Visible</Member>
+            <ValueAsBool>false</ValueAsBool>
           </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\Button</SourceClassType>
           <InstanceName>ExitGameButton</InstanceName>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
-          <LayerOn>Layer2D</LayerOn>
+          <LayerOn>Under Everything (Engine Layer)</LayerOn>
         </NamedObjectSave>
         <NamedObjectSave>
           <SourceType>FlatRedBallType</SourceType>
@@ -643,6 +782,7 @@
           <DelegateType />
         </EventResponseSave>
       </Events>
+      <BaseScreen />
       <Name>Screens\OptionsScreen</Name>
       <NamedObjects>
         <NamedObjectSave>
@@ -904,6 +1044,18 @@
           </Properties>
           <Name>Visible</Name>
           <Type>bool</Type>
+          <DefaultValue xsi:type="xsd:boolean">true</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>RotationZ</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">0</DefaultValue>
         </CustomVariable>
       </CustomVariables>
       <ImplementsIVisible>true</ImplementsIVisible>
@@ -2403,6 +2555,10 @@
     </TranslatedFileSave>
     <TranslatedFileSave>
       <FileName>Screens/MainMenu.Generated.cs</FileName>
+      <TranslationStyle>PerformTranslate</TranslationStyle>
+    </TranslatedFileSave>
+    <TranslatedFileSave>
+      <FileName>Screens/Empfang.cs</FileName>
       <TranslationStyle>PerformTranslate</TranslationStyle>
     </TranslatedFileSave>
   </TranslatedFiles>

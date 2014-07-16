@@ -42,6 +42,7 @@ namespace VergissMeinNicht.Screens
 		private VergissMeinNicht.Entities.Button Save3;
 		private VergissMeinNicht.Entities.Button BackButton;
 		public event FlatRedBall.Gui.WindowEvent BackButtonClick;
+		double mSavedTargetElapedTime;
 
 		public LoadGameScreen()
 			: base("LoadGameScreen")
@@ -60,6 +61,11 @@ namespace VergissMeinNicht.Screens
 			Save3.Name = "Save3";
 			BackButton = new VergissMeinNicht.Entities.Button(ContentManagerName, false);
 			BackButton.Name = "BackButton";
+			#if !MONOGAME && !FRB_MDX && !SILVERLIGHT
+			BackStackBehavior = FlatRedBall.Utilities.BackStackBehavior.Ignore;
+			#endif
+			mSavedTargetElapedTime = FlatRedBallServices.Game.TargetElapsedTime.TotalSeconds;
+			FlatRedBallServices.Game.TargetElapsedTime = TimeSpan.FromSeconds(.1);
 			
 			
 			PostInitialize();
@@ -94,6 +100,7 @@ namespace VergissMeinNicht.Screens
 				Save2.Activity();
 				Save3.Activity();
 				BackButton.Activity();
+				AsyncActivity();
 			}
 			else
 			{
@@ -134,6 +141,7 @@ namespace VergissMeinNicht.Screens
 				BackButton.Destroy();
 				BackButton.Detach();
 			}
+			FlatRedBallServices.Game.TargetElapsedTime = TimeSpan.FromSeconds(mSavedTargetElapedTime);
 
 			base.Destroy();
 
@@ -266,6 +274,43 @@ namespace VergissMeinNicht.Screens
 		object GetMember (string memberName)
 		{
 			return null;
+		}
+		static string mNextScreenToLoad;
+		public static string NextScreenToLoad
+		{
+			get
+			{
+				return mNextScreenToLoad;
+			}
+			set
+			{
+				mNextScreenToLoad = value;
+			}
+		}
+		public static void TransitionToScreen (string screenName)
+		{
+			Screen currentScreen = ScreenManager.CurrentScreen;
+			currentScreen.IsActivityFinished = true;
+			currentScreen.NextScreen = typeof(LoadGameScreen).FullName;
+			mNextScreenToLoad = screenName;
+		}
+		void AsyncActivity ()
+		{
+			switch(AsyncLoadingState)
+			{
+				case  FlatRedBall.Screens.AsyncLoadingState.NotStarted:
+					if (!string.IsNullOrEmpty(mNextScreenToLoad))
+					{
+						StartAsyncLoad(mNextScreenToLoad);
+					}
+					break;
+				case  FlatRedBall.Screens.AsyncLoadingState.LoadingScreen:
+					break;
+				case  FlatRedBall.Screens.AsyncLoadingState.Done:
+					ScreenManager.ShouldActivateScreen = false;
+					IsActivityFinished = true;
+					break;
+			}
 		}
 
 

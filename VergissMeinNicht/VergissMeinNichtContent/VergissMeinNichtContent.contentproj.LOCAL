@@ -166,14 +166,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>flur_1-1-1</Name>
     </None>
-     <None Include="Screens\Flur\SceneFile.scnx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Name>SceneFile</Name>
-    </None>
-    <None Include="Screens\MainMenu\HauptmenüFinal.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Name>HauptmenüFinal</Name>
-    </None>
     <None Include="Screens\Flur\SceneFile.scnx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>SceneFile</Name>
