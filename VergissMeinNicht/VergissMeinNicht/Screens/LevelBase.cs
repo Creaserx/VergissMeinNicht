@@ -37,6 +37,9 @@ namespace VergissMeinNicht.Screens
 
         int CurrentLayer = 1;
 
+        public bool DisableLayers = false;
+        public bool DisableLayer3 = false;
+
         float CollisionHeightLayer1 = 150;
         float CollisionHeightLayer2 = 150 * SizeFirstDiff;
         float CollisionHeightLayer3 = 150 * SizeSecondDiff;
@@ -45,11 +48,15 @@ namespace VergissMeinNicht.Screens
         float CollisionWidthLayer2 = 80 * SizeFirstDiff;
         float CollisionWidthLayer3 = 80 * SizeSecondDiff;
 
+        //Die Höhe und Tiefe der Collisionbox speichern
+        float ChildCollision_Height = 150;//PlatformerCharacterBase.getInstance().Collision.Height;
+        float ChildCollision_Width = 80;//PlatformerCharacterBase.getInstance().Collision.Width;
         
 
 		public virtual void CustomInitialize()
 		{
-            DisableLayers = false; //Erstmal Layer aktivieren
+            DisableLayers = false; // Erstmal Layer aktivieren
+            DisableLayer3 = false; // Layer 3 aktivieren
 
             TheodorChild Temp = new VergissMeinNicht.Entities.TheodorChild(ContentManagerName, false);
             Temp.Name = "TheodorChildInstance";
@@ -68,7 +75,7 @@ namespace VergissMeinNicht.Screens
             
 
             // Add the ShapeColleciton to the ShapeManager so it's visible
-            //SolidCollisions.AddToManagers();
+            SolidCollisions.AddToManagers();
 
 
             // Make the character appear on top of the rectangle:
@@ -96,12 +103,36 @@ namespace VergissMeinNicht.Screens
             string resultString = "Character Y: " + PlatformerCharacterBase.getInstance().Y;
             FlatRedBall.Debugging.Debugger.Write(resultString);
                     
+
+            // "Cheats"
+            DeveloperActivity();
 		}
 
         public virtual void CustomDestroy()
         {
             PlatformerCharacterBase.updateinstance(null);
 		}
+
+        public void DeveloperActivity()
+        {
+            // Z  -- Zoolevel
+            if (InputManager.Keyboard.KeyPushed(Keys.Z)) MoveToScreen(typeof(ZooLevel).FullName);
+            
+            // R  -- Reset Character
+            if (InputManager.Keyboard.KeyPushed(Keys.R))
+            {
+                DisableLayers = true;
+                Boden.Y = -50;
+                CurrentLayer = 1;
+                PlatformerCharacterBase.getInstance().Y = 75;
+                PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale = 1;
+                PlatformerCharacterBase.getInstance().Collision.Height = ChildCollision_Height;
+                PlatformerCharacterBase.getInstance().Collision.Width = ChildCollision_Width;
+                DisableLayers = false;
+            }
+
+        }
+
 
         void PauseGame()
         {
@@ -144,7 +175,7 @@ namespace VergissMeinNicht.Screens
 
         }
 
-        public bool DisableLayers = false;
+        
 
         void LayerManagement()
         {
@@ -193,30 +224,32 @@ namespace VergissMeinNicht.Screens
                             break;
 
                         case 2:
-                            PlatformerCharacterBase.getInstance().SpriteInstance
-                            .Tween("TextureScale")
-                            .To(SizeSecondDiff)
-                            .During(1)
-                            .Using(
-                                FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
-                                FlatRedBall.Glue.StateInterpolation.Easing.Out);
-
-                            PlatformerCharacterBase.getInstance().Collision
-                                .Tween("Height")
-                                .To(CollisionHeightLayer3)
+                            if (!DisableLayer3)
+                            {
+                                PlatformerCharacterBase.getInstance().SpriteInstance
+                                .Tween("TextureScale")
+                                .To(SizeSecondDiff)
                                 .During(1)
                                 .Using(
                                     FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
                                     FlatRedBall.Glue.StateInterpolation.Easing.Out);
 
-                            PlatformerCharacterBase.getInstance().Collision
-                                .Tween("Width")
-                                .To(CollisionWidthLayer3)
-                                .During(1)
-                                .Using(
-                                    FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
-                                    FlatRedBall.Glue.StateInterpolation.Easing.Out);
+                                PlatformerCharacterBase.getInstance().Collision
+                                    .Tween("Height")
+                                    .To(CollisionHeightLayer3)
+                                    .During(1)
+                                    .Using(
+                                        FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                        FlatRedBall.Glue.StateInterpolation.Easing.Out);
 
+                                PlatformerCharacterBase.getInstance().Collision
+                                    .Tween("Width")
+                                    .To(CollisionWidthLayer3)
+                                    .During(1)
+                                    .Using(
+                                        FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                        FlatRedBall.Glue.StateInterpolation.Easing.Out);
+                            }
                             break;
 
                         default:

@@ -138,6 +138,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>AnimationChainListFile</Name>
     </None>
+    <None Include="Entities\Theodor\Theodor Erwachsen alpha.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Theodor Erwachsen alpha</Name>
+    </None>
+    <None Include="Entities\Theodor\Theodor Erwachsen alpha1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Theodor Erwachsen alpha1</Name>
+    </None>
     <None Include="Entities\Theodor\TheodorChild_WalkAnimationChain.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>TheodorChild_WalkAnimationChain</Name>

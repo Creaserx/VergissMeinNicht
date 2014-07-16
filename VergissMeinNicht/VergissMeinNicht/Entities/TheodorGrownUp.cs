@@ -46,21 +46,21 @@ namespace VergissMeinNicht.Entities
             {
                 if (HorizontalRatio > 0)
                 {
-                    this.SpriteInstance.CurrentChainName = "WalkRight";
+                    this.SpriteInstance.CurrentChainName = "GU_IdleRight";  //GU_WalkRight erstellen
                 }
                 else if (HorizontalRatio < 0)
                 {
-                    this.SpriteInstance.CurrentChainName = "WalkLeft";
+                    this.SpriteInstance.CurrentChainName = "GU_IdleLeft";  //GU_WalkLeft erstellen
                 }
                 else
                 {
                     if (DirectionFacing == LeftOrRight.Right)
                     {
-                        this.SpriteInstance.CurrentChainName = "IdleRight";
+                        this.SpriteInstance.CurrentChainName = "GU_IdleRight";
                     }
                     else
                     {
-                        this.SpriteInstance.CurrentChainName = "IdleLeft";
+                        this.SpriteInstance.CurrentChainName = "GU_IdleLeft";
                     }
                 }
             }
