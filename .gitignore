@@ -2,4 +2,4 @@
 **/obj/*
 *.cachefile
 *.suo
-*.Generated
+*.Generated.cs
