@@ -36,7 +36,11 @@ namespace VergissMeinNicht.Screens
 		#if DEBUG
 		static bool HasBeenLoadedWithGlobalContentManager = false;
 		#endif
+<<<<<<< HEAD
+		public static FlatRedBall.Scene Hintergrund;
+=======
 		protected static FlatRedBall.Scene Background;
+>>>>>>> origin/master
 		
 
 		public Empfang()

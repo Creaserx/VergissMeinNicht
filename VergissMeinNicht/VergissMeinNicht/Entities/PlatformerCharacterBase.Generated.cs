@@ -238,7 +238,7 @@ namespace VergissMeinNicht.Entities
 				mCollision.AttachTo(this, false);
 			}
 			Collision.Height = 48f;
-			Collision.Visible = true;
+			Collision.Visible = false;
 			Collision.Width = 32f;
 			if (SpriteInstance!= null)
 			{
@@ -269,7 +269,7 @@ namespace VergissMeinNicht.Entities
 			{
 			}
 			mCollision.Height = 48f;
-			mCollision.Visible = true;
+			mCollision.Visible = false;
 			mCollision.Width = 32f;
 		}
 		public virtual void ConvertToManuallyUpdated ()

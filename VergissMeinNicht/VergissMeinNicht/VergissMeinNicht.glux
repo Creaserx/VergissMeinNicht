@@ -39,7 +39,7 @@
       <Name>Screens\Empfang</Name>
       <ReferencedFiles>
         <ReferencedFileSave>
-          <Name>Screens/Empfang/Hintergrund.scnx</Name>
+          <Name>Screens/Empfang/Background.scnx</Name>
           <IsSharedStatic>true</IsSharedStatic>
           <HasPublicProperty>true</HasPublicProperty>
           <RuntimeType>FlatRedBall.Scene</RuntimeType>
@@ -1789,7 +1789,7 @@
           <CustomProperty>
             <Type>bool</Type>
             <Member>Visible</Member>
-            <ValueAsBool>true</ValueAsBool>
+            <ValueAsBool>false</ValueAsBool>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
@@ -2447,7 +2447,7 @@
     <RecordLockContention>false</RecordLockContention>
   </GlobalContentSettingsSave>
   <SyncedProjects />
-  <StartUpScreen>Screens\Flur</StartUpScreen>
+  <StartUpScreen>Screens\Empfang</StartUpScreen>
   <ResolutionPresets />
   <PerformanceSettingsSave>
     <ThrowExceptionOnPostInitializeContentLoad>false</ThrowExceptionOnPostInitializeContentLoad>

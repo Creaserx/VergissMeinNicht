@@ -2,3 +2,4 @@
 **/obj/*
 *.cachefile
 *.suo
+*.Generated

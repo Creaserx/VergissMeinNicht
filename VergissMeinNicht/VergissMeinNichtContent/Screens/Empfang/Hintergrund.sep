@@ -16,7 +16,7 @@
     <Y>83.3001556</Y>
     <Z>-40</Z>
     <Orthogonal>true</Orthogonal>
-    <OrthogonalHeight>689.2596</OrthogonalHeight>
+    <OrthogonalHeight>4452.78174</OrthogonalHeight>
     <OrthogonalWidth>-1</OrthogonalWidth>
     <NearClipPlane>1</NearClipPlane>
     <FarClipPlane>1000</FarClipPlane>
@@ -28,7 +28,7 @@
   <FilesToMakeDotDotSlashRelative />
   <TextureDisplayRegionsList>
     <TextureDisplayRegionsSave>
-      <TextureName>empfangraum_v_2-wiederhergestellt.jpg</TextureName>
+      <TextureName>!theoneempfang.jpg</TextureName>
       <DisplayRegions />
     </TextureDisplayRegionsSave>
   </TextureDisplayRegionsList>

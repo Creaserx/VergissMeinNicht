@@ -33,7 +33,7 @@ namespace VergissMeinNicht.Screens
 		public override void CustomInitialize()
 		{
             base.CustomInitialize();
-
+            DisableLayers = true;
 		}
 
         public override void CustomActivity(bool firstTimeCalled)
