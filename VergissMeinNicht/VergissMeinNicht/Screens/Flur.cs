@@ -30,21 +30,21 @@ namespace VergissMeinNicht.Screens
 	public partial class Flur
 	{
 
-		void CustomInitialize()
+		public override void CustomInitialize()
 		{
-
+            base.CustomInitialize();
 
 		}
 
-		void CustomActivity(bool firstTimeCalled)
+        public override void CustomActivity(bool firstTimeCalled)
 		{
-
+            base.CustomActivity(firstTimeCalled);
 
 		}
 
-		void CustomDestroy()
+        public override void CustomDestroy()
 		{
-
+            base.CustomDestroy();
 
 		}
 

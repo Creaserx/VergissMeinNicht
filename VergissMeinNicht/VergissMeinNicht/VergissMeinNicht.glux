@@ -50,7 +50,15 @@
         <string>GLUE</string>
       </Tags>
       <Source>GLUE</Source>
+      <BaseScreen>Screens\LevelBase</BaseScreen>
       <Name>Screens\Flur</Name>
+      <ReferencedFiles>
+        <ReferencedFileSave>
+          <Name>Screens/Flur/SceneFile.scnx</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>FlatRedBall.Scene</RuntimeType>
+        </ReferencedFileSave>
+      </ReferencedFiles>
     </ScreenSave>
     <ScreenSave>
       <Tags>
@@ -2287,7 +2295,7 @@
     <RecordLockContention>false</RecordLockContention>
   </GlobalContentSettingsSave>
   <SyncedProjects />
-  <StartUpScreen>Screens\Empfang</StartUpScreen>
+  <StartUpScreen>Screens\Flur</StartUpScreen>
   <ResolutionPresets />
   <PerformanceSettingsSave>
     <ThrowExceptionOnPostInitializeContentLoad>false</ThrowExceptionOnPostInitializeContentLoad>
@@ -2313,6 +2321,7 @@
         </InstructionSave>
       </RequiredProperties>
       <Name>TileMapInfo</Name>
+      <GenerateCode>true</GenerateCode>
     </CustomClassSave>
   </CustomClasses>
   <TranslatedFiles>

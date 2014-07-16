@@ -56,7 +56,7 @@ namespace VergissMeinNicht.Screens
 
             // Create a rectangle
             Boden = new AxisAlignedRectangle();
-            Boden.ScaleX = 800;
+            Boden.ScaleX = 1800;
             Boden.ScaleY = 50;
             Boden.Y = -50; 
 
