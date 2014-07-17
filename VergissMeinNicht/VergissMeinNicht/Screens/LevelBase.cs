@@ -75,7 +75,7 @@ namespace VergissMeinNicht.Screens
             this.SolidCollisions.AxisAlignedRectangles.Add(Boden);
                   
             // Add the ShapeColleciton to the ShapeManager so it's visible
-            SolidCollisions.AddToManagers();
+            //SolidCollisions.AddToManagers();
             
 
             // Make the character appear on top of the rectangle:

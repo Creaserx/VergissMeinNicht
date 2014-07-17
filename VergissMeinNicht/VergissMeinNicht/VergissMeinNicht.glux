@@ -1995,7 +1995,7 @@
           <CustomProperty>
             <Type>bool</Type>
             <Member>Visible</Member>
-            <ValueAsBool>true</ValueAsBool>
+            <ValueAsBool>false</ValueAsBool>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
@@ -2437,7 +2437,7 @@
           <CustomProperty>
             <Type>bool</Type>
             <Member>Visible</Member>
-            <ValueAsBool>true</ValueAsBool>
+            <ValueAsBool>false</ValueAsBool>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
@@ -2574,6 +2574,11 @@
             <Type>float</Type>
             <Member>Height</Member>
             <ValueAsFloat>200</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>bool</Type>
+            <Member>Visible</Member>
+            <ValueAsBool>false</ValueAsBool>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
