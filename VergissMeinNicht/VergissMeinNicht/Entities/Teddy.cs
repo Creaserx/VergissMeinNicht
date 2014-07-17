@@ -29,10 +29,13 @@ namespace VergissMeinNicht.Entities
 {
 	public partial class Teddy
 	{
+
+        public int NeededLayer = 1;
+        public int CurrentLayer = 1;
         
         private void CustomInitialize()
 		{
-
+            
 
 		}
 
@@ -42,10 +45,21 @@ namespace VergissMeinNicht.Entities
             TeddyText();
 		}
 
+        public void SetNeededLayer(int Layer_Needed)
+        {
+            NeededLayer = Layer_Needed;
+        }
+        public void SetCurrentLayer(int Layer_Current)
+        {
+            CurrentLayer = Layer_Current;
+        }
+
+
+
         void TeddyText()
         {
             //Makes Text Visible / Invisible in front of a Teddy
-            if (PlatformerCharacterBase.getInstance().X < (Sprite.X + 75) && PlatformerCharacterBase.getInstance().X > (Sprite.X - 75) && FlashInstance.Alpha == 0)
+            if (PlatformerCharacterBase.getInstance().X < (Sprite.X + 75) && PlatformerCharacterBase.getInstance().X > (Sprite.X - 75) && FlashInstance.Alpha == 0 && NeededLayer == CurrentLayer)
             {
                 //--Transform Character
                 if (InputManager.Keyboard.KeyPushed(Keys.E))
@@ -104,7 +118,7 @@ namespace VergissMeinNicht.Entities
 
                 }                
 
-                    SaveText.Visible = true;
+                    SaveText.Visible = false;
                     InteractText.Visible = true;
                     SaveText.Position.X = PlatformerCharacterBase.getInstance().Position.X + 100;
                     SaveText.Position.Y = PlatformerCharacterBase.getInstance().Y + 80;

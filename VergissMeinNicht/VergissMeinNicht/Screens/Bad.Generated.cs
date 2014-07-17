@@ -21,6 +21,7 @@ using Microsoft.Xna.Framework.Media;
 // Generated Usings
 using VergissMeinNicht.Entities;
 using VergissMeinNicht.Entities.Enemies;
+using VergissMeinNicht.Entities.Räume_Inhalt.Empfang;
 using VergissMeinNicht.Entities.Räume_Inhalt.Schlafraum;
 using FlatRedBall;
 using FlatRedBall.Screens;

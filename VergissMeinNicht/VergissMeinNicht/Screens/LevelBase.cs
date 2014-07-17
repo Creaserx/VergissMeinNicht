@@ -54,16 +54,17 @@ namespace VergissMeinNicht.Screens
         float ChildCollision_Height = 165;//PlatformerCharacterBase.getInstance().Collision.Height;
         float ChildCollision_Width = 88;//PlatformerCharacterBase.getInstance().Collision.Width;
         
-
 		public virtual void CustomInitialize()
 		{
+            
+
             DisableLayers = false; // Erstmal Layer aktivieren
             DisableLayer3 = false; // Layer 3 aktivieren
 
             TheodorChild Temp = new VergissMeinNicht.Entities.TheodorChild(ContentManagerName, false);
             Temp.Name = "TheodorChildInstance";
             PlatformerCharacterBase.updateinstance(Temp);
-            Temp.AddToManagers(mLayer);
+            //Temp.AddToManagers(mLayer);
 
             // Create a rectangle
             Boden = new AxisAlignedRectangle();
@@ -205,7 +206,9 @@ namespace VergissMeinNicht.Screens
             // Workaround zum Ebenenwechsel. Das komplette Tweening bedarf noch "etwas" Optimierung!
 
 
-            if (DisableLayer3 && LayerOn == 2) DisableLayers=true; //WA
+            if (DisableLayer3 && LayerOn == 2) DisableLayers=true; //WA  -sorgt dafür, dass er nicht wechseln kann
+
+            if (!DisableLayer3) DisableLayers = false;  //WA  -resettet, falls er den bereich verlässt.
 
             if (!DisableLayers)
             {
@@ -435,5 +438,7 @@ namespace VergissMeinNicht.Screens
             }
         }
 
-	}
+
+        public FlatRedBall.Graphics.Layer layer1 { get; set; }
+    }
 }

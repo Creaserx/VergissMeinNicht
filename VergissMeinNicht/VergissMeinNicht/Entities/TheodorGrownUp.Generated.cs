@@ -8,6 +8,7 @@ using FlatRedBall.Graphics;
 using FlatRedBall.Math;
 using VergissMeinNicht.Entities;
 using VergissMeinNicht.Entities.Enemies;
+using VergissMeinNicht.Entities.Räume_Inhalt.Empfang;
 using VergissMeinNicht.Entities.Räume_Inhalt.Schlafraum;
 using FlatRedBall;
 using FlatRedBall.Screens;
@@ -201,15 +202,15 @@ namespace VergissMeinNicht.Entities
 				mCollision.CopyAbsoluteToRelative();
 				mCollision.AttachTo(this, false);
 			}
-			Collision.Height = 200f;
-			Collision.Width = 107f;
+			Collision.Height = 220f;
+			Collision.Width = 118f;
 			if (mSpriteInstance.Parent == null)
 			{
 				mSpriteInstance.CopyAbsoluteToRelative();
 				mSpriteInstance.AttachTo(this, false);
 			}
 			SpriteInstance.AnimationChains = AnimationChainListFile;
-			SpriteInstance.TextureScale = 0.5f;
+			SpriteInstance.TextureScale = 0.55f;
 			SpriteInstance.CurrentChainName = "IdleRight";
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
@@ -232,10 +233,10 @@ namespace VergissMeinNicht.Entities
 			if (callOnContainedElements)
 			{
 			}
-			mCollision.Height = 200f;
-			mCollision.Width = 107f;
+			mCollision.Height = 220f;
+			mCollision.Width = 118f;
 			mSpriteInstance.AnimationChains = AnimationChainListFile;
-			mSpriteInstance.TextureScale = 0.5f;
+			mSpriteInstance.TextureScale = 0.55f;
 			mSpriteInstance.CurrentChainName = "IdleRight";
 			GroundMovement = TheodorGrownUp.MovementValues["TheodorGrownUpOnGround"];
 			AirMovement = TheodorGrownUp.MovementValues["TheodorGrownUpInAir"];
