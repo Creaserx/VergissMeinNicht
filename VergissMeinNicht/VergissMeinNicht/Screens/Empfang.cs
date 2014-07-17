@@ -34,7 +34,7 @@ namespace VergissMeinNicht.Screens
 		public override void CustomInitialize()
 		{
             base.CustomInitialize();
-
+            
 		}
 
         public override void CustomActivity(bool firstTimeCalled)
@@ -56,7 +56,7 @@ namespace VergissMeinNicht.Screens
         static void CustomLoadStaticContent(string contentManagerName)
         {
 
-
+            
         }
 
         public void CollisionActivity()

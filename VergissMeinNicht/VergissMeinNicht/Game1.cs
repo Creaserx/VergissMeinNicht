@@ -47,7 +47,7 @@ namespace VergissMeinNicht
             IsMouseVisible = true;
 
             //sets resolution to screen resoulution
-            //FlatRedBallServices.GraphicsOptions.SetResolution(GraphicsDevice.DisplayMode.Width,GraphicsDevice.DisplayMode.Height);
+            FlatRedBallServices.GraphicsOptions.SetResolution(GraphicsDevice.DisplayMode.Width,GraphicsDevice.DisplayMode.Height);
 
             //initializing the MainMenu Screen first
 			FlatRedBall.Screens.ScreenManager.Start(typeof(VergissMeinNicht.Screens.MainMenu));

@@ -126,6 +126,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>teddy_normal</Name>
     </None>
+    <None Include="Entities\Teddy\creepyteddy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>creepyteddy</Name>
+    </None>
+    <None Include="Entities\Teddy\teddy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>teddy</Name>
+    </None>
     <None Include="Entities\TextArial\arialfont.fnt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>arialfont</Name>
