@@ -175,9 +175,9 @@
     <Compile Include="Entities\PlatformerCharacterBase.Generated.Event.cs">
       <DependentUpon>PlatformerCharacterBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Räume_Inhalt\Empfang\Loch.cs" />
-    <Compile Include="Entities\Räume_Inhalt\Empfang\Loch.Generated.cs">
-      <DependentUpon>Loch.cs</DependentUpon>
+    <Compile Include="Entities\Räume_Inhalt\Empfang\Hole.cs" />
+    <Compile Include="Entities\Räume_Inhalt\Empfang\Hole.Generated.cs">
+      <DependentUpon>Hole.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\Räume_Inhalt\Schlafraum\Bett.cs" />
     <Compile Include="Entities\Räume_Inhalt\Schlafraum\Bett.Generated.cs">

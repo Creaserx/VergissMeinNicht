@@ -26,7 +26,7 @@ using Texture2D = Microsoft.Xna.Framework.Graphics.Texture2D;
 
 namespace VergissMeinNicht.Entities.Räume_Inhalt.Empfang
 {
-	public partial class Loch
+	public partial class Hole
 	{
 		private void CustomInitialize()
 		{

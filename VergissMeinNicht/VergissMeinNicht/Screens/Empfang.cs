@@ -30,26 +30,19 @@ namespace VergissMeinNicht.Screens
 {
 	public partial class Empfang
 	{
-        
 
 		public override void CustomInitialize()
-		{            
+		{
             base.CustomInitialize();
-            TeddyInstance.SetNeededLayer(2);
-            
-
-
 
 		}
 
         public override void CustomActivity(bool firstTimeCalled)
 		{
-            
             if (PlatformerCharacterBase.getInstance().X < -345) DisableLayer3 = true;
             else DisableLayer3 = false;
             base.CustomActivity(firstTimeCalled);
             CollisionActivity();
-            TeddyInstance.SetCurrentLayer(LayerOn);
 
 
 		}
@@ -70,12 +63,18 @@ namespace VergissMeinNicht.Screens
         {
 
             PlatformerCharacterBase.getInstance().Collision.CollideAgainstMove(Layer1, 0, 1);  //Kollision mit Rändern
-           
+            if (LayerOn == 3) PlatformerCharacterBase.getInstance().Collision.CollideAgainstMove(Layer3, 0, 1);  //Kollision auf Layer 3
 
-            if (LayerOn == 3) 
+
+            if (PlatformerCharacterBase.getInstance().Y == 142.5 && PlatformerCharacterBase.getInstance().X > 25 && PlatformerCharacterBase.getInstance().X < 80)
             {
-                PlatformerCharacterBase.getInstance().Collision.CollideAgainstMove(Layer3, 0, 1);  //Kollision auf Layer 3
+                Boden.Y = -300;
+                
             }
+            if (PlatformerCharacterBase.getInstance().Y < 85 && Boden.Y == -300) MoveToScreen(typeof(Empfang).FullName);
+
+
+
 
 
         }

@@ -52,8 +52,6 @@ namespace VergissMeinNicht
             //initializing the MainMenu Screen first
 			FlatRedBall.Screens.ScreenManager.Start(typeof(VergissMeinNicht.Screens.Empfang));
 
-            Layer layer1 = SpriteManager.AddLayer();
-
             base.Initialize();
         }
 
