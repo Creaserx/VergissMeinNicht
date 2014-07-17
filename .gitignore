@@ -3,3 +3,4 @@
 *.cachefile
 *.suo
 *.Generated.cs
+*.Generated.cs
