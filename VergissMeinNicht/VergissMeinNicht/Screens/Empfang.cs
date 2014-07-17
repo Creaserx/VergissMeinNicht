@@ -39,8 +39,11 @@ namespace VergissMeinNicht.Screens
 
         public override void CustomActivity(bool firstTimeCalled)
 		{
+            if (PlatformerCharacterBase.getInstance().X < -345) DisableLayer3 = true;
+            else DisableLayer3 = false;
             base.CustomActivity(firstTimeCalled);
             CollisionActivity();
+
 
 		}
 

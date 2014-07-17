@@ -27,6 +27,7 @@ using FlatRedBall.Screens;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using FlatRedBall.Math.Geometry;
 
 namespace VergissMeinNicht.Screens
 {
@@ -37,6 +38,8 @@ namespace VergissMeinNicht.Screens
 		static bool HasBeenLoadedWithGlobalContentManager = false;
 		#endif
 		public static FlatRedBall.Scene Background;
+		protected static FlatRedBall.Math.Geometry.ShapeCollection Layer3;
+		protected static FlatRedBall.Math.Geometry.ShapeCollection Layer1;
 		
 
 		public Empfang()
@@ -58,6 +61,8 @@ namespace VergissMeinNicht.Screens
 		public override void AddToManagers ()
 		{
 			Background.AddToManagers(mLayer);
+			Layer3.AddToManagers(mLayer);
+			Layer1.AddToManagers(mLayer);
 			base.AddToManagers();
 			CustomInitialize();
 		}
@@ -103,6 +108,38 @@ namespace VergissMeinNicht.Screens
 			else
 			{
 				Background.MakeOneWay();
+			}
+			if (this.UnloadsContentManagerWhenDestroyed && ContentManagerName != "Global")
+			{
+				Layer3.RemoveFromManagers(ContentManagerName != "Global");
+			}
+			else
+			{
+				Layer3.RemoveFromManagers(false);
+			}
+			if (this.UnloadsContentManagerWhenDestroyed && ContentManagerName != "Global")
+			{
+				Layer3 = null;
+			}
+			else
+			{
+				Layer3.MakeOneWay();
+			}
+			if (this.UnloadsContentManagerWhenDestroyed && ContentManagerName != "Global")
+			{
+				Layer1.RemoveFromManagers(ContentManagerName != "Global");
+			}
+			else
+			{
+				Layer1.RemoveFromManagers(false);
+			}
+			if (this.UnloadsContentManagerWhenDestroyed && ContentManagerName != "Global")
+			{
+				Layer1 = null;
+			}
+			else
+			{
+				Layer1.MakeOneWay();
 			}
 			
 
@@ -160,6 +197,14 @@ namespace VergissMeinNicht.Screens
 			{
 			}
 			Background = FlatRedBallServices.Load<FlatRedBall.Scene>(@"content/screens/empfang/background.scnx", contentManagerName);
+			if (!FlatRedBallServices.IsLoaded<FlatRedBall.Math.Geometry.ShapeCollection>(@"content/screens/empfang/layer3.shcx", contentManagerName))
+			{
+			}
+			Layer3 = FlatRedBallServices.Load<FlatRedBall.Math.Geometry.ShapeCollection>(@"content/screens/empfang/layer3.shcx", contentManagerName);
+			if (!FlatRedBallServices.IsLoaded<FlatRedBall.Math.Geometry.ShapeCollection>(@"content/screens/empfang/layer1.shcx", contentManagerName))
+			{
+			}
+			Layer1 = FlatRedBallServices.Load<FlatRedBall.Math.Geometry.ShapeCollection>(@"content/screens/empfang/layer1.shcx", contentManagerName);
 			CustomLoadStaticContent(contentManagerName);
 		}
 		[System.Obsolete("Use GetFile instead")]
@@ -169,6 +214,10 @@ namespace VergissMeinNicht.Screens
 			{
 				case  "Background":
 					return Background;
+				case  "Layer3":
+					return Layer3;
+				case  "Layer1":
+					return Layer1;
 			}
 			return null;
 		}
@@ -178,6 +227,10 @@ namespace VergissMeinNicht.Screens
 			{
 				case  "Background":
 					return Background;
+				case  "Layer3":
+					return Layer3;
+				case  "Layer1":
+					return Layer1;
 			}
 			return null;
 		}
@@ -187,6 +240,10 @@ namespace VergissMeinNicht.Screens
 			{
 				case  "Background":
 					return Background;
+				case  "Layer3":
+					return Layer3;
+				case  "Layer1":
+					return Layer1;
 			}
 			return null;
 		}

@@ -354,13 +354,13 @@ namespace VergissMeinNicht.Screens
 			}
 			if (ZooLevelButton.Parent == null)
 			{
-				ZooLevelButton.Y = 80f;
+				ZooLevelButton.Y = 280f;
 			}
 			else
 			{
-				ZooLevelButton.RelativeY = 80f;
+				ZooLevelButton.RelativeY = 280f;
 			}
-			ZooLevelButton.Visible = true;
+			ZooLevelButton.Visible = false;
 			SpriteInstance.Texture = HauptmenüFinal;
 			SpriteInstance.TextureScale = 1f;
 			NewGameButton.SpriteFrameInstanceCurrentChainName = "";
@@ -524,13 +524,13 @@ namespace VergissMeinNicht.Screens
 			}
 			if (ZooLevelButton.Parent == null)
 			{
-				ZooLevelButton.Y = 80f;
+				ZooLevelButton.Y = 280f;
 			}
 			else
 			{
-				ZooLevelButton.RelativeY = 80f;
+				ZooLevelButton.RelativeY = 280f;
 			}
-			ZooLevelButton.Visible = true;
+			ZooLevelButton.Visible = false;
 			SpriteInstance.Texture = HauptmenüFinal;
 			SpriteInstance.TextureScale = 1f;
 			NewGameButton.SpriteFrameInstanceCurrentChainName = "";
@@ -647,7 +647,7 @@ namespace VergissMeinNicht.Screens
 			NewGameButtonVisible = false;
 			OptionsButtonVisible = false;
 			CurrentState = MainMenu.VariableState.MainButtonsVisible;
-			ZooLevelButtonVisible = true;
+			ZooLevelButtonVisible = false;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
