@@ -39,7 +39,8 @@ namespace VergissMeinNicht.Screens
 
         public override void CustomActivity(bool firstTimeCalled)
 		{
-            base.CustomActivity(firstTimeCalled);            
+            base.CustomActivity(firstTimeCalled);
+            CollisionActivity();
 
 		}
 
@@ -54,6 +55,23 @@ namespace VergissMeinNicht.Screens
 
 
         }
+
+        public void CollisionActivity()
+        {
+
+            PlatformerCharacterBase.getInstance().Collision.CollideAgainstMove(Layer1, 0, 1);  //Kollision mit Rändern
+           
+
+            if (LayerOn == 3) 
+            {
+                PlatformerCharacterBase.getInstance().Collision.CollideAgainstMove(Layer3, 0, 1);  //Kollision auf Layer 3
+            }
+
+
+        }
+
+
+
 
 	}
 }

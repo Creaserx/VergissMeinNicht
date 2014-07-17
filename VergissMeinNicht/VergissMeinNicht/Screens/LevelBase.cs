@@ -35,10 +35,12 @@ namespace VergissMeinNicht.Screens
         bool Waiter = false;
         public AxisAlignedRectangle Boden;     
 
-        int CurrentLayer = 1;
-
+        public int CurrentLayer = 1;
+        public int LayerOn = 1;
         public bool DisableLayers = false;
         public bool DisableLayer3 = false;
+
+        bool DebuggerOn = true;
 
         float CollisionHeightLayer1 = 150;
         float CollisionHeightLayer2 = 150 * SizeFirstDiff;
@@ -49,8 +51,8 @@ namespace VergissMeinNicht.Screens
         float CollisionWidthLayer3 = 80 * SizeSecondDiff;
 
         //Die Höhe und Tiefe der Collisionbox speichern
-        float ChildCollision_Height = 150;//PlatformerCharacterBase.getInstance().Collision.Height;
-        float ChildCollision_Width = 80;//PlatformerCharacterBase.getInstance().Collision.Width;
+        float ChildCollision_Height = 165;//PlatformerCharacterBase.getInstance().Collision.Height;
+        float ChildCollision_Width = 88;//PlatformerCharacterBase.getInstance().Collision.Width;
         
 
 		public virtual void CustomInitialize()
@@ -75,7 +77,7 @@ namespace VergissMeinNicht.Screens
             
 
             // Add the ShapeColleciton to the ShapeManager so it's visible
-            SolidCollisions.AddToManagers();
+            //SolidCollisions.AddToManagers();
 
 
             // Make the character appear on top of the rectangle:
@@ -99,10 +101,7 @@ namespace VergissMeinNicht.Screens
             }
             PauseGame();
             
-            //Zeigt character Y an
-            string resultString = "Character Y: " + PlatformerCharacterBase.getInstance().Y;
-            FlatRedBall.Debugging.Debugger.Write(resultString);
-                    
+            
 
             // "Cheats"
             DeveloperActivity();
@@ -113,11 +112,11 @@ namespace VergissMeinNicht.Screens
             PlatformerCharacterBase.updateinstance(null);
 		}
 
-        public void DeveloperActivity()
+        public virtual void DeveloperActivity()
         {
             // Z  -- Zoolevel
             if (InputManager.Keyboard.KeyPushed(Keys.Z)) MoveToScreen(typeof(ZooLevel).FullName);
-            
+
             // R  -- Reset Character
             if (InputManager.Keyboard.KeyPushed(Keys.R))
             {
@@ -125,14 +124,37 @@ namespace VergissMeinNicht.Screens
                 Boden.Y = -50;
                 CurrentLayer = 1;
                 PlatformerCharacterBase.getInstance().Y = 75;
-                PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale = 1;
+                PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale = 1.1F;
                 PlatformerCharacterBase.getInstance().Collision.Height = ChildCollision_Height;
                 PlatformerCharacterBase.getInstance().Collision.Width = ChildCollision_Width;
                 DisableLayers = false;
             }
 
-        }
+            //------------------------------------------------------
+            //Zeigt Debugger Werte an 
+            if (InputManager.Keyboard.KeyPushed(Keys.F3))
+            {
+                if (!DebuggerOn) DebuggerOn = true;
+            }
 
+            if (InputManager.Keyboard.KeyPushed(Keys.F4))
+            {
+                if (DebuggerOn) DebuggerOn = false;
+            }
+
+            if (!DebuggerOn)
+            {
+                FlatRedBall.Debugging.Debugger.Write("");
+            }
+            if ( DebuggerOn)
+            {
+                string resultStringY = "Character Y: " + PlatformerCharacterBase.getInstance().Y;
+                string resultStringX = "Character X: " + PlatformerCharacterBase.getInstance().X;
+                string resultStringLayer = "CurrentLayer:" + CurrentLayer.ToString();
+                string resultStringLayerOn = "LayerOn:" + LayerOn.ToString();
+                FlatRedBall.Debugging.Debugger.Write(resultStringX + "\n" + resultStringY + "\n" + resultStringLayer + "\n" + resultStringLayerOn);
+            }
+        }
 
         void PauseGame()
         {
@@ -171,7 +193,7 @@ namespace VergissMeinNicht.Screens
             //Camera Movement following Theodor
             SpriteManager.Camera.XVelocity = PlatformerCharacterBase.getInstance().X - SpriteManager.Camera.X;
             SpriteManager.Camera.Y = 250; 
-            //SpriteManager.Camera.YVelocity = PlatformerCharacterBase.getInstance().Y - SpriteManager.Camera.Y;
+            SpriteManager.Camera.YVelocity = PlatformerCharacterBase.getInstance().Y - SpriteManager.Camera.Y;
 
         }
 
@@ -182,7 +204,7 @@ namespace VergissMeinNicht.Screens
             if (!DisableLayers)
             {
 
-                if (InputManager.Keyboard.KeyPushed(Keys.Up) && PlatformerCharacterBase.getInstance().Y < 210 && (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 1 || PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 0.9f || PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 0.8f))
+                if (InputManager.Keyboard.KeyPushed(Keys.Up) && PlatformerCharacterBase.getInstance().Y < 210 /*&& (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 1 || PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 0.9f || PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 0.8f)*/)
                 {
                     if (PlatformerCharacterBase.getInstance().DirectionFacing == PlatformerCharacterBase.LeftOrRight.Left)
                     {
@@ -220,7 +242,7 @@ namespace VergissMeinNicht.Screens
                                 .Using(
                                     FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
                                     FlatRedBall.Glue.StateInterpolation.Easing.Out);
-
+                            LayerOn = 2;
                             break;
 
                         case 2:
@@ -249,7 +271,9 @@ namespace VergissMeinNicht.Screens
                                     .Using(
                                         FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
                                         FlatRedBall.Glue.StateInterpolation.Easing.Out);
+                                LayerOn = 3;
                             }
+                            
                             break;
 
                         default:
@@ -257,6 +281,7 @@ namespace VergissMeinNicht.Screens
                             break;
                     }
 
+                    
                     if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 1)
                     {
                         CurrentLayer = 1;
@@ -271,7 +296,7 @@ namespace VergissMeinNicht.Screens
                     {
                         CurrentLayer = 3;
                     }
-
+                    
                     Boden
                         .Tween("Y")
                         .To(Boden.Y + 75)
@@ -322,7 +347,7 @@ namespace VergissMeinNicht.Screens
                             .Using(
                                 FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
                                 FlatRedBall.Glue.StateInterpolation.Easing.Out);
-
+                        LayerOn = 1;
                         break;
 
                     case 3:
@@ -349,14 +374,14 @@ namespace VergissMeinNicht.Screens
                             .Using(
                                 FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
                                 FlatRedBall.Glue.StateInterpolation.Easing.Out);
-
+                        LayerOn = 2;
                         break;
 
                     default:
 
                         break;
                 }
-
+                
                 if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 1)
                 {
                     CurrentLayer = 1;
@@ -371,7 +396,7 @@ namespace VergissMeinNicht.Screens
                 {
                     CurrentLayer = 3;
                 }
-
+                
                 Boden
                     .Tween("Y")
                     .To(Boden.Y - 75)

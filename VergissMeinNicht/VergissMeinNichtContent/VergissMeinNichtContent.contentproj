@@ -178,6 +178,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>empfangraum_v_2-wiederhergestellt</Name>
     </None>
+    <None Include="Screens\Empfang\Layer1.shcx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Layer1</Name>
+    </None>
+    <None Include="Screens\Empfang\Layer3.shcx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Layer3</Name>
+    </None>
     <None Include="Screens\Flur\flur_1-1-1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>flur_1-1-1</Name>

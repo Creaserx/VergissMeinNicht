@@ -44,6 +44,16 @@
           <HasPublicProperty>true</HasPublicProperty>
           <RuntimeType>FlatRedBall.Scene</RuntimeType>
         </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>Screens/Empfang/Layer3.shcx</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>FlatRedBall.Math.Geometry.ShapeCollection</RuntimeType>
+        </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>Screens/Empfang/Layer1.shcx</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>FlatRedBall.Math.Geometry.ShapeCollection</RuntimeType>
+        </ReferencedFileSave>
       </ReferencedFiles>
     </ScreenSave>
     <ScreenSave>
@@ -489,7 +499,7 @@
           </Properties>
           <Name>ZooLevelButtonVisible</Name>
           <Type>bool</Type>
-          <DefaultValue xsi:type="xsd:boolean">true</DefaultValue>
+          <DefaultValue xsi:type="xsd:boolean">false</DefaultValue>
           <SourceObject>ZooLevelButton</SourceObject>
           <SourceObjectProperty>Visible</SourceObjectProperty>
         </CustomVariable>
@@ -532,7 +542,7 @@
           <CustomProperty>
             <Type>bool</Type>
             <Member>Visible</Member>
-            <ValueAsBool>true</ValueAsBool>
+            <ValueAsBool>false</ValueAsBool>
           </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\Button</SourceClassType>
@@ -2250,12 +2260,17 @@
           <CustomProperty>
             <Type>float</Type>
             <Member>Height</Member>
-            <ValueAsFloat>150</ValueAsFloat>
+            <ValueAsFloat>165</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
             <Member>Width</Member>
-            <ValueAsFloat>80</ValueAsFloat>
+            <ValueAsFloat>88</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>bool</Type>
+            <Member>Visible</Member>
+            <ValueAsBool>true</ValueAsBool>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceClassType>AxisAlignedRectangle</SourceClassType>
@@ -2281,7 +2296,7 @@
           <CustomProperty>
             <Type>float</Type>
             <Member>TextureScale</Member>
-            <ValueAsFloat>1</ValueAsFloat>
+            <ValueAsFloat>1.1</ValueAsFloat>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile />
@@ -2446,7 +2461,7 @@
     <RecordLockContention>false</RecordLockContention>
   </GlobalContentSettingsSave>
   <SyncedProjects />
-  <StartUpScreen>Screens\MainMenu</StartUpScreen>
+  <StartUpScreen>Screens\Empfang</StartUpScreen>
   <ResolutionPresets />
   <PerformanceSettingsSave>
     <ThrowExceptionOnPostInitializeContentLoad>false</ThrowExceptionOnPostInitializeContentLoad>
