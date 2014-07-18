@@ -210,8 +210,7 @@ namespace VergissMeinNicht.Entities
         public static PlatformerCharacterBase getInstance()
         {
             return instance;
-        }
-        
+        }        
 
         public static void updateinstance(PlatformerCharacterBase newInstance)
         {

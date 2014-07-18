@@ -42,17 +42,17 @@ namespace VergissMeinNicht.Screens
 
         bool DebuggerOn = true;
 
-        float CollisionHeightLayer1 = 150*1.1f;
-        float CollisionHeightLayer2 = 150*1.0f;
-        float CollisionHeightLayer3 = 150*0.9f;
+        float CollisionHeightLayer1;
+        float CollisionHeightLayer2;
+        float CollisionHeightLayer3;
 
-        float CollisionWidthLayer1 = 80*1.1f;
-        float CollisionWidthLayer2 = 80*1.0f;
-        float CollisionWidthLayer3 = 80*0.9f;
+        float CollisionWidthLayer1;
+        float CollisionWidthLayer2;
+        float CollisionWidthLayer3;
 
         //Die Höhe und Tiefe der Collisionbox speichern
-        float ChildCollision_Height = 165;//PlatformerCharacterBase.getInstance().Collision.Height;
-        float ChildCollision_Width = 88;//PlatformerCharacterBase.getInstance().Collision.Width;
+        //float ChildCollision_Height = 165;//PlatformerCharacterBase.getInstance().Collision.Height;
+        //float ChildCollision_Width = 88;//PlatformerCharacterBase.getInstance().Collision.Width;
         
 
 		public virtual void CustomInitialize()
@@ -64,6 +64,16 @@ namespace VergissMeinNicht.Screens
             Temp.Name = "TheodorChildInstance";
             PlatformerCharacterBase.updateinstance(Temp);
             Temp.AddToManagers(mLayer);
+             
+            CollisionHeightLayer1 = PlatformerCharacterBase.getInstance().Collision.Height * 1.1f;
+            CollisionHeightLayer2 = PlatformerCharacterBase.getInstance().Collision.Height * 1.0f;
+            CollisionHeightLayer3 = PlatformerCharacterBase.getInstance().Collision.Height * 0.9f;
+            PlatformerCharacterBase.getInstance().Collision.Height = CollisionHeightLayer1;
+
+            CollisionWidthLayer1 = PlatformerCharacterBase.getInstance().Collision.Width * 1.1f;
+            CollisionWidthLayer2 = PlatformerCharacterBase.getInstance().Collision.Width * 1.0f;
+            CollisionWidthLayer3 = PlatformerCharacterBase.getInstance().Collision.Width * 0.9f;
+            PlatformerCharacterBase.getInstance().Collision.Width = CollisionWidthLayer1;
 
             // Create a rectangle
             Boden = new AxisAlignedRectangle();
@@ -125,8 +135,7 @@ namespace VergissMeinNicht.Screens
                 CurrentLayer = 1;
                 PlatformerCharacterBase.getInstance().Y = 75;
                 PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale = 1.1F;
-                PlatformerCharacterBase.getInstance().Collision.Height = ChildCollision_Height;
-                PlatformerCharacterBase.getInstance().Collision.Width = ChildCollision_Width;
+                //resetCollisionSize();
                 DisableLayers = false;
             }
 
@@ -158,6 +167,12 @@ namespace VergissMeinNicht.Screens
                 FlatRedBall.Debugging.Debugger.Write(resultStringX + "\n" + resultStringY + "\n" + resultStringCollisionH + "\n" + resultStringCollisionW + "\n" + resultStringLayer + "\n" + resultStringL3 + "\n" + resultStringSwitch);
             }
         }
+
+        /*public void resetCollisionSize()
+        {
+            PlatformerCharacterBase.getInstance().Collision.Height = CollisionHeightLayer1;
+            PlatformerCharacterBase.getInstance().Collision.Width = CollisionWidthLayer1;
+        }*/
 
         void PauseGame()
         {
