@@ -36,19 +36,19 @@ namespace VergissMeinNicht.Screens
         public AxisAlignedRectangle Boden;     
 
         public int CurrentLayer = 1;
-        public int LayerOn = 1;
+        public bool isSwitching = false;
         public bool DisableLayers = false;
         public bool DisableLayer3 = false;
 
         bool DebuggerOn = true;
 
-        float CollisionHeightLayer1 = 150;
-        float CollisionHeightLayer2 = 150 * SizeFirstDiff;
-        float CollisionHeightLayer3 = 150 * SizeSecondDiff;
+        float CollisionHeightLayer1 = 150*1.1f;
+        float CollisionHeightLayer2 = 150*1.0f;
+        float CollisionHeightLayer3 = 150*0.9f;
 
-        float CollisionWidthLayer1 = 80;
-        float CollisionWidthLayer2 = 80 * SizeFirstDiff;
-        float CollisionWidthLayer3 = 80 * SizeSecondDiff;
+        float CollisionWidthLayer1 = 80*1.1f;
+        float CollisionWidthLayer2 = 80*1.0f;
+        float CollisionWidthLayer3 = 80*0.9f;
 
         //Die Höhe und Tiefe der Collisionbox speichern
         float ChildCollision_Height = 165;//PlatformerCharacterBase.getInstance().Collision.Height;
@@ -91,7 +91,9 @@ namespace VergissMeinNicht.Screens
             //Theodor Collisions
             PlatformerCharacterBase.getInstance().CollideAgainst(SolidCollisions);
 
-            LayerManagement();            
+            LayerOn();
+            LayerManagement();
+            
 
             if (!IsPaused)
             {
@@ -148,10 +150,12 @@ namespace VergissMeinNicht.Screens
             {
                 string resultStringY = "Character Y: " + PlatformerCharacterBase.getInstance().Y;
                 string resultStringX = "Character X: " + PlatformerCharacterBase.getInstance().X;
+                string resultStringCollisionH = "Collision H: " + PlatformerCharacterBase.getInstance().Collision.Height;
+                string resultStringCollisionW = "Collision W: " + PlatformerCharacterBase.getInstance().Collision.Width;
                 string resultStringLayer = "CurrentLayer:" + CurrentLayer.ToString();
-                string resultStringLayerOn = "LayerOn:" + LayerOn.ToString();
                 string resultStringL3 = "Layer3Disable:" + DisableLayer3.ToString();
-                FlatRedBall.Debugging.Debugger.Write(resultStringX + "\n" + resultStringY + "\n" + resultStringLayer + "\n" + resultStringLayerOn + "\n" + resultStringL3);
+                string resultStringSwitch = "isSwitching:" + isSwitching.ToString();
+                FlatRedBall.Debugging.Debugger.Write(resultStringX + "\n" + resultStringY + "\n" + resultStringCollisionH + "\n" + resultStringCollisionW + "\n" + resultStringLayer + "\n" + resultStringL3 + "\n" + resultStringSwitch);
             }
         }
 
@@ -196,6 +200,32 @@ namespace VergissMeinNicht.Screens
 
         }
 
+        void LayerOn()
+        {
+            if (isSwitching)
+            {
+                InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Left);
+                InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Right);                
+            }
+            
+            if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 1.1f)
+            {
+                CurrentLayer = 1;
+                isSwitching = false;
+            }
+
+            else if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == SizeFirstDiff)
+            {
+                CurrentLayer = 2;
+                isSwitching = false;
+            }
+
+            else if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == SizeSecondDiff)
+            {
+                CurrentLayer = 3;
+                isSwitching = false;
+            }
+        }
         
 
         void LayerManagement()
@@ -203,14 +233,16 @@ namespace VergissMeinNicht.Screens
             // Workaround zum Ebenenwechsel. Das komplette Tweening bedarf noch "etwas" Optimierung!
 
 
-            if (DisableLayer3 && LayerOn == 2) DisableLayers=true; //WA
+            if (DisableLayer3 && CurrentLayer == 2) DisableLayers=true; //WA
 
             if (!DisableLayers)
             {
                 
                 
-                if (InputManager.Keyboard.KeyPushed(Keys.Up) && PlatformerCharacterBase.getInstance().Y < 210 /*&& (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 1 || PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 0.9f || PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 0.8f)*/)
+                if (InputManager.Keyboard.KeyPushed(Keys.Up) && PlatformerCharacterBase.getInstance().Y < 210 && !isSwitching)
                 {
+                    isSwitching = true;
+
                     if (PlatformerCharacterBase.getInstance().DirectionFacing == PlatformerCharacterBase.LeftOrRight.Left)
                     {
                         PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName = "IdleLeft";
@@ -249,14 +281,12 @@ namespace VergissMeinNicht.Screens
                                         FlatRedBall.Glue.StateInterpolation.Easing.Out);
 
                                 Boden                                   //WA
-                           .Tween("Y")
-                           .To(Boden.Y + 75)
-                           .During(1)
-                           .Using(
-                               FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
-                               FlatRedBall.Glue.StateInterpolation.Easing.Out);
-
-                                LayerOn = 2;
+                                    .Tween("Y")
+                                    .To(Boden.Y + 75)
+                                    .During(1)
+                                    .Using(
+                                        FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                        FlatRedBall.Glue.StateInterpolation.Easing.Out);
                             
                             break;
 
@@ -288,14 +318,12 @@ namespace VergissMeinNicht.Screens
                                         FlatRedBall.Glue.StateInterpolation.Easing.Out);
 
                                 Boden                                                       //WA
-                   .Tween("Y")
-                   .To(Boden.Y + 75)
-                   .During(1)
-                   .Using(
-                       FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
-                       FlatRedBall.Glue.StateInterpolation.Easing.Out);
-                                
-                                LayerOn = 3;
+                                   .Tween("Y")
+                                   .To(Boden.Y + 75)
+                                   .During(1)
+                                   .Using(
+                                       FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                       FlatRedBall.Glue.StateInterpolation.Easing.Out);
                             }
                             
                             break;
@@ -306,36 +334,18 @@ namespace VergissMeinNicht.Screens
                     }
 
                     
-                    if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 1)
-                    {
-                        CurrentLayer = 1;
-                    }
-
-                    else if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == SizeFirstDiff)
-                    {
-                        CurrentLayer = 2;
-                    }
-
-                    else if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == SizeSecondDiff)
-                    {
-                        CurrentLayer = 3;
-                    }
-                    /*
-                    Boden
-                        .Tween("Y")
-                        .To(Boden.Y + 75)
-                        .During(1)
-                        .Using(
-                            FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
-                            FlatRedBall.Glue.StateInterpolation.Easing.Out);*/
+                    
+                    
                 }
+                
                 DisableLayers = false;  //WA
             }
 
 
 
-            if (InputManager.Keyboard.KeyPushed(Keys.Down) && PlatformerCharacterBase.getInstance().Y > 75)
+            if (InputManager.Keyboard.KeyPushed(Keys.Down) && PlatformerCharacterBase.getInstance().Y > 75 && !isSwitching)
             {
+                isSwitching = true;
                 DisableLayers = false; //WA
                 if (PlatformerCharacterBase.getInstance().DirectionFacing == PlatformerCharacterBase.LeftOrRight.Left)
                 {
@@ -352,7 +362,7 @@ namespace VergissMeinNicht.Screens
                     case 2:
                         PlatformerCharacterBase.getInstance().SpriteInstance
                         .Tween("TextureScale")
-                        .To(1)
+                        .To(1.1f)
                         .During(1)
                         .Using(
                             FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
@@ -373,7 +383,7 @@ namespace VergissMeinNicht.Screens
                             .Using(
                                 FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
                                 FlatRedBall.Glue.StateInterpolation.Easing.Out);
-                        LayerOn = 1;
+
                         break;
 
                     case 3:
@@ -400,28 +410,14 @@ namespace VergissMeinNicht.Screens
                             .Using(
                                 FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
                                 FlatRedBall.Glue.StateInterpolation.Easing.Out);
-                        LayerOn = 2;
+
                         break;
 
                     default:
 
                         break;
-                }
-                
-                if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 1)
-                {
-                    CurrentLayer = 1;
-                }
-
-                else if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == SizeFirstDiff)
-                {
-                    CurrentLayer = 2;
-                }
-
-                else if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == SizeSecondDiff)
-                {
-                    CurrentLayer = 3;
-                }
+                }             
+               
                 
                 Boden
                     .Tween("Y")
@@ -429,7 +425,7 @@ namespace VergissMeinNicht.Screens
                     .During(1)
                     .Using(
                         FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
-                        FlatRedBall.Glue.StateInterpolation.Easing.Out);
+                        FlatRedBall.Glue.StateInterpolation.Easing.Out);                
             }
         }
 
