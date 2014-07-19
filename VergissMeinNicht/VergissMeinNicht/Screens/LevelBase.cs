@@ -80,11 +80,12 @@ namespace VergissMeinNicht.Screens
             Boden.ScaleY = 50;
             Boden.Y = -50;
             this.SolidCollisions.AxisAlignedRectangles.Add(Boden);  // Add it to the ShapeCollection so the player can collide against it
+            
 
             PlatformerCharacterBase.getInstance().Y = 75;       // Make the character appear on top of the rectangle
 
 
-            if (CollisionsVisible) CollisionVisibility();
+            if (CollisionsVisible) CollisionVisibilityOn();
 		}
 
 		public virtual void CustomActivity(bool firstTimeCalled)
@@ -114,7 +115,7 @@ namespace VergissMeinNicht.Screens
             PlatformerCharacterBase.updateinstance(null);
 		}
 
-        public void CollisionVisibility() 
+        public void CollisionVisibilityOn() 
         {
             SolidCollisions.AddToManagers(); // Add the ShapeColleciton to the ShapeManager so it's visible
 

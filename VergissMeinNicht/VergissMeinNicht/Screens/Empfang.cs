@@ -34,23 +34,24 @@ namespace VergissMeinNicht.Screens
 		public override void CustomInitialize()
 		{
             base.CustomInitialize();
-            Layer1.Visible = false;
-            Layer3.Visible = false;
-
-            Background_creepy.Visible = true;
-            if (CollisionsVisible) CollisionVisibilityEmpfang();
+            VisibilityInit();
 		}
 
         public override void CustomActivity(bool firstTimeCalled)
 		{
-            
-            SwitchBlock();
+            SwitchBlock();  //Blocken der Switch-Function
+
             base.CustomActivity(firstTimeCalled);
             CollisionActivity();
+
+            // Background Change
             if (PlatformerCharacterBase.isChild()) Background_creepy.Visible = true;
             else Background_creepy.Visible = false;
+		
+            //Löcher definieren
 
-		}
+        
+        }
 
         public override void CustomDestroy()
 		{
@@ -78,25 +79,40 @@ namespace VergissMeinNicht.Screens
             PlatformerCharacterBase.getInstance().Collision.CollideAgainstMove(Layer1, 0, 1);  //Kollision mit Rändern
             if (CurrentLayer == 3) PlatformerCharacterBase.getInstance().Collision.CollideAgainstMove(Layer3, 0, 1);  //Kollision auf Layer 3
 
-
-            if (CurrentLayer == 2 && PlatformerCharacterBase.getInstance().Y == 150 && PlatformerCharacterBase.getInstance().X > 25 && PlatformerCharacterBase.getInstance().X < 80)
+            //Collision mit Löchern
+            for (int i = HoleList.Count - 1; i > -1; i--)
             {
-                FallInHole();
-                
+                if (PlatformerCharacterBase.getInstance().Collision.CollideAgainst(HoleList[i].Collision) && CurrentLayer == HoleList[i].Layer)
+                {
+                    HoleList[i].SpriteInstance.Visible = true;
+                    FallInHole();
+                }
+
             }
-            if (PlatformerCharacterBase.getInstance().Y < 85 && Boden.Y == -300) MoveToScreen(typeof(Empfang).FullName);
-        }
-
-        void FallInHole()
-        {
-            Boden.Y = -300;
-
-            //PlatformerCharacterBase.getInstance().Collision.CollideAgainst();
-
+  
+            // LevelReset WA
             //if (PlatformerCharacterBase.getInstance().Y < 85 && Boden.Y == -300) MoveToScreen(typeof(Empfang).FullName);
         }
 
 
+
+        void FallInHole()
+        {
+            //Boden.Y = -300;
+            // SolidCollisions.AxisAlignedRectangles.Remove(Boden);   --Funktioniert theoretisch, aber ein "Boden" ist immer noch da.
+
+        }
+
+        public void VisibilityInit()
+        {
+            Layer1.Visible = false;
+            Layer3.Visible = false;
+
+            Background_creepy.Visible = true;
+            if (CollisionsVisible) CollisionVisibilityEmpfang();
+   
+        }
+    
         public void CollisionVisibilityEmpfang()
         {
             Layer1.Visible = true;

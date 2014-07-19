@@ -75,12 +75,17 @@
               <CustomProperty>
                 <Type>float</Type>
                 <Member>X</Member>
-                <ValueAsFloat>50</ValueAsFloat>
+                <ValueAsFloat>-330</ValueAsFloat>
               </CustomProperty>
               <CustomProperty>
                 <Type>float</Type>
                 <Member>Y</Member>
-                <ValueAsFloat>75</ValueAsFloat>
+                <ValueAsFloat>150</ValueAsFloat>
+              </CustomProperty>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>Layer</Member>
+                <ValueAsFloat>3</ValueAsFloat>
               </CustomProperty>
               <SourceType>Entity</SourceType>
               <SourceClassType>Entities\Räume_Inhalt\Empfang\Hole</SourceClassType>
@@ -92,11 +97,16 @@
               <CustomProperty>
                 <Type>float</Type>
                 <Member>X</Member>
-                <ValueAsFloat>50</ValueAsFloat>
+                <ValueAsFloat>-330</ValueAsFloat>
               </CustomProperty>
               <CustomProperty>
                 <Type>float</Type>
                 <Member>Y</Member>
+                <ValueAsFloat>75</ValueAsFloat>
+              </CustomProperty>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>Layer</Member>
                 <ValueAsFloat>2</ValueAsFloat>
               </CustomProperty>
               <SourceType>Entity</SourceType>
@@ -109,16 +119,153 @@
               <CustomProperty>
                 <Type>float</Type>
                 <Member>X</Member>
-                <ValueAsFloat>50</ValueAsFloat>
+                <ValueAsFloat>-80</ValueAsFloat>
+              </CustomProperty>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>Y</Member>
+                <ValueAsFloat>75</ValueAsFloat>
+              </CustomProperty>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>Layer</Member>
+                <ValueAsFloat>2</ValueAsFloat>
+              </CustomProperty>
+              <SourceType>Entity</SourceType>
+              <SourceClassType>Entities\Räume_Inhalt\Empfang\Hole</SourceClassType>
+              <InstanceName>Hole3</InstanceName>
+              <AttachToContainer>true</AttachToContainer>
+              <IndependentOfCamera>true</IndependentOfCamera>
+            </NamedObjectSave>
+            <NamedObjectSave>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>X</Member>
+                <ValueAsFloat>-80</ValueAsFloat>
+              </CustomProperty>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>Y</Member>
+                <ValueAsFloat>2</ValueAsFloat>
+              </CustomProperty>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>Layer</Member>
+                <ValueAsFloat>1</ValueAsFloat>
+              </CustomProperty>
+              <SourceType>Entity</SourceType>
+              <SourceClassType>Entities\Räume_Inhalt\Empfang\Hole</SourceClassType>
+              <InstanceName>Hole4</InstanceName>
+              <AttachToContainer>true</AttachToContainer>
+              <IndependentOfCamera>true</IndependentOfCamera>
+            </NamedObjectSave>
+            <NamedObjectSave>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>X</Member>
+                <ValueAsFloat>170</ValueAsFloat>
               </CustomProperty>
               <CustomProperty>
                 <Type>float</Type>
                 <Member>Y</Member>
                 <ValueAsFloat>150</ValueAsFloat>
               </CustomProperty>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>Layer</Member>
+                <ValueAsFloat>3</ValueAsFloat>
+              </CustomProperty>
               <SourceType>Entity</SourceType>
               <SourceClassType>Entities\Räume_Inhalt\Empfang\Hole</SourceClassType>
-              <InstanceName>Hole3</InstanceName>
+              <InstanceName>Hole5</InstanceName>
+              <AttachToContainer>true</AttachToContainer>
+              <IndependentOfCamera>true</IndependentOfCamera>
+            </NamedObjectSave>
+            <NamedObjectSave>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>X</Member>
+                <ValueAsFloat>170</ValueAsFloat>
+              </CustomProperty>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>Y</Member>
+                <ValueAsFloat>75</ValueAsFloat>
+              </CustomProperty>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>Layer</Member>
+                <ValueAsFloat>2</ValueAsFloat>
+              </CustomProperty>
+              <SourceType>Entity</SourceType>
+              <SourceClassType>Entities\Räume_Inhalt\Empfang\Hole</SourceClassType>
+              <InstanceName>Hole6</InstanceName>
+              <AttachToContainer>true</AttachToContainer>
+              <IndependentOfCamera>true</IndependentOfCamera>
+            </NamedObjectSave>
+            <NamedObjectSave>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>X</Member>
+                <ValueAsFloat>295</ValueAsFloat>
+              </CustomProperty>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>Y</Member>
+                <ValueAsFloat>150</ValueAsFloat>
+              </CustomProperty>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>Layer</Member>
+                <ValueAsFloat>3</ValueAsFloat>
+              </CustomProperty>
+              <SourceType>Entity</SourceType>
+              <SourceClassType>Entities\Räume_Inhalt\Empfang\Hole</SourceClassType>
+              <InstanceName>Hole7</InstanceName>
+              <AttachToContainer>true</AttachToContainer>
+              <IndependentOfCamera>true</IndependentOfCamera>
+            </NamedObjectSave>
+            <NamedObjectSave>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>X</Member>
+                <ValueAsFloat>420</ValueAsFloat>
+              </CustomProperty>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>Y</Member>
+                <ValueAsFloat>150</ValueAsFloat>
+              </CustomProperty>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>Layer</Member>
+                <ValueAsFloat>3</ValueAsFloat>
+              </CustomProperty>
+              <SourceType>Entity</SourceType>
+              <SourceClassType>Entities\Räume_Inhalt\Empfang\Hole</SourceClassType>
+              <InstanceName>Hole8</InstanceName>
+              <AttachToContainer>true</AttachToContainer>
+              <IndependentOfCamera>true</IndependentOfCamera>
+            </NamedObjectSave>
+            <NamedObjectSave>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>X</Member>
+                <ValueAsFloat>420</ValueAsFloat>
+              </CustomProperty>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>Y</Member>
+                <ValueAsFloat>2</ValueAsFloat>
+              </CustomProperty>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>Layer</Member>
+                <ValueAsFloat>1</ValueAsFloat>
+              </CustomProperty>
+              <SourceType>Entity</SourceType>
+              <SourceClassType>Entities\Räume_Inhalt\Empfang\Hole</SourceClassType>
+              <InstanceName>Hole9</InstanceName>
               <AttachToContainer>true</AttachToContainer>
               <IndependentOfCamera>true</IndependentOfCamera>
             </NamedObjectSave>
@@ -292,6 +439,7 @@
           <SourceName />
           <SourceClassType>ShapeCollection</SourceClassType>
           <InstanceName>SolidCollisions</InstanceName>
+          <HasPublicProperty>true</HasPublicProperty>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
@@ -2014,6 +2162,16 @@
           <Name>Z</Name>
           <Type>float</Type>
         </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>Layer</Name>
+          <Type>float</Type>
+        </CustomVariable>
       </CustomVariables>
       <Name>Entities\Räume_Inhalt\Empfang\Hole</Name>
       <NamedObjects>
@@ -2026,13 +2184,19 @@
           <CustomProperty>
             <Type>float</Type>
             <Member>TextureScale</Member>
-            <ValueAsFloat>0.2</ValueAsFloat>
+            <ValueAsFloat>0.24</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>bool</Type>
+            <Member>Visible</Member>
+            <ValueAsBool>false</ValueAsBool>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile />
           <SourceName />
           <SourceClassType>Sprite</SourceClassType>
           <InstanceName>SpriteInstance</InstanceName>
+          <HasPublicProperty>true</HasPublicProperty>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
