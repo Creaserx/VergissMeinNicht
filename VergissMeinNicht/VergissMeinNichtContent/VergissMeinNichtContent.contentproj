@@ -174,6 +174,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Theodor_Idle_Right</Name>
     </None>
+    <None Include="Screens\Empfang\!creepempfang.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>!creepempfang</Name>
+    </None>
     <None Include="Screens\Empfang\!theoneempfang.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>!theoneempfang</Name>
@@ -185,6 +189,10 @@
     <None Include="Screens\Empfang\Background.scnx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Background</Name>
+    </None>
+    <None Include="Screens\Empfang\Background_creepy.scnx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Background_creepy</Name>
     </None>
     <None Include="Screens\Empfang\empfangraum_v_2-wiederhergestellt.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

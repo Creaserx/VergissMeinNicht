@@ -36,17 +36,19 @@ namespace VergissMeinNicht.Screens
             base.CustomInitialize();
             Layer1.Visible = false;
             Layer3.Visible = false;
-            
+
+            Background_creepy.Visible = true;
             if (CollisionsVisible) CollisionVisibilityEmpfang();
 		}
 
         public override void CustomActivity(bool firstTimeCalled)
 		{
-            if (PlatformerCharacterBase.getInstance().X < -345) DisableLayer3 = true;
-            else DisableLayer3 = false;
+            
+            SwitchBlock();
             base.CustomActivity(firstTimeCalled);
             CollisionActivity();
-
+            if (PlatformerCharacterBase.isChild()) Background_creepy.Visible = true;
+            else Background_creepy.Visible = false;
 
 		}
 
@@ -62,6 +64,14 @@ namespace VergissMeinNicht.Screens
             
         }
 
+        public void SwitchBlock()
+        {
+            DisableLayer3 = false;
+            DisableLayers = false;
+            if (PlatformerCharacterBase.getInstance().X < -345) DisableLayer3 = true;
+            else if (PlatformerCharacterBase.getInstance().X > 685) DisableLayer3 = true;
+        }
+        
         public void CollisionActivity()
         {
 
@@ -69,13 +79,23 @@ namespace VergissMeinNicht.Screens
             if (CurrentLayer == 3) PlatformerCharacterBase.getInstance().Collision.CollideAgainstMove(Layer3, 0, 1);  //Kollision auf Layer 3
 
 
-            if (CurrentLayer == 2 && PlatformerCharacterBase.getInstance().X > 25 && PlatformerCharacterBase.getInstance().X < 80)
+            if (CurrentLayer == 2 && PlatformerCharacterBase.getInstance().Y == 150 && PlatformerCharacterBase.getInstance().X > 25 && PlatformerCharacterBase.getInstance().X < 80)
             {
-                Boden.Y = -300;
+                FallInHole();
                 
             }
             if (PlatformerCharacterBase.getInstance().Y < 85 && Boden.Y == -300) MoveToScreen(typeof(Empfang).FullName);
         }
+
+        void FallInHole()
+        {
+            Boden.Y = -300;
+
+            //PlatformerCharacterBase.getInstance().Collision.CollideAgainst();
+
+            //if (PlatformerCharacterBase.getInstance().Y < 85 && Boden.Y == -300) MoveToScreen(typeof(Empfang).FullName);
+        }
+
 
         public void CollisionVisibilityEmpfang()
         {

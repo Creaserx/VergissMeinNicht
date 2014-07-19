@@ -49,9 +49,7 @@ namespace VergissMeinNicht.Screens
         float CollisionWidthLayer1;
         float CollisionWidthLayer2;
         float CollisionWidthLayer3;
-
-        //public bool CollisionsVisible = false;
-        
+       
 
 		public virtual void CustomInitialize()
 		{
@@ -139,7 +137,8 @@ namespace VergissMeinNicht.Screens
                 //resetCollisionSize();
                 if (!PlatformerCharacterBase.isChild())
                 {
-                    DisableLayers = false; TheodorChild Temp = new TheodorChild();
+                    DisableLayers = false;
+                    TheodorChild Temp = new TheodorChild();
                     Temp.X = PlatformerCharacterBase.getInstance().X;
                     Temp.Y = PlatformerCharacterBase.getInstance().Y;
                     PlatformerCharacterBase.updateinstance(Temp);
@@ -170,8 +169,9 @@ namespace VergissMeinNicht.Screens
                 string resultStringCollisionW = "Collision W: " + PlatformerCharacterBase.getInstance().Collision.Width;
                 string resultStringLayer = "CurrentLayer:" + CurrentLayer.ToString();
                 string resultStringL3 = "Layer3Disable:" + DisableLayer3.ToString();
+                string resultStringLa = "LayersDisable:" + DisableLayers.ToString();
                 string resultStringSwitch = "isSwitching:" + isSwitching.ToString();
-                FlatRedBall.Debugging.Debugger.Write(resultStringX + "\n" + resultStringY + "\n" + resultStringCollisionH + "\n" + resultStringCollisionW + "\n" + resultStringLayer + "\n" + resultStringL3 + "\n" + resultStringSwitch);
+                FlatRedBall.Debugging.Debugger.Write(resultStringX + "\n" + resultStringY + "\n" + resultStringCollisionH + "\n" + resultStringCollisionW + "\n" + resultStringLayer + "\n" + resultStringL3 + "\n" + resultStringLa + "\n" + resultStringSwitch);
             }
         }
 
@@ -218,8 +218,6 @@ namespace VergissMeinNicht.Screens
             //Camera Movement following Theodor
             SpriteManager.Camera.XVelocity = PlatformerCharacterBase.getInstance().X - SpriteManager.Camera.X;
             SpriteManager.Camera.Y = 250; 
-            SpriteManager.Camera.YVelocity = PlatformerCharacterBase.getInstance().Y - SpriteManager.Camera.Y;
-
         }
 
         void LayerOn()
@@ -227,7 +225,8 @@ namespace VergissMeinNicht.Screens
             if (isSwitching)
             {
                 InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Left);
-                InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Right);                
+                InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Right);
+                InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Space);  
             }
             
             if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 1.1f)

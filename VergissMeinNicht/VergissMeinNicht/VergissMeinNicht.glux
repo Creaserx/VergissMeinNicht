@@ -54,6 +54,12 @@
           <IsSharedStatic>true</IsSharedStatic>
           <RuntimeType>FlatRedBall.Math.Geometry.ShapeCollection</RuntimeType>
         </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>Screens/Empfang/Background_creepy.scnx</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <HasPublicProperty>true</HasPublicProperty>
+          <RuntimeType>FlatRedBall.Scene</RuntimeType>
+        </ReferencedFileSave>
       </ReferencedFiles>
       <NamedObjects>
         <NamedObjectSave>
@@ -79,6 +85,40 @@
               <SourceType>Entity</SourceType>
               <SourceClassType>Entities\Räume_Inhalt\Empfang\Hole</SourceClassType>
               <InstanceName>Hole1</InstanceName>
+              <AttachToContainer>true</AttachToContainer>
+              <IndependentOfCamera>true</IndependentOfCamera>
+            </NamedObjectSave>
+            <NamedObjectSave>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>X</Member>
+                <ValueAsFloat>50</ValueAsFloat>
+              </CustomProperty>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>Y</Member>
+                <ValueAsFloat>2</ValueAsFloat>
+              </CustomProperty>
+              <SourceType>Entity</SourceType>
+              <SourceClassType>Entities\Räume_Inhalt\Empfang\Hole</SourceClassType>
+              <InstanceName>Hole2</InstanceName>
+              <AttachToContainer>true</AttachToContainer>
+              <IndependentOfCamera>true</IndependentOfCamera>
+            </NamedObjectSave>
+            <NamedObjectSave>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>X</Member>
+                <ValueAsFloat>50</ValueAsFloat>
+              </CustomProperty>
+              <CustomProperty>
+                <Type>float</Type>
+                <Member>Y</Member>
+                <ValueAsFloat>150</ValueAsFloat>
+              </CustomProperty>
+              <SourceType>Entity</SourceType>
+              <SourceClassType>Entities\Räume_Inhalt\Empfang\Hole</SourceClassType>
+              <InstanceName>Hole3</InstanceName>
               <AttachToContainer>true</AttachToContainer>
               <IndependentOfCamera>true</IndependentOfCamera>
             </NamedObjectSave>
