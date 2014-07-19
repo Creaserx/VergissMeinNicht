@@ -34,7 +34,10 @@ namespace VergissMeinNicht.Screens
 		public override void CustomInitialize()
 		{
             base.CustomInitialize();
+            Layer1.Visible = false;
+            Layer3.Visible = false;
             
+            if (CollisionsVisible) CollisionVisibilityEmpfang();
 		}
 
         public override void CustomActivity(bool firstTimeCalled)
@@ -72,14 +75,17 @@ namespace VergissMeinNicht.Screens
                 
             }
             if (PlatformerCharacterBase.getInstance().Y < 85 && Boden.Y == -300) MoveToScreen(typeof(Empfang).FullName);
+        }
 
+        public void CollisionVisibilityEmpfang()
+        {
+            Layer1.Visible = true;
+            Layer3.Visible = true;
 
-
+            for (int i = HoleList.Count - 1; i > -1; i--) HoleList[i].Collision.Visible = true;   // Holes Visible machen
 
 
         }
-
-
 
 
 	}

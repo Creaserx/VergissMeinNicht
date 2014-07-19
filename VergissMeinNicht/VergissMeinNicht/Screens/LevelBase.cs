@@ -50,16 +50,17 @@ namespace VergissMeinNicht.Screens
         float CollisionWidthLayer2;
         float CollisionWidthLayer3;
 
-        //Die Höhe und Tiefe der Collisionbox speichern
-        //float ChildCollision_Height = 165;//PlatformerCharacterBase.getInstance().Collision.Height;
-        //float ChildCollision_Width = 88;//PlatformerCharacterBase.getInstance().Collision.Width;
+        //public bool CollisionsVisible = false;
         
 
 		public virtual void CustomInitialize()
 		{
-            DisableLayers = false; // Erstmal Layer aktivieren
-            DisableLayer3 = false; // Layer 3 aktivieren
+            CollisionsVisible = false;  // Collision Visibility An/Aus
 
+            DisableLayers = false;      // Erstmal Layer aktivieren
+            DisableLayer3 = false;      // Layer 3 aktivieren
+
+            //Theodor erstellen
             TheodorChild Temp = new VergissMeinNicht.Entities.TheodorChild(ContentManagerName, false);
             Temp.Name = "TheodorChildInstance";
             PlatformerCharacterBase.updateinstance(Temp);
@@ -79,23 +80,19 @@ namespace VergissMeinNicht.Screens
             Boden = new AxisAlignedRectangle();
             Boden.ScaleX = 1800;
             Boden.ScaleY = 50;
-            Boden.Y = -50; 
+            Boden.Y = -50;
+            this.SolidCollisions.AxisAlignedRectangles.Add(Boden);  // Add it to the ShapeCollection so the player can collide against it
 
-            // Add it to the ShapeCollection so the player can collide against it
-            this.SolidCollisions.AxisAlignedRectangles.Add(Boden);
-                  
-            // Add the ShapeColleciton to the ShapeManager so it's visible
-            //SolidCollisions.AddToManagers();
-            
+            PlatformerCharacterBase.getInstance().Y = 75;       // Make the character appear on top of the rectangle
 
-            // Make the character appear on top of the rectangle:
-            PlatformerCharacterBase.getInstance().Y = 75;
+
+            if (CollisionsVisible) CollisionVisibility();
 		}
 
 		public virtual void CustomActivity(bool firstTimeCalled)
 		{
             //Theodor Movement      
-            PlatformerCharacterBase.getInstance().DetermineMovementValues();        //Collision muss extra aufgerufen werden
+            PlatformerCharacterBase.getInstance().DetermineMovementValues();        
             CameraMovement();         
 
             //Theodor Collisions
@@ -103,15 +100,12 @@ namespace VergissMeinNicht.Screens
 
             LayerOn();
             LayerManagement();
-            
 
-            if (!IsPaused)
-            {
-                PlatformerCharacterBase.getInstance().Activity();
-            }
+
+            if (!IsPaused) PlatformerCharacterBase.getInstance().Activity();            
+            
             PauseGame();
-            
-            
+  
 
             // "Cheats"
             DeveloperActivity();
@@ -121,6 +115,13 @@ namespace VergissMeinNicht.Screens
         {
             PlatformerCharacterBase.updateinstance(null);
 		}
+
+        public void CollisionVisibility() 
+        {
+            SolidCollisions.AddToManagers(); // Add the ShapeColleciton to the ShapeManager so it's visible
+
+            PlatformerCharacterBase.getInstance().Collision.Visible = true;
+        }
 
         public virtual void DeveloperActivity()
         {
@@ -136,7 +137,13 @@ namespace VergissMeinNicht.Screens
                 PlatformerCharacterBase.getInstance().Y = 75;
                 PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale = 1.1F;
                 //resetCollisionSize();
-                DisableLayers = false;
+                if (!PlatformerCharacterBase.isChild())
+                {
+                    DisableLayers = false; TheodorChild Temp = new TheodorChild();
+                    Temp.X = PlatformerCharacterBase.getInstance().X;
+                    Temp.Y = PlatformerCharacterBase.getInstance().Y;
+                    PlatformerCharacterBase.updateinstance(Temp);
+                }
             }
 
             //------------------------------------------------------
