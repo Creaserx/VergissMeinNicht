@@ -60,6 +60,11 @@
           <HasPublicProperty>true</HasPublicProperty>
           <RuntimeType>FlatRedBall.Scene</RuntimeType>
         </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>Screens/Empfang/Erwachsen.mp3</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>Microsoft.Xna.Framework.Media.Song</RuntimeType>
+        </ReferencedFileSave>
       </ReferencedFiles>
       <NamedObjects>
         <NamedObjectSave>

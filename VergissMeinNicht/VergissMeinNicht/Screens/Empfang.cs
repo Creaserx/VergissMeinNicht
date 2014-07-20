@@ -35,6 +35,8 @@ namespace VergissMeinNicht.Screens
 		{
             base.CustomInitialize();
             VisibilityInit();
+
+            
 		}
 
         public override void CustomActivity(bool firstTimeCalled)
