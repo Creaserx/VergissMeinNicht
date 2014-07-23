@@ -162,6 +162,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>TheodorChild_WalkAnimationChain</Name>
     </None>
+    <None Include="Entities\Theodor\TheodorChild_WalkAnimationSheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>TheodorChild_WalkAnimationSheet</Name>
+    </None>
     <None Include="Entities\Theodor\Theodor_Dummy_SpriteSheet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Theodor_Dummy_SpriteSheet</Name>

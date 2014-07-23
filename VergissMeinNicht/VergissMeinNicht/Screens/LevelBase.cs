@@ -64,14 +64,14 @@ namespace VergissMeinNicht.Screens
             PlatformerCharacterBase.updateinstance(Temp);
             Temp.AddToManagers(Layer1);
              
-            CollisionHeightLayer1 = PlatformerCharacterBase.getInstance().Collision.Height * 1.1f;
-            CollisionHeightLayer2 = PlatformerCharacterBase.getInstance().Collision.Height * 1.0f;
-            CollisionHeightLayer3 = PlatformerCharacterBase.getInstance().Collision.Height * 0.9f;
+            CollisionHeightLayer1 = PlatformerCharacterBase.getInstance().Collision.Height * 0.5f;
+            CollisionHeightLayer2 = PlatformerCharacterBase.getInstance().Collision.Height * 0.9f;
+            CollisionHeightLayer3 = PlatformerCharacterBase.getInstance().Collision.Height * 0.8f;
             PlatformerCharacterBase.getInstance().Collision.Height = CollisionHeightLayer1;
 
-            CollisionWidthLayer1 = PlatformerCharacterBase.getInstance().Collision.Width * 1.1f;
-            CollisionWidthLayer2 = PlatformerCharacterBase.getInstance().Collision.Width * 1.0f;
-            CollisionWidthLayer3 = PlatformerCharacterBase.getInstance().Collision.Width * 0.9f;
+            CollisionWidthLayer1 = PlatformerCharacterBase.getInstance().Collision.Width * 0.5f;
+            CollisionWidthLayer2 = PlatformerCharacterBase.getInstance().Collision.Width * 0.9f;
+            CollisionWidthLayer3 = PlatformerCharacterBase.getInstance().Collision.Width * 0.8f;
             PlatformerCharacterBase.getInstance().Collision.Width = CollisionWidthLayer1;
 
             // Create a rectangle
@@ -134,7 +134,7 @@ namespace VergissMeinNicht.Screens
                 Boden.Y = -50;
                 CurrentLayer = 1;
                 PlatformerCharacterBase.getInstance().Y = 75;
-                PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale = 1.1F;
+                PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale = 1.0f;
                 //resetCollisionSize();
                 if (!PlatformerCharacterBase.isChild())
                 {
@@ -218,7 +218,7 @@ namespace VergissMeinNicht.Screens
         {
             //Camera Movement following Theodor
             SpriteManager.Camera.XVelocity = PlatformerCharacterBase.getInstance().X - SpriteManager.Camera.X;
-            SpriteManager.Camera.Y = 250; 
+            SpriteManager.Camera.Y = 275; 
         }
 
         void LayerOn()
@@ -230,7 +230,7 @@ namespace VergissMeinNicht.Screens
                 InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Space);  
             }
             
-            if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 1.1f)
+            if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 1.0f)
             {
                 CurrentLayer = 1;
                 isSwitching = false;
