@@ -62,7 +62,7 @@ namespace VergissMeinNicht.Screens
             TheodorChild Temp = new VergissMeinNicht.Entities.TheodorChild(ContentManagerName, false);
             Temp.Name = "TheodorChildInstance";
             PlatformerCharacterBase.updateinstance(Temp);
-            Temp.AddToManagers(mLayer);
+            Temp.AddToManagers(Layer1);
              
             CollisionHeightLayer1 = PlatformerCharacterBase.getInstance().Collision.Height * 1.1f;
             CollisionHeightLayer2 = PlatformerCharacterBase.getInstance().Collision.Height * 1.0f;
