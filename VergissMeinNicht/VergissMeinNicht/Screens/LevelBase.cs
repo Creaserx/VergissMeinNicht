@@ -57,7 +57,7 @@ namespace VergissMeinNicht.Screens
 
 		public virtual void CustomInitialize()
 		{
-            CollisionsVisible = true;  // Collision Visibility An/Aus
+            CollisionsVisible = false;  // Collision Visibility An/Aus
 
             DisableLayers = false;      // Erstmal Layer aktivieren
             DisableLayerBack = false;      // Layer 3 aktivieren
@@ -176,50 +176,11 @@ namespace VergissMeinNicht.Screens
                 string resultStringL3 = "LayerBackDisable:" + DisableLayerBack.ToString();
                 string resultStringLa = "LayersDisable:" + DisableLayers.ToString();
                 string resultStringSwitch = "isSwitching:" + isSwitching.ToString();
-                FlatRedBall.Debugging.Debugger.Write(resultStringX + "\n" + resultStringY + "\n" + resultStringCollisionH + "\n" + resultStringCollisionW + "\n" + resultStringLayer + "\n" + resultStringL3 + "\n" + resultStringLa + "\n" + resultStringSwitch);
+                string resultStringCameraX = "CameraX:" + SpriteManager.Camera.X.ToString();
+                FlatRedBall.Debugging.Debugger.Write(resultStringX + "\n" + resultStringY + "\n" + resultStringCollisionH + "\n" + resultStringCollisionW +
+                    "\n" + resultStringLayer + "\n" + resultStringL3 + "\n" + resultStringLa + "\n" + resultStringSwitch + "\n" + resultStringCameraX);
             }
-        }
-
-        /*public void resetCollisionSize()
-        {
-            PlatformerCharacterBase.getInstance().Collision.Height = CollisionHeightLayerFront;
-            PlatformerCharacterBase.getInstance().Collision.Width = CollisionWidthLayerFront;
-        }*/
-
-        /*public static void UpdateCharacterValues()
-        {
-            CollisionHeightLayerFront = PlatformerCharacterBase.getInstance().Collision.Height * 0.5f;
-            CollisionHeightLayerMid = PlatformerCharacterBase.getInstance().Collision.Height * 0.45f;
-            CollisionHeightLayerBack = PlatformerCharacterBase.getInstance().Collision.Height * 0.4f;
-            PlatformerCharacterBase.getInstance().Collision.Height = CollisionHeightLayerFront;
-
-            CollisionWidthLayerFront = PlatformerCharacterBase.getInstance().Collision.Width * 0.5f;
-            CollisionWidthLayerMid = PlatformerCharacterBase.getInstance().Collision.Width * 0.45f;
-            CollisionWidthLayerBack = PlatformerCharacterBase.getInstance().Collision.Width * 0.4f;
-            PlatformerCharacterBase.getInstance().Collision.Width = CollisionWidthLayerFront;
-
-            switch (CurrentLayer)
-            {
-                case 1:
-                    PlatformerCharacterBase.getInstance().MoveToLayer(LayerFront);
-
-                    break;
-
-                case 2:
-                    PlatformerCharacterBase.getInstance().MoveToLayer(LayerMid);
-
-                    break;
-
-                case 3:
-                    PlatformerCharacterBase.getInstance().MoveToLayer(LayerBack);
-
-                    break;
-
-                default:
-
-                    break;
-            }
-        }*/
+        }        
 
         void PauseGame()
         {

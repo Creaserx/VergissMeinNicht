@@ -275,7 +275,7 @@ namespace VergissMeinNicht.Entities
 
                     break;
             }
-        }
+        }        
 
         private void JumpVelocity()
         {

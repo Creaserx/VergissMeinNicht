@@ -2,8 +2,8 @@
 <SpriteEditorScene xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Sprite>
     <Y>305</Y>
-    <ScaleX>834</ScaleX>
-    <ScaleY>319</ScaleY>
+    <ScaleX>835</ScaleX>
+    <ScaleY>320</ScaleY>
     <Name>!creepempfang1</Name>
     <Texture>!creepempfang.jpg</Texture>
     <ConstantPixelSize>0.5</ConstantPixelSize>

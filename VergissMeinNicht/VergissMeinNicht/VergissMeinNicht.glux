@@ -2783,7 +2783,7 @@
           <CustomProperty>
             <Type>bool</Type>
             <Member>Visible</Member>
-            <ValueAsBool>true</ValueAsBool>
+            <ValueAsBool>false</ValueAsBool>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
@@ -2809,7 +2809,7 @@
           <CustomProperty>
             <Type>string</Type>
             <Member>CurrentChainName</Member>
-            <ValueAsString>IdleRight</ValueAsString>
+            <ValueAsString>GU_IdleRight</ValueAsString>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>

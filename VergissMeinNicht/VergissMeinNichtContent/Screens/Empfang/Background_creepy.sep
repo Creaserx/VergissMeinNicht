@@ -28,10 +28,6 @@
   <FilesToMakeDotDotSlashRelative />
   <TextureDisplayRegionsList>
     <TextureDisplayRegionsSave>
-      <TextureName>!theoneempfang.jpg</TextureName>
-      <DisplayRegions />
-    </TextureDisplayRegionsSave>
-    <TextureDisplayRegionsSave>
       <TextureName>!creepempfang.jpg</TextureName>
       <DisplayRegions />
     </TextureDisplayRegionsSave>

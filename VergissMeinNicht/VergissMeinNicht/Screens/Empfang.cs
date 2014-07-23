@@ -51,7 +51,8 @@ namespace VergissMeinNicht.Screens
             // reset Holes
             if (InputManager.Keyboard.KeyPushed(Keys.R)) for (int i = HoleList.Count - 1; i > -1; i--) HoleList[i].SpriteInstance.Visible = false;
 
-        
+            CameraMovement();
+            
         }
 
         public override void CustomDestroy()
@@ -73,7 +74,13 @@ namespace VergissMeinNicht.Screens
             if (PlatformerCharacterBase.getInstance().X < -345) DisableLayerBack = true;
             else if (PlatformerCharacterBase.getInstance().X > 685) DisableLayerBack = true;
         }
-        
+
+        void CameraMovement()
+        {
+            SpriteManager.Camera.MinimumX = -310;
+            SpriteManager.Camera.MaximumX = 310;
+        }
+
         public void CollisionActivity()
         {
 
@@ -105,8 +112,8 @@ namespace VergissMeinNicht.Screens
 
         public void VisibilityInit()
         {
-            LayerFront.Visible = false;
-            LayerBack.Visible = false;
+            Layer1.Visible = false;
+            Layer3.Visible = false;
 
             Background_creepy.Visible = true;
             if (CollisionsVisible) CollisionVisibilityEmpfang();

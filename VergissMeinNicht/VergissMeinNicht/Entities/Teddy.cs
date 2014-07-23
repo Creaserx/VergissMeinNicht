@@ -30,10 +30,11 @@ namespace VergissMeinNicht.Entities
 {
 	public partial class Teddy
 	{
+        int tempLayer;
         
         private void CustomInitialize()
 		{
-
+            
 
 		}
 
@@ -43,6 +44,34 @@ namespace VergissMeinNicht.Entities
             TeddySwitch();
 		}
 
+        public void UpdateCharacterScale()
+        {
+            switch (tempLayer)
+            {
+                case 1:
+                    PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale = 0.5f;
+                    PlatformerCharacterBase.getInstance().Collision.Height = LevelBase.CollisionHeightLayerFront;
+                    PlatformerCharacterBase.getInstance().Collision.Width = LevelBase.CollisionWidthLayerFront;
+                    break;
+
+                case 2:
+                    PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale = 0.45f;
+                    PlatformerCharacterBase.getInstance().Collision.Height = LevelBase.CollisionHeightLayerMid;
+                    PlatformerCharacterBase.getInstance().Collision.Width = LevelBase.CollisionWidthLayerMid;
+                    break;
+
+                case 3:
+                    PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale = 0.4f;
+                    PlatformerCharacterBase.getInstance().Collision.Height = LevelBase.CollisionHeightLayerBack;
+                    PlatformerCharacterBase.getInstance().Collision.Width = LevelBase.CollisionWidthLayerMid;
+                    break;
+
+                default:
+
+                    break;
+            }
+        }
+
         void TeddySwitch()
         {
             //Makes Text Visible / Invisible in front of a Teddy
@@ -51,6 +80,8 @@ namespace VergissMeinNicht.Entities
                 //--Transform Character
                 if (InputManager.Keyboard.KeyPushed(Keys.E))
                 {
+                    tempLayer = LevelBase.CurrentLayer;
+
                     if (PlatformerCharacterBase.isChild())                            
                     {
                         if (FlashInstance.Alpha == 0)
@@ -73,6 +104,8 @@ namespace VergissMeinNicht.Entities
                         Temp.Y = PlatformerCharacterBase.getInstance().Y;
                         PlatformerCharacterBase.updateinstance(Temp);
                         PlatformerCharacterBase.UpdateCharacterValues();
+                        UpdateCharacterScale();
+
                         
                     }
                     else
@@ -97,7 +130,8 @@ namespace VergissMeinNicht.Entities
                         Temp.Y = PlatformerCharacterBase.getInstance().Y;
                         PlatformerCharacterBase.updateinstance(Temp);
                         PlatformerCharacterBase.UpdateCharacterValues();
-                        
+                        UpdateCharacterScale();
+
                     }
                                                           
                                            

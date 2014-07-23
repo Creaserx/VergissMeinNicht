@@ -79,8 +79,7 @@ namespace VergissMeinNicht.Entities
 
 		private void CustomInitialize()
 		{
-
-
+            
 		}
 
 		private void CustomActivity()
