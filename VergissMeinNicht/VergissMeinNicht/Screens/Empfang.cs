@@ -49,8 +49,9 @@ namespace VergissMeinNicht.Screens
             // Background Change
             if (PlatformerCharacterBase.isChild()) Background_creepy.Visible = true;
             else Background_creepy.Visible = false;
-		
-            //Löcher definieren
+
+            // reset Holes
+            if (InputManager.Keyboard.KeyPushed(Keys.R)) for (int i = HoleList.Count - 1; i > -1; i--) HoleList[i].SpriteInstance.Visible = false;
 
         
         }
@@ -81,7 +82,7 @@ namespace VergissMeinNicht.Screens
             PlatformerCharacterBase.getInstance().Collision.CollideAgainstMove(Layer1, 0, 1);  //Kollision mit Rändern
             if (CurrentLayer == 3) PlatformerCharacterBase.getInstance().Collision.CollideAgainstMove(Layer3, 0, 1);  //Kollision auf Layer 3
 
-            //Collision mit Löchern
+            //Collision mit Holes
             for (int i = HoleList.Count - 1; i > -1; i--)
             {
                 if (PlatformerCharacterBase.getInstance().Collision.CollideAgainst(HoleList[i].Collision) && CurrentLayer == HoleList[i].Layer)
@@ -89,7 +90,6 @@ namespace VergissMeinNicht.Screens
                     HoleList[i].SpriteInstance.Visible = true;
                     FallInHole();
                 }
-
             }
   
             // LevelReset WA
@@ -120,7 +120,7 @@ namespace VergissMeinNicht.Screens
             Layer1.Visible = true;
             Layer3.Visible = true;
 
-            for (int i = HoleList.Count - 1; i > -1; i--) HoleList[i].Collision.Visible = true;   // Holes Visible machen
+            for (int i = HoleList.Count - 1; i > -1; i--) HoleList[i].Collision.Visible = true;   // Hole-Collision Visible machen
 
 
         }
