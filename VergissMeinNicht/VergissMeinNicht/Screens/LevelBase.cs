@@ -55,14 +55,16 @@ namespace VergissMeinNicht.Screens
         public static Layer LayerMid = SpriteManager.AddLayer();
         public static Layer LayerFront = SpriteManager.AddLayer();
 
+
+        //------INITIALIZE----------------------------------------------------------------
 		public virtual void CustomInitialize()
 		{
             CollisionsVisible = false;  // Collision Visibility An/Aus
 
             DisableLayers = false;      // Erstmal Layer aktivieren
-            DisableLayerBack = false;      // Layer 3 aktivieren
+            DisableLayerBack = false;   // LayerBack aktivieren
 
-            //Theodor erstellen
+            //TheodorInstance erstellen
             TheodorChild Temp = new VergissMeinNicht.Entities.TheodorChild(ContentManagerName, false);
             Temp.Name = "TheodorChildInstance";
             PlatformerCharacterBase.updateinstance(Temp);
@@ -78,20 +80,18 @@ namespace VergissMeinNicht.Screens
             CollisionWidthLayerBack = PlatformerCharacterBase.getInstance().Collision.Width * 0.4f;
             PlatformerCharacterBase.getInstance().Collision.Width = CollisionWidthLayerFront;
 
-            // Create a rectangle
+            // Create Collision: Boden
             Boden = new AxisAlignedRectangle();
             Boden.ScaleX = 1800;
             Boden.ScaleY = 50;
             Boden.Y = -50;
             this.SolidCollisions.AxisAlignedRectangles.Add(Boden);  // Add it to the ShapeCollection so the player can collide against it
-            
-
             PlatformerCharacterBase.getInstance().Y = 75;       // Make the character appear on top of the rectangle
-
 
             if (CollisionsVisible) CollisionVisibilityOn();
 		}
 
+        //------UPDATE---------------------------------------------------------------
 		public virtual void CustomActivity(bool firstTimeCalled)
 		{
             //Theodor Movement      
@@ -103,13 +103,11 @@ namespace VergissMeinNicht.Screens
 
             LayerOn();
             LayerManagement();
-
-
+            
             if (!IsPaused) PlatformerCharacterBase.getInstance().Activity();            
             
             PauseGame();
   
-
             // "Cheats"
             DeveloperActivity();
 		}
@@ -119,7 +117,16 @@ namespace VergissMeinNicht.Screens
             PlatformerCharacterBase.updateinstance(null);
 		}
 
-        public void CollisionVisibilityOn() 
+        static void CustomLoadStaticContent(string contentManagerName)
+        {
+
+
+        }
+
+        //----------------------------------------------------------------------------------
+        //--------FUNKTIONEN----------------------------------------------------------------
+
+        public void CollisionVisibilityOn()
         {
             SolidCollisions.AddToManagers(); // Add the ShapeColleciton to the ShapeManager so it's visible
 
@@ -149,9 +156,8 @@ namespace VergissMeinNicht.Screens
                     PlatformerCharacterBase.updateinstance(Temp);
                 }
             }
-
-            //------------------------------------------------------
-            //Zeigt Debugger Werte an 
+            
+            // F3/F4 -- Zeigt Debugger Werte an 
             if (InputManager.Keyboard.KeyPushed(Keys.F3))
             {
                 if (!DebuggerOn) DebuggerOn = true;
@@ -166,7 +172,7 @@ namespace VergissMeinNicht.Screens
             {
                 FlatRedBall.Debugging.Debugger.Write("");
             }
-            if ( DebuggerOn)
+            if (DebuggerOn)
             {
                 string resultStringY = "Character Y: " + PlatformerCharacterBase.getInstance().Y;
                 string resultStringX = "Character X: " + PlatformerCharacterBase.getInstance().X;
@@ -208,12 +214,6 @@ namespace VergissMeinNicht.Screens
             }
         }
 
-        static void CustomLoadStaticContent(string contentManagerName)
-        {
-
-
-        }
-
         void CameraMovement()
         {
             //Camera Movement following Theodor
@@ -223,6 +223,7 @@ namespace VergissMeinNicht.Screens
 
         void LayerOn()
         {
+            // Switching: ignore Keys _up, _down, _Space
             if (isSwitching)
             {
                 InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Left);
@@ -230,6 +231,7 @@ namespace VergissMeinNicht.Screens
                 InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Space);  
             }
             
+            //CurrentLayer zuweisen
             if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 0.5f)
             {
                 CurrentLayer = 1;
@@ -249,31 +251,20 @@ namespace VergissMeinNicht.Screens
             }
         }
         
-
         void LayerManagement()
         {
-            // Workaround zum Ebenenwechsel. Das komplette Tweening bedarf noch "etwas" Optimierung!
-
-
-            if (DisableLayerBack && CurrentLayer == 2) DisableLayers=true; //WA
-
             if (!DisableLayers)
             {
-                
-                
+                // --Hochswitchen
                 if (InputManager.Keyboard.KeyPushed(Keys.Up) && CurrentLayer != 3 && !isSwitching)
                 {
                     isSwitching = true;
 
+                    // Direction Left/Right bestimmen
                     if (PlatformerCharacterBase.getInstance().DirectionFacing == PlatformerCharacterBase.LeftOrRight.Left)
-                    {
                         PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName = "IdleLeft";
-                    }
-
                     else
-                    {
-                        PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName = "IdleRight";
-                    }
+                        PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName = "IdleRight";                 
 
                     switch (CurrentLayer)
                     {
@@ -302,7 +293,7 @@ namespace VergissMeinNicht.Screens
                                         FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
                                         FlatRedBall.Glue.StateInterpolation.Easing.Out);
 
-                                Boden                                   //WA
+                                Boden                                   
                                     .Tween("Y")
                                     .To(Boden.Y + 75)
                                     .During(0.75f)
@@ -351,37 +342,27 @@ namespace VergissMeinNicht.Screens
 
                                 PlatformerCharacterBase.getInstance().MoveToLayer(LayerBack);
                             }
-                            
                             break;
 
                         default:
-
                             break;
-                    }
-
-                    
-                    
-                    
-                }
-                
-                DisableLayers = false;  //WA
+                    }                   
+                }                
+                DisableLayers = false;  
             }
 
 
-
+            // --Runterswitchen
             if (InputManager.Keyboard.KeyPushed(Keys.Down) && CurrentLayer != 1 && !isSwitching)
             {
                 isSwitching = true;
-                DisableLayers = false; //WA
-                if (PlatformerCharacterBase.getInstance().DirectionFacing == PlatformerCharacterBase.LeftOrRight.Left)
-                {
-                    PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName = "IdleLeft";
-                }
 
-                else
-                {
+                // Direction Left/Right bestimmen
+                if (PlatformerCharacterBase.getInstance().DirectionFacing == PlatformerCharacterBase.LeftOrRight.Left)
+                    PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName = "IdleLeft";
+                else           
                     PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName = "IdleRight";
-                }
+                
 
                 switch (CurrentLayer)
                 {

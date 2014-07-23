@@ -51,8 +51,7 @@ namespace VergissMeinNicht.Screens
             // reset Holes
             if (InputManager.Keyboard.KeyPushed(Keys.R)) for (int i = HoleList.Count - 1; i > -1; i--) HoleList[i].SpriteInstance.Visible = false;
 
-            CameraMovement();
-            
+            CameraMovement();          
         }
 
         public override void CustomDestroy()
@@ -110,6 +109,7 @@ namespace VergissMeinNicht.Screens
 
         }
 
+        //Initialize Visibility
         public void VisibilityInit()
         {
             Layer1.Visible = false;
@@ -120,6 +120,7 @@ namespace VergissMeinNicht.Screens
    
         }
     
+        //Collisions Visible machen
         public void CollisionVisibilityEmpfang()
         {
             LayerFront.Visible = true;
