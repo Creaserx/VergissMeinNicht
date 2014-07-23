@@ -158,6 +158,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Theodor Erwachsen alpha1</Name>
     </None>
+    <None Include="Entities\Theodor\Theodor Erwachsen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Theodor Erwachsen</Name>
+    </None>
     <None Include="Entities\Theodor\TheodorChild_WalkAnimationChain.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>TheodorChild_WalkAnimationChain</Name>

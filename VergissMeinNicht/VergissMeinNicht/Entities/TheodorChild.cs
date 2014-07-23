@@ -22,6 +22,7 @@ using Vector3 = Microsoft.Xna.Framework.Vector3;
 using Texture2D = Microsoft.Xna.Framework.Graphics.Texture2D;
 using StateInterpolationPlugin;
 
+
 #endif
 #endregion
 
@@ -82,7 +83,7 @@ namespace VergissMeinNicht.Entities
 
 		private void CustomInitialize()
 		{
-
+           
 
 		}
 
