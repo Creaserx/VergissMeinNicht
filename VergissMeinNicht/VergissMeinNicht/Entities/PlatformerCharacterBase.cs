@@ -18,6 +18,7 @@ using Keys = Microsoft.Xna.Framework.Input.Keys;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
 using Texture2D = Microsoft.Xna.Framework.Graphics.Texture2D;
 using FlatRedBall.Screens;
+using VergissMeinNicht.Screens;
 #elif FRB_MDX
 using Keys = Microsoft.DirectX.DirectInput.Key;
 
@@ -181,7 +182,7 @@ namespace VergissMeinNicht.Entities
             set;
         }
 
-        #endregion
+        #endregion        
 
         private void CustomInitialize()
 		{
@@ -239,6 +240,41 @@ namespace VergissMeinNicht.Entities
             HorizontalMovementActivity();
 
             JumpVelocity();
+        }
+
+        public static void UpdateCharacterValues()
+        {
+            LevelBase.CollisionHeightLayerFront = getInstance().Collision.Height * 0.5f;
+            LevelBase.CollisionHeightLayerMid = getInstance().Collision.Height * 0.45f;
+            LevelBase.CollisionHeightLayerBack = getInstance().Collision.Height * 0.4f;
+            getInstance().Collision.Height = LevelBase.CollisionHeightLayerFront;
+
+            LevelBase.CollisionWidthLayerFront = getInstance().Collision.Width * 0.5f;
+            LevelBase.CollisionWidthLayerMid = getInstance().Collision.Width * 0.45f;
+            LevelBase.CollisionWidthLayerBack = getInstance().Collision.Width * 0.4f;
+            getInstance().Collision.Width = LevelBase.CollisionWidthLayerFront;
+
+            switch (LevelBase.CurrentLayer)
+            {
+                case 1:
+                    PlatformerCharacterBase.getInstance().MoveToLayer(LevelBase.LayerFront);
+
+                    break;
+
+                case 2:
+                    PlatformerCharacterBase.getInstance().MoveToLayer(LevelBase.LayerMid);
+
+                    break;
+
+                case 3:
+                    PlatformerCharacterBase.getInstance().MoveToLayer(LevelBase.LayerBack);
+
+                    break;
+
+                default:
+
+                    break;
+            }
         }
 
         private void JumpVelocity()

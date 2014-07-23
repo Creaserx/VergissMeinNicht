@@ -24,6 +24,7 @@ using Keys = Microsoft.Xna.Framework.Input.Keys;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
 using Texture2D = Microsoft.Xna.Framework.Graphics.Texture2D;
 using VergissMeinNicht.Entities;
+using FlatRedBall.Graphics;
 
 #endif
 #endregion
@@ -35,44 +36,47 @@ namespace VergissMeinNicht.Screens
         bool Waiter = false;
         public AxisAlignedRectangle Boden;     
 
-        public int CurrentLayer = 1;
+        public static int CurrentLayer = 1;
         public bool isSwitching = false;
         public bool DisableLayers = false;
-        public bool DisableLayer3 = false;
+        public bool DisableLayerBack = false;
 
         bool DebuggerOn = true;
 
-        public static float CollisionHeightLayer1;
-        public static float CollisionHeightLayer2;
-        public static float CollisionHeightLayer3;
+        public static float CollisionHeightLayerFront;
+        public static float CollisionHeightLayerMid;
+        public static float CollisionHeightLayerBack;
 
-        public static float CollisionWidthLayer1;
-        public static float CollisionWidthLayer2;
-        public static float CollisionWidthLayer3;
-       
+        public static float CollisionWidthLayerFront;
+        public static float CollisionWidthLayerMid;
+        public static float CollisionWidthLayerBack;
+
+        public static Layer LayerBack = SpriteManager.AddLayer();
+        public static Layer LayerMid = SpriteManager.AddLayer();
+        public static Layer LayerFront = SpriteManager.AddLayer();
 
 		public virtual void CustomInitialize()
 		{
             CollisionsVisible = true;  // Collision Visibility An/Aus
 
             DisableLayers = false;      // Erstmal Layer aktivieren
-            DisableLayer3 = false;      // Layer 3 aktivieren
+            DisableLayerBack = false;      // Layer 3 aktivieren
 
             //Theodor erstellen
             TheodorChild Temp = new VergissMeinNicht.Entities.TheodorChild(ContentManagerName, false);
             Temp.Name = "TheodorChildInstance";
             PlatformerCharacterBase.updateinstance(Temp);
-            Temp.AddToManagers(Layer1);
+            Temp.AddToManagers(LayerFront);
              
-            CollisionHeightLayer1 = PlatformerCharacterBase.getInstance().Collision.Height * 0.5f;
-            CollisionHeightLayer2 = PlatformerCharacterBase.getInstance().Collision.Height * 0.45f;
-            CollisionHeightLayer3 = PlatformerCharacterBase.getInstance().Collision.Height * 0.4f;
-            PlatformerCharacterBase.getInstance().Collision.Height = CollisionHeightLayer1;
+            CollisionHeightLayerFront = PlatformerCharacterBase.getInstance().Collision.Height * 0.5f;
+            CollisionHeightLayerMid = PlatformerCharacterBase.getInstance().Collision.Height * 0.45f;
+            CollisionHeightLayerBack = PlatformerCharacterBase.getInstance().Collision.Height * 0.4f;
+            PlatformerCharacterBase.getInstance().Collision.Height = CollisionHeightLayerFront;
 
-            CollisionWidthLayer1 = PlatformerCharacterBase.getInstance().Collision.Width * 0.5f;
-            CollisionWidthLayer2 = PlatformerCharacterBase.getInstance().Collision.Width * 0.45f;
-            CollisionWidthLayer3 = PlatformerCharacterBase.getInstance().Collision.Width * 0.4f;
-            PlatformerCharacterBase.getInstance().Collision.Width = CollisionWidthLayer1;
+            CollisionWidthLayerFront = PlatformerCharacterBase.getInstance().Collision.Width * 0.5f;
+            CollisionWidthLayerMid = PlatformerCharacterBase.getInstance().Collision.Width * 0.45f;
+            CollisionWidthLayerBack = PlatformerCharacterBase.getInstance().Collision.Width * 0.4f;
+            PlatformerCharacterBase.getInstance().Collision.Width = CollisionWidthLayerFront;
 
             // Create a rectangle
             Boden = new AxisAlignedRectangle();
@@ -169,7 +173,7 @@ namespace VergissMeinNicht.Screens
                 string resultStringCollisionH = "Collision H: " + PlatformerCharacterBase.getInstance().Collision.Height;
                 string resultStringCollisionW = "Collision W: " + PlatformerCharacterBase.getInstance().Collision.Width;
                 string resultStringLayer = "CurrentLayer:" + CurrentLayer.ToString();
-                string resultStringL3 = "Layer3Disable:" + DisableLayer3.ToString();
+                string resultStringL3 = "LayerBackDisable:" + DisableLayerBack.ToString();
                 string resultStringLa = "LayersDisable:" + DisableLayers.ToString();
                 string resultStringSwitch = "isSwitching:" + isSwitching.ToString();
                 FlatRedBall.Debugging.Debugger.Write(resultStringX + "\n" + resultStringY + "\n" + resultStringCollisionH + "\n" + resultStringCollisionW + "\n" + resultStringLayer + "\n" + resultStringL3 + "\n" + resultStringLa + "\n" + resultStringSwitch);
@@ -178,22 +182,44 @@ namespace VergissMeinNicht.Screens
 
         /*public void resetCollisionSize()
         {
-            PlatformerCharacterBase.getInstance().Collision.Height = CollisionHeightLayer1;
-            PlatformerCharacterBase.getInstance().Collision.Width = CollisionWidthLayer1;
+            PlatformerCharacterBase.getInstance().Collision.Height = CollisionHeightLayerFront;
+            PlatformerCharacterBase.getInstance().Collision.Width = CollisionWidthLayerFront;
         }*/
 
-        public static void UpdateValues()
+        /*public static void UpdateCharacterValues()
         {
-            CollisionHeightLayer1 = PlatformerCharacterBase.getInstance().Collision.Height * 0.5f;
-            CollisionHeightLayer2 = PlatformerCharacterBase.getInstance().Collision.Height * 0.45f;
-            CollisionHeightLayer3 = PlatformerCharacterBase.getInstance().Collision.Height * 0.4f;
-            PlatformerCharacterBase.getInstance().Collision.Height = CollisionHeightLayer1;
+            CollisionHeightLayerFront = PlatformerCharacterBase.getInstance().Collision.Height * 0.5f;
+            CollisionHeightLayerMid = PlatformerCharacterBase.getInstance().Collision.Height * 0.45f;
+            CollisionHeightLayerBack = PlatformerCharacterBase.getInstance().Collision.Height * 0.4f;
+            PlatformerCharacterBase.getInstance().Collision.Height = CollisionHeightLayerFront;
 
-            CollisionWidthLayer1 = PlatformerCharacterBase.getInstance().Collision.Width * 0.5f;
-            CollisionWidthLayer2 = PlatformerCharacterBase.getInstance().Collision.Width * 0.45f;
-            CollisionWidthLayer3 = PlatformerCharacterBase.getInstance().Collision.Width * 0.4f;
-            PlatformerCharacterBase.getInstance().Collision.Width = CollisionWidthLayer1;
-        }
+            CollisionWidthLayerFront = PlatformerCharacterBase.getInstance().Collision.Width * 0.5f;
+            CollisionWidthLayerMid = PlatformerCharacterBase.getInstance().Collision.Width * 0.45f;
+            CollisionWidthLayerBack = PlatformerCharacterBase.getInstance().Collision.Width * 0.4f;
+            PlatformerCharacterBase.getInstance().Collision.Width = CollisionWidthLayerFront;
+
+            switch (CurrentLayer)
+            {
+                case 1:
+                    PlatformerCharacterBase.getInstance().MoveToLayer(LayerFront);
+
+                    break;
+
+                case 2:
+                    PlatformerCharacterBase.getInstance().MoveToLayer(LayerMid);
+
+                    break;
+
+                case 3:
+                    PlatformerCharacterBase.getInstance().MoveToLayer(LayerBack);
+
+                    break;
+
+                default:
+
+                    break;
+            }
+        }*/
 
         void PauseGame()
         {
@@ -268,7 +294,7 @@ namespace VergissMeinNicht.Screens
             // Workaround zum Ebenenwechsel. Das komplette Tweening bedarf noch "etwas" Optimierung!
 
 
-            if (DisableLayer3 && CurrentLayer == 2) DisableLayers=true; //WA
+            if (DisableLayerBack && CurrentLayer == 2) DisableLayers=true; //WA
 
             if (!DisableLayers)
             {
@@ -301,7 +327,7 @@ namespace VergissMeinNicht.Screens
 
                                 PlatformerCharacterBase.getInstance().Collision
                                     .Tween("Height")
-                                    .To(CollisionHeightLayer2)
+                                    .To(CollisionHeightLayerMid)
                                     .During(0.75f)
                                     .Using(
                                         FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
@@ -309,7 +335,7 @@ namespace VergissMeinNicht.Screens
 
                                 PlatformerCharacterBase.getInstance().Collision
                                     .Tween("Width")
-                                    .To(CollisionWidthLayer2)
+                                    .To(CollisionWidthLayerMid)
                                     .During(0.75f)
                                     .Using(
                                         FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
@@ -322,11 +348,13 @@ namespace VergissMeinNicht.Screens
                                     .Using(
                                         FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
                                         FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                                PlatformerCharacterBase.getInstance().MoveToLayer(LayerMid);
                             
                             break;
 
                         case 2:
-                            if (!DisableLayer3)
+                            if (!DisableLayerBack)
                             {
                                 PlatformerCharacterBase.getInstance().SpriteInstance
                                 .Tween("TextureScale")
@@ -338,7 +366,7 @@ namespace VergissMeinNicht.Screens
 
                                 PlatformerCharacterBase.getInstance().Collision
                                     .Tween("Height")
-                                    .To(CollisionHeightLayer3)
+                                    .To(CollisionHeightLayerBack)
                                     .During(0.75f)
                                     .Using(
                                         FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
@@ -346,7 +374,7 @@ namespace VergissMeinNicht.Screens
 
                                 PlatformerCharacterBase.getInstance().Collision
                                     .Tween("Width")
-                                    .To(CollisionWidthLayer3)
+                                    .To(CollisionWidthLayerBack)
                                     .During(0.75f)
                                     .Using(
                                         FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
@@ -359,6 +387,8 @@ namespace VergissMeinNicht.Screens
                                    .Using(
                                        FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
                                        FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                                PlatformerCharacterBase.getInstance().MoveToLayer(LayerBack);
                             }
                             
                             break;
@@ -405,7 +435,7 @@ namespace VergissMeinNicht.Screens
 
                         PlatformerCharacterBase.getInstance().Collision
                             .Tween("Height")
-                            .To(CollisionHeightLayer1)
+                            .To(CollisionHeightLayerFront)
                             .During(0.75f)
                             .Using(
                                 FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
@@ -413,11 +443,13 @@ namespace VergissMeinNicht.Screens
 
                         PlatformerCharacterBase.getInstance().Collision
                             .Tween("Width")
-                            .To(CollisionWidthLayer1)
+                            .To(CollisionWidthLayerFront)
                             .During(0.75f)
                             .Using(
                                 FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
                                 FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                        PlatformerCharacterBase.getInstance().MoveToLayer(LayerFront);
 
                         break;
 
@@ -432,7 +464,7 @@ namespace VergissMeinNicht.Screens
 
                         PlatformerCharacterBase.getInstance().Collision
                             .Tween("Height")
-                            .To(CollisionHeightLayer2)
+                            .To(CollisionHeightLayerMid)
                             .During(0.75f)
                             .Using(
                                 FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
@@ -440,11 +472,13 @@ namespace VergissMeinNicht.Screens
 
                         PlatformerCharacterBase.getInstance().Collision
                             .Tween("Width")
-                            .To(CollisionWidthLayer2)
+                            .To(CollisionWidthLayerMid)
                             .During(0.75f)
                             .Using(
                                 FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
                                 FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                        PlatformerCharacterBase.getInstance().MoveToLayer(LayerMid);
 
                         break;
 

@@ -68,10 +68,10 @@ namespace VergissMeinNicht.Screens
 
         public void SwitchBlock()
         {
-            DisableLayer3 = false;
+            DisableLayerBack = false;
             DisableLayers = false;
-            if (PlatformerCharacterBase.getInstance().X < -345) DisableLayer3 = true;
-            else if (PlatformerCharacterBase.getInstance().X > 685) DisableLayer3 = true;
+            if (PlatformerCharacterBase.getInstance().X < -345) DisableLayerBack = true;
+            else if (PlatformerCharacterBase.getInstance().X > 685) DisableLayerBack = true;
         }
         
         public void CollisionActivity()
@@ -105,8 +105,8 @@ namespace VergissMeinNicht.Screens
 
         public void VisibilityInit()
         {
-            Layer1.Visible = false;
-            Layer3.Visible = false;
+            LayerFront.Visible = false;
+            LayerBack.Visible = false;
 
             Background_creepy.Visible = true;
             if (CollisionsVisible) CollisionVisibilityEmpfang();
@@ -115,8 +115,8 @@ namespace VergissMeinNicht.Screens
     
         public void CollisionVisibilityEmpfang()
         {
-            Layer1.Visible = true;
-            Layer3.Visible = true;
+            LayerFront.Visible = true;
+            LayerBack.Visible = true;
 
             for (int i = HoleList.Count - 1; i > -1; i--) HoleList[i].Collision.Visible = true;   // Hole-Collision Visible machen
 

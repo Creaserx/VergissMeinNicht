@@ -40,10 +40,10 @@ namespace VergissMeinNicht.Entities
 		private void CustomActivity()
 		{
 
-            TeddyText();
+            TeddySwitch();
 		}
 
-        void TeddyText()
+        void TeddySwitch()
         {
             //Makes Text Visible / Invisible in front of a Teddy
             if (PlatformerCharacterBase.getInstance().X < (Sprite.X + 75) && PlatformerCharacterBase.getInstance().X > (Sprite.X - 75) && FlashInstance.Alpha == 0)
@@ -72,7 +72,7 @@ namespace VergissMeinNicht.Entities
                         Temp.X = PlatformerCharacterBase.getInstance().X;
                         Temp.Y = PlatformerCharacterBase.getInstance().Y;
                         PlatformerCharacterBase.updateinstance(Temp);
-                        LevelBase.UpdateValues();
+                        PlatformerCharacterBase.UpdateCharacterValues();
                         
                     }
                     else
@@ -95,7 +95,9 @@ namespace VergissMeinNicht.Entities
                         TheodorChild Temp = new TheodorChild();
                         Temp.X = PlatformerCharacterBase.getInstance().X;
                         Temp.Y = PlatformerCharacterBase.getInstance().Y;
-                        PlatformerCharacterBase.updateinstance(Temp);                        
+                        PlatformerCharacterBase.updateinstance(Temp);
+                        PlatformerCharacterBase.UpdateCharacterValues();
+                        
                     }
                                                           
                                            
