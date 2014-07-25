@@ -51,16 +51,17 @@ namespace VergissMeinNicht.Screens
         public static float CollisionWidthLayerMid;
         public static float CollisionWidthLayerBack;
 
-        public static Layer LayerBack = SpriteManager.AddLayer();
-        public static Layer LayerMid = SpriteManager.AddLayer();
+        public static Layer LayerBack  = SpriteManager.AddLayer();
+        public static Layer LayerMid   = SpriteManager.AddLayer();
         public static Layer LayerFront = SpriteManager.AddLayer();
-
+        
 
         //------INITIALIZE----------------------------------------------------------------
 		public virtual void CustomInitialize()
 		{
-            CollisionsVisible = false;  // Collision Visibility An/Aus
+            FixLayers();
 
+            CollisionsVisible = false;  // Collision Visibility An/Aus
             DisableLayers = false;      // Erstmal Layer aktivieren
             DisableLayerBack = false;   // LayerBack aktivieren
 
@@ -115,6 +116,9 @@ namespace VergissMeinNicht.Screens
         public virtual void CustomDestroy()
         {
             PlatformerCharacterBase.updateinstance(null);
+            SpriteManager.RemoveLayer(LayerBack);
+            SpriteManager.RemoveLayer(LayerMid);
+            SpriteManager.RemoveLayer(LayerFront);
 		}
 
         static void CustomLoadStaticContent(string contentManagerName)
@@ -183,8 +187,9 @@ namespace VergissMeinNicht.Screens
                 string resultStringLa = "LayersDisable:" + DisableLayers.ToString();
                 string resultStringSwitch = "isSwitching:" + isSwitching.ToString();
                 string resultStringCameraX = "CameraX:" + SpriteManager.Camera.X.ToString();
+                string resultStringLayerCount = "LayerCount:" + SpriteManager.LayerCount.ToString();
                 FlatRedBall.Debugging.Debugger.Write(resultStringX + "\n" + resultStringY + "\n" + resultStringCollisionH + "\n" + resultStringCollisionW +
-                    "\n" + resultStringLayer + "\n" + resultStringL3 + "\n" + resultStringLa + "\n" + resultStringSwitch + "\n" + resultStringCameraX);
+                    "\n" + resultStringLayer + "\n" + resultStringL3 + "\n" + resultStringLa + "\n" + resultStringSwitch + "\n" + resultStringCameraX + "\n" + resultStringLayerCount);
             }
         }        
 
@@ -212,6 +217,18 @@ namespace VergissMeinNicht.Screens
                     PauseButton.Visible = true;
                 }
             }
+        }
+
+        void FixLayers() //notwendig um Layer zu kontrollieren
+        {
+            // Erst Layer Removen
+            SpriteManager.RemoveLayer(LayerBack);
+            SpriteManager.RemoveLayer(LayerMid);
+            SpriteManager.RemoveLayer(LayerFront);
+            // dann wieder hinzufügen
+            SpriteManager.AddLayer(LayerBack);
+            SpriteManager.AddLayer(LayerMid);
+            SpriteManager.AddLayer(LayerFront);
         }
 
         void CameraMovement()

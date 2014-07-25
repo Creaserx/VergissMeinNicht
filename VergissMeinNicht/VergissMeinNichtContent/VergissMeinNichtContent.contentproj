@@ -118,6 +118,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Bodenloch</Name>
     </None>
+    <None Include="Entities\Räume_Inhalt\Schlafraum\Augen\AnimationChainListFile.achx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>AnimationChainListFile</Name>
+    </None>
+    <None Include="Entities\Räume_Inhalt\Schlafraum\Augen\augen links00.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>augen links00</Name>
+    </None>
     <None Include="Entities\TeddyFuckedUp\teddy_fucked.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>teddy_fucked</Name>
@@ -217,6 +225,14 @@
     <None Include="Screens\Flur\flur_1-1-1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>flur_1-1-1</Name>
+    </None>
+    <None Include="Screens\LoadingScreen\hauptmenüname.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>hauptmenüname</Name>
+    </None>
+    <None Include="Screens\LoadingScreen\SceneFile.scnx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>SceneFile</Name>
     </None>
     <None Include="Screens\MainMenu\HauptmenüFinal.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

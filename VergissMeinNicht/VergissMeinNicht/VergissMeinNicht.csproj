@@ -179,6 +179,10 @@
     <Compile Include="Entities\Räume_Inhalt\Empfang\Hole.Generated.cs">
       <DependentUpon>Hole.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Räume_Inhalt\Schlafraum\Augen.cs" />
+    <Compile Include="Entities\Räume_Inhalt\Schlafraum\Augen.Generated.cs">
+      <DependentUpon>Augen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Räume_Inhalt\Schlafraum\Bett.cs" />
     <Compile Include="Entities\Räume_Inhalt\Schlafraum\Bett.Generated.cs">
       <DependentUpon>Bett.cs</DependentUpon>
@@ -253,6 +257,10 @@
     </Compile>
     <Compile Include="Screens\LoadGameScreen.Generated.Event.cs">
       <DependentUpon>LoadGameScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\LoadingScreen.cs" />
+    <Compile Include="Screens\LoadingScreen.Generated.cs">
+      <DependentUpon>LoadingScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Screens\MainMenu.cs" />
     <Compile Include="Screens\MainMenu.Event.cs">

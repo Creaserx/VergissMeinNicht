@@ -544,6 +544,26 @@
       </NamedObjects>
     </ScreenSave>
     <ScreenSave>
+      <Properties>
+        <PropertySave>
+          <Name>IsLoadingScreen</Name>
+          <ValueAsBool>true</ValueAsBool>
+        </PropertySave>
+      </Properties>
+      <Tags>
+        <string>GLUE</string>
+      </Tags>
+      <Source>GLUE</Source>
+      <Name>Screens\LoadingScreen</Name>
+      <ReferencedFiles>
+        <ReferencedFileSave>
+          <Name>Screens/LoadingScreen/SceneFile.scnx</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>FlatRedBall.Scene</RuntimeType>
+        </ReferencedFileSave>
+      </ReferencedFiles>
+    </ScreenSave>
+    <ScreenSave>
       <Tags>
         <string>GLUE</string>
       </Tags>
@@ -2263,6 +2283,53 @@
           <Type>float</Type>
         </CustomVariable>
       </CustomVariables>
+      <Name>Entities\Räume_Inhalt\Schlafraum\Augen</Name>
+      <ReferencedFiles>
+        <ReferencedFileSave>
+          <Name>Entities/Räume_Inhalt/Schlafraum/Augen/AnimationChainListFile.achx</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>FlatRedBall.Graphics.Animation.AnimationChainList</RuntimeType>
+        </ReferencedFileSave>
+      </ReferencedFiles>
+      <Is2D>true</Is2D>
+    </EntitySave>
+    <EntitySave>
+      <Tags>
+        <string>GLUE</string>
+      </Tags>
+      <Source>GLUE</Source>
+      <CustomVariables>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>X</Name>
+          <Type>float</Type>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>Y</Name>
+          <Type>float</Type>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>Z</Name>
+          <Type>float</Type>
+        </CustomVariable>
+      </CustomVariables>
       <Name>Entities\Räume_Inhalt\Schlafraum\Bett</Name>
       <Is2D>true</Is2D>
     </EntitySave>
@@ -2869,7 +2936,6 @@
         </InstructionSave>
       </RequiredProperties>
       <Name>TileMapInfo</Name>
-      <GenerateCode>true</GenerateCode>
     </CustomClassSave>
   </CustomClasses>
   <TranslatedFiles>
