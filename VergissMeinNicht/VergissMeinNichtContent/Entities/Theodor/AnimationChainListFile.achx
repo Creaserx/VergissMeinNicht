@@ -394,7 +394,7 @@
       <FlipHorizontal>false</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.065384604</FrameLength>
       <LeftCoordinate>0</LeftCoordinate>
       <RightCoordinate>221</RightCoordinate>
       <TopCoordinate>0</TopCoordinate>
@@ -406,7 +406,7 @@
       <FlipHorizontal>false</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.065384604</FrameLength>
       <LeftCoordinate>221</LeftCoordinate>
       <RightCoordinate>442</RightCoordinate>
       <TopCoordinate>0</TopCoordinate>
@@ -418,7 +418,7 @@
       <FlipHorizontal>false</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.065384604</FrameLength>
       <LeftCoordinate>442</LeftCoordinate>
       <RightCoordinate>663</RightCoordinate>
       <TopCoordinate>0</TopCoordinate>
@@ -430,7 +430,7 @@
       <FlipHorizontal>false</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.065384604</FrameLength>
       <LeftCoordinate>663</LeftCoordinate>
       <RightCoordinate>884</RightCoordinate>
       <TopCoordinate>0</TopCoordinate>
@@ -442,7 +442,7 @@
       <FlipHorizontal>false</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.065384604</FrameLength>
       <LeftCoordinate>0</LeftCoordinate>
       <RightCoordinate>221</RightCoordinate>
       <TopCoordinate>410</TopCoordinate>
@@ -454,7 +454,7 @@
       <FlipHorizontal>false</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.065384604</FrameLength>
       <LeftCoordinate>221</LeftCoordinate>
       <RightCoordinate>442</RightCoordinate>
       <TopCoordinate>410</TopCoordinate>
@@ -466,7 +466,7 @@
       <FlipHorizontal>false</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.065384604</FrameLength>
       <LeftCoordinate>442</LeftCoordinate>
       <RightCoordinate>663</RightCoordinate>
       <TopCoordinate>410</TopCoordinate>
@@ -478,7 +478,7 @@
       <FlipHorizontal>false</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.065384604</FrameLength>
       <LeftCoordinate>663</LeftCoordinate>
       <RightCoordinate>884</RightCoordinate>
       <TopCoordinate>410</TopCoordinate>
@@ -490,7 +490,7 @@
       <FlipHorizontal>false</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.065384604</FrameLength>
       <LeftCoordinate>884</LeftCoordinate>
       <RightCoordinate>1105</RightCoordinate>
       <TopCoordinate>0</TopCoordinate>
@@ -502,7 +502,7 @@
       <FlipHorizontal>false</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.065384604</FrameLength>
       <LeftCoordinate>1105</LeftCoordinate>
       <RightCoordinate>1326</RightCoordinate>
       <TopCoordinate>0</TopCoordinate>
@@ -514,7 +514,7 @@
       <FlipHorizontal>false</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.065384604</FrameLength>
       <LeftCoordinate>884</LeftCoordinate>
       <RightCoordinate>1105</RightCoordinate>
       <TopCoordinate>410</TopCoordinate>
@@ -526,7 +526,7 @@
       <FlipHorizontal>false</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.065384604</FrameLength>
       <LeftCoordinate>1326</LeftCoordinate>
       <RightCoordinate>1547</RightCoordinate>
       <TopCoordinate>0</TopCoordinate>
@@ -538,7 +538,7 @@
       <FlipHorizontal>false</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.065384604</FrameLength>
       <LeftCoordinate>1105</LeftCoordinate>
       <RightCoordinate>1326</RightCoordinate>
       <TopCoordinate>410</TopCoordinate>
@@ -586,7 +586,7 @@
       <FlipHorizontal>true</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.06538463</FrameLength>
       <LeftCoordinate>0</LeftCoordinate>
       <RightCoordinate>221</RightCoordinate>
       <TopCoordinate>0</TopCoordinate>
@@ -598,7 +598,7 @@
       <FlipHorizontal>true</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.06538463</FrameLength>
       <LeftCoordinate>221</LeftCoordinate>
       <RightCoordinate>442</RightCoordinate>
       <TopCoordinate>0</TopCoordinate>
@@ -610,7 +610,7 @@
       <FlipHorizontal>true</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.06538463</FrameLength>
       <LeftCoordinate>442</LeftCoordinate>
       <RightCoordinate>663</RightCoordinate>
       <TopCoordinate>0</TopCoordinate>
@@ -622,7 +622,7 @@
       <FlipHorizontal>true</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.06538463</FrameLength>
       <LeftCoordinate>663</LeftCoordinate>
       <RightCoordinate>884</RightCoordinate>
       <TopCoordinate>0</TopCoordinate>
@@ -634,7 +634,7 @@
       <FlipHorizontal>true</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.06538463</FrameLength>
       <LeftCoordinate>0</LeftCoordinate>
       <RightCoordinate>221</RightCoordinate>
       <TopCoordinate>410</TopCoordinate>
@@ -646,7 +646,7 @@
       <FlipHorizontal>true</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.06538463</FrameLength>
       <LeftCoordinate>221</LeftCoordinate>
       <RightCoordinate>442</RightCoordinate>
       <TopCoordinate>410</TopCoordinate>
@@ -658,7 +658,7 @@
       <FlipHorizontal>true</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.06538463</FrameLength>
       <LeftCoordinate>442</LeftCoordinate>
       <RightCoordinate>663</RightCoordinate>
       <TopCoordinate>410</TopCoordinate>
@@ -670,7 +670,7 @@
       <FlipHorizontal>true</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.06538463</FrameLength>
       <LeftCoordinate>663</LeftCoordinate>
       <RightCoordinate>884</RightCoordinate>
       <TopCoordinate>410</TopCoordinate>
@@ -682,7 +682,7 @@
       <FlipHorizontal>true</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.06538463</FrameLength>
       <LeftCoordinate>884</LeftCoordinate>
       <RightCoordinate>1105</RightCoordinate>
       <TopCoordinate>0</TopCoordinate>
@@ -694,7 +694,7 @@
       <FlipHorizontal>true</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.06538463</FrameLength>
       <LeftCoordinate>1105</LeftCoordinate>
       <RightCoordinate>1326</RightCoordinate>
       <TopCoordinate>0</TopCoordinate>
@@ -706,7 +706,7 @@
       <FlipHorizontal>true</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.06538463</FrameLength>
       <LeftCoordinate>884</LeftCoordinate>
       <RightCoordinate>1105</RightCoordinate>
       <TopCoordinate>410</TopCoordinate>
@@ -718,7 +718,7 @@
       <FlipHorizontal>true</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.06538463</FrameLength>
       <LeftCoordinate>1326</LeftCoordinate>
       <RightCoordinate>1547</RightCoordinate>
       <TopCoordinate>0</TopCoordinate>
@@ -730,7 +730,7 @@
       <FlipHorizontal>true</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
       <TextureName>TheodorChild_WalkAnimationSheet.png</TextureName>
-      <FrameLength>0.1</FrameLength>
+      <FrameLength>0.06538463</FrameLength>
       <LeftCoordinate>1105</LeftCoordinate>
       <RightCoordinate>1326</RightCoordinate>
       <TopCoordinate>410</TopCoordinate>
