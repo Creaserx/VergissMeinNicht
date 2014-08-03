@@ -42,6 +42,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Entities\Blume\blume.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>blume</Name>
+    </None>
+    <None Include="Entities\Blume_Schatten\blume.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>blume</Name>
+    </None>
     <None Include="Entities\Button\animationchainlistfile.achx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>animationchainlistfile</Name>

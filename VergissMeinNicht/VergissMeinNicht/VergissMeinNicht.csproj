@@ -119,6 +119,10 @@
     <Compile Include="Entities\Blume.Generated.cs">
       <DependentUpon>Blume.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Blume_Schatten.cs" />
+    <Compile Include="Entities\Blume_Schatten.Generated.cs">
+      <DependentUpon>Blume_Schatten.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Button.cs" />
     <Compile Include="Entities\Button.Event.cs">
       <DependentUpon>Button.cs</DependentUpon>

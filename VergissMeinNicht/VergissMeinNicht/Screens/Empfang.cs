@@ -30,11 +30,18 @@ namespace VergissMeinNicht.Screens
 {
 	public partial class Empfang
 	{
+        float BlumeStartPositionY;
+        float BlumeVelocity = 10;
 
 		public override void CustomInitialize()
 		{
             base.CustomInitialize();
             VisibilityInit();
+
+            BlumeStartPositionY = BlumeInstance.Y;
+            BlumeInstance.YVelocity = BlumeVelocity;
+            Blume_SchattenInstance.Y = BlumeStartPositionY - 40;
+
 		}
 
         public override void CustomActivity(bool firstTimeCalled)
@@ -51,7 +58,8 @@ namespace VergissMeinNicht.Screens
             // reset Holes
             if (InputManager.Keyboard.KeyPushed(Keys.R)) for (int i = HoleList.Count - 1; i > -1; i--) HoleList[i].SpriteInstance.Visible = false;
 
-            CameraMovement();          
+            ControllFlower();
+            CameraMovement();   
         }
 
         public override void CustomDestroy()
@@ -78,6 +86,15 @@ namespace VergissMeinNicht.Screens
         {
             SpriteManager.Camera.MinimumX = -310;
             SpriteManager.Camera.MaximumX = 310;
+        }
+
+        void ControllFlower()
+        {
+            if (BlumeInstance.Y >= BlumeStartPositionY + 15) BlumeInstance.YVelocity = -BlumeVelocity;
+            else if (BlumeInstance.Y <= BlumeStartPositionY - 15) BlumeInstance.YVelocity = BlumeVelocity;
+
+            if (PlatformerCharacterBase.isChild()) BlumeInstance.Visible = true ;
+            else BlumeInstance.Visible = false;
         }
 
         public void CollisionActivity()
