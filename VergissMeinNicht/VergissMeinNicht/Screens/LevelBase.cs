@@ -54,6 +54,9 @@ namespace VergissMeinNicht.Screens
         public static Layer LayerBack  = SpriteManager.AddLayer();
         public static Layer LayerMid   = SpriteManager.AddLayer();
         public static Layer LayerFront = SpriteManager.AddLayer();
+
+        float BlumeStartPositionY;
+        float BlumeVelocity = 10;
         
 
         //------INITIALIZE----------------------------------------------------------------
@@ -89,6 +92,8 @@ namespace VergissMeinNicht.Screens
             this.SolidCollisions.AxisAlignedRectangles.Add(Boden);  // Add it to the ShapeCollection so the player can collide against it
             PlatformerCharacterBase.getInstance().Y = 75;       // Make the character appear on top of the rectangle
 
+            InitializeFlower();
+
             if (CollisionsVisible) CollisionVisibilityOn();
 		}
 
@@ -108,7 +113,9 @@ namespace VergissMeinNicht.Screens
             if (!IsPaused) PlatformerCharacterBase.getInstance().Activity();            
             
             PauseGame();
-  
+
+            ControllFlower();
+
             // "Cheats"
             DeveloperActivity();
 		}
@@ -129,6 +136,35 @@ namespace VergissMeinNicht.Screens
 
         //----------------------------------------------------------------------------------
         //--------FUNKTIONEN----------------------------------------------------------------
+
+        //----FLOWER
+        void InitializeFlower()
+        {
+            BlumeStartPositionY = BlumeInstance.Y;
+            BlumeInstance.YVelocity = BlumeVelocity;
+            Blume_SchattenInstance.Y = BlumeStartPositionY - 40;
+            Blume_SchattenInstance.X = BlumeInstance.X;
+        }
+
+        void ControllFlower()
+        {
+            // Floating (Vertikale Bewegung)
+            if (BlumeInstance.Y >= BlumeStartPositionY + 15) BlumeInstance.YVelocity = -BlumeVelocity;
+            else if (BlumeInstance.Y <= BlumeStartPositionY - 15) BlumeInstance.YVelocity = BlumeVelocity;
+
+            // Blume_Visibility managen
+            if (PlatformerCharacterBase.isChild()) BlumeInstance.Visible = true;
+            else BlumeInstance.Visible = false;
+
+            //--Collision
+            if (PlatformerCharacterBase.getInstance().Collision.CollideAgainst(BlumeInstance.Collision))
+            {      
+                BlumeInstance.Destroy();
+                Blume_SchattenInstance.Destroy();
+            }
+
+        }
+        //---/Flower
 
         public void CollisionVisibilityOn()
         {

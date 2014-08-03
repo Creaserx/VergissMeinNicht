@@ -301,35 +301,6 @@
           <IndependentOfCamera>true</IndependentOfCamera>
           <LayerOn />
         </NamedObjectSave>
-        <NamedObjectSave>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>X</Member>
-            <ValueAsFloat>-600</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>Y</Member>
-            <ValueAsFloat>100</ValueAsFloat>
-          </CustomProperty>
-          <SourceType>Entity</SourceType>
-          <SourceClassType>Entities\Blume</SourceClassType>
-          <InstanceName>BlumeInstance</InstanceName>
-          <AttachToContainer>true</AttachToContainer>
-          <IndependentOfCamera>true</IndependentOfCamera>
-        </NamedObjectSave>
-        <NamedObjectSave>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>X</Member>
-            <ValueAsFloat>-600</ValueAsFloat>
-          </CustomProperty>
-          <SourceType>Entity</SourceType>
-          <SourceClassType>Entities\Blume_Schatten</SourceClassType>
-          <InstanceName>Blume_SchattenInstance</InstanceName>
-          <AttachToContainer>true</AttachToContainer>
-          <IndependentOfCamera>true</IndependentOfCamera>
-        </NamedObjectSave>
       </NamedObjects>
     </ScreenSave>
     <ScreenSave>
@@ -479,6 +450,22 @@
           <SourceName />
           <SourceClassType>ShapeCollection</SourceClassType>
           <InstanceName>SolidCollisions</InstanceName>
+          <HasPublicProperty>true</HasPublicProperty>
+          <AttachToContainer>true</AttachToContainer>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+        <NamedObjectSave>
+          <SourceType>Entity</SourceType>
+          <SourceClassType>Entities\Blume</SourceClassType>
+          <InstanceName>BlumeInstance</InstanceName>
+          <HasPublicProperty>true</HasPublicProperty>
+          <AttachToContainer>true</AttachToContainer>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+        <NamedObjectSave>
+          <SourceType>Entity</SourceType>
+          <SourceClassType>Entities\Blume_Schatten</SourceClassType>
+          <InstanceName>Blume_SchattenInstance</InstanceName>
           <HasPublicProperty>true</HasPublicProperty>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
@@ -1263,12 +1250,42 @@
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
+        <NamedObjectSave>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Width</Member>
+            <ValueAsFloat>64</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Height</Member>
+            <ValueAsFloat>64</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>bool</Type>
+            <Member>Visible</Member>
+            <ValueAsBool>false</ValueAsBool>
+          </CustomProperty>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceFile />
+          <SourceName />
+          <SourceClassType>AxisAlignedRectangle</SourceClassType>
+          <InstanceName>Collision</InstanceName>
+          <HasPublicProperty>true</HasPublicProperty>
+          <AttachToContainer>true</AttachToContainer>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
       </NamedObjects>
       <ReferencedFiles>
         <ReferencedFileSave>
           <Name>Entities/Blume/blume.png</Name>
           <IsSharedStatic>true</IsSharedStatic>
           <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
+        </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>Entities/Blume/Blop.wav</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>Microsoft.Xna.Framework.Audio.SoundEffect</RuntimeType>
         </ReferencedFileSave>
       </ReferencedFiles>
       <Is2D>true</Is2D>
@@ -1314,14 +1331,14 @@
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
-            <Type>float</Type>
-            <Member>TextureScale</Member>
-            <ValueAsFloat>0.08</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
             <Type>Texture2D</Type>
             <Member>Texture</Member>
             <ValueAsString>blume</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>TextureScale</Member>
+            <ValueAsFloat>0.08</ValueAsFloat>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile />

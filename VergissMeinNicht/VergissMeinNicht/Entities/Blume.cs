@@ -42,7 +42,7 @@ namespace VergissMeinNicht.Entities
 
 		private void CustomDestroy()
 		{
-
+            
 
 		}
 
