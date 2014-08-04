@@ -28,20 +28,19 @@ namespace VergissMeinNicht.Entities
 {
 	public partial class UI_Button_E
 	{
-        float thisStartPosY;
+        public float thisStartPosY;
 
 
-		private void CustomInitialize() // KLAPPT NICHT!
-		{
-            thisStartPosY = this.Y;
-            this.SpriteInstance.YVelocity = 10;
+		private void CustomInitialize() 
+		{            
+            this.YVelocity = 10;
 
 		}
 
 		private void CustomActivity()
 		{
-            if (this.Y >= thisStartPosY + 15) this.YVelocity = -10;
-            else if (this.Y <= thisStartPosY - 15) this.YVelocity = 10;
+            if (this.Y >= thisStartPosY + 7) this.YVelocity = -10;
+            else if (this.Y <= thisStartPosY - 7) this.YVelocity = 10; // Hovern
 
 		}
 

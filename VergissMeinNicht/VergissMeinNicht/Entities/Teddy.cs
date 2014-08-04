@@ -35,9 +35,9 @@ namespace VergissMeinNicht.Entities
         
         private void CustomInitialize()
 		{
-            UI_Button_EInstance.SpriteInstance.Position.X = this.X + 50;
-            UI_Button_EInstance.SpriteInstance.Position.Y = this.Y + 50;
-            UI_Button_EInstance.SpriteInstance.YVelocity = 10;  //macht irgendwie nichts
+            UI_Button_EInstance.X = this.X + 50;
+            UI_Button_EInstance.Y = this.Y + 50;
+            UI_Button_EInstance.thisStartPosY = UI_Button_EInstance.Y;            
 		}
 
 		private void CustomActivity()
