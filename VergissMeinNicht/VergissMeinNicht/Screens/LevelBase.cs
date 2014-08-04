@@ -283,7 +283,8 @@ namespace VergissMeinNicht.Screens
             {
                 InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Left);
                 InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Right);
-                InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Space);  
+                InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Space);
+                InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Escape);
             }
             
             //CurrentLayer zuweisen
@@ -310,7 +311,7 @@ namespace VergissMeinNicht.Screens
         //--Management des Hoch-/Runterswitchens
         void LayerManagement()
         {
-            if (!DisableLayers)
+            if (!DisableLayers && !IsPaused)
             {
                 // --Hochswitchen
                 if (InputManager.Keyboard.KeyPushed(Keys.Up) && CurrentLayer != 3 && !isSwitching)
