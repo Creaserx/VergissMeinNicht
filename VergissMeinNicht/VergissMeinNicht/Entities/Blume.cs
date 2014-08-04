@@ -28,16 +28,25 @@ namespace VergissMeinNicht.Entities
 {
 	public partial class Blume
 	{
+        public float thisStartPosY;
+        public float BlumeVelocity = 10;
+
 		private void CustomInitialize()
 		{
-
+            this.YVelocity = BlumeVelocity;
 
 		}
 
 		private void CustomActivity()
 		{
+            // Floating (Vertikale Bewegung)
+            if (this.Y >= thisStartPosY + 15) this.YVelocity = -BlumeVelocity;
+            else if (this.Y <= thisStartPosY - 15) this.YVelocity = BlumeVelocity;
 
-
+            // Visibility
+            if (PlatformerCharacterBase.isChild()) this.Visible = true;
+            else this.Visible = false;
+            this.Collision.Visible = false;
 		}
 
 		private void CustomDestroy()

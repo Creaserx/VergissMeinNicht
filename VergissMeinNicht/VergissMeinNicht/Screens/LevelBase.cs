@@ -55,8 +55,7 @@ namespace VergissMeinNicht.Screens
         public static Layer LayerMid   = SpriteManager.AddLayer();
         public static Layer LayerFront = SpriteManager.AddLayer();
 
-        float BlumeStartPositionY;
-        float BlumeVelocity = 10;
+        
         
 
         //------INITIALIZE----------------------------------------------------------------
@@ -140,22 +139,13 @@ namespace VergissMeinNicht.Screens
         //----FLOWER
         void InitializeFlower()
         {
-            BlumeStartPositionY = BlumeInstance.Y;
-            BlumeInstance.YVelocity = BlumeVelocity;
-            Blume_SchattenInstance.Y = BlumeStartPositionY - 40;
+            BlumeInstance.thisStartPosY = BlumeInstance.Y;            
+            Blume_SchattenInstance.Y = BlumeInstance.thisStartPosY - 40;
             Blume_SchattenInstance.X = BlumeInstance.X;
         }
 
         void ControllFlower()
         {
-            // Floating (Vertikale Bewegung)
-            if (BlumeInstance.Y >= BlumeStartPositionY + 15) BlumeInstance.YVelocity = -BlumeVelocity;
-            else if (BlumeInstance.Y <= BlumeStartPositionY - 15) BlumeInstance.YVelocity = BlumeVelocity;
-
-            // Blume_Visibility managen
-            if (PlatformerCharacterBase.isChild()) BlumeInstance.Visible = true;
-            else BlumeInstance.Visible = false;
-
             //--Collision
             if (PlatformerCharacterBase.getInstance().Collision.CollideAgainst(BlumeInstance.Collision))
             {      
@@ -163,7 +153,6 @@ namespace VergissMeinNicht.Screens
                 Blume_SchattenInstance.Destroy();
                 RauchInstance.Destroy();
             }
-
         }
         //---/Flower
        

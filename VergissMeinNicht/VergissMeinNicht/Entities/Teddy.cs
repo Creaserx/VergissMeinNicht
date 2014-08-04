@@ -43,9 +43,6 @@ namespace VergissMeinNicht.Entities
 		private void CustomActivity()
 		{
             TeddySwitch();
-            string resultStringX = "E.X:" + this.Position.X.ToString();
-            string resultStringY = "E.Y:" + this.Position.Y.ToString();
-            FlatRedBall.Debugging.Debugger.Write(resultStringX + "\n" + resultStringY);
 		}
 
         public void UpdateCharacterScale()
@@ -110,6 +107,7 @@ namespace VergissMeinNicht.Entities
                         PlatformerCharacterBase.UpdateCharacterValues();
                         UpdateCharacterScale();
 
+                        this.Sprite.Texture = creepyteddy;  
                         
                     }
                     else
@@ -136,6 +134,7 @@ namespace VergissMeinNicht.Entities
                         PlatformerCharacterBase.UpdateCharacterValues();
                         UpdateCharacterScale();
 
+                        this.Sprite.Texture = teddy;
                     }
                                                           
                                            

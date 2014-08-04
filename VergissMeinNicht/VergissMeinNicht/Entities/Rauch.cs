@@ -28,10 +28,6 @@ namespace VergissMeinNicht.Entities
 {
 	public partial class Rauch
 	{
-        private void AnimationActivity()
-        {
-            this.SpriteInstance.CurrentChainName = "Wiggle";
-        }
 
 		private void CustomInitialize()
 		{
@@ -62,5 +58,10 @@ namespace VergissMeinNicht.Entities
             this.X = x;
             this.Y = y;
         }
-	}
+
+        private void AnimationActivity()
+        {
+            this.SpriteInstance.CurrentChainName = "Wiggle";
+        }
+    }
 }

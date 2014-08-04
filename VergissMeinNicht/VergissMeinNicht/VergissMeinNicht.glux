@@ -2375,11 +2375,6 @@
             <ValueAsString>blume</ValueAsString>
           </CustomProperty>
           <CustomProperty>
-            <Type>float</Type>
-            <Member>TextureScale</Member>
-            <ValueAsFloat>1</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
             <Type>AnimationChainList</Type>
             <Member>AnimationChains</Member>
             <ValueAsString>RauchAnimation</ValueAsString>
@@ -2388,6 +2383,11 @@
             <Type>string</Type>
             <Member>CurrentChainName</Member>
             <ValueAsString>Wiggle</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>TextureScale</Member>
+            <ValueAsFloat>1</ValueAsFloat>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile />
@@ -3330,7 +3330,6 @@
         </InstructionSave>
       </RequiredProperties>
       <Name>TileMapInfo</Name>
-      <GenerateCode>true</GenerateCode>
     </CustomClassSave>
   </CustomClasses>
   <TranslatedFiles>
