@@ -28,6 +28,11 @@ namespace VergissMeinNicht.Entities
 {
 	public partial class Rauch
 	{
+        private void AnimationActivity()
+        {
+            this.SpriteInstance.CurrentChainName = "Wiggle";
+        }
+
 		private void CustomInitialize()
 		{
 
@@ -37,6 +42,7 @@ namespace VergissMeinNicht.Entities
 		private void CustomActivity()
 		{
             PlatformerCharacterBase.getInstance().Collision.CollideAgainstMove(this.Collision, 0, 1); //Collision Rauch-Character
+            AnimationActivity();
 		}
 
 		private void CustomDestroy()

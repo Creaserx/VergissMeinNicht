@@ -126,6 +126,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>blume</Name>
     </None>
+    <None Include="Entities\Rauch\RauchAnimation.achx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>RauchAnimation</Name>
+    </None>
+    <None Include="Entities\Rauch\RauchAnimation_Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>RauchAnimation_Sheet</Name>
+    </None>
     <None Include="Entities\Räume_Inhalt\Empfang\Hole\Bodenloch.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Bodenloch</Name>

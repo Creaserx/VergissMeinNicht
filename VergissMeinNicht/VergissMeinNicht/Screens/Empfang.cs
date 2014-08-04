@@ -81,8 +81,8 @@ namespace VergissMeinNicht.Screens
 
         void CameraMovement()
         {
-            SpriteManager.Camera.MinimumX = -310;
-            SpriteManager.Camera.MaximumX = 310;
+            SpriteManager.Camera.MinimumX = -305;
+            SpriteManager.Camera.MaximumX = 305;
         }
 
 

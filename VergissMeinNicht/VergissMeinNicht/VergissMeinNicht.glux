@@ -2377,7 +2377,17 @@
           <CustomProperty>
             <Type>float</Type>
             <Member>TextureScale</Member>
-            <ValueAsFloat>0.3</ValueAsFloat>
+            <ValueAsFloat>1</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>AnimationChainList</Type>
+            <Member>AnimationChains</Member>
+            <ValueAsString>RauchAnimation</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>string</Type>
+            <Member>CurrentChainName</Member>
+            <ValueAsString>Wiggle</ValueAsString>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile />
@@ -2418,6 +2428,11 @@
           <Name>Entities/Rauch/blume.png</Name>
           <IsSharedStatic>true</IsSharedStatic>
           <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
+        </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>Entities/Rauch/RauchAnimation.achx</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>FlatRedBall.Graphics.Animation.AnimationChainList</RuntimeType>
         </ReferencedFileSave>
       </ReferencedFiles>
       <Is2D>true</Is2D>
@@ -3262,14 +3277,6 @@
             <Type>float</Type>
             <Member>TextureScale</Member>
             <ValueAsFloat>0.5</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>X</Member>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>Y</Member>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile />
