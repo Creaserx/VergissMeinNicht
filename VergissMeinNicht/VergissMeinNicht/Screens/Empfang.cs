@@ -39,7 +39,9 @@ namespace VergissMeinNicht.Screens
 
             // Position Blume & Rauch
             BlumeInstance.PositionBlume(-600, 80);
-            RauchInstance.PositionRauch(760, 200);
+            RauchInstance.PositionRauch(760, 180);
+            UI_Button_EInstance.PositionE_Button(790, 300, UI_Button_EInstance.Y);
+            //UI_Button_EInstance.thisStartPosY = UI_Button_EInstance.Y;
 		}
 
         public override void CustomActivity(bool firstTimeCalled)
@@ -48,6 +50,7 @@ namespace VergissMeinNicht.Screens
 
             base.CustomActivity(firstTimeCalled);
             CollisionActivity();
+            DoorActivity(700, "Flur");
 
             // Background Change
             if (PlatformerCharacterBase.isChild()) Background_creepy.Visible = true;
@@ -56,7 +59,9 @@ namespace VergissMeinNicht.Screens
             // reset Holes
             if (InputManager.Keyboard.KeyPushed(Keys.R)) for (int i = HoleList.Count - 1; i > -1; i--) HoleList[i].SpriteInstance.Visible = false;
 
-            CameraMovement();   
+            CameraMovement();
+
+            NextRoom();
         }
 
         public override void CustomDestroy()
@@ -85,7 +90,10 @@ namespace VergissMeinNicht.Screens
             SpriteManager.Camera.MaximumX = 305;
         }
 
-
+        void NextRoom()
+        {
+            if (InputManager.Keyboard.KeyPushed(Keys.E) && DoorOpen) MoveToScreen(typeof(Flur).FullName); 
+        }
 
         public void CollisionActivity()
         {

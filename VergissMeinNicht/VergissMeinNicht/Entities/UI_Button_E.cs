@@ -55,5 +55,13 @@ namespace VergissMeinNicht.Entities
 
 
         }
+
+        public void PositionE_Button(float x, float y, float StartPos)
+        {
+            this.X = x;
+            this.Y = y;
+            thisStartPosY = StartPos;
+        }
+
 	}
 }

@@ -35,9 +35,8 @@ namespace VergissMeinNicht.Entities
         
         private void CustomInitialize()
 		{
-            UI_Button_EInstance.X = this.X + 50;
-            UI_Button_EInstance.Y = this.Y + 50;
-            UI_Button_EInstance.thisStartPosY = UI_Button_EInstance.Y;
+            UI_Button_EInstance.PositionE_Button(this.X + 50, this.Y + 50, UI_Button_EInstance.Y);
+            UI_Button_EInstance.thisStartPosY = UI_Button_EInstance.Y; // WA, eigentlich müsste es klappen, i have no idea why not
             if (!PlatformerCharacterBase.isChild()) this.Sprite.Texture = creepyteddy;
 		}
 

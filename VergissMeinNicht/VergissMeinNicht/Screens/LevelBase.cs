@@ -55,6 +55,8 @@ namespace VergissMeinNicht.Screens
         public static Layer LayerMid   = SpriteManager.AddLayer();
         public static Layer LayerFront = SpriteManager.AddLayer();
 
+        public bool DoorOpen = false;
+
         
         
 
@@ -68,7 +70,7 @@ namespace VergissMeinNicht.Screens
             DisableLayerBack = false;   // LayerBack aktivieren
 
             //TheodorInstance erstellen --"Child" -- "GrownUp"--
-            StartCharacterState("Child");
+            StartCharacterState("Child", -100);
 
             CollisionHeightLayerFront = PlatformerCharacterBase.getInstance().Collision.Height * 0.5f;
             CollisionHeightLayerMid = PlatformerCharacterBase.getInstance().Collision.Height * 0.45f;
@@ -133,7 +135,7 @@ namespace VergissMeinNicht.Screens
         //----------------------------------------------------------------------------------
         //--------FUNKTIONEN----------------------------------------------------------------
 
-        public void StartCharacterState(String state)
+        public void StartCharacterState(String state, int x)
         {
             if (state == "Child")
             {
@@ -152,6 +154,9 @@ namespace VergissMeinNicht.Screens
                 PlatformerCharacterBase.updateinstance(Temp);
                 Temp.AddToManagers(LayerFront);
             }
+
+            PlatformerCharacterBase.getInstance().X = x;
+            SpriteManager.Camera.X = x;
         }
 
         //----FLOWER
@@ -174,8 +179,24 @@ namespace VergissMeinNicht.Screens
             }
         }
         //---/Flower
-       
 
+        public void DoorActivity(int x, string nextRoom)
+        {
+
+            if (PlatformerCharacterBase.getInstance().X >= x && PlatformerCharacterBase.isChild())
+            {
+                UI_Button_EInstance.SpriteInstanceVisible = true;
+                DoorOpen = true;
+            }
+            else
+            {
+                UI_Button_EInstance.SpriteInstanceVisible = false;
+                DoorOpen = false;
+            }
+            
+
+        }
+        
         public void CollisionVisibilityOn()
         {
             SolidCollisions.AddToManagers(); // Add the ShapeColleciton to the ShapeManager so it's visible
@@ -188,6 +209,9 @@ namespace VergissMeinNicht.Screens
         {
             // Z  -- Zoolevel
             if (InputManager.Keyboard.KeyPushed(Keys.Z)) MoveToScreen(typeof(ZooLevel).FullName);
+
+            // F9  --  SpeedMode
+            //if (InputManager.Keyboard.KeyPushed(Keys.F9)) ;
 
             // R  -- Reset Character
             if (InputManager.Keyboard.KeyPushed(Keys.R))
@@ -206,6 +230,10 @@ namespace VergissMeinNicht.Screens
                     PlatformerCharacterBase.updateinstance(Temp);
                 }
             }
+
+            // Numbers  -- GoTo: 1-Empfang, 2-Flur         
+            if (InputManager.Keyboard.KeyPushed(Keys.D1)) MoveToScreen(typeof(Empfang).FullName);
+            if (InputManager.Keyboard.KeyPushed(Keys.D2)) MoveToScreen(typeof(Flur).FullName);
             
             // F3/F4 -- Zeigt Debugger Werte an 
             if (InputManager.Keyboard.KeyPushed(Keys.F3))
@@ -235,7 +263,8 @@ namespace VergissMeinNicht.Screens
                 string resultStringCameraX = "CameraX:" + SpriteManager.Camera.X.ToString();
                 string resultStringLayerCount = "LayerCount:" + SpriteManager.LayerCount.ToString();
                 FlatRedBall.Debugging.Debugger.Write(resultStringX + "\n" + resultStringY + "\n" + resultStringCollisionH + "\n" + resultStringCollisionW +
-                    "\n" + resultStringLayer + "\n" + resultStringL3 + "\n" + resultStringLa + "\n" + resultStringSwitch + "\n" + resultStringCameraX + "\n" + resultStringLayerCount);
+                    "\n" + resultStringLayer + "\n" + resultStringL3 + "\n" + resultStringLa + "\n" + resultStringSwitch + "\n" + resultStringCameraX +
+                    "\n" + resultStringLayerCount);
             }
         }        
 
