@@ -32,6 +32,7 @@ namespace VergissMeinNicht.Entities
 	public partial class Teddy
 	{
         int tempLayer;
+        bool LastDirectionRight;
         
         private void CustomInitialize()
 		{
@@ -81,6 +82,12 @@ namespace VergissMeinNicht.Entities
                 //--Transform Character
                 if (InputManager.Keyboard.KeyPushed(Keys.E))
                 {
+                    // aktuelle Blickrichtung speichern
+                    if (PlatformerCharacterBase.getInstance().DirectionFacing == PlatformerCharacterBase.LeftOrRight.Right)
+                        LastDirectionRight = true;
+                    else
+                        LastDirectionRight = false;   
+                    
                     tempLayer = LevelBase.CurrentLayer;
 
                     if (PlatformerCharacterBase.isChild())                            
@@ -100,12 +107,16 @@ namespace VergissMeinNicht.Entities
                                 FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
                                 FlatRedBall.Glue.StateInterpolation.Easing.Out);
 
+
+                        
                         TheodorGrownUp Temp = new TheodorGrownUp();
                         Temp.X = PlatformerCharacterBase.getInstance().X;
                         Temp.Y = PlatformerCharacterBase.getInstance().Y;
                         PlatformerCharacterBase.updateinstance(Temp);
                         PlatformerCharacterBase.UpdateCharacterValues();
                         UpdateCharacterScale();
+
+                        if (LastDirectionRight) PlatformerCharacterBase.getInstance().DirectionFacing = PlatformerCharacterBase.LeftOrRight.Right;  //Blickrichtung auf Rechts setzen, falls nötig
 
                         this.Sprite.Texture = creepyteddy;  
                         
@@ -134,6 +145,8 @@ namespace VergissMeinNicht.Entities
                         PlatformerCharacterBase.UpdateCharacterValues();
                         UpdateCharacterScale();
 
+                        if (LastDirectionRight) PlatformerCharacterBase.getInstance().DirectionFacing = PlatformerCharacterBase.LeftOrRight.Right; //Blickrichtung auf Rechts setzen, falls nötig
+
                         this.Sprite.Texture = teddy;
                     }
                                                           
@@ -145,17 +158,7 @@ namespace VergissMeinNicht.Entities
 
                 }
 
-                UI_Button_EInstance.SpriteInstanceVisible = true;    
-
-                   /* SaveText.Visible = true;
-                    InteractText.Visible = true;
-                    SaveText.Position.X = PlatformerCharacterBase.getInstance().Position.X + 100;
-                    SaveText.Position.Y = PlatformerCharacterBase.getInstance().Y + 80;
-                    InteractText.Position.X = PlatformerCharacterBase.getInstance().Position.X + 100;
-                    InteractText.Position.Y = PlatformerCharacterBase.getInstance().Y + 100;
-                     */           
-
-                
+                UI_Button_EInstance.SpriteInstanceVisible = true;   // E-Button einblenden                 
             }
             else
             {
