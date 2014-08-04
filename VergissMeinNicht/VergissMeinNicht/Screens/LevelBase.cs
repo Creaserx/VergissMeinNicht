@@ -67,12 +67,9 @@ namespace VergissMeinNicht.Screens
             DisableLayers = false;      // Erstmal Layer aktivieren
             DisableLayerBack = false;   // LayerBack aktivieren
 
-            //TheodorInstance erstellen
-            TheodorChild Temp = new VergissMeinNicht.Entities.TheodorChild(ContentManagerName, false);
-            Temp.Name = "TheodorChildInstance";
-            PlatformerCharacterBase.updateinstance(Temp);
-            Temp.AddToManagers(LayerFront);
-             
+            //TheodorInstance erstellen --"Child" -- "GrownUp"--
+            StartCharacterState("Child");
+
             CollisionHeightLayerFront = PlatformerCharacterBase.getInstance().Collision.Height * 0.5f;
             CollisionHeightLayerMid = PlatformerCharacterBase.getInstance().Collision.Height * 0.45f;
             CollisionHeightLayerBack = PlatformerCharacterBase.getInstance().Collision.Height * 0.4f;
@@ -136,6 +133,27 @@ namespace VergissMeinNicht.Screens
         //----------------------------------------------------------------------------------
         //--------FUNKTIONEN----------------------------------------------------------------
 
+        public void StartCharacterState(String state)
+        {
+            if (state == "Child")
+            {
+                //--Als Kind starten
+                TheodorChild Temp = new VergissMeinNicht.Entities.TheodorChild(ContentManagerName, false);
+                Temp.Name = "TheodorChildInstance";
+                PlatformerCharacterBase.updateinstance(Temp);
+                Temp.AddToManagers(LayerFront);
+            }
+
+            else //if (state == "GrownUp")
+            {
+                //  --Als GrownUp starten  ("Standard")
+                TheodorGrownUp Temp = new VergissMeinNicht.Entities.TheodorGrownUp(ContentManagerName, false);
+                Temp.Name = "TheodorGrownUpInstance";
+                PlatformerCharacterBase.updateinstance(Temp);
+                Temp.AddToManagers(LayerFront);
+            }
+        }
+
         //----FLOWER
         void InitializeFlower()
         {
@@ -147,10 +165,11 @@ namespace VergissMeinNicht.Screens
         void ControllFlower()
         {
             //--Collision
-            if (PlatformerCharacterBase.getInstance().Collision.CollideAgainst(BlumeInstance.Collision))
+            if (PlatformerCharacterBase.getInstance().Collision.CollideAgainst(BlumeInstance.Collision) && PlatformerCharacterBase.isChild())
             {      
                 BlumeInstance.Destroy();
                 Blume_SchattenInstance.Destroy();
+                RauchInstance.Y = -500;             // WA: Ansonsten bleibt die Collision da, obwohl sie nicht mehr da ist
                 RauchInstance.Destroy();
             }
         }

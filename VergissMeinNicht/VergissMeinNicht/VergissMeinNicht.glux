@@ -69,6 +69,7 @@
           </Properties>
           <Name>Screens/Empfang/Erwachsen.mp3</Name>
           <IsSharedStatic>true</IsSharedStatic>
+          <LoadedAtRuntime>false</LoadedAtRuntime>
           <RuntimeType>Microsoft.Xna.Framework.Media.Song</RuntimeType>
         </ReferencedFileSave>
       </ReferencedFiles>
@@ -2730,7 +2731,7 @@
           <CustomProperty>
             <Type>Texture2D</Type>
             <Member>Texture</Member>
-            <ValueAsString>creepyteddy</ValueAsString>
+            <ValueAsString>teddy</ValueAsString>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>

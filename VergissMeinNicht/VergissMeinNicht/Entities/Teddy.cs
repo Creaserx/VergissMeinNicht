@@ -37,7 +37,8 @@ namespace VergissMeinNicht.Entities
 		{
             UI_Button_EInstance.X = this.X + 50;
             UI_Button_EInstance.Y = this.Y + 50;
-            UI_Button_EInstance.thisStartPosY = UI_Button_EInstance.Y;            
+            UI_Button_EInstance.thisStartPosY = UI_Button_EInstance.Y;
+            if (!PlatformerCharacterBase.isChild()) this.Sprite.Texture = creepyteddy;
 		}
 
 		private void CustomActivity()

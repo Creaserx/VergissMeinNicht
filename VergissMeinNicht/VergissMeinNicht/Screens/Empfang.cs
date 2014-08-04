@@ -35,7 +35,7 @@ namespace VergissMeinNicht.Screens
 		public override void CustomInitialize()
 		{
             base.CustomInitialize();
-            VisibilityInit();
+            VisibilityInit();          
 
             // Position Blume & Rauch
             BlumeInstance.PositionBlume(-600, 80);
@@ -132,8 +132,8 @@ namespace VergissMeinNicht.Screens
         //Collisions Visible machen
         public void CollisionVisibilityEmpfang()
         {
-            LayerFront.Visible = true;
-            LayerBack.Visible = true;
+            Layer1.Visible = true;
+            Layer3.Visible = true;
 
             for (int i = HoleList.Count - 1; i > -1; i--) HoleList[i].Collision.Visible = true;   // Hole-Collision Visible machen
 
