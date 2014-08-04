@@ -26,7 +26,7 @@ using Texture2D = Microsoft.Xna.Framework.Graphics.Texture2D;
 
 namespace VergissMeinNicht.Entities
 {
-	public partial class Blume
+	public partial class Rauch
 	{
 		private void CustomInitialize()
 		{
@@ -42,7 +42,7 @@ namespace VergissMeinNicht.Entities
 
 		private void CustomDestroy()
 		{
-            
+
 
 		}
 
@@ -52,7 +52,7 @@ namespace VergissMeinNicht.Entities
 
         }
 
-        public void PositionBlume(float x, float y)
+        public void PositionRauch(float x, float y)
         {
             this.X = x;
             this.Y = y;

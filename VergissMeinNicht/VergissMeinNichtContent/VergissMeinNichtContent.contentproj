@@ -122,6 +122,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>MovementValues</Name>
     </None>
+    <None Include="Entities\Rauch\blume.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>blume</Name>
+    </None>
     <None Include="Entities\Räume_Inhalt\Empfang\Hole\Bodenloch.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Bodenloch</Name>

@@ -37,9 +37,9 @@ namespace VergissMeinNicht.Screens
             base.CustomInitialize();
             VisibilityInit();
 
-            BlumeInstance.X = -600;
-            BlumeInstance.Y = 80;
-
+            // Position Blume & Rauch
+            BlumeInstance.PositionBlume(-600, 80);
+            RauchInstance.PositionRauch(760, 200);
 		}
 
         public override void CustomActivity(bool firstTimeCalled)

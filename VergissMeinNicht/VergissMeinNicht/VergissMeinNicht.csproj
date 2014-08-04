@@ -179,6 +179,10 @@
     <Compile Include="Entities\PlatformerCharacterBase.Generated.Event.cs">
       <DependentUpon>PlatformerCharacterBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Rauch.cs" />
+    <Compile Include="Entities\Rauch.Generated.cs">
+      <DependentUpon>Rauch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Räume_Inhalt\Empfang\Hole.cs" />
     <Compile Include="Entities\Räume_Inhalt\Empfang\Hole.Generated.cs">
       <DependentUpon>Hole.cs</DependentUpon>
