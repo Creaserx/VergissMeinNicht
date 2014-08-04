@@ -52,9 +52,7 @@ namespace VergissMeinNicht.Screens
             CollisionActivity();
             DoorActivity(700, "Flur");
 
-            // Background Change
-            if (PlatformerCharacterBase.isChild()) Background_creepy.Visible = true;
-            else Background_creepy.Visible = false;
+            ObjectVisibilityChange(); //Aktualisiert die Visibility von Objekten je nach Child/GU
 
             // reset Holes
             if (InputManager.Keyboard.KeyPushed(Keys.R)) for (int i = HoleList.Count - 1; i > -1; i--) HoleList[i].SpriteInstance.Visible = false;
@@ -74,6 +72,21 @@ namespace VergissMeinNicht.Screens
         {
 
             
+        }
+
+        void ObjectVisibilityChange()
+        {
+
+            if (PlatformerCharacterBase.isChild())
+            { 
+                Background_creepy.Visible = true;               // Hintergrund
+                FeuerInstance.SpriteInstance.Visible = true;    // Feuer
+            }
+            else 
+            {
+                Background_creepy.Visible = false;
+                FeuerInstance.SpriteInstance.Visible = false;
+            }
         }
 
         public void SwitchBlock()

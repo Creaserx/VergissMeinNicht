@@ -134,6 +134,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>RauchAnimation_Sheet</Name>
     </None>
+    <None Include="Entities\Räume_Inhalt\Empfang\Feuer\FireAnimationChainList.achx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>FireAnimationChainList</Name>
+    </None>
+    <None Include="Entities\Räume_Inhalt\Empfang\Feuer\Fire_AnimationSheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Fire_AnimationSheet</Name>
+    </None>
     <None Include="Entities\Räume_Inhalt\Empfang\Hole\Bodenloch.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Bodenloch</Name>
