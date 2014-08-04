@@ -161,16 +161,19 @@ namespace VergissMeinNicht.Screens
             {      
                 BlumeInstance.Destroy();
                 Blume_SchattenInstance.Destroy();
+                RauchInstance.Destroy();
             }
 
         }
         //---/Flower
+       
 
         public void CollisionVisibilityOn()
         {
             SolidCollisions.AddToManagers(); // Add the ShapeColleciton to the ShapeManager so it's visible
-
             PlatformerCharacterBase.getInstance().Collision.Visible = true;
+            BlumeInstance.Collision.Visible = true;
+            RauchInstance.Visible = true;
         }
 
         public virtual void DeveloperActivity()
@@ -186,7 +189,6 @@ namespace VergissMeinNicht.Screens
                 CurrentLayer = 1;
                 PlatformerCharacterBase.getInstance().Y = 75;
                 PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale = 0.5f;
-                //resetCollisionSize();
                 if (!PlatformerCharacterBase.isChild())
                 {
                     DisableLayers = false;
@@ -304,6 +306,8 @@ namespace VergissMeinNicht.Screens
             }
         }
         
+        //-------
+        //--Management des Hoch-/Runterswitchens
         void LayerManagement()
         {
             if (!DisableLayers)

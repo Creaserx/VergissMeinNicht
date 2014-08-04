@@ -26,17 +26,23 @@ using Texture2D = Microsoft.Xna.Framework.Graphics.Texture2D;
 
 namespace VergissMeinNicht.Entities
 {
-	public partial class Rauch
+	public partial class UI_Button_E
 	{
-		private void CustomInitialize()
-		{
+        float thisStartPosY;
 
+
+		private void CustomInitialize() // KLAPPT NICHT!
+		{
+            thisStartPosY = this.Y;
+            this.SpriteInstance.YVelocity = 10;
 
 		}
 
 		private void CustomActivity()
 		{
-            PlatformerCharacterBase.getInstance().Collision.CollideAgainstMove(this.Collision, 0, 1); //Collision Rauch-Character
+            if (this.Y >= thisStartPosY + 15) this.YVelocity = -10;
+            else if (this.Y <= thisStartPosY - 15) this.YVelocity = 10;
+
 		}
 
 		private void CustomDestroy()
@@ -49,12 +55,6 @@ namespace VergissMeinNicht.Entities
         {
 
 
-        }
-
-        public void PositionRauch(float x, float y)
-        {
-            this.X = x;
-            this.Y = y;
         }
 	}
 }

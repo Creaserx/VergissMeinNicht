@@ -22,6 +22,7 @@ using Keys = Microsoft.Xna.Framework.Input.Keys;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
 using Texture2D = Microsoft.Xna.Framework.Graphics.Texture2D;
 using VergissMeinNicht.Screens;
+using FlatRedBall.Graphics;
 
 #endif
 #endregion
@@ -34,14 +35,17 @@ namespace VergissMeinNicht.Entities
         
         private void CustomInitialize()
 		{
-            
-
+            UI_Button_EInstance.SpriteInstance.Position.X = this.X + 50;
+            UI_Button_EInstance.SpriteInstance.Position.Y = this.Y + 50;
+            UI_Button_EInstance.SpriteInstance.YVelocity = 10;  //macht irgendwie nichts
 		}
 
 		private void CustomActivity()
 		{
-
             TeddySwitch();
+            string resultStringX = "E.X:" + this.Position.X.ToString();
+            string resultStringY = "E.Y:" + this.Position.Y.ToString();
+            FlatRedBall.Debugging.Debugger.Write(resultStringX + "\n" + resultStringY);
 		}
 
         public void UpdateCharacterScale()
@@ -140,20 +144,23 @@ namespace VergissMeinNicht.Entities
                 if (InputManager.Keyboard.KeyPushed(Keys.S))
                 {
 
-                }                
+                }
 
-                    SaveText.Visible = true;
+                UI_Button_EInstance.SpriteInstanceVisible = true;    
+
+                   /* SaveText.Visible = true;
                     InteractText.Visible = true;
                     SaveText.Position.X = PlatformerCharacterBase.getInstance().Position.X + 100;
                     SaveText.Position.Y = PlatformerCharacterBase.getInstance().Y + 80;
                     InteractText.Position.X = PlatformerCharacterBase.getInstance().Position.X + 100;
                     InteractText.Position.Y = PlatformerCharacterBase.getInstance().Y + 100;
-                                
+                     */           
 
                 
             }
             else
             {
+                UI_Button_EInstance.SpriteInstanceVisible = false;
                 SaveText.Visible = false;
                 InteractText.Visible = false;
             }

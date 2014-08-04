@@ -102,6 +102,8 @@ namespace VergissMeinNicht.Screens
                     FallInHole();
                 }
             }
+
+            //if (PlatformerCharacterBase.getInstance().X >= 689) InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Right);
   
             // LevelReset WA
             //if (PlatformerCharacterBase.getInstance().Y < 85 && Boden.Y == -300) MoveToScreen(typeof(Empfang).FullName);

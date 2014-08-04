@@ -202,6 +202,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Theodor_Idle_Right</Name>
     </None>
+    <None Include="Entities\UI_Button_E\Keyboard_Black_E.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Keyboard_Black_E</Name>
+    </None>
     <None Include="Screens\Empfang\!creepempfang.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>!creepempfang</Name>

@@ -215,6 +215,10 @@
     <Compile Include="Entities\TheodorGrownUp.Generated.cs">
       <DependentUpon>TheodorGrownUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\UI_Button_E.cs" />
+    <Compile Include="Entities\UI_Button_E.Generated.cs">
+      <DependentUpon>UI_Button_E.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlobalContent.Generated.cs" />
     <Compile Include="Performance\IEntityFactory.Generated.cs" />
     <Compile Include="Performance\IPoolable.Generated.cs" />
