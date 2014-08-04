@@ -1340,6 +1340,7 @@
           </Properties>
           <Name>Entities/Blume/Blop.wav</Name>
           <IsSharedStatic>true</IsSharedStatic>
+          <HasPublicProperty>true</HasPublicProperty>
           <RuntimeType>Microsoft.Xna.Framework.Audio.SoundEffect</RuntimeType>
         </ReferencedFileSave>
       </ReferencedFiles>

@@ -171,11 +171,13 @@ namespace VergissMeinNicht.Screens
         {
             //--Collision
             if (PlatformerCharacterBase.getInstance().Collision.CollideAgainst(BlumeInstance.Collision) && PlatformerCharacterBase.isChild())
-            {      
+            {
+                BlumeInstance.Y = -500;
                 BlumeInstance.Destroy();
                 Blume_SchattenInstance.Destroy();
                 RauchInstance.Y = -500;             // WA: Ansonsten bleibt die Collision da, obwohl sie nicht mehr da ist
                 RauchInstance.Destroy();
+                Blume.Blop.Play();
             }
         }
         //---/Flower
