@@ -33,7 +33,8 @@ namespace VergissMeinNicht.Entities
 	{
         int tempLayer;
         bool LastDirectionRight;
-        
+        public static bool DisableTeddy = false;
+
         private void CustomInitialize()
 		{
             UI_Button_EInstance.PositionE_Button(this.X + 50, this.Y + 50, UI_Button_EInstance.Y);
@@ -43,7 +44,8 @@ namespace VergissMeinNicht.Entities
 
 		private void CustomActivity()
 		{
-            TeddySwitch();
+            if (!DisableTeddy) TeddySwitch();
+            DisableInput();
 		}
 
         public void UpdateCharacterScale()
@@ -74,6 +76,19 @@ namespace VergissMeinNicht.Entities
             }
         }
 
+        void DisableInput()
+        {
+            if (FlashInstance.Alpha != 0) 
+            {      
+                InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Up);
+                InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Down);
+                InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Left);
+                InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Right);
+                InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Space);
+                InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Escape);
+            }
+        }
+
         void TeddySwitch()
         {
             //Makes Text Visible / Invisible in front of a Teddy
@@ -86,8 +101,8 @@ namespace VergissMeinNicht.Entities
                     if (PlatformerCharacterBase.getInstance().DirectionFacing == PlatformerCharacterBase.LeftOrRight.Right)
                         LastDirectionRight = true;
                     else
-                        LastDirectionRight = false;   
-                    
+                        LastDirectionRight = false;
+                 
                     tempLayer = LevelBase.CurrentLayer;
 
                     if (PlatformerCharacterBase.isChild())                            

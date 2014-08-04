@@ -31,7 +31,6 @@ namespace VergissMeinNicht.Screens
 	public partial class Empfang
 	{
 
-
 		public override void CustomInitialize()
 		{
             base.CustomInitialize();

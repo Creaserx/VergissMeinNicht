@@ -317,9 +317,10 @@ namespace VergissMeinNicht.Screens
 
         void LayerOn()
         {
-            // Switching: ignore Keys _up, _down, _Space
+            // Switching: ignore Keys _up, _down, _Space, _Esc
             if (isSwitching)
             {
+                Teddy.DisableTeddy = true;
                 InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Left);
                 InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Right);
                 InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Space);
@@ -344,6 +345,7 @@ namespace VergissMeinNicht.Screens
                 CurrentLayer = 3;
                 isSwitching = false;
             }
+            if (!isSwitching) Teddy.DisableTeddy = false;
         }
         
         //-------
