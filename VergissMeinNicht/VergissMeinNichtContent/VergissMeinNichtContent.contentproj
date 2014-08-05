@@ -246,10 +246,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>empfangraum_v_2-wiederhergestellt</Name>
     </None>
-    <None Include="Screens\Empfang\GhostBoden.shcx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Name>GhostBoden</Name>
-    </None>
     <None Include="Screens\Empfang\Layer1.shcx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Layer1</Name>

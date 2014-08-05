@@ -30,7 +30,7 @@ namespace VergissMeinNicht.Screens
 {
 	public partial class Empfang
 	{
-        
+        public AxisAlignedRectangle GhostBoden;
 
 		public override void CustomInitialize()
 		{
@@ -46,6 +46,15 @@ namespace VergissMeinNicht.Screens
 
             TheodorGhostInstance.Collision.Height = CollisionHeightLayerFront;
             TheodorGhostInstance.Collision.Width = CollisionWidthLayerFront; // Theo Ghost Collision Size
+            TheodorGhostInstance.X = 550;
+
+            // Create Collision: GhostBoden
+            GhostBoden = new AxisAlignedRectangle();
+            GhostBoden.ScaleX = 1800;
+            GhostBoden.ScaleY = 50;
+            GhostBoden.Y = -50;
+
+            this.GhostBodenCollision.AxisAlignedRectangles.Add(GhostBoden);  // Add it to the ShapeCollection so the ghost can collide against it
 		}
 
         public override void CustomActivity(bool firstTimeCalled)
@@ -128,7 +137,8 @@ namespace VergissMeinNicht.Screens
                 }
             }
 
-            TheodorGhostInstance.CollideAgainst(GhostBoden); // Theodor Ghost Collision
+            //Theodor Ghost Collisions
+            TheodorGhostInstance.CollideAgainst(GhostBodenCollision);
 
             //if (PlatformerCharacterBase.getInstance().X >= 689) InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Right);
   

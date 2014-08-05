@@ -28,15 +28,39 @@ namespace VergissMeinNicht.Entities
 {
 	public partial class TheodorGhost
 	{    
-     
+		private void CustomInitialize()
+		{
+            InputEnabled = false;
+
+		}
+
+		private void CustomActivity()
+		{
+            AnimationActivity();
+        
+            
+		}
+
+		private void CustomDestroy()
+		{
+
+
+		}
+
+        private static void CustomLoadStaticContent(string contentManagerName)
+        {
+
+
+        }
+
         private void AnimationActivity()
         {
             // check facing direction
-            if (HorizontalRatio > 0)
+            if (moveright)
             {
                 base.DirectionFacing = LeftOrRight.Right;
             }
-            else if (HorizontalRatio < 0)
+            else if (moveleft)
             {
                 base.DirectionFacing = LeftOrRight.Left;
             }
@@ -45,11 +69,11 @@ namespace VergissMeinNicht.Entities
             // check whether in air or on ground
             if (IsOnGround)
             {
-                if (HorizontalRatio > 0)
+                if (moveright)
                 {
                     this.SpriteInstance.CurrentChainName = "WalkRight";
                 }
-                else if (HorizontalRatio < 0)
+                else if (moveleft)
                 {
                     this.SpriteInstance.CurrentChainName = "WalkLeft";
                 }
@@ -76,32 +100,6 @@ namespace VergissMeinNicht.Entities
                     this.SpriteInstance.CurrentChainName = "JumpRight";
                 }
             }
-        }
-
-		private void CustomInitialize()
-		{
-            InputEnabled = false;
-
-		}
-
-		private void CustomActivity()
-		{
-            AnimationActivity();
-
-            moveleft = true;
-            
-		}
-
-		private void CustomDestroy()
-		{
-
-
-		}
-
-        private static void CustomLoadStaticContent(string contentManagerName)
-        {
-
-
         }
 	}
 }

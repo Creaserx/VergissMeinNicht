@@ -72,11 +72,6 @@
           <LoadedAtRuntime>false</LoadedAtRuntime>
           <RuntimeType>Microsoft.Xna.Framework.Media.Song</RuntimeType>
         </ReferencedFileSave>
-        <ReferencedFileSave>
-          <Name>Screens/Empfang/GhostBoden.shcx</Name>
-          <IsSharedStatic>true</IsSharedStatic>
-          <RuntimeType>FlatRedBall.Math.Geometry.ShapeCollection</RuntimeType>
-        </ReferencedFileSave>
       </ReferencedFiles>
       <NamedObjects>
         <NamedObjectSave>
@@ -355,6 +350,15 @@
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\TheodorGhost</SourceClassType>
           <InstanceName>TheodorGhostInstance</InstanceName>
+          <AttachToContainer>true</AttachToContainer>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+        <NamedObjectSave>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceFile />
+          <SourceName />
+          <SourceClassType>ShapeCollection</SourceClassType>
+          <InstanceName>GhostBodenCollision</InstanceName>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
