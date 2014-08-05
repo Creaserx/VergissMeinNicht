@@ -237,50 +237,6 @@
               <AttachToContainer>true</AttachToContainer>
               <IndependentOfCamera>true</IndependentOfCamera>
             </NamedObjectSave>
-            <NamedObjectSave>
-              <CustomProperty>
-                <Type>float</Type>
-                <Member>X</Member>
-                <ValueAsFloat>420</ValueAsFloat>
-              </CustomProperty>
-              <CustomProperty>
-                <Type>float</Type>
-                <Member>Y</Member>
-                <ValueAsFloat>150</ValueAsFloat>
-              </CustomProperty>
-              <CustomProperty>
-                <Type>float</Type>
-                <Member>Layer</Member>
-                <ValueAsFloat>3</ValueAsFloat>
-              </CustomProperty>
-              <SourceType>Entity</SourceType>
-              <SourceClassType>Entities\Räume_Inhalt\Empfang\Hole</SourceClassType>
-              <InstanceName>Hole8</InstanceName>
-              <AttachToContainer>true</AttachToContainer>
-              <IndependentOfCamera>true</IndependentOfCamera>
-            </NamedObjectSave>
-            <NamedObjectSave>
-              <CustomProperty>
-                <Type>float</Type>
-                <Member>X</Member>
-                <ValueAsFloat>420</ValueAsFloat>
-              </CustomProperty>
-              <CustomProperty>
-                <Type>float</Type>
-                <Member>Y</Member>
-                <ValueAsFloat>2</ValueAsFloat>
-              </CustomProperty>
-              <CustomProperty>
-                <Type>float</Type>
-                <Member>Layer</Member>
-                <ValueAsFloat>1</ValueAsFloat>
-              </CustomProperty>
-              <SourceType>Entity</SourceType>
-              <SourceClassType>Entities\Räume_Inhalt\Empfang\Hole</SourceClassType>
-              <InstanceName>Hole9</InstanceName>
-              <AttachToContainer>true</AttachToContainer>
-              <IndependentOfCamera>true</IndependentOfCamera>
-            </NamedObjectSave>
           </ContainedObjects>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
