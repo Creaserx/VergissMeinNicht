@@ -16,7 +16,7 @@
     <Y>0</Y>
     <Z>-40</Z>
     <Orthogonal>true</Orthogonal>
-    <OrthogonalHeight>1912.29578</OrthogonalHeight>
+    <OrthogonalHeight>1635.068</OrthogonalHeight>
     <OrthogonalWidth>-1</OrthogonalWidth>
     <NearClipPlane>1</NearClipPlane>
     <FarClipPlane>1000</FarClipPlane>
@@ -28,7 +28,7 @@
   <FilesToMakeDotDotSlashRelative />
   <TextureDisplayRegionsList>
     <TextureDisplayRegionsSave>
-      <TextureName>hauptmenüname.jpg</TextureName>
+      <TextureName>loading.png</TextureName>
       <DisplayRegions />
     </TextureDisplayRegionsSave>
   </TextureDisplayRegionsList>

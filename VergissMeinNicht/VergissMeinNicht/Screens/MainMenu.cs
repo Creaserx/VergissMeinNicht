@@ -40,8 +40,11 @@ namespace VergissMeinNicht.Screens
 		void CustomActivity(bool firstTimeCalled)
 		{
             // Z  -- Zoolevel
-            if (InputManager.Keyboard.KeyPushed(Keys.Z)) MoveToScreen(typeof(ZooLevel).FullName);
-
+            if (InputManager.Keyboard.KeyPushed(Keys.Z))
+            {
+                
+                MoveToScreen(typeof(ZooLevel).FullName);
+            }
 		}
 
 		void CustomDestroy()

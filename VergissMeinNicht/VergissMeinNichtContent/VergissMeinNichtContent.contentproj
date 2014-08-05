@@ -258,13 +258,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>flur_1-1-1</Name>
     </None>
-    <None Include="Screens\LoadingScreen\hauptmenüname.jpg">
+    <None Include="Screens\LoadingScreen\Loading.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Name>hauptmenüname</Name>
-    </None>
-    <None Include="Screens\LoadingScreen\SceneFile.scnx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Name>SceneFile</Name>
+      <Name>Loading</Name>
     </None>
     <None Include="Screens\MainMenu\HauptmenüFinal.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

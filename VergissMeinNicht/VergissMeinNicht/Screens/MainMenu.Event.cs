@@ -26,7 +26,7 @@ namespace VergissMeinNicht.Screens
         }
         void OnNewGameButtonClick (FlatRedBall.Gui.IWindow callingWindow)
         {
-            this.MoveToScreen(typeof(Empfang).FullName);
+            this.MoveToScreen(typeof(LoadingScreen).FullName);
         }
         void OnLoadGameButtonClick (FlatRedBall.Gui.IWindow callingWindow)
         {
