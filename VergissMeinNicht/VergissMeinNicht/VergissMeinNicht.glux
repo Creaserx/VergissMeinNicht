@@ -260,28 +260,8 @@
         <NamedObjectSave>
           <CustomProperty>
             <Type>float</Type>
-            <Member>X</Member>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>Y</Member>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
             <Member>SpriteInstanceAlpha</Member>
             <ValueAsFloat>0</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>Object</Type>
-            <Member>GroundMovement</Member>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>Object</Type>
-            <Member>AirMovement</Member>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>Object</Type>
-            <Member>AfterDoubleJump</Member>
           </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\TheodorGhost</SourceClassType>
@@ -2593,7 +2573,7 @@
           <CustomProperty>
             <Type>float</Type>
             <Member>TextureScale</Member>
-            <ValueAsFloat>0.24</ValueAsFloat>
+            <ValueAsFloat>0.26</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
             <Type>bool</Type>
@@ -3188,7 +3168,6 @@
     <EntitySave>
       <Tags>
         <string>GLUE</string>
-        <string>GLUE</string>
       </Tags>
       <Source>GLUE</Source>
       <CustomVariables>
@@ -3596,7 +3575,6 @@
         </InstructionSave>
       </RequiredProperties>
       <Name>TileMapInfo</Name>
-      <GenerateCode>true</GenerateCode>
     </CustomClassSave>
   </CustomClasses>
   <TranslatedFiles>

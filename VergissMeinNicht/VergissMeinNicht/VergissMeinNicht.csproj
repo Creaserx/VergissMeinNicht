@@ -217,7 +217,7 @@
     </Compile>
     <Compile Include="Entities\TheodorGhost.cs" />
     <Compile Include="Entities\TheodorGhost.Generated.cs">
-      <DependentUpon>theodorghost.cs</DependentUpon>
+      <DependentUpon>TheodorGhost.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\TheodorGrownUp.cs" />
     <Compile Include="Entities\TheodorGrownUp.Generated.cs">

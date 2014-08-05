@@ -65,7 +65,7 @@ namespace VergissMeinNicht.Screens
 		{
             FixLayers();
 
-            CollisionsVisible = true;  // Collision Visibility An/Aus
+            CollisionsVisible = false;  // Collision Visibility An/Aus
             DisableLayers = false;      // Erstmal Layer aktivieren
             DisableLayerBack = false;   // LayerBack aktivieren
 
