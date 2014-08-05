@@ -37,8 +37,7 @@ namespace VergissMeinNicht.Entities
 
         private void CustomInitialize()
 		{
-            UI_Button_EInstance.PositionE_Button(this.X + 50, this.Y + 50, UI_Button_EInstance.Y);
-            UI_Button_EInstance.thisStartPosY = UI_Button_EInstance.Y; // WA, eigentlich müsste es klappen, i have no idea why not
+
             if (!PlatformerCharacterBase.isChild()) this.Sprite.Texture = creepyteddy;
 		}
 
@@ -89,6 +88,12 @@ namespace VergissMeinNicht.Entities
             }
         }
 
+        public void PositionTeddy(float x, float y)
+        {
+            this.X = x;
+            this.Y = y;
+            UI_Button_EInstance.PositionE_Button(this.X + 50, this.Y + 50, UI_Button_EInstance.Y);           
+        }
         void TeddySwitch()
         {
             //Makes Text Visible / Invisible in front of a Teddy

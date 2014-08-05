@@ -46,6 +46,7 @@ namespace VergissMeinNicht.Screens
             // Position Blume & Rauch
             BlumeInstance.PositionBlume(-600, 80);
             RauchInstance.PositionRauch(760, 180);
+            TeddyInstance.PositionTeddy(400, 200);
             UI_Button_EInstance.PositionE_Button(790, 300, UI_Button_EInstance.Y);
             //UI_Button_EInstance.thisStartPosY = UI_Button_EInstance.Y;
 
