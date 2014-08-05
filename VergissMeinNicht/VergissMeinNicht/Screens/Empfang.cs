@@ -9,6 +9,7 @@ using FlatRedBall.Instructions;
 using FlatRedBall.AI.Pathfinding;
 using FlatRedBall.Graphics.Animation;
 using FlatRedBall.Graphics.Particle;
+using StateInterpolationPlugin;
 
 using FlatRedBall.Graphics.Model;
 using FlatRedBall.Math.Geometry;
@@ -30,6 +31,10 @@ namespace VergissMeinNicht.Screens
 {
 	public partial class Empfang
 	{
+        public static int CurrentLayerGhost = 1;
+        public bool isSwitchingGhost = false;
+        public bool DisableLayersGhost = false;
+
         public AxisAlignedRectangle GhostBoden;
 
 		public override void CustomInitialize()
@@ -71,6 +76,8 @@ namespace VergissMeinNicht.Screens
             if (InputManager.Keyboard.KeyPushed(Keys.R)) for (int i = HoleList.Count - 1; i > -1; i--) HoleList[i].SpriteInstance.Visible = false;
 
             CameraMovement();
+
+            GhostMovement();
 
             NextRoom();
         }
@@ -165,7 +172,7 @@ namespace VergissMeinNicht.Screens
 
             Background_creepy.Visible = true;
             if (CollisionsVisible) CollisionVisibilityEmpfang();
-   
+            GhostBodenCollision.AddToManagers(); // Add the GhostBodenCollision to the ShapeManager so it's visible
         }
     
         //Collisions Visible machen
@@ -179,6 +186,223 @@ namespace VergissMeinNicht.Screens
 
         }
 
+        void GhostMovement()
+        {
+            LayerManagementGhost(1);
+            
+            LayerOnGhost();
+            LayerManagementGhost(-1);
+           
+        }
+
+        void LayerOnGhost()
+        {
+            //CurrentLayer zuweisen
+            if (TheodorGhostInstance.SpriteInstance.TextureScale == 0.5f)
+            {
+                CurrentLayerGhost = 1;
+                isSwitchingGhost = false;
+            }
+
+            else if (TheodorGhostInstance.SpriteInstance.TextureScale == SizeFirstDiff)
+            {
+                CurrentLayerGhost = 2;
+                isSwitchingGhost = false;
+            }
+
+            else if (TheodorGhostInstance.SpriteInstance.TextureScale == SizeSecondDiff)
+            {
+                CurrentLayerGhost = 3;
+                isSwitchingGhost = false;
+            }            
+        }
+
+        //--Management des Hoch-/Runterswitchens
+        void LayerManagementGhost(int VerticalMovement)
+        {
+            if (!DisableLayersGhost && !IsPaused)
+            {
+                // --Hochswitchen
+                if (VerticalMovement == 1 && CurrentLayerGhost != 3 && !isSwitchingGhost)
+                {
+                    isSwitchingGhost = true;
+
+                    // Direction Left/Right bestimmen
+                    if (TheodorGhostInstance.DirectionFacing == PlatformerCharacterBase.LeftOrRight.Left)
+                        TheodorGhostInstance.SpriteInstance.CurrentChainName = "IdleLeft";
+                    else
+                        TheodorGhostInstance.SpriteInstance.CurrentChainName = "IdleRight";
+
+                    switch (CurrentLayerGhost)
+                    {
+                        case 1:
+                            TheodorGhostInstance.SpriteInstance
+                                .Tween("TextureScale")
+                                .To(SizeFirstDiff)
+                                .During(0.75f)
+                                .Using(
+                                    FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                    FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                            TheodorGhostInstance.Collision
+                                .Tween("Height")
+                                .To(CollisionHeightLayerMid)
+                                .During(0.75f)
+                                .Using(
+                                    FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                    FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                            TheodorGhostInstance.Collision
+                                .Tween("Width")
+                                .To(CollisionWidthLayerMid)
+                                .During(0.75f)
+                                .Using(
+                                    FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                    FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                            GhostBoden
+                                .Tween("Y")
+                                .To(GhostBoden.Y + 75)
+                                .During(0.75f)
+                                .Using(
+                                    FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                    FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                            TheodorGhostInstance.MoveToLayer(LayerMid);
+
+                            break;
+
+                        case 2:
+                                TheodorGhostInstance.SpriteInstance
+                                .Tween("TextureScale")
+                                .To(SizeSecondDiff)
+                                .During(0.75f)
+                                .Using(
+                                    FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                    FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                                TheodorGhostInstance.Collision
+                                    .Tween("Height")
+                                    .To(CollisionHeightLayerBack)
+                                    .During(0.75f)
+                                    .Using(
+                                        FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                        FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                                TheodorGhostInstance.Collision
+                                    .Tween("Width")
+                                    .To(CollisionWidthLayerBack)
+                                    .During(0.75f)
+                                    .Using(
+                                        FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                        FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                                GhostBoden                                                       
+                                   .Tween("Y")
+                                   .To(GhostBoden.Y + 75)
+                                   .During(0.75f)
+                                   .Using(
+                                       FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                       FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                                TheodorGhostInstance.MoveToLayer(LayerBack);                           
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+                DisableLayersGhost = false;
+            }
+
+
+            // --Runterswitchen
+            if (VerticalMovement == -1 && CurrentLayerGhost != 1 && !isSwitchingGhost)
+            {
+                isSwitchingGhost = true;
+
+                // Direction Left/Right bestimmen
+                if (TheodorGhostInstance.DirectionFacing == PlatformerCharacterBase.LeftOrRight.Left)
+                    TheodorGhostInstance.SpriteInstance.CurrentChainName = "IdleLeft";
+                else
+                    TheodorGhostInstance.SpriteInstance.CurrentChainName = "IdleRight";
+
+
+                switch (CurrentLayerGhost)
+                {
+                    case 2:
+                        TheodorGhostInstance.SpriteInstance
+                        .Tween("TextureScale")
+                        .To(0.5f)
+                        .During(0.75f)
+                        .Using(
+                            FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                            FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                        TheodorGhostInstance.Collision
+                            .Tween("Height")
+                            .To(CollisionHeightLayerFront)
+                            .During(0.75f)
+                            .Using(
+                                FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                        TheodorGhostInstance.Collision
+                            .Tween("Width")
+                            .To(CollisionWidthLayerFront)
+                            .During(0.75f)
+                            .Using(
+                                FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                        TheodorGhostInstance.MoveToLayer(LayerFront);
+
+                        break;
+
+                    case 3:
+                        TheodorGhostInstance.SpriteInstance
+                            .Tween("TextureScale")
+                            .To(SizeFirstDiff)
+                            .During(0.75f)
+                            .Using(
+                                FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                        TheodorGhostInstance.Collision
+                            .Tween("Height")
+                            .To(CollisionHeightLayerMid)
+                            .During(0.75f)
+                            .Using(
+                                FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                        TheodorGhostInstance.Collision
+                            .Tween("Width")
+                            .To(CollisionWidthLayerMid)
+                            .During(0.75f)
+                            .Using(
+                                FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                                FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+                        TheodorGhostInstance.MoveToLayer(LayerMid);
+
+                        break;
+
+                    default:
+
+                        break;
+                }
+
+
+                GhostBoden
+                    .Tween("Y")
+                    .To(GhostBoden.Y - 75)
+                    .During(0.75f)
+                    .Using(
+                        FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                        FlatRedBall.Glue.StateInterpolation.Easing.Out);
+            }
+        }
 
 	}
 }

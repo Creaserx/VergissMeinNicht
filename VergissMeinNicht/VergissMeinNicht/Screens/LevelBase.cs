@@ -70,7 +70,7 @@ namespace VergissMeinNicht.Screens
             DisableLayerBack = false;   // LayerBack aktivieren
 
             //TheodorInstance erstellen --"Child" -- "GrownUp"--
-            StartCharacterState("Child", -100);
+            StartCharacterState("Child", 200);
 
             CollisionHeightLayerFront = PlatformerCharacterBase.getInstance().Collision.Height * 0.5f;
             CollisionHeightLayerMid = PlatformerCharacterBase.getInstance().Collision.Height * 0.45f;
@@ -291,7 +291,7 @@ namespace VergissMeinNicht.Screens
                 else
                 {
                     PauseThisScreen();
-                    PauseButton.Visible = true;
+                    PauseButton.Visible = true;                    
                 }
             }
         }
@@ -311,8 +311,12 @@ namespace VergissMeinNicht.Screens
         void CameraMovement()
         {
             //Camera Movement following Theodor
-            SpriteManager.Camera.XVelocity = PlatformerCharacterBase.getInstance().X - SpriteManager.Camera.X;
-            SpriteManager.Camera.Y = 275; 
+            if (!IsPaused)
+            {
+                SpriteManager.Camera.XVelocity = PlatformerCharacterBase.getInstance().X - SpriteManager.Camera.X;
+                SpriteManager.Camera.Y = 275;
+            }
+
         }
 
         void LayerOn()

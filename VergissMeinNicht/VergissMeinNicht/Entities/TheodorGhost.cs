@@ -31,7 +31,7 @@ namespace VergissMeinNicht.Entities
 		private void CustomInitialize()
 		{
             InputEnabled = false;
-
+            
 		}
 
 		private void CustomActivity()
