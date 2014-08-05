@@ -72,6 +72,11 @@
           <LoadedAtRuntime>false</LoadedAtRuntime>
           <RuntimeType>Microsoft.Xna.Framework.Media.Song</RuntimeType>
         </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>Screens/Empfang/GhostBoden.shcx</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>FlatRedBall.Math.Geometry.ShapeCollection</RuntimeType>
+        </ReferencedFileSave>
       </ReferencedFiles>
       <NamedObjects>
         <NamedObjectSave>
@@ -305,17 +310,51 @@
         <NamedObjectSave>
           <CustomProperty>
             <Type>float</Type>
-            <Member>Y</Member>
-            <ValueAsFloat>320</ValueAsFloat>
+            <Member>X</Member>
+            <ValueAsFloat>50</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
-            <Member>X</Member>
-            <ValueAsFloat>50</ValueAsFloat>
+            <Member>Y</Member>
+            <ValueAsFloat>320</ValueAsFloat>
           </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\Räume_Inhalt\Empfang\Feuer</SourceClassType>
           <InstanceName>FeuerInstance</InstanceName>
+          <AttachToContainer>true</AttachToContainer>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+        <NamedObjectSave>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>X</Member>
+            <ValueAsFloat>100</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Y</Member>
+            <ValueAsFloat>110</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>SpriteInstanceAlpha</Member>
+            <ValueAsFloat>0.5</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>Object</Type>
+            <Member>GroundMovement</Member>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>Object</Type>
+            <Member>AirMovement</Member>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>Object</Type>
+            <Member>AfterDoubleJump</Member>
+          </CustomProperty>
+          <SourceType>Entity</SourceType>
+          <SourceClassType>Entities\TheodorGhost</SourceClassType>
+          <InstanceName>TheodorGhostInstance</InstanceName>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
@@ -2510,11 +2549,6 @@
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
-            <Type>float</Type>
-            <Member>TextureScale</Member>
-            <ValueAsFloat>0.6</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
             <Type>AnimationChainList</Type>
             <Member>AnimationChains</Member>
             <ValueAsString>FireAnimationChainList</ValueAsString>
@@ -2528,6 +2562,11 @@
             <Type>float</Type>
             <Member>Alpha</Member>
             <ValueAsFloat>0.8</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>TextureScale</Member>
+            <ValueAsFloat>0.6</ValueAsFloat>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile />
@@ -3119,9 +3158,177 @@
           <DefinedByBase>true</DefinedByBase>
           <CreatesEvent>true</CreatesEvent>
         </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>SpriteInstanceAlpha</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">1</DefaultValue>
+          <SourceObject>SpriteInstance</SourceObject>
+          <SourceObjectProperty>Alpha</SourceObjectProperty>
+        </CustomVariable>
       </CustomVariables>
       <BaseEntity>Entities\PlatformerCharacterBase</BaseEntity>
       <Name>Entities\TheodorChild</Name>
+      <NamedObjects>
+        <NamedObjectSave>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Height</Member>
+            <ValueAsFloat>410</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>bool</Type>
+            <Member>Visible</Member>
+            <ValueAsBool>false</ValueAsBool>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Width</Member>
+            <ValueAsFloat>220</ValueAsFloat>
+          </CustomProperty>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceClassType>AxisAlignedRectangle</SourceClassType>
+          <InstanceName>Collision</InstanceName>
+          <HasPublicProperty>true</HasPublicProperty>
+          <ExposedInDerived>true</ExposedInDerived>
+          <AttachToContainer>true</AttachToContainer>
+          <DefinedByBase>true</DefinedByBase>
+          <InstantiatedByBase>true</InstantiatedByBase>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+        <NamedObjectSave>
+          <CustomProperty>
+            <Type>AnimationChainList</Type>
+            <Member>AnimationChains</Member>
+            <ValueAsString>AnimationChainListFile</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>string</Type>
+            <Member>CurrentChainName</Member>
+            <ValueAsString>IdleRight</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>TextureScale</Member>
+            <ValueAsFloat>0.5</ValueAsFloat>
+          </CustomProperty>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceFile />
+          <SourceName />
+          <SourceClassType>Sprite</SourceClassType>
+          <InstanceName>SpriteInstance</InstanceName>
+          <HasPublicProperty>true</HasPublicProperty>
+          <AttachToContainer>true</AttachToContainer>
+          <DefinedByBase>true</DefinedByBase>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+      </NamedObjects>
+      <ReferencedFiles>
+        <ReferencedFileSave>
+          <Name>Entities/Theodor/AnimationChainListFile.achx</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>FlatRedBall.Graphics.Animation.AnimationChainList</RuntimeType>
+        </ReferencedFileSave>
+      </ReferencedFiles>
+      <Is2D>true</Is2D>
+    </EntitySave>
+    <EntitySave>
+      <Tags>
+        <string>GLUE</string>
+        <string>GLUE</string>
+      </Tags>
+      <Source>GLUE</Source>
+      <CustomVariables>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>X</Name>
+          <Type>float</Type>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>Y</Name>
+          <Type>float</Type>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>Z</Name>
+          <Type>float</Type>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>Entities/PlatformerCharacterBase/MovementValues.csv</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>GroundMovement</Name>
+          <Type>Entities/PlatformerCharacterBase/MovementValues.csv</Type>
+          <DefaultValue xsi:type="xsd:string">TheodorChildOnGround in MovementValues.csv</DefaultValue>
+          <DefinedByBase>true</DefinedByBase>
+          <CreatesEvent>true</CreatesEvent>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>Entities/PlatformerCharacterBase/MovementValues.csv</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>AirMovement</Name>
+          <Type>Entities/PlatformerCharacterBase/MovementValues.csv</Type>
+          <DefaultValue xsi:type="xsd:string">TheodorChildInAir in MovementValues.csv</DefaultValue>
+          <DefinedByBase>true</DefinedByBase>
+          <CreatesEvent>true</CreatesEvent>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>Entities/PlatformerCharacterBase/MovementValues.csv</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>AfterDoubleJump</Name>
+          <Type>Entities/PlatformerCharacterBase/MovementValues.csv</Type>
+          <DefaultValue xsi:type="xsd:string">ImmediateVelocityInAirChild in MovementValues.csv</DefaultValue>
+          <DefinedByBase>true</DefinedByBase>
+          <CreatesEvent>true</CreatesEvent>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>SpriteInstanceAlpha</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">1</DefaultValue>
+          <SourceObject>SpriteInstance</SourceObject>
+          <SourceObjectProperty>Alpha</SourceObjectProperty>
+        </CustomVariable>
+      </CustomVariables>
+      <BaseEntity>Entities\PlatformerCharacterBase</BaseEntity>
+      <Name>Entities\TheodorGhost</Name>
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
@@ -3441,6 +3648,7 @@
         </InstructionSave>
       </RequiredProperties>
       <Name>TileMapInfo</Name>
+      <GenerateCode>true</GenerateCode>
     </CustomClassSave>
   </CustomClasses>
   <TranslatedFiles>

@@ -55,7 +55,10 @@ namespace VergissMeinNicht.Entities
         double mLastCollisionTime = -1;
         #endregion
 
-        #region Properties
+        public bool moveleft = false;
+        public bool moveright = false;
+
+        #region Properties        
 
         public Xbox360GamePad GamePad
         {
@@ -126,11 +129,11 @@ namespace VergissMeinNicht.Entities
                 }
                 else
                 {
-                    if (InputManager.Keyboard.KeyDown(Keys.Left))
+                    if (InputManager.Keyboard.KeyDown(Keys.Left) || moveleft)
                     {
                         return -1;
                     }
-                    else if (InputManager.Keyboard.KeyDown(Keys.Right))
+                    else if (InputManager.Keyboard.KeyDown(Keys.Right) || moveright)
                     {
                         return 1;
                     }
@@ -140,7 +143,6 @@ namespace VergissMeinNicht.Entities
                     }
                 }
             }
-
         }
 
         public bool IsOnGround
@@ -325,7 +327,7 @@ namespace VergissMeinNicht.Entities
         private void HorizontalMovementActivity()
         {
             float horizontalRatio = HorizontalRatio;
-            if (!InputEnabled)
+            if (!InputEnabled && !moveleft && !moveright)
             {
                 horizontalRatio = 0;
             }

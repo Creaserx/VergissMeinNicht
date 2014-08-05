@@ -30,17 +30,22 @@ namespace VergissMeinNicht.Screens
 {
 	public partial class Empfang
 	{
+        
 
 		public override void CustomInitialize()
 		{
             base.CustomInitialize();
-            VisibilityInit();          
+            VisibilityInit();
+
 
             // Position Blume & Rauch
             BlumeInstance.PositionBlume(-600, 80);
             RauchInstance.PositionRauch(760, 180);
             UI_Button_EInstance.PositionE_Button(790, 300, UI_Button_EInstance.Y);
             //UI_Button_EInstance.thisStartPosY = UI_Button_EInstance.Y;
+
+            TheodorGhostInstance.Collision.Height = CollisionHeightLayerFront;
+            TheodorGhostInstance.Collision.Width = CollisionWidthLayerFront; // Theo Ghost Collision Size
 		}
 
         public override void CustomActivity(bool firstTimeCalled)
@@ -123,6 +128,8 @@ namespace VergissMeinNicht.Screens
                 }
             }
 
+            TheodorGhostInstance.CollideAgainst(GhostBoden); // Theodor Ghost Collision
+
             //if (PlatformerCharacterBase.getInstance().X >= 689) InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Right);
   
             // LevelReset WA
@@ -143,6 +150,8 @@ namespace VergissMeinNicht.Screens
         {
             Layer1.Visible = false;
             Layer3.Visible = false;
+
+            TheodorGhostInstance.Collision.Visible = true;
 
             Background_creepy.Visible = true;
             if (CollisionsVisible) CollisionVisibilityEmpfang();
