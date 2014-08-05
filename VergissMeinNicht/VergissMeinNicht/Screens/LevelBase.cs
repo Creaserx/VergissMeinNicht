@@ -70,7 +70,7 @@ namespace VergissMeinNicht.Screens
             DisableLayerBack = false;   // LayerBack aktivieren
 
             //TheodorInstance erstellen --"Child" -- "GrownUp"--
-            StartCharacterState("Child", 200);
+            StartCharacterState("GrownUp", 200);
 
             CollisionHeightLayerFront = PlatformerCharacterBase.getInstance().Collision.Height * 0.5f;
             CollisionHeightLayerMid = PlatformerCharacterBase.getInstance().Collision.Height * 0.45f;

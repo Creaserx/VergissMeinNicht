@@ -9,6 +9,7 @@ using FlatRedBall.Instructions;
 using FlatRedBall.AI.Pathfinding;
 using FlatRedBall.Graphics.Animation;
 using FlatRedBall.Graphics.Particle;
+using StateInterpolationPlugin;
 
 using FlatRedBall.Math.Geometry;
 using FlatRedBall.Math.Splines;
@@ -27,23 +28,28 @@ using Texture2D = Microsoft.Xna.Framework.Graphics.Texture2D;
 namespace VergissMeinNicht.Entities
 {
 	public partial class TheodorGhost
-	{    
+	{
+        bool hasSpawned = false;
+
 		private void CustomInitialize()
 		{
             InputEnabled = false;
-            
+            this.DirectionFacing = LeftOrRight.Right;
 		}
 
 		private void CustomActivity()
 		{
             AnimationActivity();
-        
-            
+
+            if (!hasSpawned && PlatformerCharacterBase.isChild() && PlatformerCharacterBase.getInstance().X >= 550)
+            {
+                Spawn();
+            }
 		}
 
 		private void CustomDestroy()
 		{
-
+            
 
 		}
 
@@ -51,6 +57,19 @@ namespace VergissMeinNicht.Entities
         {
 
 
+        }
+
+        private void Spawn()
+        {
+            this.SpriteInstance
+                .Tween("Alpha")
+                .To(0.5f)
+                .During(2)
+                .Using(
+                    FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                    FlatRedBall.Glue.StateInterpolation.Easing.Out);
+
+            hasSpawned = true;
         }
 
         private void AnimationActivity()

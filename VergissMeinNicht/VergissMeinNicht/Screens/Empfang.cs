@@ -49,9 +49,9 @@ namespace VergissMeinNicht.Screens
             UI_Button_EInstance.PositionE_Button(790, 300, UI_Button_EInstance.Y);
             //UI_Button_EInstance.thisStartPosY = UI_Button_EInstance.Y;
 
-            TheodorGhostInstance.Collision.Height = CollisionHeightLayerFront;
-            TheodorGhostInstance.Collision.Width = CollisionWidthLayerFront; // Theo Ghost Collision Size
-            TheodorGhostInstance.X = 550;
+            TheodorGhostInstance.Collision.Height = 205;
+            TheodorGhostInstance.Collision.Width = 110; // Theo Ghost Collision Size
+            TheodorGhostInstance.X = 530;            
 
             // Create Collision: GhostBoden
             GhostBoden = new AxisAlignedRectangle();
@@ -77,7 +77,10 @@ namespace VergissMeinNicht.Screens
 
             CameraMovement();
 
-            GhostMovement();
+            if (PlatformerCharacterBase.isChild())
+            {
+                //GhostMovement();
+            }
 
             NextRoom();
         }
