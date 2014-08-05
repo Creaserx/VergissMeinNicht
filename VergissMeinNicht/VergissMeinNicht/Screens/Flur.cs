@@ -34,6 +34,8 @@ namespace VergissMeinNicht.Screens
 		{
             base.CustomInitialize();
             DisableLayers = true;
+
+            //StartCharacterState("Child", 0);
 		}
 
         public override void CustomActivity(bool firstTimeCalled)

@@ -138,15 +138,19 @@ namespace VergissMeinNicht.Screens
             PlatformerCharacterBase.getInstance().Collision.CollideAgainstMove(Layer1, 0, 1);  //Kollision mit Rändern
             if (CurrentLayer == 3) PlatformerCharacterBase.getInstance().Collision.CollideAgainstMove(Layer3, 0, 1);  //Kollision auf Layer 3
 
-            //Collision mit Holes
-            for (int i = HoleList.Count - 1; i > -1; i--)
+            //Collision mit Holes als Child
+            if (PlatformerCharacterBase.isChild()) 
             {
-                if (PlatformerCharacterBase.getInstance().Collision.CollideAgainst(HoleList[i].Collision) && CurrentLayer == HoleList[i].Layer)
+                for (int i = HoleList.Count - 1; i > -1; i--)
                 {
-                    HoleList[i].SpriteInstance.Visible = true;
-                    FallInHole();
+                    if (PlatformerCharacterBase.getInstance().Collision.CollideAgainst(HoleList[i].Collision) && CurrentLayer == HoleList[i].Layer)
+                    {
+                        HoleList[i].SpriteInstance.Visible = true;
+                        FallInHole();
+                    }
                 }
             }
+            
 
             //Theodor Ghost Collisions
             TheodorGhostInstance.CollideAgainst(GhostBodenCollision);
@@ -172,11 +176,11 @@ namespace VergissMeinNicht.Screens
             Layer1.Visible = false;
             Layer3.Visible = false;
 
-            TheodorGhostInstance.Collision.Visible = true;
+            TheodorGhostInstance.Collision.Visible = false;
 
             Background_creepy.Visible = true;
             if (CollisionsVisible) CollisionVisibilityEmpfang();
-            GhostBodenCollision.AddToManagers(); // Add the GhostBodenCollision to the ShapeManager so it's visible
+            
         }
     
         //Collisions Visible machen
@@ -187,7 +191,9 @@ namespace VergissMeinNicht.Screens
 
             for (int i = HoleList.Count - 1; i > -1; i--) HoleList[i].Collision.Visible = true;   // Hole-Collision Visible machen
 
-
+            // Theodor Ghost 
+            TheodorGhostInstance.Collision.Visible = true;
+            GhostBodenCollision.AddToManagers(); // Add the GhostBodenCollision to the ShapeManager so it's visible
         }
 
         void GhostMovement()
