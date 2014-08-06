@@ -21,6 +21,7 @@ using Keys = Microsoft.Xna.Framework.Input.Keys;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
 using Texture2D = Microsoft.Xna.Framework.Graphics.Texture2D;
 using StateInterpolationPlugin;
+using FlatRedBall.Screens;
 
 
 #endif
@@ -46,11 +47,11 @@ namespace VergissMeinNicht.Entities
             // check whether in air or on ground
             if (IsOnGround)
               {
-                  if (HorizontalRatio > 0)
+                  if (HorizontalRatio > 0 || (Manager.isSwitching && base.DirectionFacing == LeftOrRight.Right))
                   {
                       this.SpriteInstance.CurrentChainName = "WalkRight";
                   }
-                  else if (HorizontalRatio < 0)
+                  else if (HorizontalRatio < 0 || (Manager.isSwitching && base.DirectionFacing == LeftOrRight.Left))
                   {
                       this.SpriteInstance.CurrentChainName = "WalkLeft";
                   }
@@ -68,14 +69,22 @@ namespace VergissMeinNicht.Entities
               }
               else // in the air
               {
-                  if (DirectionFacing == LeftOrRight.Left)
+                  if (DirectionFacing == LeftOrRight.Left && Manager.isSwitching)
+                  {
+                      this.SpriteInstance.CurrentChainName = "WalkLeft";
+                  }
+                  else if (DirectionFacing == LeftOrRight.Right && Manager.isSwitching)
+                  {
+                      this.SpriteInstance.CurrentChainName = "WalkRight";
+                  }
+                  else if (DirectionFacing == LeftOrRight.Left)
                   {
                       this.SpriteInstance.CurrentChainName = "JumpLeft";
                   }
-                  else
+                  else if (DirectionFacing == LeftOrRight.Right)
                   {
                       this.SpriteInstance.CurrentChainName = "JumpRight";
-                  }
+                  }                  
               }
         }
 

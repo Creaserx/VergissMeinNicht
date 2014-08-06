@@ -44,13 +44,13 @@ namespace VergissMeinNicht.Entities
             // check whether in air or on ground
             if (IsOnGround)
             {
-                if (HorizontalRatio > 0)
+                if (HorizontalRatio > 0 || (Manager.isSwitching && base.DirectionFacing == LeftOrRight.Right))
                 {
-                    this.SpriteInstance.CurrentChainName = "GU_IdleRight";  //GU_WalkRight erstellen
+                    this.SpriteInstance.CurrentChainName = "GU_IdleRight";
                 }
-                else if (HorizontalRatio < 0)
+                else if (HorizontalRatio < 0 || (Manager.isSwitching && base.DirectionFacing == LeftOrRight.Left))
                 {
-                    this.SpriteInstance.CurrentChainName = "GU_IdleLeft";  //GU_WalkLeft erstellen
+                    this.SpriteInstance.CurrentChainName = "GU_IdleLeft";
                 }
                 else
                 {
@@ -66,14 +66,22 @@ namespace VergissMeinNicht.Entities
             }
             else // in the air
             {
-                if (DirectionFacing == LeftOrRight.Left)
+                if (DirectionFacing == LeftOrRight.Left && Manager.isSwitching)
+                {
+                    this.SpriteInstance.CurrentChainName = "GU_IdleLeft";
+                }
+                else if (DirectionFacing == LeftOrRight.Right && Manager.isSwitching)
+                {
+                    this.SpriteInstance.CurrentChainName = "GU_IdleRight";
+                }
+                /*else if (DirectionFacing == LeftOrRight.Left)
                 {
                     this.SpriteInstance.CurrentChainName = "JumpLeft";
                 }
-                else
+                else if (DirectionFacing == LeftOrRight.Right)
                 {
                     this.SpriteInstance.CurrentChainName = "JumpRight";
-                }
+                }*/
             }
         }
 

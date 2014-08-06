@@ -37,7 +37,7 @@ namespace VergissMeinNicht.Screens
         public AxisAlignedRectangle Boden;     
 
         public static int CurrentLayer = 1;
-        public bool isSwitching = false;
+        //public static bool isSwitching = false;
         public bool DisableLayers = false;
         public bool DisableLayerBack = false;
 
@@ -83,13 +83,15 @@ namespace VergissMeinNicht.Screens
             PlatformerCharacterBase.getInstance().Collision.Width = CollisionWidthLayerFront;
 
             // Create Collision: Boden
-            Boden = new AxisAlignedRectangle();
-            Boden.ScaleX = 1800;
-            Boden.ScaleY = 50;
-            Boden.Y = -50;
-            this.SolidCollisions.AxisAlignedRectangles.Add(Boden);  // Add it to the ShapeCollection so the player can collide against it
-            PlatformerCharacterBase.getInstance().Y = 75;       // Make the character appear on top of the rectangle
-
+            if (Boden == null)
+            {
+                Boden = new AxisAlignedRectangle();
+                Boden.ScaleX = 1800;
+                Boden.ScaleY = 50;
+                Boden.Y = -50;
+                this.SolidCollisions.AxisAlignedRectangles.Add(Boden);  // Add it to the ShapeCollection so the player can collide against it
+                PlatformerCharacterBase.getInstance().Y = 75;       // Make the character appear on top of the rectangle
+            }
             InitializeFlower();
 
             if (CollisionsVisible) CollisionVisibilityOn();
@@ -261,7 +263,7 @@ namespace VergissMeinNicht.Screens
                 string resultStringLayer = "CurrentLayer:" + CurrentLayer.ToString();
                 string resultStringL3 = "LayerBackDisable:" + DisableLayerBack.ToString();
                 string resultStringLa = "LayersDisable:" + DisableLayers.ToString();
-                string resultStringSwitch = "isSwitching:" + isSwitching.ToString();
+                string resultStringSwitch = "isSwitching:" + Manager.isSwitching.ToString();
                 string resultStringCameraX = "CameraX:" + SpriteManager.Camera.X.ToString();
                 string resultStringLayerCount = "LayerCount:" + SpriteManager.LayerCount.ToString();
                 FlatRedBall.Debugging.Debugger.Write(resultStringX + "\n" + resultStringY + "\n" + resultStringCollisionH + "\n" + resultStringCollisionW +
@@ -322,7 +324,7 @@ namespace VergissMeinNicht.Screens
         void LayerOn()
         {
             // Switching: ignore Keys _up, _down, _Space, _Esc
-            if (isSwitching)
+            if (Manager.isSwitching)
             {
                 Teddy.DisableTeddy = true;
                 InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Left);
@@ -335,21 +337,21 @@ namespace VergissMeinNicht.Screens
             if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == 0.5f)
             {
                 CurrentLayer = 1;
-                isSwitching = false;
+                Manager.isSwitching = false;
             }
 
             else if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == SizeFirstDiff)
             {
                 CurrentLayer = 2;
-                isSwitching = false;
+                Manager.isSwitching = false;
             }
 
             else if (PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale == SizeSecondDiff)
             {
                 CurrentLayer = 3;
-                isSwitching = false;
+                Manager.isSwitching = false;
             }
-            if (!isSwitching) Teddy.DisableTeddy = false;
+            if (!Manager.isSwitching) Teddy.DisableTeddy = false;
         }
         
         //-------
@@ -359,15 +361,9 @@ namespace VergissMeinNicht.Screens
             if (!DisableLayers && !IsPaused)
             {
                 // --Hochswitchen
-                if (InputManager.Keyboard.KeyPushed(Keys.Up) && CurrentLayer != 3 && !isSwitching)
+                if (InputManager.Keyboard.KeyPushed(Keys.Up) && CurrentLayer != 3 && !Manager.isSwitching)
                 {
-                    isSwitching = true;
-
-                    // Direction Left/Right bestimmen
-                    if (PlatformerCharacterBase.getInstance().DirectionFacing == PlatformerCharacterBase.LeftOrRight.Left)
-                        PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName = "IdleLeft";
-                    else
-                        PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName = "IdleRight";                 
+                    Manager.isSwitching = true;                                 
 
                     switch (CurrentLayer)
                     {
@@ -456,9 +452,9 @@ namespace VergissMeinNicht.Screens
 
 
             // --Runterswitchen
-            if (InputManager.Keyboard.KeyPushed(Keys.Down) && CurrentLayer != 1 && !isSwitching)
+            if (InputManager.Keyboard.KeyPushed(Keys.Down) && CurrentLayer != 1 && !Manager.isSwitching)
             {
-                isSwitching = true;
+                Manager.isSwitching = true;
 
                 // Direction Left/Right bestimmen
                 if (PlatformerCharacterBase.getInstance().DirectionFacing == PlatformerCharacterBase.LeftOrRight.Left)

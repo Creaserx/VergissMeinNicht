@@ -31,8 +31,7 @@ namespace VergissMeinNicht.Screens
 {
 	public partial class Empfang
 	{
-        public static int CurrentLayerGhost = 1;
-        public bool isSwitchingGhost = false;
+        public static int CurrentLayerGhost = 1;        
         public bool DisableLayersGhost = false;
 
         public AxisAlignedRectangle GhostBoden;
@@ -211,19 +210,19 @@ namespace VergissMeinNicht.Screens
             if (TheodorGhostInstance.SpriteInstance.TextureScale == 0.5f)
             {
                 CurrentLayerGhost = 1;
-                isSwitchingGhost = false;
+                Manager.isSwitchingGhost = false;
             }
 
             else if (TheodorGhostInstance.SpriteInstance.TextureScale == SizeFirstDiff)
             {
                 CurrentLayerGhost = 2;
-                isSwitchingGhost = false;
+                Manager.isSwitchingGhost = false;
             }
 
             else if (TheodorGhostInstance.SpriteInstance.TextureScale == SizeSecondDiff)
             {
                 CurrentLayerGhost = 3;
-                isSwitchingGhost = false;
+                Manager.isSwitchingGhost = false;
             }            
         }
 
@@ -233,9 +232,9 @@ namespace VergissMeinNicht.Screens
             if (!DisableLayersGhost && !IsPaused)
             {
                 // --Hochswitchen
-                if (VerticalMovement == 1 && CurrentLayerGhost != 3 && !isSwitchingGhost)
+                if (VerticalMovement == 1 && CurrentLayerGhost != 3 && !Manager.isSwitchingGhost)
                 {
-                    isSwitchingGhost = true;
+                    Manager.isSwitchingGhost = true;
 
                     // Direction Left/Right bestimmen
                     if (TheodorGhostInstance.DirectionFacing == PlatformerCharacterBase.LeftOrRight.Left)
@@ -327,9 +326,9 @@ namespace VergissMeinNicht.Screens
 
 
             // --Runterswitchen
-            if (VerticalMovement == -1 && CurrentLayerGhost != 1 && !isSwitchingGhost)
+            if (VerticalMovement == -1 && CurrentLayerGhost != 1 && !Manager.isSwitchingGhost)
             {
-                isSwitchingGhost = true;
+                Manager.isSwitchingGhost = true;
 
                 // Direction Left/Right bestimmen
                 if (TheodorGhostInstance.DirectionFacing == PlatformerCharacterBase.LeftOrRight.Left)

@@ -87,38 +87,46 @@ namespace VergissMeinNicht.Entities
 
             // check whether in air or on ground
             if (IsOnGround)
-            {
-                if (moveright)
-                {
-                    this.SpriteInstance.CurrentChainName = "WalkRight";
-                }
-                else if (moveleft)
-                {
-                    this.SpriteInstance.CurrentChainName = "WalkLeft";
-                }
-                else
-                {
-                    if (DirectionFacing == LeftOrRight.Right)
-                    {
-                        this.SpriteInstance.CurrentChainName = "IdleRight";
-                    }
-                    else
-                    {
-                        this.SpriteInstance.CurrentChainName = "IdleLeft";
-                    }
-                }
-            }
-            else // in the air
-            {
-                if (DirectionFacing == LeftOrRight.Left)
-                {
-                    this.SpriteInstance.CurrentChainName = "JumpLeft";
-                }
-                else
-                {
-                    this.SpriteInstance.CurrentChainName = "JumpRight";
-                }
-            }
+              {
+                  if (moveright || (Manager.isSwitchingGhost && base.DirectionFacing == LeftOrRight.Right))
+                  {
+                      this.SpriteInstance.CurrentChainName = "WalkRight";
+                  }
+                  else if (moveleft || (Manager.isSwitchingGhost && base.DirectionFacing == LeftOrRight.Left))
+                  {
+                      this.SpriteInstance.CurrentChainName = "WalkLeft";
+                  }
+                  else
+                  {
+                      if (DirectionFacing == LeftOrRight.Right)
+                      {
+                          this.SpriteInstance.CurrentChainName = "IdleRight";
+                      }
+                      else
+                      {
+                          this.SpriteInstance.CurrentChainName = "IdleLeft";
+                      }
+                  }
+              }
+              else // in the air
+              {
+                  if (DirectionFacing == LeftOrRight.Left && Manager.isSwitchingGhost)
+                  {
+                      this.SpriteInstance.CurrentChainName = "WalkLeft";
+                  }
+                  else if (DirectionFacing == LeftOrRight.Right && Manager.isSwitchingGhost)
+                  {
+                      this.SpriteInstance.CurrentChainName = "WalkRight";
+                  }
+                  else if (DirectionFacing == LeftOrRight.Left)
+                  {
+                      this.SpriteInstance.CurrentChainName = "JumpLeft";
+                  }
+                  else if (DirectionFacing == LeftOrRight.Right)
+                  {
+                      this.SpriteInstance.CurrentChainName = "JumpRight";
+                  }                  
+              }
         }
 	}
 }

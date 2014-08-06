@@ -159,6 +159,7 @@
     <Compile Include="Entities\Frame.Generated.cs">
       <DependentUpon>Frame.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Manager.cs" />
     <Compile Include="Entities\OkCancel.cs" />
     <Compile Include="Entities\OkCancel.Event.cs">
       <DependentUpon>OkCancel.cs</DependentUpon>
