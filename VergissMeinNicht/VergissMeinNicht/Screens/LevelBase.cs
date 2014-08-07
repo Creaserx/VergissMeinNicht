@@ -184,7 +184,7 @@ namespace VergissMeinNicht.Screens
         }
         //---/Flower
 
-        public void DoorActivity(int x, string nextRoom)
+        public void DoorActivity(int x)
         {
 
             if (PlatformerCharacterBase.getInstance().X >= x && PlatformerCharacterBase.isChild())
@@ -319,6 +319,12 @@ namespace VergissMeinNicht.Screens
                 SpriteManager.Camera.Y = 275;
             }
 
+        }
+
+        public void CameraMaximum(float LeftValue, float RightValue) 
+        {
+            SpriteManager.Camera.MinimumX = LeftValue; //-305
+            SpriteManager.Camera.MaximumX = RightValue;  // 305     
         }
 
         void LayerOn()

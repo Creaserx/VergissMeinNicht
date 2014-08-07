@@ -36,39 +36,38 @@ namespace VergissMeinNicht.Screens
 
         public AxisAlignedRectangle GhostBoden;
 
+        public double tempTime = Double.PositiveInfinity;
+
+        public int GhostMovementState = 1;
+
+        //------INITIALIZE----------------------------------------------------------------
 		public override void CustomInitialize()
 		{
             base.CustomInitialize();
             VisibilityInit();
 
+            CameraMaximum(-305, 305);
 
-            // Position Blume & Rauch
+            GhostInitialize();
+
+            //Objektpositionen bestimmen
             BlumeInstance.PositionBlume(-600, 80);
             RauchInstance.PositionRauch(760, 180);
             TeddyInstance.PositionTeddy(400, 200);
-            UI_Button_EInstance.PositionE_Button(790, 300, UI_Button_EInstance.Y);
-            //UI_Button_EInstance.thisStartPosY = UI_Button_EInstance.Y;
+            UI_Button_EInstance.PositionE_Button(790, 300, UI_Button_EInstance.Y); //E_Button Tür       
 
-            TheodorGhostInstance.Collision.Height = 205;
-            TheodorGhostInstance.Collision.Width = 110; // Theo Ghost Collision Size
-            TheodorGhostInstance.X = 530;            
-
-            // Create Collision: GhostBoden
-            GhostBoden = new AxisAlignedRectangle();
-            GhostBoden.ScaleX = 1800;
-            GhostBoden.ScaleY = 50;
-            GhostBoden.Y = -50;
-
-            this.GhostBodenCollision.AxisAlignedRectangles.Add(GhostBoden);  // Add it to the ShapeCollection so the ghost can collide against it
 		}
 
+        //------UPDATE---------------------------------------------------------------
         public override void CustomActivity(bool firstTimeCalled)
 		{
             SwitchBlock();  //Blocken der Switch-Function
 
             base.CustomActivity(firstTimeCalled);
             CollisionActivity();
-            DoorActivity(700, "Flur");
+
+            DoorActivity(700);
+            NextRoom();
 
             ObjectVisibilityChange(); //Aktualisiert die Visibility von Objekten je nach Child/GU
 
@@ -79,10 +78,10 @@ namespace VergissMeinNicht.Screens
 
             if (PlatformerCharacterBase.isChild())
             {
-                //GhostMovement();
+                GhostMovement();
             }
 
-            NextRoom();
+            
         }
 
         public override void CustomDestroy()
@@ -97,9 +96,39 @@ namespace VergissMeinNicht.Screens
             
         }
 
+        //----------------------------------------------------------------------------------
+        //--------FUNKTIONEN----------------------------------------------------------------
+
+        void GhostInitialize()
+        {         
+            TheodorGhostInstance.Collision.Height = 205;
+            TheodorGhostInstance.Collision.Width = 110; // Theo Ghost Collision Size
+            TheodorGhostInstance.X = 530;
+
+            // Create Collision: GhostBoden
+            GhostBoden = new AxisAlignedRectangle();
+            GhostBoden.ScaleX = 1800;
+            GhostBoden.ScaleY = 50;
+            GhostBoden.Y = -50;
+
+            this.GhostBodenCollision.AxisAlignedRectangles.Add(GhostBoden);  // Add it to the ShapeCollection so the ghost can collide against it
+        }
+
+        public void VisibilityInit()
+        {
+            Layer1.Visible = false;
+            Layer3.Visible = false;
+
+            TheodorGhostInstance.Collision.Visible = false;
+
+            Background_creepy.Visible = true;
+            if (CollisionsVisible) CollisionVisibilityEmpfang();
+
+        }
+
+        // Manage Visibility in Child/GrownUp State
         void ObjectVisibilityChange()
         {
-
             if (PlatformerCharacterBase.isChild())
             { 
                 Background_creepy.Visible = true;               // Hintergrund
@@ -111,9 +140,10 @@ namespace VergissMeinNicht.Screens
                 FeuerInstance.SpriteInstance.Visible = false;
             }
         }
-
+      
         public void SwitchBlock()
         {
+            // Disable Layer3 when necessary
             DisableLayerBack = false;
             DisableLayers = false;
             if (PlatformerCharacterBase.getInstance().X < -345) DisableLayerBack = true;
@@ -133,7 +163,7 @@ namespace VergissMeinNicht.Screens
 
         public void CollisionActivity()
         {
-
+            //Collision Ränder
             PlatformerCharacterBase.getInstance().Collision.CollideAgainstMove(Layer1, 0, 1);  //Kollision mit Rändern
             if (CurrentLayer == 3) PlatformerCharacterBase.getInstance().Collision.CollideAgainstMove(Layer3, 0, 1);  //Kollision auf Layer 3
 
@@ -161,7 +191,6 @@ namespace VergissMeinNicht.Screens
         }
 
 
-
         void FallInHole()
         {
             //Boden.Y = -300;
@@ -169,18 +198,6 @@ namespace VergissMeinNicht.Screens
 
         }
 
-        //Initialize Visibility
-        public void VisibilityInit()
-        {
-            Layer1.Visible = false;
-            Layer3.Visible = false;
-
-            TheodorGhostInstance.Collision.Visible = false;
-
-            Background_creepy.Visible = true;
-            if (CollisionsVisible) CollisionVisibilityEmpfang();
-            
-        }
     
         //Collisions Visible machen
         public void CollisionVisibilityEmpfang()
@@ -195,13 +212,26 @@ namespace VergissMeinNicht.Screens
             GhostBodenCollision.AddToManagers(); // Add the GhostBodenCollision to the ShapeManager so it's visible
         }
 
+
+
+        //----GHOST----
         void GhostMovement()
         {
-            LayerManagementGhost(1);
+            // STATE 1:
+             if (TimeManager.SecondsSince(Manager.GhostSpawnTime) >= 5 && GhostMovementState == 1)
+                 TheodorGhostInstance.moveleft = true;
+
+             if (GhostMovementState == 1 && TheodorGhostInstance.X < 300)
+                 TheodorGhostInstance.moveleft = false;
+
+
+
+
+
+                        
+                    //LayerOnGhost();
+                    //LayerManagementGhost(-1);
             
-            LayerOnGhost();
-            LayerManagementGhost(-1);
-           
         }
 
         void LayerOnGhost()
@@ -412,6 +442,6 @@ namespace VergissMeinNicht.Screens
                         FlatRedBall.Glue.StateInterpolation.Easing.Out);
             }
         }
-
+        //----/GHOST----
 	}
 }

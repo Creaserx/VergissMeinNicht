@@ -192,6 +192,10 @@
     <Compile Include="Entities\Räume_Inhalt\Empfang\Hole.Generated.cs">
       <DependentUpon>Hole.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Räume_Inhalt\Empfang\TheodorGhost.cs" />
+    <Compile Include="Entities\Räume_Inhalt\Empfang\TheodorGhost.Generated.cs">
+      <DependentUpon>TheodorGhost.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Räume_Inhalt\Schlafraum\Augen.cs" />
     <Compile Include="Entities\Räume_Inhalt\Schlafraum\Augen.Generated.cs">
       <DependentUpon>Augen.cs</DependentUpon>
@@ -215,10 +219,6 @@
     <Compile Include="Entities\TheodorChild.cs" />
     <Compile Include="Entities\TheodorChild.Generated.cs">
       <DependentUpon>TheodorChild.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\TheodorGhost.cs" />
-    <Compile Include="Entities\TheodorGhost.Generated.cs">
-      <DependentUpon>TheodorGhost.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\TheodorGrownUp.cs" />
     <Compile Include="Entities\TheodorGrownUp.Generated.cs">

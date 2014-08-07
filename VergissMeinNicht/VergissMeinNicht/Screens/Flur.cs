@@ -30,14 +30,23 @@ namespace VergissMeinNicht.Screens
 	public partial class Flur
 	{
 
+        //------INITIALIZE----------------------------------------------------------------
 		public override void CustomInitialize()
 		{
             base.CustomInitialize();
             DisableLayers = true;
 
+            CameraMaximum(-505, 505);
+
+            //Objektpositionen bestimmen
+            BlumeInstance.PositionBlume(-600, 80);
+            RauchInstance.PositionRauch(960, 180);
+            TeddyInstance.PositionTeddy(400, 200);
+
             //StartCharacterState("Child", 0);
 		}
 
+        //------UPDATE---------------------------------------------------------------
         public override void CustomActivity(bool firstTimeCalled)
 		{
             base.CustomActivity(firstTimeCalled);
@@ -55,6 +64,9 @@ namespace VergissMeinNicht.Screens
 
 
         }
+
+        //----------------------------------------------------------------------------------
+        //--------FUNKTIONEN----------------------------------------------------------------
 
 	}
 }

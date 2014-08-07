@@ -264,7 +264,7 @@
             <ValueAsFloat>0</ValueAsFloat>
           </CustomProperty>
           <SourceType>Entity</SourceType>
-          <SourceClassType>Entities\TheodorGhost</SourceClassType>
+          <SourceClassType>Entities\Räume_Inhalt\Empfang\TheodorGhost</SourceClassType>
           <InstanceName>TheodorGhostInstance</InstanceName>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
@@ -597,14 +597,14 @@
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
-            <Type>float</Type>
-            <Member>TextureScale</Member>
-            <ValueAsFloat>1</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
             <Type>Texture2D</Type>
             <Member>Texture</Member>
             <ValueAsString>Loading</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>TextureScale</Member>
+            <ValueAsFloat>1</ValueAsFloat>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile />
@@ -3276,7 +3276,7 @@
         </CustomVariable>
       </CustomVariables>
       <BaseEntity>Entities\PlatformerCharacterBase</BaseEntity>
-      <Name>Entities\TheodorGhost</Name>
+      <Name>Entities\Räume_Inhalt\Empfang\TheodorGhost</Name>
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
@@ -3319,6 +3319,18 @@
             <Type>float</Type>
             <Member>TextureScale</Member>
             <ValueAsFloat>0.5</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Blue</Member>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Red</Member>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Green</Member>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile />

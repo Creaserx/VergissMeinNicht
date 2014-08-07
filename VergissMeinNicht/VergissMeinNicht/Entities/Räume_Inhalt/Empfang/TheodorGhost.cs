@@ -25,7 +25,7 @@ using Texture2D = Microsoft.Xna.Framework.Graphics.Texture2D;
 #endif
 #endregion
 
-namespace VergissMeinNicht.Entities
+namespace VergissMeinNicht.Entities.Räume_Inhalt.Empfang
 {
 	public partial class TheodorGhost
 	{
@@ -59,6 +59,7 @@ namespace VergissMeinNicht.Entities
 
         }
 
+
         private void Spawn()
         {
             this.SpriteInstance
@@ -70,6 +71,8 @@ namespace VergissMeinNicht.Entities
                     FlatRedBall.Glue.StateInterpolation.Easing.Out);
 
             hasSpawned = true;
+
+            Manager.GhostSpawnTime = TimeManager.CurrentTime;   //SpawnTime speichern
         }
 
         private void AnimationActivity()
