@@ -36,7 +36,7 @@ namespace VergissMeinNicht.Screens
             base.CustomInitialize();
             DisableLayers = true;
 
-            CameraMaximum(-505, 505);
+            CameraMaximum(-305, 1600);
 
             //Objektpositionen bestimmen
             BlumeInstance.PositionBlume(-600, 80);

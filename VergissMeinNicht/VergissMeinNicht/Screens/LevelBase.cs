@@ -86,13 +86,15 @@ namespace VergissMeinNicht.Screens
             if (Boden == null)
             {
                 Boden = new AxisAlignedRectangle();
-                Boden.ScaleX = 1800;
+                Boden.ScaleX = 2200;
                 Boden.ScaleY = 50;
                 Boden.Y = -50;
                 this.SolidCollisions.AxisAlignedRectangles.Add(Boden);  // Add it to the ShapeCollection so the player can collide against it
                 PlatformerCharacterBase.getInstance().Y = 75;       // Make the character appear on top of the rectangle
             }
             InitializeFlower();
+
+            
 
             if (CollisionsVisible) CollisionVisibilityOn();
 		}

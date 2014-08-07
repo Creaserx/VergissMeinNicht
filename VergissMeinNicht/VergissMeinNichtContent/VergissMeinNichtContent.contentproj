@@ -258,6 +258,18 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>flur_1-1-1</Name>
     </None>
+    <None Include="Screens\Flur\flur_links.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>flur_links</Name>
+    </None>
+    <None Include="Screens\Flur\flur_mitte_1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>flur_mitte_1</Name>
+    </None>
+    <None Include="Screens\Flur\flur_mitte_2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>flur_mitte_2</Name>
+    </None>
     <None Include="Screens\LoadingScreen\Loading.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Loading</Name>

@@ -1,11 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SpriteEditorScene xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Sprite>
-    <Y>200</Y>
-    <ScaleX>1356</ScaleX>
-    <ScaleY>251</ScaleY>
-    <Name>flur_1-1-11</Name>
-    <Texture>flur_1-1-1.png</Texture>
+    <Y>305</Y>
+    <ScaleX>835</ScaleX>
+    <ScaleY>320</ScaleY>
+    <Name>flur_links1</Name>
+    <Texture>flur_links.png</Texture>
+    <ConstantPixelSize>0.5</ConstantPixelSize>
+  </Sprite>
+  <Sprite>
+    <Y>305</Y>
+    <ScaleX>835</ScaleX>
+    <ScaleY>320</ScaleY>
+    <Name>flur_mitte_11</Name>
+    <Texture>flur_mitte_1.png</Texture>
+    <ConstantPixelSize>0.5</ConstantPixelSize>
+  </Sprite>
+  <Sprite>
+    <X>1427</X>
+    <Y>305</Y>
+    <ScaleX>835</ScaleX>
+    <ScaleY>320</ScaleY>
+    <Name>flur_mitte_21</Name>
+    <Texture>flur_mitte_2.png</Texture>
     <ConstantPixelSize>0.5</ConstantPixelSize>
   </Sprite>
   <Camera>

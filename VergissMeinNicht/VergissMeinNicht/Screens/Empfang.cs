@@ -230,11 +230,13 @@ namespace VergissMeinNicht.Screens
             {
                 LayerManagementGhost(1);
                 GhostMovementState = 2;
+                
             }
 
             // STATE 2:
             if (TimeManager.SecondsSince(Manager.GhostSpawnTime) >= 10 && GhostMovementState == 2)
             {
+                
                 if (TheodorGhostInstance.X >= 175)
                     TheodorGhostInstance.moveleft = true;
                 else
