@@ -40,6 +40,7 @@ namespace VergissMeinNicht.Screens
 
         public int GhostMovementState = 1;
 
+
         //------INITIALIZE----------------------------------------------------------------
 		public override void CustomInitialize()
 		{
@@ -78,9 +79,12 @@ namespace VergissMeinNicht.Screens
 
             if (PlatformerCharacterBase.isChild())
             {
+                LayerOnGhost();
                 GhostMovement();
             }
 
+            string resultStringGhostLayer = "GhostLayer:" + CurrentLayerGhost.ToString();
+                FlatRedBall.Debugging.Debugger.Write(resultStringGhostLayer);
             
         }
 
@@ -170,6 +174,7 @@ namespace VergissMeinNicht.Screens
             //Collision mit Holes als Child
             if (PlatformerCharacterBase.isChild()) 
             {
+                //LayerOnGhost();
                 for (int i = HoleList.Count - 1; i > -1; i--)
                 {
                     if (PlatformerCharacterBase.getInstance().Collision.CollideAgainst(HoleList[i].Collision) && CurrentLayer == HoleList[i].Layer)
@@ -177,9 +182,13 @@ namespace VergissMeinNicht.Screens
                         HoleList[i].SpriteInstance.Visible = true;
                         FallInHole();
                     }
+                    //Collision Ghost-Holes
+                    if (TheodorGhostInstance.Collision.CollideAgainst(HoleList[i].Collision) && CurrentLayerGhost == HoleList[i].Layer)
+                        HoleList[i].SpriteInstance.Visible = true; 
                 }
             }
-            
+
+           
 
             //Theodor Ghost Collisions
             TheodorGhostInstance.CollideAgainst(GhostBodenCollision);
@@ -213,24 +222,37 @@ namespace VergissMeinNicht.Screens
         }
 
 
-
         //----GHOST----
         void GhostMovement()
         {
             // STATE 1:
-             if (TimeManager.SecondsSince(Manager.GhostSpawnTime) >= 5 && GhostMovementState == 1)
-                 TheodorGhostInstance.moveleft = true;
+            if (TimeManager.SecondsSince(Manager.GhostSpawnTime) >= 5 && GhostMovementState == 1)
+            {
+                LayerManagementGhost(1);
+                GhostMovementState = 2;
+            }
 
-             if (GhostMovementState == 1 && TheodorGhostInstance.X < 300)
-                 TheodorGhostInstance.moveleft = false;
+            // STATE 2:
+            if (TimeManager.SecondsSince(Manager.GhostSpawnTime) >= 10 && GhostMovementState == 2)
+            {
+                if (TheodorGhostInstance.X >= 175)
+                    TheodorGhostInstance.moveleft = true;
+                else
+                {
+                    tempTime = TimeManager.CurrentTime;
+                    TheodorGhostInstance.moveleft = false;
+                    GhostMovementState = 3;
+                }
+            }
 
+             // STATE 3:
+             if (GhostMovementState == 3 && TimeManager.SecondsSince(tempTime) >= 5)
+             {
+                 LayerManagementGhost(-1);
+                 GhostMovementState = 4;
+             } 
 
-
-
-
-                        
-                    //LayerOnGhost();
-                    //LayerManagementGhost(-1);
+                       
             
         }
 

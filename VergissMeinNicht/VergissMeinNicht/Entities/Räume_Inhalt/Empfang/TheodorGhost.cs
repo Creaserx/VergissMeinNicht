@@ -31,8 +31,10 @@ namespace VergissMeinNicht.Entities.Räume_Inhalt.Empfang
 	{
         bool hasSpawned = false;
 
+       
+
 		private void CustomInitialize()
-		{
+		{            
             InputEnabled = false;
             this.DirectionFacing = LeftOrRight.Right;
 		}
@@ -45,6 +47,7 @@ namespace VergissMeinNicht.Entities.Räume_Inhalt.Empfang
             {
                 Spawn();
             }
+            
 		}
 
 		private void CustomDestroy()
@@ -74,6 +77,8 @@ namespace VergissMeinNicht.Entities.Räume_Inhalt.Empfang
 
             Manager.GhostSpawnTime = TimeManager.CurrentTime;   //SpawnTime speichern
         }
+
+
 
         private void AnimationActivity()
         {
