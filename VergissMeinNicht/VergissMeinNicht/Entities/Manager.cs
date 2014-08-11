@@ -13,5 +13,13 @@ namespace VergissMeinNicht.Entities
         public static double LevelStartTime;
         public static bool FlowerDestroyed;
         public static bool CollisionsVisible;
+
+        public static bool CharacterFallingInHole = false;
+
+        //Keys Disablen
+        public static bool EnableKey_Space = true;
+        public static bool EnableKey_Down = true;
+        public static bool EnableKey_Up = true;
+        public static bool EnableKey_E = true;
     }
 }

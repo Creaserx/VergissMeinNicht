@@ -40,7 +40,7 @@ namespace VergissMeinNicht.Screens
         double tempHoleTime = Double.PositiveInfinity;
 
         public int GhostMovementState = 1;
-
+       
 
         //------INITIALIZE----------------------------------------------------------------
 		public override void CustomInitialize()
@@ -60,6 +60,8 @@ namespace VergissMeinNicht.Screens
             TeddyInstance.PositionTeddy(400, 200);
             UI_Button_EInstance.PositionE_Button(790, 300, UI_Button_EInstance.Y); //E_Button Tür       
 
+            Manager.EnableKey_Space = false;
+            Manager.CharacterFallingInHole = false;
 		}
 
         //------UPDATE---------------------------------------------------------------
@@ -83,7 +85,6 @@ namespace VergissMeinNicht.Screens
 
             if (PlatformerCharacterBase.isChild())
             {
-                
                 GhostMovement();
                 LayerOnGhost();
             }
@@ -210,7 +211,7 @@ namespace VergissMeinNicht.Screens
                 }
             }
 
-           
+           //PlatformerCharacterBase.getInstance().SpriteInstance.
 
             //Theodor Ghost Collisions
             TheodorGhostInstance.CollideAgainst(GhostBodenCollision);
@@ -225,9 +226,18 @@ namespace VergissMeinNicht.Screens
         //----LÖCHER----
         void FallInHole()
         { 
-                //SolidCollisions.AxisAlignedRectangles.Remove(Boden);  
-                Boden.Y = -300;
-                tempHoleTime = Double.PositiveInfinity;      
+            //SolidCollisions.AxisAlignedRectangles.Remove(Boden);  
+            Manager.EnableKey_Down = false;
+            Manager.EnableKey_Up = false;
+
+            Boden.Y = -300;
+            tempHoleTime = Double.PositiveInfinity;
+            Manager.CharacterFallingInHole = true;
+
+            if (PlatformerCharacterBase.getInstance().DirectionFacing == PlatformerCharacterBase.LeftOrRight.Left)
+                PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName = "FallLeft";
+            else
+                PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName = "FallRight";
         }
       
         void HoleActivity()
@@ -248,6 +258,7 @@ namespace VergissMeinNicht.Screens
                 HoleList[i].Open = false;
                 HoleList[i].SpriteInstance.Visible = false;
             }
+            Manager.CharacterFallingInHole = false;
         }
 
         void OpenHole(int i)

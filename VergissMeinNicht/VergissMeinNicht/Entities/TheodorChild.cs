@@ -103,11 +103,11 @@ namespace VergissMeinNicht.Entities
                 {
                     this.SpriteInstance.CurrentChainName = "WalkRight";
                 }
-                else if (DirectionFacing == LeftOrRight.Left)
+                else if (DirectionFacing == LeftOrRight.Left && !Manager.CharacterFallingInHole)
                 {
                     this.SpriteInstance.CurrentChainName = "JumpLeft";
                 }
-                else if (DirectionFacing == LeftOrRight.Right)
+                else if (DirectionFacing == LeftOrRight.Right && !Manager.CharacterFallingInHole)
                 {
                     this.SpriteInstance.CurrentChainName = "JumpRight";
                 }

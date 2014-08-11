@@ -57,17 +57,20 @@ namespace VergissMeinNicht.Screens
 
         public bool DoorOpen = false;
 
-        
+
+
         
 
         //------INITIALIZE----------------------------------------------------------------
 		public virtual void CustomInitialize()
 		{
+            EnableKeys();    
             FixLayers();
+
 
             Manager.LevelStartTime = TimeManager.CurrentTime;
 
-            Manager.CollisionsVisible = true;  // Collision Visibility An/Aus
+            Manager.CollisionsVisible = false;  // Collision Visibility An/Aus
             DisableLayers = false;      // Erstmal Layer aktivieren
             DisableLayerBack = false;   // LayerBack aktivieren
 
@@ -96,8 +99,6 @@ namespace VergissMeinNicht.Screens
             }
             InitializeFlower();
 
-
-
             if (Manager.CollisionsVisible) CollisionVisibilityOn();
 		}
 
@@ -110,6 +111,8 @@ namespace VergissMeinNicht.Screens
 
             //Theodor Collisions
             PlatformerCharacterBase.getInstance().CollideAgainst(SolidCollisions);
+
+            KeyControl();
 
             LayerOn();
             LayerManagement();
@@ -140,6 +143,22 @@ namespace VergissMeinNicht.Screens
 
         //----------------------------------------------------------------------------------
         //--------FUNKTIONEN----------------------------------------------------------------
+
+        public void EnableKeys()
+        {
+            Manager.EnableKey_Space = true;
+            Manager.EnableKey_Down = true;
+            Manager.EnableKey_Up = true;
+            Manager.EnableKey_E = true;
+        }
+
+        public void KeyControl()
+        {
+            if (!Manager.EnableKey_Up) InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Up);
+            if (!Manager.EnableKey_Down) InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Down);
+            if (!Manager.EnableKey_Space) InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Space);
+            if (!Manager.EnableKey_E) InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.E);
+        }
 
         public void StartCharacterState(String state, int x)
         {
@@ -218,12 +237,10 @@ namespace VergissMeinNicht.Screens
             // Z  -- Zoolevel
             if (InputManager.Keyboard.KeyPushed(Keys.Z)) MoveToScreen(typeof(ZooLevel).FullName);
 
-            // F9  --  SpeedMode
-            //if (InputManager.Keyboard.KeyPushed(Keys.F9)) ;
-
             // R  -- Reset Character
             if (InputManager.Keyboard.KeyPushed(Keys.R))
             {
+                EnableKeys();
                 DisableLayers = true;
                 Boden.Y = -50;
                 CurrentLayer = 1;
@@ -551,3 +568,30 @@ namespace VergissMeinNicht.Screens
 
 	}
 }
+
+/*@FacePalm Studios 
+............................................________
+....................................,.-‘”..................``~.,
+.............................,.-”.................................“-.,
+.........................,/..........................................”:,
+.....................,?................................................\,
+.................../...................................................,}
+................./...............................................,:`^`..}
+.............../...........................................,:”........./
+..............?.....__...................................:`.........../
+............./__.(.....“~-,_...........................,:`........../
+.........../(_....”~,_........“~,_....................,:`........_/
+..........{.._$;_......”=,_.......“-,_.......,.-~-,},.~”;/....}
+...........((.....*~_.......”=-._......“;,,./`..../”............../
+...,,,___.\`~,......“~.,....................`.....}............../
+............(....`=-,,.......`........................(......;_,,-”
+............/.`~,......`-...............................\....../\
+.............\`~.*-,.....................................|,./.....\,__
+,,_..........}.>-._\...................................|..............`=~-,
+.....`=~-,_\_......`\,.................................\
+...................`=~-,,.\,...............................\
+................................`:,,...........................`\..............__
+.....................................`=-,...................,%`>--==``
+........................................_\..........._,-%.......`\
+...................................,<`.._|_,-&``................`\
+*/
