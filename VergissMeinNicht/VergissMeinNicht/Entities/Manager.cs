@@ -11,6 +11,6 @@ namespace VergissMeinNicht.Entities
         public static bool isSwitchingGhost = false;
         public static double GhostSpawnTime = Double.PositiveInfinity;
         public static double LevelStartTime;
-
+        public static bool FlowerDestroyed;
     }
 }

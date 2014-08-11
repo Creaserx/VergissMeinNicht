@@ -2582,19 +2582,35 @@
           <Name>Layer</Name>
           <Type>float</Type>
         </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>bool</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>Open</Name>
+          <Type>bool</Type>
+          <DefaultValue xsi:type="xsd:boolean">false</DefaultValue>
+        </CustomVariable>
       </CustomVariables>
       <Name>Entities\Räume_Inhalt\Empfang\Hole</Name>
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
-            <Type>Texture2D</Type>
-            <Member>Texture</Member>
-            <ValueAsString>Bodenloch</ValueAsString>
+            <Type>AnimationChainList</Type>
+            <Member>AnimationChains</Member>
+            <ValueAsString>AnimationChainListFile</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>string</Type>
+            <Member>CurrentChainName</Member>
+            <ValueAsString>Idle</ValueAsString>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
             <Member>TextureScale</Member>
-            <ValueAsFloat>0.26</ValueAsFloat>
+            <ValueAsFloat>0.25</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
             <Type>bool</Type>
@@ -2638,9 +2654,9 @@
       </NamedObjects>
       <ReferencedFiles>
         <ReferencedFileSave>
-          <Name>Entities/Räume_Inhalt/Empfang/Hole/Bodenloch.png</Name>
+          <Name>Entities/Räume_Inhalt/Empfang/Hole/AnimationChainListFile.achx</Name>
           <IsSharedStatic>true</IsSharedStatic>
-          <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
+          <RuntimeType>FlatRedBall.Graphics.Animation.AnimationChainList</RuntimeType>
         </ReferencedFileSave>
       </ReferencedFiles>
       <Is2D>true</Is2D>
@@ -3319,18 +3335,6 @@
             <Type>float</Type>
             <Member>TextureScale</Member>
             <ValueAsFloat>0.5</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>Blue</Member>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>Red</Member>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>Green</Member>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile />

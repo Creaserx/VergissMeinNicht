@@ -142,9 +142,21 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Fire_AnimationSheet</Name>
     </None>
-    <None Include="Entities\Räume_Inhalt\Empfang\Hole\Bodenloch.png">
+    <None Include="Entities\Räume_Inhalt\Empfang\Hole\AnimationChainListFile.achx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Name>Bodenloch</Name>
+      <Name>AnimationChainListFile</Name>
+    </None>
+    <None Include="Entities\Räume_Inhalt\Empfang\Hole\Bodenloch0000.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Bodenloch0000</Name>
+    </None>
+    <None Include="Entities\Räume_Inhalt\Empfang\Hole\Bodenloch0004.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Bodenloch0004</Name>
+    </None>
+    <None Include="Entities\Räume_Inhalt\Empfang\Hole\Bodenloch_SpriteSheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Bodenloch_SpriteSheet</Name>
     </None>
     <None Include="Entities\Räume_Inhalt\Schlafraum\Augen\AnimationChainListFile.achx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

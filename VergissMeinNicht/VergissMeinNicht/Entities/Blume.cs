@@ -34,7 +34,7 @@ namespace VergissMeinNicht.Entities
 		private void CustomInitialize()
 		{
             this.YVelocity = BlumeVelocity;
-
+            Manager.FlowerDestroyed = false;
 		}
 
 		private void CustomActivity()
@@ -51,7 +51,7 @@ namespace VergissMeinNicht.Entities
 
 		private void CustomDestroy()
 		{
-            
+            Manager.FlowerDestroyed = true;
 
 		}
 

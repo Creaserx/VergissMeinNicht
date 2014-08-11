@@ -74,8 +74,9 @@ namespace VergissMeinNicht.Screens
 
             ObjectVisibilityChange(); //Aktualisiert die Visibility von Objekten je nach Child/GU
 
-            // reset Holes
-            if (InputManager.Keyboard.KeyPushed(Keys.R)) for (int i = HoleList.Count - 1; i > -1; i--) HoleList[i].SpriteInstance.Visible = false;
+            //Löcher
+            if (InputManager.Keyboard.KeyPushed(Keys.R)) ResetHoles();        
+            HoleActivity();
 
             CameraMovement();
 
@@ -183,7 +184,7 @@ namespace VergissMeinNicht.Screens
                 {
                     if (PlatformerCharacterBase.getInstance().Collision.CollideAgainst(HoleList[i].Collision) && CurrentLayer == HoleList[i].Layer)
                     {
-                        HoleList[i].SpriteInstance.Visible = true;
+                        OpenHole(i);
                         FallInHole();
                     }
                     //Collision Ghost-Holes
@@ -211,6 +212,7 @@ namespace VergissMeinNicht.Screens
 
         }
 
+
     
         //Collisions Visible machen
         public void CollisionVisibilityEmpfang()
@@ -223,6 +225,48 @@ namespace VergissMeinNicht.Screens
             // Theodor Ghost 
             TheodorGhostInstance.Collision.Visible = true;
             GhostBodenCollision.AddToManagers(); // Add the GhostBodenCollision to the ShapeManager so it's visible
+        }
+
+        //----LÖCHER----
+        void HoleActivity()
+        {
+            for (int i = HoleList.Count - 1; i > -1; i--)
+            if (HoleList[i].SpriteInstance.CurrentFrameIndex >= 4 && HoleList[i].Open)
+                HoleList[i].SpriteInstance.CurrentChainName = "Idle";
+
+            if (Manager.FlowerDestroyed) OpenAllHoles(); 
+        }
+
+        void ResetHoles()
+        {
+            for (int i = HoleList.Count - 1; i > -1; i--)
+            {
+                HoleList[i].Open = false;
+                HoleList[i].SpriteInstance.Visible = false;
+            }
+        }
+
+        void OpenHole(int i)
+        {
+                if (!HoleList[i].Open)
+                {
+                    HoleList[i].SpriteInstance.Visible = true;
+                    HoleList[i].SpriteInstance.CurrentChainName = "Break";
+                    HoleList[i].Open = true;
+                }
+        }
+
+        void OpenAllHoles()
+        {
+            for (int i = HoleList.Count - 1; i > -1; i--)
+             if (!HoleList[i].Open)
+             {
+                HoleList[i].SpriteInstance.Visible = true;
+                HoleList[i].SpriteInstance.CurrentChainName = "Break";
+                HoleList[i].Open = true;
+             }
+
+
         }
 
 
@@ -259,7 +303,7 @@ namespace VergissMeinNicht.Screens
              }
 
              // STATE 4:
-             if (GhostMovementState == 4 && PlatformerCharacterBase.getInstance().X <= 300)
+             if (GhostMovementState == 4 && PlatformerCharacterBase.getInstance().X <= 300 && CurrentLayerGhost == 1)
              {
                  TheodorGhostInstance.moveleft = true;          
              }
@@ -312,12 +356,8 @@ namespace VergissMeinNicht.Screens
              if (TheodorGhostInstance.X <= -450)
              {
                  TheodorGhostInstance.moveleft = false;
+                 GhostMovementState = 9;
              }
-
-
-
-
-            
         }
 
         void LayerOnGhost()
