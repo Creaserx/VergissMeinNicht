@@ -224,9 +224,33 @@
     <Compile Include="Entities\TheodorGrownUp.Generated.cs">
       <DependentUpon>TheodorGrownUp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\UI_Button_E.cs" />
-    <Compile Include="Entities\UI_Button_E.Generated.cs">
+    <Compile Include="Entities\UI_Buttons\UI_Button.cs" />
+    <Compile Include="Entities\UI_Buttons\UI_Button.Generated.cs">
+      <DependentUpon>UI_Button.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UI_Buttons\UI_Button_Down.cs" />
+    <Compile Include="Entities\UI_Buttons\UI_Button_Down.Generated.cs">
+      <DependentUpon>UI_Button_Down.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UI_Buttons\UI_Button_E.cs" />
+    <Compile Include="Entities\UI_Buttons\UI_Button_E.Generated.cs">
       <DependentUpon>UI_Button_E.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UI_Buttons\UI_Button_Left.cs" />
+    <Compile Include="Entities\UI_Buttons\UI_Button_Left.Generated.cs">
+      <DependentUpon>UI_Button_Left.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UI_Buttons\UI_Button_Right.cs" />
+    <Compile Include="Entities\UI_Buttons\UI_Button_Right.Generated.cs">
+      <DependentUpon>UI_Button_Right.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UI_Buttons\UI_Button_Space.cs" />
+    <Compile Include="Entities\UI_Buttons\UI_Button_Space.Generated.cs">
+      <DependentUpon>UI_Button_Space.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UI_Buttons\UI_Button_Up.cs" />
+    <Compile Include="Entities\UI_Buttons\UI_Button_Up.Generated.cs">
+      <DependentUpon>UI_Button_Up.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalContent.Generated.cs" />
     <Compile Include="Performance\IEntityFactory.Generated.cs" />

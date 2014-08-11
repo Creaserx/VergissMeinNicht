@@ -37,10 +37,12 @@ namespace VergissMeinNicht.Screens
         public AxisAlignedRectangle GhostBoden;
 
         public double tempTime = Double.PositiveInfinity;
-        double tempHoleTime = Double.PositiveInfinity;
+        public double tutTime = Double.PositiveInfinity;
 
         public int GhostMovementState = 1;
-       
+
+        public bool LeftStartZone = false;
+        public bool LeftLayerSwitchZone = false;
 
         //------INITIALIZE----------------------------------------------------------------
 		public override void CustomInitialize()
@@ -54,15 +56,21 @@ namespace VergissMeinNicht.Screens
 
             GhostInitialize();
 
+            Manager.EnableKey_Down = false;
+            Manager.EnableKey_Up = false;
+            Manager.EnableKey_Space = false;
+            
             //Objektpositionen bestimmen
             BlumeInstance.PositionBlume(-600, 80);
             RauchInstance.PositionRauch(760, 180);
             TeddyInstance.PositionTeddy(400, 200);
-            UI_Button_EInstance.PositionE_Button(790, 300, UI_Button_EInstance.Y); //E_Button Tür       
+            UI_Button_EInstance.PositionUI_Button(790, 300, UI_Button_EInstance.Y); //E_Button Tür       
 
             Manager.EnableKey_Space = false;
             Manager.CharacterFallingInHole = false;
-		}
+
+            tutTime = TimeManager.CurrentTime;
+        }
 
         //------UPDATE---------------------------------------------------------------
         public override void CustomActivity(bool firstTimeCalled)
@@ -89,9 +97,11 @@ namespace VergissMeinNicht.Screens
                 LayerOnGhost();
             }
 
-            /*string resultStringGhostLayer = "GhostLayer:" + CurrentLayerGhost.ToString();
+            TutorialButtons();
+
+            string resultStringGhostLayer = "GhostLayer:" + CurrentLayerGhost.ToString();
             string resultStringGhostIsSwitching = "GhostSwitching: " + Manager.isSwitchingGhost.ToString();
-                FlatRedBall.Debugging.Debugger.Write(resultStringGhostLayer + "\n" + resultStringGhostIsSwitching);*/
+                FlatRedBall.Debugging.Debugger.Write(resultStringGhostLayer + "\n" + resultStringGhostIsSwitching);
             
         }
 
@@ -222,6 +232,64 @@ namespace VergissMeinNicht.Screens
             //if (PlatformerCharacterBase.getInstance().Y < 85 && Boden.Y == -300) MoveToScreen(typeof(Empfang).FullName);
         }
 
+        //----BUTTONS----
+        void TutorialButtons()
+        {
+
+                    MakeUiInvisible();
+
+                    //--Show Left/Right at the Beginning
+                    if (PlatformerCharacterBase.getInstance().X < -450 && !PlatformerCharacterBase.isChild()
+                        && TimeManager.CurrentTime - tutTime > 1 && !LeftStartZone)
+                    {
+                        //Left Button
+                        UI_Button_LeftInstance.X = PlatformerCharacterBase.getInstance().X - 60;
+                        UI_Button_LeftInstance.Y = PlatformerCharacterBase.getInstance().Y + 150;
+                        UI_Button_LeftInstance.SpriteInstanceVisible = true;
+
+                        //Right Button
+                        UI_Button_RightInstance.X = PlatformerCharacterBase.getInstance().X + 60;
+                        UI_Button_RightInstance.Y = PlatformerCharacterBase.getInstance().Y + 150;
+                        UI_Button_RightInstance.SpriteInstanceVisible = true;
+                    }
+                    if (PlatformerCharacterBase.getInstance().X > -450 && !LeftStartZone) LeftStartZone = true;
+
+                    //--Show Up/Down after GhostSpawn
+                    if (CurrentLayerGhost == 2 && !LeftLayerSwitchZone && PlatformerCharacterBase.isChild())
+                    {
+                      //Up Button
+                        UI_Button_UpInstance.X = PlatformerCharacterBase.getInstance().X + 60;
+                        UI_Button_UpInstance.Y = PlatformerCharacterBase.getInstance().Y + 140;
+                        UI_Button_UpInstance.SpriteInstanceVisible = true;
+                        Manager.EnableKey_Up = true;
+
+                        //Down Button
+                        UI_Button_DownInstance.X = PlatformerCharacterBase.getInstance().X + 60;
+                        UI_Button_DownInstance.Y = PlatformerCharacterBase.getInstance().Y + 100;
+                        UI_Button_DownInstance.SpriteInstanceVisible = true;
+                        Manager.EnableKey_Down = true;
+                    }
+                    if (CurrentLayer >= 2 && !LeftLayerSwitchZone) LeftLayerSwitchZone = true;
+
+                //--Show Space after GhostSpawn
+                if (PlatformerCharacterBase.isChild() && Manager.FlowerDestroyed)
+                {
+                    //Space Button
+                    UI_Button_SpaceInstance.X = PlatformerCharacterBase.getInstance().X;
+                    UI_Button_SpaceInstance.Y = PlatformerCharacterBase.getInstance().Y + 140;
+                    UI_Button_SpaceInstance.SpriteInstanceVisible = true;
+                    Manager.EnableKey_Space = true;
+                }    
+        }
+
+        void MakeUiInvisible()
+        {
+            UI_Button_LeftInstance.SpriteInstanceVisible = false;
+            UI_Button_RightInstance.SpriteInstanceVisible = false;
+            UI_Button_UpInstance.SpriteInstanceVisible = false;
+            UI_Button_DownInstance.SpriteInstanceVisible = false;
+            UI_Button_SpaceInstance.SpriteInstanceVisible = false;
+        }
 
         //----LÖCHER----
         void FallInHole()
@@ -230,8 +298,7 @@ namespace VergissMeinNicht.Screens
             Manager.EnableKey_Down = false;
             Manager.EnableKey_Up = false;
 
-            Boden.Y = -300;
-            tempHoleTime = Double.PositiveInfinity;
+            Boden.Y = -500;
             Manager.CharacterFallingInHole = true;
 
             if (PlatformerCharacterBase.getInstance().DirectionFacing == PlatformerCharacterBase.LeftOrRight.Left)
@@ -267,8 +334,7 @@ namespace VergissMeinNicht.Screens
                 {
                     HoleList[i].SpriteInstance.Visible = true;
                     HoleList[i].SpriteInstance.CurrentChainName = "Break";
-                    HoleList[i].Open = true;
-                    tempHoleTime = TimeManager.CurrentTime;
+                    HoleList[i].Open = true;                   
                 }                
         }
 
@@ -283,11 +349,10 @@ namespace VergissMeinNicht.Screens
              }
 
 
-        }
-
+        }  
 
         //----GHOST----
-        void GhostMovement()
+        void GhostMovement()  // Movement-Script Ghost
         {
             // STATE 1:
             if (TimeManager.SecondsSince(Manager.GhostSpawnTime) >= 5 && GhostMovementState == 1)

@@ -24,23 +24,19 @@ using Texture2D = Microsoft.Xna.Framework.Graphics.Texture2D;
 #endif
 #endregion
 
-namespace VergissMeinNicht.Entities
+namespace VergissMeinNicht.Entities.UI_Buttons
 {
-	public partial class UI_Button_E
+	public partial class UI_Button_Left
 	{
-        public float thisStartPosY;
+		private void CustomInitialize()
+		{
 
-
-		private void CustomInitialize() 
-		{            
-            this.YVelocity = 10;
 
 		}
 
 		private void CustomActivity()
 		{
-            if (this.Y >= thisStartPosY + 7) this.YVelocity = -10;
-            else if (this.Y <= thisStartPosY - 7) this.YVelocity = 10; // Hovern
+
 
 		}
 
@@ -55,13 +51,5 @@ namespace VergissMeinNicht.Entities
 
 
         }
-
-        public void PositionE_Button(float x, float y, float StartPos)
-        {
-            this.X = x;
-            this.Y = y;
-            thisStartPosY = StartPos;
-        }
-
 	}
 }

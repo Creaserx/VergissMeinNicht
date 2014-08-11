@@ -92,7 +92,7 @@ namespace VergissMeinNicht.Entities
         {
             this.X = x;
             this.Y = y;
-            UI_Button_EInstance.PositionE_Button(this.X + 50, this.Y + 50, UI_Button_EInstance.Y);           
+            UI_Button_EInstance.PositionUI_Button(this.X + 50, this.Y + 50, UI_Button_EInstance.Y);           
         }
         void TeddySwitch()
         {

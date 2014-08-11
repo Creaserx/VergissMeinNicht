@@ -234,6 +234,26 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Theodor_Idle_Right</Name>
     </None>
+    <None Include="Entities\UI_Buttons\UI_Button_Left\Keyboard_Black_Arrow_Left.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Keyboard_Black_Arrow_Left</Name>
+    </None>
+    <None Include="Entities\UI_Buttons\UI_Button_Right\Keyboard_Black_Arrow_Right.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Keyboard_Black_Arrow_Right</Name>
+    </None>
+    <None Include="Entities\UI_Buttons\UI_Button_Space\Keyboard_Black_Space.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Keyboard_Black_Space</Name>
+    </None>
+    <None Include="Entities\UI_Buttons\UI_Button_Up\Keyboard_Black_Arrow_Up.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Keyboard_Black_Arrow_Up</Name>
+    </None>
+    <None Include="Entities\UI_Button_Down\Keyboard_Black_Arrow_Down.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Keyboard_Black_Arrow_Down</Name>
+    </None>
     <None Include="Entities\UI_Button_E\Keyboard_Black_E.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Keyboard_Black_E</Name>

@@ -32,6 +32,7 @@ namespace VergissMeinNicht.Entities
 		{
             if (Manager.CollisionsVisible) this.Collision.Visible = true;
             else this.Collision.Visible = false;
+            base.DirectionFacing = LeftOrRight.Right;
 		}
 
 		private void CustomActivity()
