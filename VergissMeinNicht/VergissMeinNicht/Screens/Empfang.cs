@@ -47,6 +47,8 @@ namespace VergissMeinNicht.Screens
             base.CustomInitialize();
             VisibilityInit();
 
+            Manager.GhostSpawnTime = Double.PositiveInfinity;
+
             CameraMaximum(-305, 305);
 
             GhostInitialize();
@@ -79,12 +81,14 @@ namespace VergissMeinNicht.Screens
 
             if (PlatformerCharacterBase.isChild())
             {
-                LayerOnGhost();
+                
                 GhostMovement();
+                LayerOnGhost();
             }
 
-            string resultStringGhostLayer = "GhostLayer:" + CurrentLayerGhost.ToString();
-                FlatRedBall.Debugging.Debugger.Write(resultStringGhostLayer);
+            /*string resultStringGhostLayer = "GhostLayer:" + CurrentLayerGhost.ToString();
+            string resultStringGhostIsSwitching = "GhostSwitching: " + Manager.isSwitchingGhost.ToString();
+                FlatRedBall.Debugging.Debugger.Write(resultStringGhostLayer + "\n" + resultStringGhostIsSwitching);*/
             
         }
 
@@ -252,28 +256,86 @@ namespace VergissMeinNicht.Screens
              {
                  LayerManagementGhost(-1);
                  GhostMovementState = 4;
-             } 
+             }
 
-                       
+             // STATE 4:
+             if (GhostMovementState == 4 && PlatformerCharacterBase.getInstance().X <= 300)
+             {
+                 TheodorGhostInstance.moveleft = true;          
+             }
+
+             if (TheodorGhostInstance.X <= 50 && GhostMovementState == 4)
+             {
+                 TheodorGhostInstance.moveleft = false;
+                 tempTime = TimeManager.CurrentTime;
+                 GhostMovementState = 5;
+             }
+
+             // STATE 5:
+             if (GhostMovementState == 5 && /*OBERAFFENTITTENGEIL*/ TimeManager.SecondsSince(tempTime) >= 1)
+             {
+                 LayerManagementGhost(1);      
+             }
+             
+             if (GhostMovementState == 5 && CurrentLayerGhost == 3)
+             {
+                 GhostMovementState = 6;
+             }
+
+             // STATE 6:
+             if (GhostMovementState == 6 && PlatformerCharacterBase.getInstance().X >= 10 && PlatformerCharacterBase.getInstance().X <= 80 && CurrentLayer == 2)
+             {
+                 TheodorGhostInstance.moveleft = true;
+             }
+             if (GhostMovementState == 6 && TheodorGhostInstance.X <= -220)
+             {
+                 TheodorGhostInstance.moveleft = false;
+                 GhostMovementState = 7;
+             }
+
+             // STATE 7:
+             if (GhostMovementState == 7 && PlatformerCharacterBase.getInstance().X <= -100 && CurrentLayer == 3)
+             {
+                 LayerManagementGhost(-1); 
+             }
+             if (GhostMovementState == 7 && CurrentLayerGhost == 1)
+             {
+                 tempTime = TimeManager.CurrentTime;
+                 GhostMovementState = 8;
+             }
+             // STATE 8:
+             if (GhostMovementState == 8 && TheodorGhostInstance.X <= -100 && TimeManager.SecondsSince(tempTime) >= 1)
+             {
+                 TheodorGhostInstance.moveleft = true;
+             }
+
+             if (TheodorGhostInstance.X <= -450)
+             {
+                 TheodorGhostInstance.moveleft = false;
+             }
+
+
+
+
             
         }
 
         void LayerOnGhost()
         {
             //CurrentLayer zuweisen
-            if (TheodorGhostInstance.SpriteInstance.TextureScale == 0.5f)
+            if (TheodorGhostInstance.SpriteInstance.TextureScale == 0.5f && CurrentLayerGhost != 1)
             {
                 CurrentLayerGhost = 1;
                 Manager.isSwitchingGhost = false;
             }
 
-            else if (TheodorGhostInstance.SpriteInstance.TextureScale == SizeFirstDiff)
+            else if (TheodorGhostInstance.SpriteInstance.TextureScale == SizeFirstDiff && CurrentLayerGhost != 2)
             {
                 CurrentLayerGhost = 2;
                 Manager.isSwitchingGhost = false;
             }
 
-            else if (TheodorGhostInstance.SpriteInstance.TextureScale == SizeSecondDiff)
+            else if (TheodorGhostInstance.SpriteInstance.TextureScale == SizeSecondDiff && CurrentLayerGhost != 3)
             {
                 CurrentLayerGhost = 3;
                 Manager.isSwitchingGhost = false;

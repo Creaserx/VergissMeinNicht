@@ -10,6 +10,7 @@ namespace VergissMeinNicht.Entities
         public static bool isSwitching = false;
         public static bool isSwitchingGhost = false;
         public static double GhostSpawnTime = Double.PositiveInfinity;
+        public static double LevelStartTime;
 
     }
 }
