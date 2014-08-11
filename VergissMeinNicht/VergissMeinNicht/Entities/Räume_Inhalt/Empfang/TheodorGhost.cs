@@ -47,6 +47,17 @@ namespace VergissMeinNicht.Entities.Räume_Inhalt.Empfang
             {
                 Spawn();
             }
+
+            if (Manager.FlowerDestroyed)
+            {
+                this.SpriteInstance
+                    .Tween("Alpha")
+                    .To(0)
+                    .During(1)
+                    .Using(
+                        FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                        FlatRedBall.Glue.StateInterpolation.Easing.Out);
+            }
             
 		}
 

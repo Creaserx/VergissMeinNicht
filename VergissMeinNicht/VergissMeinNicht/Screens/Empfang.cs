@@ -99,9 +99,9 @@ namespace VergissMeinNicht.Screens
 
             TutorialButtons();
 
-            string resultStringGhostLayer = "GhostLayer:" + CurrentLayerGhost.ToString();
+            /*string resultStringGhostLayer = "GhostLayer:" + CurrentLayerGhost.ToString();
             string resultStringGhostIsSwitching = "GhostSwitching: " + Manager.isSwitchingGhost.ToString();
-                FlatRedBall.Debugging.Debugger.Write(resultStringGhostLayer + "\n" + resultStringGhostIsSwitching);
+                FlatRedBall.Debugging.Debugger.Write(resultStringGhostLayer + "\n" + resultStringGhostIsSwitching);*/
             
         }
 

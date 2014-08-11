@@ -4,3 +4,4 @@
 *.suo
 *.Generated.cs
 *.Generated.cs
+*.Generated.Event.cs
