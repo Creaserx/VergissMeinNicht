@@ -37,6 +37,7 @@ namespace VergissMeinNicht.Screens
         public AxisAlignedRectangle GhostBoden;
 
         public double tempTime = Double.PositiveInfinity;
+        double tempHoleTime = Double.PositiveInfinity;
 
         public int GhostMovementState = 1;
 
@@ -131,7 +132,7 @@ namespace VergissMeinNicht.Screens
             TheodorGhostInstance.Collision.Visible = false;
 
             Background_creepy.Visible = true;
-            if (CollisionsVisible) CollisionVisibilityEmpfang();
+            if (Manager.CollisionsVisible) CollisionVisibilityEmpfang();
 
         }
 
@@ -170,6 +171,19 @@ namespace VergissMeinNicht.Screens
             if (InputManager.Keyboard.KeyPushed(Keys.E) && DoorOpen) MoveToScreen(typeof(Flur).FullName); 
         }
 
+        //Collisions Visible machen
+        public void CollisionVisibilityEmpfang()
+        {
+            Layer1.Visible = true;
+            Layer3.Visible = true;
+
+            for (int i = HoleList.Count - 1; i > -1; i--) HoleList[i].Collision.Visible = true;   // Hole-Collision Visible machen
+
+            // Theodor Ghost 
+            TheodorGhostInstance.Collision.Visible = true;
+            GhostBodenCollision.AddToManagers(); // Add the GhostBodenCollision to the ShapeManager so it's visible
+        }
+
         public void CollisionActivity()
         {
             //Collision Ränder
@@ -184,8 +198,11 @@ namespace VergissMeinNicht.Screens
                 {
                     if (PlatformerCharacterBase.getInstance().Collision.CollideAgainst(HoleList[i].Collision) && CurrentLayer == HoleList[i].Layer)
                     {
-                        OpenHole(i);
-                        FallInHole();
+                            OpenHole(i);
+                            if (HoleList[i].SpriteInstance.CurrentFrameIndex >= 2) 
+                                FallInHole();
+                            else if (HoleList[i].SpriteInstance.CurrentChainName == "Idle")
+                                FallInHole();
                     }
                     //Collision Ghost-Holes
                     if (TheodorGhostInstance.Collision.CollideAgainst(HoleList[i].Collision) && CurrentLayerGhost == HoleList[i].Layer)
@@ -205,35 +222,22 @@ namespace VergissMeinNicht.Screens
         }
 
 
-        void FallInHole()
-        {
-            //Boden.Y = -300;
-            // SolidCollisions.AxisAlignedRectangles.Remove(Boden);   --Funktioniert theoretisch, aber ein "Boden" ist immer noch da.
-
-        }
-
-
-    
-        //Collisions Visible machen
-        public void CollisionVisibilityEmpfang()
-        {
-            Layer1.Visible = true;
-            Layer3.Visible = true;
-
-            for (int i = HoleList.Count - 1; i > -1; i--) HoleList[i].Collision.Visible = true;   // Hole-Collision Visible machen
-
-            // Theodor Ghost 
-            TheodorGhostInstance.Collision.Visible = true;
-            GhostBodenCollision.AddToManagers(); // Add the GhostBodenCollision to the ShapeManager so it's visible
-        }
-
         //----LÖCHER----
+        void FallInHole()
+        { 
+                //SolidCollisions.AxisAlignedRectangles.Remove(Boden);  
+                Boden.Y = -300;
+                tempHoleTime = Double.PositiveInfinity;      
+        }
+      
         void HoleActivity()
         {
             for (int i = HoleList.Count - 1; i > -1; i--)
-            if (HoleList[i].SpriteInstance.CurrentFrameIndex >= 4 && HoleList[i].Open)
-                HoleList[i].SpriteInstance.CurrentChainName = "Idle";
-
+                if (HoleList[i].SpriteInstance.CurrentFrameIndex >= 4 && HoleList[i].Open)
+                {
+                    //HoleList[i].Open = true;
+                    HoleList[i].SpriteInstance.CurrentChainName = "Idle";
+                }
             if (Manager.FlowerDestroyed) OpenAllHoles(); 
         }
 
@@ -253,7 +257,8 @@ namespace VergissMeinNicht.Screens
                     HoleList[i].SpriteInstance.Visible = true;
                     HoleList[i].SpriteInstance.CurrentChainName = "Break";
                     HoleList[i].Open = true;
-                }
+                    tempHoleTime = TimeManager.CurrentTime;
+                }                
         }
 
         void OpenAllHoles()

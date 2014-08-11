@@ -31,68 +31,11 @@ namespace VergissMeinNicht.Entities
 {
 	public partial class TheodorChild
 	{
-        private void AnimationActivity()
-        {
-            // check facing direction
-            if (HorizontalRatio > 0)
-            {
-                base.DirectionFacing = LeftOrRight.Right;
-            }
-            else if (HorizontalRatio < 0)
-            {
-                base.DirectionFacing = LeftOrRight.Left;
-            }
-            // don't do anything if it's 0, just leave it to what it was before
-
-            // check whether in air or on ground
-            if (IsOnGround)
-              {
-                  if (HorizontalRatio > 0 || (Manager.isSwitching && base.DirectionFacing == LeftOrRight.Right))
-                  {
-                      this.SpriteInstance.CurrentChainName = "WalkRight";
-                  }
-                  else if (HorizontalRatio < 0 || (Manager.isSwitching && base.DirectionFacing == LeftOrRight.Left))
-                  {
-                      this.SpriteInstance.CurrentChainName = "WalkLeft";
-                  }
-                  else
-                  {
-                      if (DirectionFacing == LeftOrRight.Right)
-                      {
-                          this.SpriteInstance.CurrentChainName = "IdleRight";
-                      }
-                      else
-                      {
-                          this.SpriteInstance.CurrentChainName = "IdleLeft";
-                      }
-                  }
-              }
-              else // in the air
-              {
-                  if (DirectionFacing == LeftOrRight.Left && Manager.isSwitching)
-                  {
-                      this.SpriteInstance.CurrentChainName = "WalkLeft";
-                  }
-                  else if (DirectionFacing == LeftOrRight.Right && Manager.isSwitching)
-                  {
-                      this.SpriteInstance.CurrentChainName = "WalkRight";
-                  }
-                  else if (DirectionFacing == LeftOrRight.Left)
-                  {
-                      this.SpriteInstance.CurrentChainName = "JumpLeft";
-                  }
-                  else if (DirectionFacing == LeftOrRight.Right)
-                  {
-                      this.SpriteInstance.CurrentChainName = "JumpRight";
-                  }                  
-              }
-        }
-
-       
 
 		private void CustomInitialize()
 		{
-           
+            if (Manager.CollisionsVisible) this.Collision.Visible = true;
+            else this.Collision.Visible = false;
 
 		}
 
@@ -112,6 +55,63 @@ namespace VergissMeinNicht.Entities
         {
 
 
+        }
+
+        private void AnimationActivity()
+        {
+            // check facing direction
+            if (HorizontalRatio > 0)
+            {
+                base.DirectionFacing = LeftOrRight.Right;
+            }
+            else if (HorizontalRatio < 0)
+            {
+                base.DirectionFacing = LeftOrRight.Left;
+            }
+            // don't do anything if it's 0, just leave it to what it was before
+
+            // check whether in air or on ground
+            if (IsOnGround)
+            {
+                if (HorizontalRatio > 0 || (Manager.isSwitching && base.DirectionFacing == LeftOrRight.Right))
+                {
+                    this.SpriteInstance.CurrentChainName = "WalkRight";
+                }
+                else if (HorizontalRatio < 0 || (Manager.isSwitching && base.DirectionFacing == LeftOrRight.Left))
+                {
+                    this.SpriteInstance.CurrentChainName = "WalkLeft";
+                }
+                else
+                {
+                    if (DirectionFacing == LeftOrRight.Right)
+                    {
+                        this.SpriteInstance.CurrentChainName = "IdleRight";
+                    }
+                    else
+                    {
+                        this.SpriteInstance.CurrentChainName = "IdleLeft";
+                    }
+                }
+            }
+            else // in the air
+            {
+                if (DirectionFacing == LeftOrRight.Left && Manager.isSwitching)
+                {
+                    this.SpriteInstance.CurrentChainName = "WalkLeft";
+                }
+                else if (DirectionFacing == LeftOrRight.Right && Manager.isSwitching)
+                {
+                    this.SpriteInstance.CurrentChainName = "WalkRight";
+                }
+                else if (DirectionFacing == LeftOrRight.Left)
+                {
+                    this.SpriteInstance.CurrentChainName = "JumpLeft";
+                }
+                else if (DirectionFacing == LeftOrRight.Right)
+                {
+                    this.SpriteInstance.CurrentChainName = "JumpRight";
+                }
+            }
         }
 	}
 }

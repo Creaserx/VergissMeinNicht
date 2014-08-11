@@ -341,16 +341,6 @@
           <DefaultValue xsi:type="xsd:float">0.4</DefaultValue>
           <IsShared>true</IsShared>
         </CustomVariable>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
-              <ValueAsString>bool</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>CollisionsVisible</Name>
-          <Type>bool</Type>
-        </CustomVariable>
       </CustomVariables>
       <Name>Screens\LevelBase</Name>
       <NamedObjects>
@@ -2640,7 +2630,7 @@
           <CustomProperty>
             <Type>float</Type>
             <Member>Width</Member>
-            <ValueAsFloat>32</ValueAsFloat>
+            <ValueAsFloat>16</ValueAsFloat>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile />

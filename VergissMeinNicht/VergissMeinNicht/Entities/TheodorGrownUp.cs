@@ -28,6 +28,30 @@ namespace VergissMeinNicht.Entities
 {
 	public partial class TheodorGrownUp
 	{
+		private void CustomInitialize()
+		{
+            if (Manager.CollisionsVisible) this.Collision.Visible = true;
+            else this.Collision.Visible = false;
+		}
+
+		private void CustomActivity()
+		{
+            AnimationActivity();
+
+		}
+
+		private void CustomDestroy()
+		{
+
+
+		}
+
+        private static void CustomLoadStaticContent(string contentManagerName)
+        {
+
+
+        }
+
         private void AnimationActivity()
         {
             // check facing direction
@@ -85,27 +109,5 @@ namespace VergissMeinNicht.Entities
             }
         }
 
-		private void CustomInitialize()
-		{
-            
-		}
-
-		private void CustomActivity()
-		{
-            AnimationActivity();
-
-		}
-
-		private void CustomDestroy()
-		{
-
-
-		}
-
-        private static void CustomLoadStaticContent(string contentManagerName)
-        {
-
-
-        }
 	}
 }

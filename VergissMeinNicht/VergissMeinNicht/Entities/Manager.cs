@@ -12,5 +12,6 @@ namespace VergissMeinNicht.Entities
         public static double GhostSpawnTime = Double.PositiveInfinity;
         public static double LevelStartTime;
         public static bool FlowerDestroyed;
+        public static bool CollisionsVisible;
     }
 }
