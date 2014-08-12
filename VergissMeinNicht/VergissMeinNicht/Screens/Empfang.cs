@@ -100,9 +100,10 @@ namespace VergissMeinNicht.Screens
 
             TutorialButtons();
 
-            //string resultStringGhostLayer = "GhostLayer:" + CurrentLayerGhost.ToString();
-            //string resultStringGhostIsSwitching = "GhostSwitching: " + Manager.isSwitchingGhost.ToString();          
-            //    FlatRedBall.Debugging.Debugger.Write(resultStringGhostLayer + "\n" + resultStringGhostIsSwitching);
+            string resultStringGhostLayer = "GhostLayer:" + CurrentLayerGhost.ToString();
+            string resultStringGhostIsSwitching = "GhostSwitching: " + Manager.isSwitchingGhost.ToString();
+            string resultStringLeftJumpZone = "LeftJumpZone:" + LeftJumpZone.ToString();
+            FlatRedBall.Debugging.Debugger.Write(resultStringGhostLayer + "\n" + resultStringGhostIsSwitching + "\n" + resultStringLeftJumpZone);
             
         }
 
@@ -283,10 +284,13 @@ namespace VergissMeinNicht.Screens
                         UI_Button_SpaceInstance.Y = PlatformerCharacterBase.getInstance().Y + 140;
                         UI_Button_SpaceInstance.SpriteInstanceVisible = true;
                     }
-                }
-                if (PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName == "JumpRight" ||
-                    PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName == "JumpRLeft") 
+                    if (PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName == "JumpRight" ||
+                    PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName == "JumpRLeft")
                         LeftJumpZone = true;
+                }
+                //if (PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName == "JumpRight" ||
+                //    PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName == "JumpRLeft") 
+                //        LeftJumpZone = true;
         }
 
         void MakeUiInvisible()

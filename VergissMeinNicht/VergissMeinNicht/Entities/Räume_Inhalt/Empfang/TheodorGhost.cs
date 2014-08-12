@@ -30,7 +30,7 @@ namespace VergissMeinNicht.Entities.Räume_Inhalt.Empfang
 	public partial class TheodorGhost
 	{
         bool hasSpawned = false;
-
+        bool OneTimeAction = false;
        
 
 		private void CustomInitialize()
@@ -48,7 +48,7 @@ namespace VergissMeinNicht.Entities.Räume_Inhalt.Empfang
                 Spawn();
             }
 
-            if (Manager.FlowerDestroyed)
+            if (Manager.FlowerDestroyed && !OneTimeAction)
             {
                 this.SpriteInstance
                     .Tween("Alpha")
@@ -57,8 +57,9 @@ namespace VergissMeinNicht.Entities.Räume_Inhalt.Empfang
                     .Using(
                         FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
                         FlatRedBall.Glue.StateInterpolation.Easing.Out);
-            }
-            
+
+                OneTimeAction = true;
+            }            
 		}
 
 		private void CustomDestroy()
