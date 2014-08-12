@@ -287,9 +287,10 @@ namespace VergissMeinNicht.Screens
                 string resultStringSwitch = "isSwitching:" + Manager.isSwitching.ToString();
                 string resultStringCameraX = "CameraX:" + SpriteManager.Camera.X.ToString();
                 string resultStringLayerCount = "LayerCount:" + SpriteManager.LayerCount.ToString();
+                string resultStringChainName = "Animation:" + PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName;
                 FlatRedBall.Debugging.Debugger.Write(resultStringX + "\n" + resultStringY + "\n" + resultStringCollisionH + "\n" + resultStringCollisionW +
                     "\n" + resultStringLayer + "\n" + resultStringL3 + "\n" + resultStringLa + "\n" + resultStringSwitch + "\n" + resultStringCameraX +
-                    "\n" + resultStringLayerCount);
+                    "\n" + resultStringLayerCount + "\n" + resultStringChainName);
             }
         }        
 

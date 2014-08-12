@@ -43,6 +43,7 @@ namespace VergissMeinNicht.Screens
 
         public bool LeftStartZone = false;
         public bool LeftLayerSwitchZone = false;
+        public bool LeftJumpZone = false;
 
         //------INITIALIZE----------------------------------------------------------------
 		public override void CustomInitialize()
@@ -99,9 +100,9 @@ namespace VergissMeinNicht.Screens
 
             TutorialButtons();
 
-            /*string resultStringGhostLayer = "GhostLayer:" + CurrentLayerGhost.ToString();
-            string resultStringGhostIsSwitching = "GhostSwitching: " + Manager.isSwitchingGhost.ToString();
-                FlatRedBall.Debugging.Debugger.Write(resultStringGhostLayer + "\n" + resultStringGhostIsSwitching);*/
+            //string resultStringGhostLayer = "GhostLayer:" + CurrentLayerGhost.ToString();
+            //string resultStringGhostIsSwitching = "GhostSwitching: " + Manager.isSwitchingGhost.ToString();          
+            //    FlatRedBall.Debugging.Debugger.Write(resultStringGhostLayer + "\n" + resultStringGhostIsSwitching);
             
         }
 
@@ -274,12 +275,18 @@ namespace VergissMeinNicht.Screens
                 //--Show Space after GhostSpawn
                 if (PlatformerCharacterBase.isChild() && Manager.FlowerDestroyed)
                 {
-                    //Space Button
-                    UI_Button_SpaceInstance.X = PlatformerCharacterBase.getInstance().X;
-                    UI_Button_SpaceInstance.Y = PlatformerCharacterBase.getInstance().Y + 140;
-                    UI_Button_SpaceInstance.SpriteInstanceVisible = true;
                     Manager.EnableKey_Space = true;
-                }    
+                    if (!LeftJumpZone)
+                    {
+                        //Space Button
+                        UI_Button_SpaceInstance.X = PlatformerCharacterBase.getInstance().X;
+                        UI_Button_SpaceInstance.Y = PlatformerCharacterBase.getInstance().Y + 140;
+                        UI_Button_SpaceInstance.SpriteInstanceVisible = true;
+                    }
+                }
+                if (PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName == "JumpRight" ||
+                    PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName == "JumpRLeft") 
+                        LeftJumpZone = true;
         }
 
         void MakeUiInvisible()
@@ -355,7 +362,7 @@ namespace VergissMeinNicht.Screens
         void GhostMovement()  // Movement-Script Ghost
         {
             // STATE 1:
-            if (TimeManager.SecondsSince(Manager.GhostSpawnTime) >= 5 && GhostMovementState == 1)
+            if (TimeManager.SecondsSince(Manager.GhostSpawnTime) >= 4 && GhostMovementState == 1)
             {
                 LayerManagementGhost(1);
                 GhostMovementState = 2;
@@ -363,7 +370,7 @@ namespace VergissMeinNicht.Screens
             }
 
             // STATE 2:
-            if (TimeManager.SecondsSince(Manager.GhostSpawnTime) >= 10 && GhostMovementState == 2)
+            if (TimeManager.SecondsSince(Manager.GhostSpawnTime) >= 8 && GhostMovementState == 2)
             {
                 
                 if (TheodorGhostInstance.X >= 175)
@@ -377,7 +384,7 @@ namespace VergissMeinNicht.Screens
             }
 
              // STATE 3:
-             if (GhostMovementState == 3 && TimeManager.SecondsSince(tempTime) >= 5)
+             if (GhostMovementState == 3 && TimeManager.SecondsSince(tempTime) >= 3)
              {
                  LayerManagementGhost(-1);
                  GhostMovementState = 4;
