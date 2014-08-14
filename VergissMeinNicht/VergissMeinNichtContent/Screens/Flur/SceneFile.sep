@@ -12,11 +12,11 @@
     <AspectRatio>1.33333337</AspectRatio>
   </BoundsCamera>
   <Camera>
-    <X>0</X>
-    <Y>0</Y>
+    <X>621.1733</X>
+    <Y>200.649734</Y>
     <Z>-40</Z>
     <Orthogonal>true</Orthogonal>
-    <OrthogonalHeight>2251.15283</OrthogonalHeight>
+    <OrthogonalHeight>639.3122</OrthogonalHeight>
     <OrthogonalWidth>-1</OrthogonalWidth>
     <NearClipPlane>1</NearClipPlane>
     <FarClipPlane>1000</FarClipPlane>

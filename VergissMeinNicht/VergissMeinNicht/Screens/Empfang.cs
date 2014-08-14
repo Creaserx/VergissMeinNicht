@@ -51,7 +51,6 @@ namespace VergissMeinNicht.Screens
             base.CustomInitialize();
             VisibilityInit();
         
-
             Manager.GhostSpawnTime = Double.PositiveInfinity;
 
             CameraMaximum(-305, 305);

@@ -22,6 +22,7 @@ using FlatRedBall.Localization;
 using Keys = Microsoft.Xna.Framework.Input.Keys;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
 using Texture2D = Microsoft.Xna.Framework.Graphics.Texture2D;
+using VergissMeinNicht.Entities;
 #endif
 #endregion
 
@@ -41,7 +42,7 @@ namespace VergissMeinNicht.Screens
             //Objektpositionen bestimmen
             BlumeInstance.PositionBlume(-600, 80);
             RauchInstance.PositionRauch(960, 180);
-            TeddyInstance.PositionTeddy(400, 200);
+            TeddyInstance.PositionTeddy(-400, 100);
 
             //StartCharacterState("Child", 0);
 		}
@@ -50,6 +51,8 @@ namespace VergissMeinNicht.Screens
         public override void CustomActivity(bool firstTimeCalled)
 		{
             base.CustomActivity(firstTimeCalled);
+
+            CharacterGrenzen();
 
 		}
 
@@ -67,6 +70,14 @@ namespace VergissMeinNicht.Screens
 
         //----------------------------------------------------------------------------------
         //--------FUNKTIONEN----------------------------------------------------------------
+        void CharacterGrenzen()
+        {
+            if (PlatformerCharacterBase.getInstance().X < -700) Manager.EnableKey_Left = false;
+            else Manager.EnableKey_Left = true;
+        
+        }
+
+
 
 	}
 }

@@ -25,5 +25,7 @@ namespace VergissMeinNicht.Entities
         public static bool EnableKey_Down = true;
         public static bool EnableKey_Up = true;
         public static bool EnableKey_E = true;
+        public static bool EnableKey_Left = true;
+        public static bool EnableKey_Right = true;
     }
 }

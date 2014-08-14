@@ -158,6 +158,8 @@ namespace VergissMeinNicht.Screens
             if (!Manager.EnableKey_Down) InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Down);
             if (!Manager.EnableKey_Space) InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Space);
             if (!Manager.EnableKey_E) InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.E);
+            if (!Manager.EnableKey_Left) InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Left);
+            if (!Manager.EnableKey_Right) InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Right);
         }
 
         public void StartCharacterState(String state, int x)
