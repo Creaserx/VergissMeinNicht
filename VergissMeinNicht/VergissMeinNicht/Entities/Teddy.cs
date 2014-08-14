@@ -96,7 +96,7 @@ namespace VergissMeinNicht.Entities
         }
         void TeddySwitch()
         {
-            //Makes Text Visible / Invisible in front of a Teddy
+            //Makes Button Visible / Invisible in front of a Teddy
             if (PlatformerCharacterBase.getInstance().X < (Sprite.X + 75) && PlatformerCharacterBase.getInstance().X > (Sprite.X - 75) && FlashInstance.Alpha == 0)
             {
                 //--Transform Character
@@ -110,7 +110,7 @@ namespace VergissMeinNicht.Entities
                  
                     tempLayer = LevelBase.CurrentLayer;
 
-                    if (PlatformerCharacterBase.isChild())                            
+                    if (PlatformerCharacterBase.isChild() && Manager.LoadLevel != 0)                            
                     {
                         if (FlashInstance.Alpha == 0)
                         {
@@ -141,7 +141,7 @@ namespace VergissMeinNicht.Entities
                         this.Sprite.Texture = creepyteddy;  
                         
                     }
-                    else
+                    else if (!PlatformerCharacterBase.isChild())
                     {
                         if (FlashInstance.Alpha == 0)
                         {
@@ -168,17 +168,11 @@ namespace VergissMeinNicht.Entities
                         if (LastDirectionRight) PlatformerCharacterBase.getInstance().DirectionFacing = PlatformerCharacterBase.LeftOrRight.Right; //Blickrichtung auf Rechts setzen, falls nötig
 
                         this.Sprite.Texture = teddy;
-                    }
-                                                          
-                                           
+                    }                          
                 }
 
-                if (InputManager.Keyboard.KeyPushed(Keys.S))
-                {
-
-                }
-
-                UI_Button_EInstance.SpriteInstanceVisible = true;   // E-Button einblenden                 
+                if (PlatformerCharacterBase.isChild() && Manager.LoadLevel == 0) UI_Button_EInstance.SpriteInstanceVisible = false;
+                else UI_Button_EInstance.SpriteInstanceVisible = true;   // E-Button einblenden                   
             }
             else
             {
@@ -186,7 +180,6 @@ namespace VergissMeinNicht.Entities
                 SaveText.Visible = false;
                 InteractText.Visible = false;
             }
-
         }
 
 		private void CustomDestroy()
