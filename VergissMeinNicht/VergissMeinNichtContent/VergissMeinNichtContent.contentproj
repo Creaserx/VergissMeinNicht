@@ -90,6 +90,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>SceneFile</Name>
     </None>
+    <None Include="Entities\Flash\Black_square.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Black_square</Name>
+    </None>
     <None Include="Entities\Flash\White_square.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>White_square</Name>
@@ -365,6 +369,11 @@
       <Importer>Mp3Importer</Importer>
       <Processor>SongProcessor</Processor>
       <Name>Erwachsen</Name>
+    </Compile>
+    <Compile Include="Screens\LevelBase\TuerQuitschen.wav">
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Name>TuerQuitschen</Name>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

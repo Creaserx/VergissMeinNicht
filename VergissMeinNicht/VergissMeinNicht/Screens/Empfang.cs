@@ -50,6 +50,7 @@ namespace VergissMeinNicht.Screens
 		{
             base.CustomInitialize();
             VisibilityInit();
+        
 
             Manager.GhostSpawnTime = Double.PositiveInfinity;
 
@@ -105,6 +106,9 @@ namespace VergissMeinNicht.Screens
             string resultStringLeftJumpZone = "LeftJumpZone:" + LeftJumpZone.ToString();
             string resultStringRandomNumber = "randomNumber: " + Manager.randomz;
             FlatRedBall.Debugging.Debugger.Write(resultStringGhostLayer + "\n" + resultStringGhostIsSwitching + "\n" + resultStringLeftJumpZone + "\n" + resultStringRandomNumber);
+
+            if (FlashInstance.SpriteInstanceBlack.Alpha == 1)
+                MoveToScreen(typeof(LoadingScreen).FullName);  
             
         }
 
@@ -184,8 +188,17 @@ namespace VergissMeinNicht.Screens
         {
             if (InputManager.Keyboard.KeyPushed(Keys.E) && DoorOpen)
             {
-                MoveToScreen(typeof(LoadingScreen).FullName);
-                Manager.LoadLevel = 1;
+                FlashInstance.SpriteInstanceBlack.Visible = true;
+                FlashInstance.SpriteInstanceBlack
+                    .Tween("Alpha")
+                    .To(1)
+                    .During(1)
+                    .Using(
+                        FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                        FlatRedBall.Glue.StateInterpolation.Easing.Out);
+                TuerQuitschen.Play();
+
+                Manager.LoadLevel = 1;              
             }
         }
 
