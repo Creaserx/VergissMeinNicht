@@ -222,6 +222,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Theodorchild_IdleAnimation_sheet</Name>
     </None>
+    <None Include="Entities\Theodor\TheodorChild_LaufAnimation_Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>TheodorChild_LaufAnimation_Sheet</Name>
+    </None>
     <None Include="Entities\Theodor\TheodorChild_WalkAnimationChain.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>TheodorChild_WalkAnimationChain</Name>

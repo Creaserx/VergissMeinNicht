@@ -160,7 +160,7 @@ namespace VergissMeinNicht.Entities
 
                         TheodorChild Temp = new TheodorChild();
                         Temp.X = PlatformerCharacterBase.getInstance().X;
-                        Temp.Y = PlatformerCharacterBase.getInstance().Y;
+                        Temp.Y = PlatformerCharacterBase.getInstance().Y - 140;
                         PlatformerCharacterBase.updateinstance(Temp);
                         PlatformerCharacterBase.UpdateCharacterValues();
                         UpdateCharacterScale();
