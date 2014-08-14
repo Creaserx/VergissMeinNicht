@@ -29,6 +29,7 @@ namespace VergissMeinNicht.Screens
 {
 	public partial class MainMenu
 	{
+  
 
 		void CustomInitialize()
 		{
@@ -38,12 +39,48 @@ namespace VergissMeinNicht.Screens
 		}
 
 		void CustomActivity(bool firstTimeCalled)
-		{
+		{   
             // Z  -- Zoolevel
             if (InputManager.Keyboard.KeyPushed(Keys.Z))
             {
                 
                 MoveToScreen(typeof(ZooLevel).FullName);
+            }
+
+            
+            if (InputManager.Mouse.X >= (NewGameButton.X+500) && InputManager.Mouse.X < (NewGameButton.X + 900) && 
+                            InputManager.Mouse.Y > (NewGameButton.Y + 275) && InputManager.Mouse.Y < (NewGameButton.Y + 360) )
+            {
+                SpriteInstance.Texture = HauptmenüHighlightNewGame;
+                SpriteInstance.ScaleX = FlatRedBall.SpriteManager.Camera.RelativeXEdgeAt(SpriteInstance.Z);
+                SpriteInstance.ScaleY = FlatRedBall.SpriteManager.Camera.RelativeYEdgeAt(SpriteInstance.Z);      
+            }
+            else if (InputManager.Mouse.X >= (NewGameButton.X + 500) && InputManager.Mouse.X < (NewGameButton.X + 900) &&
+                            InputManager.Mouse.Y > (NewGameButton.Y + 350) && InputManager.Mouse.Y < (NewGameButton.Y + 420))
+            {
+                SpriteInstance.Texture = HauptmenüHighlightLoadGame;
+                SpriteInstance.ScaleX = FlatRedBall.SpriteManager.Camera.RelativeXEdgeAt(SpriteInstance.Z);
+                SpriteInstance.ScaleY = FlatRedBall.SpriteManager.Camera.RelativeYEdgeAt(SpriteInstance.Z);
+            }
+            else if (InputManager.Mouse.X >= (NewGameButton.X + 500) && InputManager.Mouse.X < (NewGameButton.X + 900) &&
+                            InputManager.Mouse.Y > (NewGameButton.Y + 400) && InputManager.Mouse.Y < (NewGameButton.Y + 480))
+            {
+                SpriteInstance.Texture = HauptmenüHighlightOptions;
+                SpriteInstance.ScaleX = FlatRedBall.SpriteManager.Camera.RelativeXEdgeAt(SpriteInstance.Z);
+                SpriteInstance.ScaleY = FlatRedBall.SpriteManager.Camera.RelativeYEdgeAt(SpriteInstance.Z);
+            }
+            else if (InputManager.Mouse.X >= (NewGameButton.X + 500) && InputManager.Mouse.X < (NewGameButton.X + 900) &&
+                            InputManager.Mouse.Y > (NewGameButton.Y + 500) && InputManager.Mouse.Y < (NewGameButton.Y + 570))
+            {
+                SpriteInstance.Texture = HauptmenüHighlightExit;
+                SpriteInstance.ScaleX = FlatRedBall.SpriteManager.Camera.RelativeXEdgeAt(SpriteInstance.Z);
+                SpriteInstance.ScaleY = FlatRedBall.SpriteManager.Camera.RelativeYEdgeAt(SpriteInstance.Z);
+            }
+            else
+            {
+                SpriteInstance.Texture = HauptmenüFinal;
+                SpriteInstance.ScaleX = FlatRedBall.SpriteManager.Camera.RelativeXEdgeAt(SpriteInstance.Z);
+                SpriteInstance.ScaleY = FlatRedBall.SpriteManager.Camera.RelativeYEdgeAt(SpriteInstance.Z);      
             }
 		}
 

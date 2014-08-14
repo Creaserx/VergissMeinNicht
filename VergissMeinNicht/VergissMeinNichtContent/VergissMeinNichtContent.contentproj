@@ -330,6 +330,22 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>SceneFile</Name>
     </None>
+    <None Include="Screens\MainMenu\HauptmenüHighlightExit.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>HauptmenüHighlightExit</Name>
+    </None>
+    <None Include="Screens\MainMenu\HauptmenüHighlightLoadGame.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>HauptmenüHighlightLoadGame</Name>
+    </None>
+    <None Include="Screens\MainMenu\HauptmenüHighlightNewGame.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>HauptmenüHighlightNewGame</Name>
+    </None>
+    <None Include="Screens\MainMenu\HauptmenüHighlightOptions.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>HauptmenüHighlightOptions</Name>
+    </None>
     <None Include="Screens\ZooLevel\10382537_889952597687392_1592239203505348189_o.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>10382537_889952597687392_1592239203505348189_o</Name>

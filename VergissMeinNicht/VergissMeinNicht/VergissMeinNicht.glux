@@ -674,11 +674,6 @@
               <Member>OptionsButtonVisible</Member>
               <ValueAsBool>true</ValueAsBool>
             </InstructionSave>
-            <InstructionSave>
-              <Type>Boolean</Type>
-              <Member>ZooLevelButtonVisible</Member>
-              <ValueAsBool>true</ValueAsBool>
-            </InstructionSave>
           </InstructionSaves>
           <Name>MainButtonsVisible</Name>
         </StateSave>
@@ -707,11 +702,6 @@
             <InstructionSave>
               <Type>Boolean</Type>
               <Member>OptionsButtonVisible</Member>
-              <ValueAsBool>false</ValueAsBool>
-            </InstructionSave>
-            <InstructionSave>
-              <Type>Boolean</Type>
-              <Member>ZooLevelButtonVisible</Member>
               <ValueAsBool>false</ValueAsBool>
             </InstructionSave>
           </InstructionSaves>
@@ -758,13 +748,6 @@
           <EventName>OkCancelInstanceCancelClick</EventName>
           <SourceObject>OkCancelInstance</SourceObject>
           <SourceObjectEvent>CancelClick</SourceObjectEvent>
-          <BeforeOrAfter>Before</BeforeOrAfter>
-          <DelegateType />
-        </EventResponseSave>
-        <EventResponseSave>
-          <EventName>ZooLevelButtonClick</EventName>
-          <SourceObject>ZooLevelButton</SourceObject>
-          <SourceObjectEvent>Click</SourceObjectEvent>
           <BeforeOrAfter>Before</BeforeOrAfter>
           <DelegateType />
         </EventResponseSave>
@@ -846,19 +829,6 @@
           <Type>VariableState</Type>
           <DefaultValue xsi:type="xsd:string">MainButtonsVisible</DefaultValue>
         </CustomVariable>
-        <CustomVariable>
-          <Properties>
-            <PropertySave>
-              <Name>Type</Name>
-              <ValueAsString>bool</ValueAsString>
-            </PropertySave>
-          </Properties>
-          <Name>ZooLevelButtonVisible</Name>
-          <Type>bool</Type>
-          <DefaultValue xsi:type="xsd:boolean">false</DefaultValue>
-          <SourceObject>ZooLevelButton</SourceObject>
-          <SourceObjectProperty>Visible</SourceObjectProperty>
-        </CustomVariable>
       </CustomVariables>
       <Name>Screens\MainMenu</Name>
       <ReferencedFiles>
@@ -867,46 +837,28 @@
           <IsSharedStatic>true</IsSharedStatic>
           <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
         </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>Screens/MainMenu/HauptmenüHighlightOptions.png</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
+        </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>Screens/MainMenu/HauptmenüHighlightExit.png</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
+        </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>Screens/MainMenu/HauptmenüHighlightLoadGame.png</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
+        </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>Screens/MainMenu/HauptmenüHighlightNewGame.png</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
+        </ReferencedFileSave>
       </ReferencedFiles>
       <NamedObjects>
-        <NamedObjectSave>
-          <CustomProperty>
-            <Type>string</Type>
-            <Member>SpriteFrameInstanceCurrentChainName</Member>
-            <ValueAsString />
-          </CustomProperty>
-          <CustomProperty>
-            <Type>string</Type>
-            <Member>DisplayText</Member>
-            <ValueAsString>Enter ZooLevel</ValueAsString>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>ScaleX</Member>
-            <ValueAsFloat>100</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>X</Member>
-            <ValueAsFloat>0</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>Y</Member>
-            <ValueAsFloat>280</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>bool</Type>
-            <Member>Visible</Member>
-            <ValueAsBool>false</ValueAsBool>
-          </CustomProperty>
-          <SourceType>Entity</SourceType>
-          <SourceClassType>Entities\Button</SourceClassType>
-          <InstanceName>ZooLevelButton</InstanceName>
-          <AttachToContainer>true</AttachToContainer>
-          <IndependentOfCamera>true</IndependentOfCamera>
-          <LayerOn>Layer2D</LayerOn>
-        </NamedObjectSave>
         <NamedObjectSave>
           <CustomProperty>
             <Type>Texture2D</Type>
@@ -940,12 +892,12 @@
           <CustomProperty>
             <Type>float</Type>
             <Member>ScaleX</Member>
-            <ValueAsFloat>120</ValueAsFloat>
+            <ValueAsFloat>150</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
             <Member>X</Member>
-            <ValueAsFloat>200</ValueAsFloat>
+            <ValueAsFloat>260</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
@@ -960,7 +912,7 @@
           <CustomProperty>
             <Type>float</Type>
             <Member>RotationZ</Member>
-            <ValueAsFloat>0.25</ValueAsFloat>
+            <ValueAsFloat>0.2</ValueAsFloat>
           </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\Button</SourceClassType>
@@ -978,12 +930,12 @@
           <CustomProperty>
             <Type>float</Type>
             <Member>ScaleX</Member>
-            <ValueAsFloat>120</ValueAsFloat>
+            <ValueAsFloat>150</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
             <Member>X</Member>
-            <ValueAsFloat>200</ValueAsFloat>
+            <ValueAsFloat>270</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
@@ -998,7 +950,7 @@
           <CustomProperty>
             <Type>float</Type>
             <Member>RotationZ</Member>
-            <ValueAsFloat>0.2</ValueAsFloat>
+            <ValueAsFloat>0.15</ValueAsFloat>
           </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\Button</SourceClassType>
@@ -1021,7 +973,7 @@
           <CustomProperty>
             <Type>float</Type>
             <Member>X</Member>
-            <ValueAsFloat>200</ValueAsFloat>
+            <ValueAsFloat>235</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
@@ -1059,7 +1011,7 @@
           <CustomProperty>
             <Type>float</Type>
             <Member>X</Member>
-            <ValueAsFloat>200</ValueAsFloat>
+            <ValueAsFloat>235</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
@@ -3783,14 +3735,14 @@
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
-            <Type>float</Type>
-            <Member>TextureScale</Member>
-            <ValueAsFloat>0.5</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
             <Type>Texture2D</Type>
             <Member>Texture</Member>
             <ValueAsString>Keyboard_Black_Arrow_Left</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>TextureScale</Member>
+            <ValueAsFloat>0.5</ValueAsFloat>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile />
@@ -3866,14 +3818,14 @@
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
-            <Type>float</Type>
-            <Member>TextureScale</Member>
-            <ValueAsFloat>0.5</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
             <Type>Texture2D</Type>
             <Member>Texture</Member>
             <ValueAsString>Keyboard_Black_Arrow_Right</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>TextureScale</Member>
+            <ValueAsFloat>0.5</ValueAsFloat>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile />
@@ -3949,14 +3901,14 @@
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
-            <Type>float</Type>
-            <Member>TextureScale</Member>
-            <ValueAsFloat>0.5</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
             <Type>Texture2D</Type>
             <Member>Texture</Member>
             <ValueAsString>Keyboard_Black_Space</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>TextureScale</Member>
+            <ValueAsFloat>0.5</ValueAsFloat>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile />
@@ -4032,14 +3984,14 @@
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
-            <Type>float</Type>
-            <Member>TextureScale</Member>
-            <ValueAsFloat>0.5</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
             <Type>Texture2D</Type>
             <Member>Texture</Member>
             <ValueAsString>Keyboard_Black_Arrow_Up</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>TextureScale</Member>
+            <ValueAsFloat>0.5</ValueAsFloat>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile />
