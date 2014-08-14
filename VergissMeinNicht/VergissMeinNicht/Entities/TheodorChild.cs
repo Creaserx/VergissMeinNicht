@@ -128,7 +128,7 @@ namespace VergissMeinNicht.Entities
             {
                 this.SpriteInstance.CurrentChainName = "IdleRight";
                 tempTime = TimeManager.CurrentTime;
-                randomNumber = FlatRedBallServices.Random.Next(3, 6);
+                randomNumber = FlatRedBallServices.Random.Next(2, 5);
                 Manager.randomz = randomNumber;
             }
 
