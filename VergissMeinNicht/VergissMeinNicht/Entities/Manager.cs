@@ -16,6 +16,8 @@ namespace VergissMeinNicht.Entities
 
         public static double randomz;
 
+        public static int LoadLevel;
+
         public static bool CharacterFallingInHole = false;
 
         //Keys Disablen

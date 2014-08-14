@@ -182,7 +182,11 @@ namespace VergissMeinNicht.Screens
 
         void NextRoom()
         {
-            if (InputManager.Keyboard.KeyPushed(Keys.E) && DoorOpen) MoveToScreen(typeof(Flur).FullName); 
+            if (InputManager.Keyboard.KeyPushed(Keys.E) && DoorOpen)
+            {
+                MoveToScreen(typeof(LoadingScreen).FullName);
+                Manager.LoadLevel = 1;
+            }
         }
 
         //Collisions Visible machen

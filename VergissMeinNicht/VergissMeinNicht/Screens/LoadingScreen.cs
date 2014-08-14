@@ -17,6 +17,7 @@ using FlatRedBall.Math.Splines;
 using Cursor = FlatRedBall.Gui.Cursor;
 using GuiManager = FlatRedBall.Gui.GuiManager;
 using FlatRedBall.Localization;
+using VergissMeinNicht.Entities;
 
 #if FRB_XNA || SILVERLIGHT
 using Keys = Microsoft.Xna.Framework.Input.Keys;
@@ -43,7 +44,14 @@ namespace VergissMeinNicht.Screens
 		{
             if (this.AsyncLoadingState == FlatRedBall.Screens.AsyncLoadingState.NotStarted)
             {
-                StartAsyncLoad(typeof(Empfang).FullName);
+                switch(Manager.LoadLevel)
+                {
+                    case 0:      StartAsyncLoad(typeof(Empfang).FullName);
+                        break;
+                    case 1:      StartAsyncLoad(typeof(Flur).FullName);
+                        break;
+                        
+                }      
             }
             else if (this.AsyncLoadingState == FlatRedBall.Screens.AsyncLoadingState.Done)
             {
