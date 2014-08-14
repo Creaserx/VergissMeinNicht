@@ -31,6 +31,8 @@ namespace VergissMeinNicht.Entities
 {
 	public partial class TheodorChild
 	{
+        double tempTime = Double.PositiveInfinity;
+        double randomNumber;
 
 		private void CustomInitialize()
 		{
@@ -41,7 +43,12 @@ namespace VergissMeinNicht.Entities
 
 		private void CustomActivity()
 		{            
-            AnimationActivity();            
+            AnimationActivity();
+            if (this.SpriteInstance.CurrentChainName != "IdleRightPocketIn" && this.SpriteInstance.CurrentChainName != "IdleRightPocket" && this.SpriteInstance.CurrentChainName != "IdleRight"
+                && this.SpriteInstance.CurrentChainName != "IdleLeftPocketIn" && this.SpriteInstance.CurrentChainName != "IdleLeftPocket" && this.SpriteInstance.CurrentChainName != "IdleLeft")
+            {
+                tempTime = Double.PositiveInfinity;
+            }
 		}            
         
 
@@ -85,11 +92,12 @@ namespace VergissMeinNicht.Entities
                 {
                     if (DirectionFacing == LeftOrRight.Right)
                     {
-                        this.SpriteInstance.CurrentChainName = "IdleRight";
+                        IdleAnimationRight();               
+                        
                     }
                     else
                     {
-                        this.SpriteInstance.CurrentChainName = "IdleLeft";
+                        IdleAnimationLeft();
                     }
                 }
             }
@@ -111,6 +119,46 @@ namespace VergissMeinNicht.Entities
                 {
                     this.SpriteInstance.CurrentChainName = "JumpRight";
                 }
+            }
+        }
+
+        private void IdleAnimationRight()
+        {            
+            if (Double.IsPositiveInfinity(tempTime))
+            {
+                this.SpriteInstance.CurrentChainName = "IdleRight";
+                tempTime = TimeManager.CurrentTime;
+                randomNumber = FlatRedBallServices.Random.Next(3, 6);
+                Manager.randomz = randomNumber;
+            }
+
+            if (this.SpriteInstance.CurrentChainName == "IdleRightPocketIn" && this.SpriteInstance.CurrentFrameIndex == 6)
+            {
+                this.SpriteInstance.CurrentChainName = "IdleRightPocket";
+            }
+            else if (TimeManager.SecondsSince(tempTime) >= randomNumber && this.SpriteInstance.CurrentChainName != "IdleRightPocket")
+            {
+                this.SpriteInstance.CurrentChainName = "IdleRightPocketIn";
+            }
+        }
+
+        private void IdleAnimationLeft()
+        {
+            if (Double.IsPositiveInfinity(tempTime))
+            {
+                this.SpriteInstance.CurrentChainName = "IdleLeft";
+                tempTime = TimeManager.CurrentTime;
+                randomNumber = FlatRedBallServices.Random.Next(3, 6);
+                Manager.randomz = randomNumber;
+            }
+
+            if (this.SpriteInstance.CurrentChainName == "IdleLeftPocketIn" && this.SpriteInstance.CurrentFrameIndex == 6)
+            {
+                this.SpriteInstance.CurrentChainName = "IdleLeftPocket";
+            }
+            else if (TimeManager.SecondsSince(tempTime) >= randomNumber && this.SpriteInstance.CurrentChainName != "IdleLeftPocket")
+            {
+                this.SpriteInstance.CurrentChainName = "IdleLeftPocketIn";
             }
         }
 	}

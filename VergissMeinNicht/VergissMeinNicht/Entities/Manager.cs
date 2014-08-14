@@ -14,6 +14,8 @@ namespace VergissMeinNicht.Entities
         public static bool FlowerDestroyed;
         public static bool CollisionsVisible;
 
+        public static double randomz;
+
         public static bool CharacterFallingInHole = false;
 
         //Keys Disablen

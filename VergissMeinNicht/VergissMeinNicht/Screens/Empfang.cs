@@ -103,7 +103,8 @@ namespace VergissMeinNicht.Screens
             string resultStringGhostLayer = "GhostLayer:" + CurrentLayerGhost.ToString();
             string resultStringGhostIsSwitching = "GhostSwitching: " + Manager.isSwitchingGhost.ToString();
             string resultStringLeftJumpZone = "LeftJumpZone:" + LeftJumpZone.ToString();
-            FlatRedBall.Debugging.Debugger.Write(resultStringGhostLayer + "\n" + resultStringGhostIsSwitching + "\n" + resultStringLeftJumpZone);
+            string resultStringRandomNumber = "randomNumber: " + Manager.randomz;
+            FlatRedBall.Debugging.Debugger.Write(resultStringGhostLayer + "\n" + resultStringGhostIsSwitching + "\n" + resultStringLeftJumpZone + "\n" + resultStringRandomNumber);
             
         }
 
