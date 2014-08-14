@@ -188,16 +188,8 @@ namespace VergissMeinNicht.Screens
         {
             if (InputManager.Keyboard.KeyPushed(Keys.E) && DoorOpen)
             {
-                FlashInstance.SpriteInstanceBlack.Visible = true;
-                FlashInstance.SpriteInstanceBlack
-                    .Tween("Alpha")
-                    .To(1)
-                    .During(1)
-                    .Using(
-                        FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
-                        FlatRedBall.Glue.StateInterpolation.Easing.Out);
+                FlashInstance.BlackFadeIn();
                 TuerQuitschen.Play();
-
                 Manager.LoadLevel = 1;              
             }
         }

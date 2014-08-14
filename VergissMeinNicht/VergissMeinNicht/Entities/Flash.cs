@@ -9,6 +9,7 @@ using FlatRedBall.Instructions;
 using FlatRedBall.AI.Pathfinding;
 using FlatRedBall.Graphics.Animation;
 using FlatRedBall.Graphics.Particle;
+using StateInterpolationPlugin;
 
 using FlatRedBall.Math.Geometry;
 using FlatRedBall.Math.Splines;
@@ -50,6 +51,18 @@ namespace VergissMeinNicht.Entities
         {
 
 
+        }
+
+        public void BlackFadeIn()
+        {
+            this.SpriteInstanceBlack.Visible = true;
+            this.SpriteInstanceBlack
+                .Tween("Alpha")
+                .To(1)
+                .During(1)
+                .Using(
+                    FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                    FlatRedBall.Glue.StateInterpolation.Easing.Out);
         }
 	}
 }
