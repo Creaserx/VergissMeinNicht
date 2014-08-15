@@ -104,14 +104,21 @@ namespace VergissMeinNicht.Screens
                 this.SolidCollisions.AxisAlignedRectangles.Remove(KisteList[i].Collision);
                 this.SolidCollisions.AxisAlignedRectangles.Add(KisteList[i].Collision);
             }
+
+            //Lochfallen
+            for (int i = HoleList.Count - 1; i > -1; i--)
+                if (PlatformerCharacterBase.getInstance().Collision.CollideAgainst(HoleList[i].Collision))
+                    FallInHole();
+
         }
 
         void VisibilityInit()
         {
+            HoleInstance.SpriteInstance.Visible = true;
             if (Manager.CollisionsVisible)
             {
                 for (int i = KisteList.Count - 1; i > -1; i--)
-                    KartonList[i].Collision.Visible = true;
+                    KisteList[i].Collision.Visible = true;
                 for (int i = KartonList.Count - 1; i > -1; i--)
                     KartonList[i].Collision.Visible = true;
             }
@@ -128,7 +135,5 @@ namespace VergissMeinNicht.Screens
             }
             else UI_Button_EInstance.SpriteInstanceVisible = false;
         }
-
-
 	}
 }

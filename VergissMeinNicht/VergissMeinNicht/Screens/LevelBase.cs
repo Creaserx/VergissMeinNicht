@@ -223,8 +223,21 @@ namespace VergissMeinNicht.Screens
                 UI_Button_EInstance.SpriteInstanceVisible = false;
                 DoorOpen = false;
             }
-            
+        }
 
+        public void FallInHole()
+        {
+            //SolidCollisions.AxisAlignedRectangles.Remove(Boden);  
+            Manager.EnableKey_Down = false;
+            Manager.EnableKey_Up = false;
+
+            Boden.Y = -500;
+            Manager.CharacterFallingInHole = true;
+
+            if (PlatformerCharacterBase.getInstance().DirectionFacing == PlatformerCharacterBase.LeftOrRight.Left)
+                PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName = "FallLeft";
+            else
+                PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName = "FallRight";
         }
         
         public void CollisionVisibilityOn()

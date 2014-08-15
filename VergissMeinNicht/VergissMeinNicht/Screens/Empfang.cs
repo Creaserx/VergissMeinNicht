@@ -69,6 +69,7 @@ namespace VergissMeinNicht.Screens
 
             Manager.EnableKey_Space = false;
             Manager.CharacterFallingInHole = false;
+            
 
             tutTime = TimeManager.CurrentTime;
         }
@@ -100,13 +101,13 @@ namespace VergissMeinNicht.Screens
 
 
             TutorialButtons();
-
+            /*
             string resultStringGhostLayer = "GhostLayer:" + CurrentLayerGhost.ToString();
             string resultStringGhostIsSwitching = "GhostSwitching: " + Manager.isSwitchingGhost.ToString();
             string resultStringLeftJumpZone = "LeftJumpZone:" + LeftJumpZone.ToString();
             string resultStringRandomNumber = "randomNumber: " + Manager.randomz;
             FlatRedBall.Debugging.Debugger.Write(resultStringGhostLayer + "\n" + resultStringGhostIsSwitching + "\n" + resultStringLeftJumpZone + "\n" + resultStringRandomNumber);
-
+            */
             if (FlashInstance.SpriteInstanceBlack.Alpha == 1)
                 MoveToScreen(typeof(LoadingScreen).FullName);  
             
@@ -186,8 +187,12 @@ namespace VergissMeinNicht.Screens
             // Disable Layer3 when necessary
             DisableLayerBack = false;
             DisableLayers = false;
-            if (PlatformerCharacterBase.getInstance().X < -345) DisableLayerBack = true;
-            else if (PlatformerCharacterBase.getInstance().X > 685) DisableLayerBack = true;
+            if (PlatformerCharacterBase.getInstance().X < -345 
+                || PlatformerCharacterBase.getInstance().X > 685) 
+            {
+                DisableLayerBack = true;
+                if (CurrentLayer == 2) InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Up);         
+            }
         }
 
         void CameraMovement()
@@ -237,8 +242,6 @@ namespace VergissMeinNicht.Screens
 
             //Theodor Ghost Collisions
             TheodorGhostInstance.CollideAgainst(GhostBodenCollision);
-
-            //if (PlatformerCharacterBase.getInstance().X >= 689) InputManager.Keyboard.IgnoreKeyForOneFrame(Keys.Right);
   
             // LevelReset WA
             //if (PlatformerCharacterBase.getInstance().Y < 85 && Boden.Y == -300) MoveToScreen(typeof(Empfang).FullName);
@@ -313,20 +316,7 @@ namespace VergissMeinNicht.Screens
         }
 
         //----LÖCHER----
-        void FallInHole()
-        { 
-            //SolidCollisions.AxisAlignedRectangles.Remove(Boden);  
-            Manager.EnableKey_Down = false;
-            Manager.EnableKey_Up = false;
 
-            Boden.Y = -500;
-            Manager.CharacterFallingInHole = true;
-
-            if (PlatformerCharacterBase.getInstance().DirectionFacing == PlatformerCharacterBase.LeftOrRight.Left)
-                PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName = "FallLeft";
-            else
-                PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName = "FallRight";
-        }
       
         void HoleActivity()
         {
