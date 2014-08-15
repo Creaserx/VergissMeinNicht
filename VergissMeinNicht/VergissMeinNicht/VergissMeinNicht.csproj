@@ -159,6 +159,14 @@
     <Compile Include="Entities\Frame.Generated.cs">
       <DependentUpon>Frame.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Karton.cs" />
+    <Compile Include="Entities\Karton.Generated.cs">
+      <DependentUpon>Karton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Kiste.cs" />
+    <Compile Include="Entities\Kiste.Generated.cs">
+      <DependentUpon>Kiste.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\LavaTest.cs" />
     <Compile Include="Entities\LavaTest.Generated.cs">
       <DependentUpon>LavaTest.cs</DependentUpon>
@@ -230,7 +238,7 @@
     </Compile>
     <Compile Include="Entities\Door.cs" />
     <Compile Include="Entities\Door.Generated.cs">
-      <DependentUpon>door.cs</DependentUpon>
+      <DependentUpon>Door.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\UI_Buttons\UI_Button.cs" />
     <Compile Include="Entities\UI_Buttons\UI_Button.Generated.cs">

@@ -70,7 +70,7 @@ namespace VergissMeinNicht.Screens
 
             Manager.LevelStartTime = TimeManager.CurrentTime;
 
-            Manager.CollisionsVisible = false;  // Collision Visibility An/Aus
+            Manager.CollisionsVisible = true;  // Collision Visibility An/Aus
             DisableLayers = false;      // Erstmal Layer aktivieren
             DisableLayerBack = false;   // LayerBack aktivieren
 
@@ -349,8 +349,8 @@ namespace VergissMeinNicht.Screens
 
         public void CameraMaximum(float LeftValue, float RightValue) 
         {
-            SpriteManager.Camera.MinimumX = LeftValue; //-305
-            SpriteManager.Camera.MaximumX = RightValue;  // 305     
+            SpriteManager.Camera.MinimumX = LeftValue; 
+            SpriteManager.Camera.MaximumX = RightValue;  
         }
 
         void LayerOn()

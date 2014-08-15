@@ -146,6 +146,22 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>SceneFile</Name>
     </None>
+    <None Include="Entities\Karton\Karton_creepy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Karton_creepy</Name>
+    </None>
+    <None Include="Entities\Karton\Karton_normal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Karton_normal</Name>
+    </None>
+    <None Include="Entities\Kiste\Kiste_creepy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Kiste_creepy</Name>
+    </None>
+    <None Include="Entities\Kiste\Kiste_normal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Kiste_normal</Name>
+    </None>
     <None Include="Entities\LavaTest\AnimationChainListFile.achx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>AnimationChainListFile</Name>

@@ -17,6 +17,7 @@ using FlatRedBall.Math.Splines;
 using Cursor = FlatRedBall.Gui.Cursor;
 using GuiManager = FlatRedBall.Gui.GuiManager;
 using FlatRedBall.Localization;
+using VergissMeinNicht.Entities;
 
 #if FRB_XNA || SILVERLIGHT
 using Keys = Microsoft.Xna.Framework.Input.Keys;
@@ -30,21 +31,35 @@ namespace VergissMeinNicht.Screens
 	public partial class Schlafraum
 	{
 
-		void CustomInitialize()
+        public override void CustomInitialize()
 		{
+            base.CustomInitialize();
 
+            this.SpriteInstance.Y = 270;
+            this.SpriteInstance.TextureScale *= 0.9f;
+            CameraMaximum(-280, 280);
+            
+
+            //Objektpositionen bestimmen
+            BlumeInstance.PositionBlume(-600, 80);
+            RauchInstance.PositionRauch(960, 180);
+            TeddyInstance.PositionTeddy(-400, 100)
+            PlatformerCharacterBase.getInstance().X = 550;
+            PlatformerCharacterBase.getInstance().DirectionFacing = PlatformerCharacterBase.LeftOrRight.Left;
+            
+            
+		}
+
+        public override void CustomActivity(bool firstTimeCalled)
+		{
+            base.CustomActivity(firstTimeCalled);
+            
 
 		}
 
-		void CustomActivity(bool firstTimeCalled)
+        public override void CustomDestroy()
 		{
-
-
-		}
-
-		void CustomDestroy()
-		{
-
+            base.CustomDestroy();
 
 		}
 
