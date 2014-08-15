@@ -41,11 +41,16 @@ namespace VergissMeinNicht.Screens
 
             //Objektpositionen bestimmen
             BlumeInstance.PositionBlume(-600, 80);
-            RauchInstance.PositionRauch(960, 180);
+            RauchInstance.PositionRauch(1060, 180);
             TeddyInstance.PositionTeddy(-400, 100);
             UI_Button_EInstance.PositionUI_Button(DoorInstance_Schlafraum.X + 90, DoorInstance_Schlafraum.Y + 90, UI_Button_EInstance.Y);
 
             //StartCharacterState("Child", 0);
+
+            CollisionInit();
+            VisibilityInit();
+
+            
 		}
 
         //------UPDATE---------------------------------------------------------------
@@ -56,6 +61,10 @@ namespace VergissMeinNicht.Screens
             CharacterGrenzen();
 
             DoorActivity();
+
+
+            //PlatformerCharacterBase.getInstance().Collision.CollideAgainst(KartonInstance.Collision); 
+
 
             if (InputManager.Keyboard.KeyPushed(Keys.G)) JackInTheBoxInstance.SpriteInstance.CurrentChainName = "Attack";
             if (InputManager.Keyboard.KeyPushed(Keys.H)) JackInTheBoxInstance.SpriteInstance.CurrentChainName = "Drehen";
@@ -80,6 +89,32 @@ namespace VergissMeinNicht.Screens
             if (PlatformerCharacterBase.getInstance().X < -700) Manager.EnableKey_Left = false;
             else Manager.EnableKey_Left = true;
         
+        }
+
+        void CollisionInit()
+        {
+            //Collision
+            for (int i = KartonList.Count - 1; i > -1; i--)
+            {
+                this.SolidCollisions.AxisAlignedRectangles.Remove(KartonList[i].Collision);
+                this.SolidCollisions.AxisAlignedRectangles.Add(KartonList[i].Collision);
+            }
+            for (int i = KisteList.Count - 1; i > -1; i--)
+            {
+                this.SolidCollisions.AxisAlignedRectangles.Remove(KisteList[i].Collision);
+                this.SolidCollisions.AxisAlignedRectangles.Add(KisteList[i].Collision);
+            }
+        }
+
+        void VisibilityInit()
+        {
+            if (Manager.CollisionsVisible)
+            {
+                for (int i = KisteList.Count - 1; i > -1; i--)
+                    KartonList[i].Collision.Visible = true;
+                for (int i = KartonList.Count - 1; i > -1; i--)
+                    KartonList[i].Collision.Visible = true;
+            }
         }
 
         void DoorActivity()

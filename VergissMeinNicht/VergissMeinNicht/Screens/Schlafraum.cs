@@ -43,7 +43,7 @@ namespace VergissMeinNicht.Screens
             //Objektpositionen bestimmen
             BlumeInstance.PositionBlume(-600, 80);
             RauchInstance.PositionRauch(960, 180);
-            TeddyInstance.PositionTeddy(-400, 100)
+            TeddyInstance.PositionTeddy(-400, 100);
             PlatformerCharacterBase.getInstance().X = 550;
             PlatformerCharacterBase.getInstance().DirectionFacing = PlatformerCharacterBase.LeftOrRight.Left;
             
@@ -53,6 +53,8 @@ namespace VergissMeinNicht.Screens
         public override void CustomActivity(bool firstTimeCalled)
 		{
             base.CustomActivity(firstTimeCalled);
+         
+   
             
 
 		}

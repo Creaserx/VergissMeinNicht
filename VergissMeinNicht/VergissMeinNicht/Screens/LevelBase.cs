@@ -70,7 +70,7 @@ namespace VergissMeinNicht.Screens
 
             Manager.LevelStartTime = TimeManager.CurrentTime;
 
-            Manager.CollisionsVisible = true;  // Collision Visibility An/Aus
+            Manager.CollisionsVisible = false;  // Collision Visibility An/Aus
             DisableLayers = false;      // Erstmal Layer aktivieren
             DisableLayerBack = false;   // LayerBack aktivieren
 

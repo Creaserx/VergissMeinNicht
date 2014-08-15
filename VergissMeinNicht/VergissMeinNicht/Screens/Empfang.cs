@@ -151,7 +151,19 @@ namespace VergissMeinNicht.Screens
 
             Background_creepy.Visible = true;
             if (Manager.CollisionsVisible) CollisionVisibilityEmpfang();
+        }
 
+        //Collisions Visible machen
+        public void CollisionVisibilityEmpfang()
+        {
+            Layer1.Visible = true;
+            Layer3.Visible = true;
+
+            for (int i = HoleList.Count - 1; i > -1; i--) HoleList[i].Collision.Visible = true;   // Hole-Collision Visible machen
+
+            // Theodor Ghost 
+            TheodorGhostInstance.Collision.Visible = true;
+            GhostBodenCollision.AddToManagers(); // Add the GhostBodenCollision to the ShapeManager so it's visible
         }
 
         // Manage Visibility in Child/GrownUp State
@@ -194,18 +206,6 @@ namespace VergissMeinNicht.Screens
             }
         }
 
-        //Collisions Visible machen
-        public void CollisionVisibilityEmpfang()
-        {
-            Layer1.Visible = true;
-            Layer3.Visible = true;
-
-            for (int i = HoleList.Count - 1; i > -1; i--) HoleList[i].Collision.Visible = true;   // Hole-Collision Visible machen
-
-            // Theodor Ghost 
-            TheodorGhostInstance.Collision.Visible = true;
-            GhostBodenCollision.AddToManagers(); // Add the GhostBodenCollision to the ShapeManager so it's visible
-        }
 
         public void CollisionActivity()
         {

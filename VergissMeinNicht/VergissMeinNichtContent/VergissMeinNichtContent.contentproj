@@ -250,6 +250,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>AnimationChainListFile</Name>
     </None>
+    <None Include="Entities\Theodor\SpurngTest_AnimationSpriteSheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>SpurngTest_AnimationSpriteSheet</Name>
+    </None>
     <None Include="Entities\Theodor\Theodor Erwachsen alpha.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Theodor Erwachsen alpha</Name>
