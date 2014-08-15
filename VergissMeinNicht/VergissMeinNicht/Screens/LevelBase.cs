@@ -262,6 +262,8 @@ namespace VergissMeinNicht.Screens
                 CurrentLayer = 1;
                 PlatformerCharacterBase.getInstance().Y = 75;
                 PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale = 0.5f;
+                Manager.CharacterFallingInHole = false;
+
                 if (!PlatformerCharacterBase.isChild())
                 {
                     DisableLayers = false;
@@ -305,9 +307,10 @@ namespace VergissMeinNicht.Screens
                 string resultStringCameraX = "CameraX:" + SpriteManager.Camera.X.ToString();
                 string resultStringLayerCount = "LayerCount:" + SpriteManager.LayerCount.ToString();
                 string resultStringChainName = "Animation:" + PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName;
+                string resultStringCharacterYVelocity = "Theo Y Velocity:" + PlatformerCharacterBase.getInstance().YVelocity;
                 FlatRedBall.Debugging.Debugger.Write(resultStringX + "\n" + resultStringY + "\n" + resultStringCollisionH + "\n" + resultStringCollisionW +
                     "\n" + resultStringLayer + "\n" + resultStringL3 + "\n" + resultStringLa + "\n" + resultStringSwitch + "\n" + resultStringCameraX +
-                    "\n" + resultStringLayerCount + "\n" + resultStringChainName);
+                    "\n" + resultStringLayerCount + "\n" + resultStringChainName + "\n" + resultStringCharacterYVelocity);
             }
         }        
 

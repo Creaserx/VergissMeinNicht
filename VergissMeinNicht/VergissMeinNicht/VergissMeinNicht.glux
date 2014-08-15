@@ -333,8 +333,13 @@
         <NamedObjectSave>
           <CustomProperty>
             <Type>float</Type>
+            <Member>X</Member>
+            <ValueAsFloat>600</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
             <Member>Y</Member>
-            <ValueAsFloat>140</ValueAsFloat>
+            <ValueAsFloat>120</ValueAsFloat>
           </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\Enemies\JackInTheBox</SourceClassType>
@@ -383,7 +388,7 @@
               <CustomProperty>
                 <Type>float</Type>
                 <Member>X</Member>
-                <ValueAsFloat>700</ValueAsFloat>
+                <ValueAsFloat>900</ValueAsFloat>
               </CustomProperty>
               <CustomProperty>
                 <Type>float</Type>
@@ -400,7 +405,7 @@
               <CustomProperty>
                 <Type>float</Type>
                 <Member>X</Member>
-                <ValueAsFloat>700</ValueAsFloat>
+                <ValueAsFloat>900</ValueAsFloat>
               </CustomProperty>
               <CustomProperty>
                 <Type>float</Type>
@@ -454,7 +459,7 @@
               <CustomProperty>
                 <Type>float</Type>
                 <Member>X</Member>
-                <ValueAsFloat>430</ValueAsFloat>
+                <ValueAsFloat>460</ValueAsFloat>
               </CustomProperty>
               <CustomProperty>
                 <Type>float</Type>
@@ -2073,6 +2078,36 @@
           <SourceName />
           <SourceClassType>Sprite</SourceClassType>
           <InstanceName>SpriteInstance</InstanceName>
+          <HasPublicProperty>true</HasPublicProperty>
+          <AttachToContainer>true</AttachToContainer>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+        <NamedObjectSave>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Width</Member>
+            <ValueAsFloat>120</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Height</Member>
+            <ValueAsFloat>90</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>bool</Type>
+            <Member>Visible</Member>
+            <ValueAsBool>true</ValueAsBool>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Y</Member>
+            <ValueAsFloat>-80</ValueAsFloat>
+          </CustomProperty>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceFile />
+          <SourceName />
+          <SourceClassType>AxisAlignedRectangle</SourceClassType>
+          <InstanceName>Collision</InstanceName>
           <HasPublicProperty>true</HasPublicProperty>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>

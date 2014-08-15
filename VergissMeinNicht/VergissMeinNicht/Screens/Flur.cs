@@ -30,6 +30,8 @@ namespace VergissMeinNicht.Screens
 {
 	public partial class Flur
 	{
+        bool HighJump = false;
+        double jumpTime = Double.NegativeInfinity;
 
         //------INITIALIZE----------------------------------------------------------------
 		public override void CustomInitialize()
@@ -50,6 +52,7 @@ namespace VergissMeinNicht.Screens
             CollisionInit();
             VisibilityInit();
 
+            //PlatformerCharacterBase.getInstance().YVelocity = 150;
             
 		}
 
@@ -62,12 +65,21 @@ namespace VergissMeinNicht.Screens
 
             DoorActivity();
 
+            //Lochfallen
+            for (int i = HoleList.Count - 1; i > -1; i--)
+                if (PlatformerCharacterBase.getInstance().Collision.CollideAgainst(HoleList[i].Collision))
+                    FallInHole();
 
-            //PlatformerCharacterBase.getInstance().Collision.CollideAgainst(KartonInstance.Collision); 
 
 
+            // JitB Test
             if (InputManager.Keyboard.KeyPushed(Keys.G)) JackInTheBoxInstance.SpriteInstance.CurrentChainName = "Attack";
             if (InputManager.Keyboard.KeyPushed(Keys.H)) JackInTheBoxInstance.SpriteInstance.CurrentChainName = "Drehen";
+
+            TheoHighJump();
+
+            
+
 		}
 
         public override void CustomDestroy()
@@ -84,6 +96,28 @@ namespace VergissMeinNicht.Screens
 
         //----------------------------------------------------------------------------------
         //--------FUNKTIONEN----------------------------------------------------------------
+
+        void TheoHighJump()
+        {
+            if (PlatformerCharacterBase.getInstance().X >= JackInTheBoxInstance.X - 35
+             && PlatformerCharacterBase.getInstance().X <= JackInTheBoxInstance.X + 35
+             && PlatformerCharacterBase.getInstance().Y > 185)
+                HighJump = true;
+
+            if (HighJump)
+            {
+                jumpTime = TimeManager.CurrentTime;
+                HighJump = false;
+            }
+
+            if (TimeManager.SecondsSince(jumpTime) < 0.8)
+            {
+                float time = (float)TimeManager.SecondsSince(jumpTime) * 300;   
+                PlatformerCharacterBase.getInstance().YVelocity = 400 - time;   // merkwürdige Funktion die einen Sprung mit abnehmender Beschleunigung simulieren soll
+            }
+            else if (TimeManager.SecondsSince(jumpTime) > 0.8) jumpTime = Double.NegativeInfinity;
+        }
+        
         void CharacterGrenzen()
         {
             if (PlatformerCharacterBase.getInstance().X < -700) Manager.EnableKey_Left = false;
@@ -105,22 +139,25 @@ namespace VergissMeinNicht.Screens
                 this.SolidCollisions.AxisAlignedRectangles.Add(KisteList[i].Collision);
             }
 
-            //Lochfallen
-            for (int i = HoleList.Count - 1; i > -1; i--)
-                if (PlatformerCharacterBase.getInstance().Collision.CollideAgainst(HoleList[i].Collision))
-                    FallInHole();
+            this.SolidCollisions.AxisAlignedRectangles.Remove(JackInTheBoxInstance.Collision);
+            this.SolidCollisions.AxisAlignedRectangles.Add(JackInTheBoxInstance.Collision);
+
 
         }
 
         void VisibilityInit()
         {
-            HoleInstance.SpriteInstance.Visible = true;
+            for (int i = HoleList.Count - 1; i > -1; i--)
+                HoleList[i].SpriteInstance.Visible = true;
+
             if (Manager.CollisionsVisible)
             {
                 for (int i = KisteList.Count - 1; i > -1; i--)
                     KisteList[i].Collision.Visible = true;
                 for (int i = KartonList.Count - 1; i > -1; i--)
                     KartonList[i].Collision.Visible = true;
+                for (int i = HoleList.Count - 1; i > -1; i--)
+                    HoleList[i].Collision.Visible = true;
             }
         }
 
