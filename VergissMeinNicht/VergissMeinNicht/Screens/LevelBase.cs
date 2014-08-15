@@ -187,6 +187,13 @@ namespace VergissMeinNicht.Screens
             SpriteManager.Camera.X = x;
         }
 
+        public void MusicControl()
+        {
+            if (PlatformerCharacterBase.isChild()) FlatRedBall.Audio.AudioManager.PlaySong(Kind, true, false);
+            else FlatRedBall.Audio.AudioManager.PlaySong(Erwachsen, true, false);
+        
+        }
+
         //----FLOWER
         void InitializeFlower()
         {
@@ -308,9 +315,10 @@ namespace VergissMeinNicht.Screens
                 string resultStringLayerCount = "LayerCount:" + SpriteManager.LayerCount.ToString();
                 string resultStringChainName = "Animation:" + PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName;
                 string resultStringCharacterYVelocity = "Theo Y Velocity:" + PlatformerCharacterBase.getInstance().YVelocity;
+                string resultStringVolume = "Volume: " + Microsoft.Xna.Framework.Media.MediaPlayer.Volume;
                 FlatRedBall.Debugging.Debugger.Write(resultStringX + "\n" + resultStringY + "\n" + resultStringCollisionH + "\n" + resultStringCollisionW +
                     "\n" + resultStringLayer + "\n" + resultStringL3 + "\n" + resultStringLa + "\n" + resultStringSwitch + "\n" + resultStringCameraX +
-                    "\n" + resultStringLayerCount + "\n" + resultStringChainName + "\n" + resultStringCharacterYVelocity);
+                    "\n" + resultStringLayerCount + "\n" + resultStringChainName + "\n" + resultStringCharacterYVelocity + "\n" + resultStringVolume);
             }
         }        
 

@@ -39,6 +39,8 @@ namespace VergissMeinNicht.Entities
             if (Manager.CollisionsVisible) this.Collision.Visible = true;
             else this.Collision.Visible = false;
 
+            FlatRedBall.Audio.AudioManager.PlaySong(Kind, true, false);
+            SongStartTime = TimeManager.CurrentTime;
 		}
 
 		private void CustomActivity()
@@ -49,6 +51,19 @@ namespace VergissMeinNicht.Entities
             {
                 tempTime = Double.PositiveInfinity;
             }
+
+            //--Music Management
+            Music_FadeIn(1);
+            if (TimeManager.SecondsSince(SongStartTime) >= 28)
+            {
+                Microsoft.Xna.Framework.Media.MediaPlayer.Volume = 1 - ((float)TimeManager.SecondsSince(SongStartTime) - 28f) / 5f;
+                if (Microsoft.Xna.Framework.Media.MediaPlayer.Volume == 0)
+                {
+                    SongStartTime = TimeManager.CurrentTime;
+                    OneTimeFade = true;
+                }
+            }
+
 		}            
         
 

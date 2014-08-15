@@ -52,6 +52,8 @@ namespace VergissMeinNicht
             //initializing the MainMenu Screen first
 			FlatRedBall.Screens.ScreenManager.Start(typeof(VergissMeinNicht.Screens.Flur));
 
+            Microsoft.Xna.Framework.Media.MediaPlayer.IsRepeating = true;
+
             base.Initialize();
         }
 

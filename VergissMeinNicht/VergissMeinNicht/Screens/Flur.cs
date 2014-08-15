@@ -43,8 +43,9 @@ namespace VergissMeinNicht.Screens
 
             //Objektpositionen bestimmen
             BlumeInstance.PositionBlume(-600, 80);
-            RauchInstance.PositionRauch(1060, 180);
+            RauchInstance.PositionRauch(1560, 180);
             TeddyInstance.PositionTeddy(-400, 100);
+            DoorInstance_Schlafraum.X = 1260;
             UI_Button_EInstance.PositionUI_Button(DoorInstance_Schlafraum.X + 90, DoorInstance_Schlafraum.Y + 90, UI_Button_EInstance.Y);
 
             //StartCharacterState("Child", 0);
@@ -99,9 +100,9 @@ namespace VergissMeinNicht.Screens
 
         void TheoHighJump()
         {
-            if (PlatformerCharacterBase.getInstance().X >= JackInTheBoxInstance.X - 35
-             && PlatformerCharacterBase.getInstance().X <= JackInTheBoxInstance.X + 35
-             && PlatformerCharacterBase.getInstance().Y > 185)
+            if (PlatformerCharacterBase.getInstance().X >= JackInTheBoxInstance.X - 40
+             && PlatformerCharacterBase.getInstance().X <= JackInTheBoxInstance.X + 40
+             && PlatformerCharacterBase.getInstance().Y > 185 && PlatformerCharacterBase.getInstance().Y < 195)
                 HighJump = true;
 
             if (HighJump)
@@ -110,12 +111,12 @@ namespace VergissMeinNicht.Screens
                 HighJump = false;
             }
 
-            if (TimeManager.SecondsSince(jumpTime) < 0.8)
+            if (TimeManager.SecondsSince(jumpTime) < 1)
             {
                 float time = (float)TimeManager.SecondsSince(jumpTime) * 300;   
                 PlatformerCharacterBase.getInstance().YVelocity = 400 - time;   // merkwürdige Funktion die einen Sprung mit abnehmender Beschleunigung simulieren soll
             }
-            else if (TimeManager.SecondsSince(jumpTime) > 0.8) jumpTime = Double.NegativeInfinity;
+            else if (TimeManager.SecondsSince(jumpTime) > 1) jumpTime = Double.NegativeInfinity;
         }
         
         void CharacterGrenzen()
@@ -158,6 +159,8 @@ namespace VergissMeinNicht.Screens
                     KartonList[i].Collision.Visible = true;
                 for (int i = HoleList.Count - 1; i > -1; i--)
                     HoleList[i].Collision.Visible = true;
+
+                JackInTheBoxInstance.Collision.Visible = true;
             }
         }
 

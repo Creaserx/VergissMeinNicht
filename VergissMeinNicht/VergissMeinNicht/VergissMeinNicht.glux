@@ -60,18 +60,6 @@
           <HasPublicProperty>true</HasPublicProperty>
           <RuntimeType>FlatRedBall.Scene</RuntimeType>
         </ReferencedFileSave>
-        <ReferencedFileSave>
-          <Properties>
-            <PropertySave>
-              <Name>UseContentPipeline</Name>
-              <ValueAsBool>true</ValueAsBool>
-            </PropertySave>
-          </Properties>
-          <Name>Screens/Empfang/Erwachsen.mp3</Name>
-          <IsSharedStatic>true</IsSharedStatic>
-          <LoadedAtRuntime>false</LoadedAtRuntime>
-          <RuntimeType>Microsoft.Xna.Framework.Media.Song</RuntimeType>
-        </ReferencedFileSave>
       </ReferencedFiles>
       <NamedObjects>
         <NamedObjectSave>
@@ -334,7 +322,7 @@
           <CustomProperty>
             <Type>float</Type>
             <Member>X</Member>
-            <ValueAsFloat>600</ValueAsFloat>
+            <ValueAsFloat>580</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
@@ -459,7 +447,7 @@
               <CustomProperty>
                 <Type>float</Type>
                 <Member>X</Member>
-                <ValueAsFloat>460</ValueAsFloat>
+                <ValueAsFloat>740</ValueAsFloat>
               </CustomProperty>
               <CustomProperty>
                 <Type>float</Type>
@@ -541,6 +529,30 @@
           <Name>Screens/LevelBase/TuerQuitschen.wav</Name>
           <IsSharedStatic>true</IsSharedStatic>
           <RuntimeType>Microsoft.Xna.Framework.Audio.SoundEffect</RuntimeType>
+        </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>Screens/LevelBase/Music/Jagd.mp3</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <LoadedOnlyWhenReferenced>true</LoadedOnlyWhenReferenced>
+          <RuntimeType>Microsoft.Xna.Framework.Media.Song</RuntimeType>
+        </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>Screens/LevelBase/Music/Kind.mp3</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <LoadedOnlyWhenReferenced>true</LoadedOnlyWhenReferenced>
+          <RuntimeType>Microsoft.Xna.Framework.Media.Song</RuntimeType>
+        </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>Screens/LevelBase/Music/Titel.mp3</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <LoadedOnlyWhenReferenced>true</LoadedOnlyWhenReferenced>
+          <RuntimeType>Microsoft.Xna.Framework.Media.Song</RuntimeType>
+        </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>Screens/LevelBase/Music/Erwachsen.mp3</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <LoadedOnlyWhenReferenced>true</LoadedOnlyWhenReferenced>
+          <RuntimeType>Microsoft.Xna.Framework.Media.Song</RuntimeType>
         </ReferencedFileSave>
       </ReferencedFiles>
       <NamedObjects>
@@ -708,6 +720,15 @@
         </EventResponseSave>
       </Events>
       <Name>Screens\LoadGameScreen</Name>
+      <ReferencedFiles>
+        <ReferencedFileSave>
+          <Name>Screens/OptionsScreen/Titel.mp3</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <DestroyOnUnload>false</DestroyOnUnload>
+          <LoadedAtRuntime>false</LoadedAtRuntime>
+          <RuntimeType>Microsoft.Xna.Framework.Media.Song</RuntimeType>
+        </ReferencedFileSave>
+      </ReferencedFiles>
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
@@ -791,6 +812,13 @@
           <Name>Screens/LoadingScreen/Loading.png</Name>
           <IsSharedStatic>true</IsSharedStatic>
           <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
+        </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>Screens/OptionsScreen/Titel.mp3</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <DestroyOnUnload>false</DestroyOnUnload>
+          <LoadedAtRuntime>false</LoadedAtRuntime>
+          <RuntimeType>Microsoft.Xna.Framework.Media.Song</RuntimeType>
         </ReferencedFileSave>
       </ReferencedFiles>
       <NamedObjects>
@@ -1030,6 +1058,12 @@
           <Name>Screens/MainMenu/HauptmenüHighlightNewGame.png</Name>
           <IsSharedStatic>true</IsSharedStatic>
           <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
+        </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>Screens/MainMenu/Titel.mp3</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <DestroyOnUnload>false</DestroyOnUnload>
+          <RuntimeType>Microsoft.Xna.Framework.Media.Song</RuntimeType>
         </ReferencedFileSave>
       </ReferencedFiles>
       <NamedObjects>
@@ -1276,6 +1310,15 @@
       </Events>
       <BaseScreen />
       <Name>Screens\OptionsScreen</Name>
+      <ReferencedFiles>
+        <ReferencedFileSave>
+          <Name>Screens/OptionsScreen/Titel.mp3</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <DestroyOnUnload>false</DestroyOnUnload>
+          <LoadedAtRuntime>false</LoadedAtRuntime>
+          <RuntimeType>Microsoft.Xna.Framework.Media.Song</RuntimeType>
+        </ReferencedFileSave>
+      </ReferencedFiles>
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
@@ -2085,18 +2128,18 @@
         <NamedObjectSave>
           <CustomProperty>
             <Type>float</Type>
-            <Member>Width</Member>
-            <ValueAsFloat>120</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
             <Member>Height</Member>
             <ValueAsFloat>90</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
             <Type>bool</Type>
             <Member>Visible</Member>
-            <ValueAsBool>true</ValueAsBool>
+            <ValueAsBool>false</ValueAsBool>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Width</Member>
+            <ValueAsFloat>120</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
@@ -4001,6 +4044,12 @@
           <IsSharedStatic>true</IsSharedStatic>
           <RuntimeType>FlatRedBall.Graphics.Animation.AnimationChainList</RuntimeType>
         </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>Screens/LevelBase/Music/Kind.mp3</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <LoadedOnlyWhenReferenced>true</LoadedOnlyWhenReferenced>
+          <RuntimeType>Microsoft.Xna.Framework.Media.Song</RuntimeType>
+        </ReferencedFileSave>
       </ReferencedFiles>
       <Is2D>true</Is2D>
     </EntitySave>
@@ -4141,6 +4190,12 @@
           <Name>Entities/Theodor/AnimationChainListFile.achx</Name>
           <IsSharedStatic>true</IsSharedStatic>
           <RuntimeType>FlatRedBall.Graphics.Animation.AnimationChainList</RuntimeType>
+        </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>Screens/LevelBase/Music/Erwachsen.mp3</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <LoadedOnlyWhenReferenced>true</LoadedOnlyWhenReferenced>
+          <RuntimeType>Microsoft.Xna.Framework.Media.Song</RuntimeType>
         </ReferencedFileSave>
       </ReferencedFiles>
       <Is2D>true</Is2D>

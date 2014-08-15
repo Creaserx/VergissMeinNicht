@@ -28,16 +28,41 @@ namespace VergissMeinNicht.Entities
 {
 	public partial class TheodorGrownUp
 	{
+        
+        
+
 		private void CustomInitialize()
 		{
             if (Manager.CollisionsVisible) this.Collision.Visible = true;
             else this.Collision.Visible = false;
             base.DirectionFacing = LeftOrRight.Right;
+
+
+            Microsoft.Xna.Framework.Media.MediaPlayer.Volume = 0;
+            FlatRedBall.Audio.AudioManager.PlaySong(Erwachsen, true, false);
+            SongStartTime = TimeManager.CurrentTime;
 		}
 
 		private void CustomActivity()
 		{
             AnimationActivity();
+
+            //--Music Management
+            Music_FadeIn(1);
+            if (TimeManager.SecondsSince(SongStartTime) >= 40)
+            {
+                Microsoft.Xna.Framework.Media.MediaPlayer.Volume = 1 - ((float)TimeManager.SecondsSince(SongStartTime) - 40f) / 5f;
+                if (Microsoft.Xna.Framework.Media.MediaPlayer.Volume == 0)
+                {
+                    SongStartTime = TimeManager.CurrentTime;
+                    OneTimeFade = true;
+                }
+            }
+
+            
+
+
+
 
 		}
 

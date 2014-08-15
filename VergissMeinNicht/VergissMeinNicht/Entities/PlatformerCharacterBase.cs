@@ -58,6 +58,9 @@ namespace VergissMeinNicht.Entities
         public bool moveleft = false;
         public bool moveright = false;
 
+        public bool OneTimeFade = true;
+        public double SongStartTime;
+
         #region Properties        
 
         public Xbox360GamePad GamePad
@@ -193,7 +196,6 @@ namespace VergissMeinNicht.Entities
             CurrentMovementType = MovementType.Ground;
 
             YAcceleration = this.CurrentMovement.Gravity;
-
 		}
 
         public enum LeftOrRight
@@ -479,6 +481,16 @@ namespace VergissMeinNicht.Entities
         
 
 
+        }
+
+        public void Music_FadeIn(float maxValue)
+        {
+            if (OneTimeFade)
+            {
+                Microsoft.Xna.Framework.Media.MediaPlayer.Volume = ((float)TimeManager.SecondsSince(SongStartTime)) / 5f;
+                if (Microsoft.Xna.Framework.Media.MediaPlayer.Volume >= maxValue 
+                    && TimeManager.SecondsSince(SongStartTime) > 1) OneTimeFade = false;
+            }
         }
 
 

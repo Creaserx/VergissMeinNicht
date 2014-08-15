@@ -30,6 +30,7 @@ namespace VergissMeinNicht.Screens
 {
 	public partial class LoadingScreen
 	{
+        double startTime = TimeManager.CurrentTime;
 
 		void CustomInitialize()
 		{
@@ -42,6 +43,8 @@ namespace VergissMeinNicht.Screens
 
 		void CustomActivity(bool firstTimeCalled)
 		{
+            Microsoft.Xna.Framework.Media.MediaPlayer.Volume = 1 - ((float)TimeManager.SecondsSince(startTime) / 2f);
+
             if (this.AsyncLoadingState == FlatRedBall.Screens.AsyncLoadingState.NotStarted)
             {
                 switch(Manager.LoadLevel)
@@ -57,6 +60,8 @@ namespace VergissMeinNicht.Screens
             {
                 IsActivityFinished = true;
             }
+
+
 
 		}
 

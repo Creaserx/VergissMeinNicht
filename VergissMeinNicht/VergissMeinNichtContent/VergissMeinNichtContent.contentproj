@@ -437,15 +437,40 @@
       <Processor>SoundEffectProcessor</Processor>
       <Name>Blop</Name>
     </Compile>
-    <Compile Include="Screens\Empfang\Erwachsen.mp3">
+    <Compile Include="Screens\LevelBase\Music\Erwachsen.mp3">
       <Importer>Mp3Importer</Importer>
       <Processor>SongProcessor</Processor>
       <Name>Erwachsen</Name>
+    </Compile>
+    <Compile Include="Screens\LevelBase\Music\Jagd.mp3">
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Name>Jagd</Name>
+    </Compile>
+    <Compile Include="Screens\LevelBase\Music\Kind.mp3">
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Name>Kind</Name>
+    </Compile>
+    <Compile Include="Screens\LevelBase\Music\Titel.mp3">
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Name>Titel</Name>
     </Compile>
     <Compile Include="Screens\LevelBase\TuerQuitschen.wav">
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Name>TuerQuitschen</Name>
+    </Compile>
+    <Compile Include="Screens\MainMenu\Titel.mp3">
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Name>Titel</Name>
+    </Compile>
+    <Compile Include="Screens\OptionsScreen\Titel.mp3">
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Name>Titel</Name>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
