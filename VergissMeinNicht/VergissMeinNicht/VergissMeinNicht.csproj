@@ -159,6 +159,10 @@
     <Compile Include="Entities\Frame.Generated.cs">
       <DependentUpon>Frame.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\LavaTest.cs" />
+    <Compile Include="Entities\LavaTest.Generated.cs">
+      <DependentUpon>LavaTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Manager.cs" />
     <Compile Include="Entities\OkCancel.cs" />
     <Compile Include="Entities\OkCancel.Event.cs">
@@ -223,6 +227,10 @@
     <Compile Include="Entities\TheodorGrownUp.cs" />
     <Compile Include="Entities\TheodorGrownUp.Generated.cs">
       <DependentUpon>TheodorGrownUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Door.cs" />
+    <Compile Include="Entities\Door.Generated.cs">
+      <DependentUpon>door.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\UI_Buttons\UI_Button.cs" />
     <Compile Include="Entities\UI_Buttons\UI_Button.Generated.cs">

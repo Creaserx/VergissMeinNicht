@@ -43,6 +43,7 @@ namespace VergissMeinNicht.Screens
             BlumeInstance.PositionBlume(-600, 80);
             RauchInstance.PositionRauch(960, 180);
             TeddyInstance.PositionTeddy(-400, 100);
+            UI_Button_EInstance.PositionUI_Button(DoorInstance_Schlafraum.X + 90, DoorInstance_Schlafraum.Y + 90, UI_Button_EInstance.Y);
 
             //StartCharacterState("Child", 0);
 		}
@@ -54,6 +55,10 @@ namespace VergissMeinNicht.Screens
 
             CharacterGrenzen();
 
+            DoorActivity();
+
+            if (InputManager.Keyboard.KeyPushed(Keys.G)) JackInTheBoxInstance.SpriteInstance.CurrentChainName = "Attack";
+            if (InputManager.Keyboard.KeyPushed(Keys.H)) JackInTheBoxInstance.SpriteInstance.CurrentChainName = "Drehen";
 		}
 
         public override void CustomDestroy()
@@ -77,7 +82,19 @@ namespace VergissMeinNicht.Screens
         
         }
 
+        void DoorActivity()
+        {
+            if (PlatformerCharacterBase.getInstance().X > DoorInstance_Schlafraum.X - 60 &&
+                PlatformerCharacterBase.getInstance().X < DoorInstance_Schlafraum.X + 60)
+            {
+                UI_Button_EInstance.SpriteInstanceVisible = true;
+            }
+            else UI_Button_EInstance.SpriteInstanceVisible = false;
+            if (InputManager.Keyboard.KeyPushed(Keys.E))
+                MoveToScreen(typeof(Schlafraum).FullName);  
 
+        
+        }
 
 	}
 }

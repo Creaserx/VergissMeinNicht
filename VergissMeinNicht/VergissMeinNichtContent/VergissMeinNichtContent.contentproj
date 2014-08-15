@@ -90,6 +90,30 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>SceneFile</Name>
     </None>
+    <None Include="Entities\Door\Door_Flur.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Door_Flur</Name>
+    </None>
+    <None Include="Entities\Door\Door_Flur_Creepy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Door_Flur_Creepy</Name>
+    </None>
+    <None Include="Entities\Enemies\JackInTheBox\AnimationChainListFile.achx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>AnimationChainListFile</Name>
+    </None>
+    <None Include="Entities\Enemies\JackInTheBox\jack in the box_v_jack int the box-Wiederhergestellt00.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>jack in the box_v_jack int the box-Wiederhergestellt00</Name>
+    </None>
+    <None Include="Entities\Enemies\JackInTheBox\JitB _Attack_AnimationSpriteSheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>JitB _Attack_AnimationSpriteSheet</Name>
+    </None>
+    <None Include="Entities\Enemies\JackInTheBox\JitB_Kurbel_AnimationSpriteSheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>JitB_Kurbel_AnimationSpriteSheet</Name>
+    </None>
     <None Include="Entities\Flash\Black_square.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Black_square</Name>
@@ -121,6 +145,10 @@
     <None Include="Entities\Frame\SceneFile.scnx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>SceneFile</Name>
+    </None>
+    <None Include="Entities\LavaTest\AnimationChainListFile.achx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>AnimationChainListFile</Name>
     </None>
     <None Include="Entities\PlatformerCharacterBase\MovementValues.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -349,6 +377,30 @@
     <None Include="Screens\MainMenu\HauptmenüHighlightOptions.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>HauptmenüHighlightOptions</Name>
+    </None>
+    <None Include="Screens\Schlafraum\AnimationChainListFile.achx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>AnimationChainListFile</Name>
+    </None>
+    <None Include="Screens\Schlafraum\schlafzimmer_backup_00000.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>schlafzimmer_backup_00000</Name>
+    </None>
+    <None Include="Screens\Schlafraum\schlafzimmer_backup_00005.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>schlafzimmer_backup_00005</Name>
+    </None>
+    <None Include="Screens\Schlafraum\schlafzimmer_backup_00010.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>schlafzimmer_backup_00010</Name>
+    </None>
+    <None Include="Screens\Schlafraum\schlafzimmer_backup_00020.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>schlafzimmer_backup_00020</Name>
+    </None>
+    <None Include="Screens\Schlafraum\schlafzimmer_backup_00025.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>schlafzimmer_backup_00025</Name>
     </None>
     <None Include="Screens\ZooLevel\10382537_889952597687392_1592239203505348189_o.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

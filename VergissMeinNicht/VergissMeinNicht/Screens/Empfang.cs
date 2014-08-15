@@ -94,9 +94,10 @@ namespace VergissMeinNicht.Screens
 
             if (PlatformerCharacterBase.isChild())
             {
-                GhostMovement();
+                GhostMovement(); 
                 LayerOnGhost();
             }
+
 
             TutorialButtons();
 

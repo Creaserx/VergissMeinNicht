@@ -171,6 +171,7 @@ namespace VergissMeinNicht.Screens
                 Temp.Name = "TheodorChildInstance";
                 PlatformerCharacterBase.updateinstance(Temp);
                 Temp.AddToManagers(LayerFront);
+                
             }
 
             else //if (state == "GrownUp")
@@ -261,6 +262,7 @@ namespace VergissMeinNicht.Screens
             // Numbers  -- GoTo: 1-Empfang, 2-Flur         
             if (InputManager.Keyboard.KeyPushed(Keys.D1)) MoveToScreen(typeof(Empfang).FullName);
             if (InputManager.Keyboard.KeyPushed(Keys.D2)) MoveToScreen(typeof(Flur).FullName);
+            if (InputManager.Keyboard.KeyPushed(Keys.D3)) MoveToScreen(typeof(Schlafraum).FullName);
             
             // F3/F4 -- Zeigt Debugger Werte an 
             if (InputManager.Keyboard.KeyPushed(Keys.F3))
