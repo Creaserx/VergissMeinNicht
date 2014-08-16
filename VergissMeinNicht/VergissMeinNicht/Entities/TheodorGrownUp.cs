@@ -28,7 +28,8 @@ namespace VergissMeinNicht.Entities
 {
 	public partial class TheodorGrownUp
 	{
-        
+        double tempTime = Double.PositiveInfinity;
+        double randomNumber;
         
 
 		private void CustomInitialize()
@@ -46,6 +47,11 @@ namespace VergissMeinNicht.Entities
 		private void CustomActivity()
 		{
             AnimationActivity();
+            if (this.SpriteInstance.CurrentChainName != "GU_IdleRightPocketIn" && this.SpriteInstance.CurrentChainName != "GU_IdleRightPocket" && this.SpriteInstance.CurrentChainName != "GU_IdleRight"
+                && this.SpriteInstance.CurrentChainName != "GU_IdleLeftPocketIn" && this.SpriteInstance.CurrentChainName != "GU_IdleLeftPocket" && this.SpriteInstance.CurrentChainName != "GU_IdleLeft")
+            {
+                tempTime = Double.PositiveInfinity;
+            }
 
             //--Music Management
             Music_FadeIn(1);
@@ -96,21 +102,22 @@ namespace VergissMeinNicht.Entities
             {
                 if (HorizontalRatio > 0 || (Manager.isSwitching && base.DirectionFacing == LeftOrRight.Right))
                 {
-                    this.SpriteInstance.CurrentChainName = "GU_IdleRight";
+                    this.SpriteInstance.CurrentChainName = "GU_WalkRight";
                 }
                 else if (HorizontalRatio < 0 || (Manager.isSwitching && base.DirectionFacing == LeftOrRight.Left))
                 {
-                    this.SpriteInstance.CurrentChainName = "GU_IdleLeft";
+                    this.SpriteInstance.CurrentChainName = "GU_WalkLeft";
                 }
                 else
                 {
                     if (DirectionFacing == LeftOrRight.Right)
                     {
-                        this.SpriteInstance.CurrentChainName = "GU_IdleRight";
+                        IdleAnimationRight();
+
                     }
                     else
                     {
-                        this.SpriteInstance.CurrentChainName = "GU_IdleLeft";
+                        IdleAnimationLeft();
                     }
                 }
             }
@@ -132,6 +139,46 @@ namespace VergissMeinNicht.Entities
                 {
                     this.SpriteInstance.CurrentChainName = "JumpRight";
                 }*/
+            }
+        }
+
+        private void IdleAnimationRight()
+        {
+            if (Double.IsPositiveInfinity(tempTime))
+            {
+                this.SpriteInstance.CurrentChainName = "GU_IdleRight";
+                tempTime = TimeManager.CurrentTime;
+                randomNumber = FlatRedBallServices.Random.Next(2, 5);
+                Manager.randomz = randomNumber;
+            }
+
+            if (this.SpriteInstance.CurrentChainName == "GU_IdleRightPocketIn" && this.SpriteInstance.CurrentFrameIndex == 5)
+            {
+                this.SpriteInstance.CurrentChainName = "GU_IdleRightPocket";
+            }
+            else if (TimeManager.SecondsSince(tempTime) >= randomNumber && this.SpriteInstance.CurrentChainName != "GU_IdleRightPocket")
+            {
+                this.SpriteInstance.CurrentChainName = "GU_IdleRightPocketIn";
+            }
+        }
+
+        private void IdleAnimationLeft()
+        {
+            if (Double.IsPositiveInfinity(tempTime))
+            {
+                this.SpriteInstance.CurrentChainName = "GU_IdleLeft";
+                tempTime = TimeManager.CurrentTime;
+                randomNumber = FlatRedBallServices.Random.Next(2, 5);
+                Manager.randomz = randomNumber;
+            }
+
+            if (this.SpriteInstance.CurrentChainName == "GU_IdleLeftPocketIn" && this.SpriteInstance.CurrentFrameIndex == 5)
+            {
+                this.SpriteInstance.CurrentChainName = "GU_IdleLeftPocket";
+            }
+            else if (TimeManager.SecondsSince(tempTime) >= randomNumber && this.SpriteInstance.CurrentChainName != "GU_IdleLeftPocket")
+            {
+                this.SpriteInstance.CurrentChainName = "GU_IdleLeftPocketIn";
             }
         }
 
