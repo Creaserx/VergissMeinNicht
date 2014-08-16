@@ -110,6 +110,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>JitB _Attack_AnimationSpriteSheet</Name>
     </None>
+    <None Include="Entities\Enemies\JackInTheBox\JitB_Animation_Full_Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>JitB_Animation_Full_Sheet</Name>
+    </None>
     <None Include="Entities\Enemies\JackInTheBox\JitB_Kurbel_AnimationSpriteSheet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>JitB_Kurbel_AnimationSpriteSheet</Name>

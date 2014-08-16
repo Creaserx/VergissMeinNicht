@@ -74,8 +74,8 @@ namespace VergissMeinNicht.Screens
 
 
             // JitB Test
-            if (InputManager.Keyboard.KeyPushed(Keys.G)) JackInTheBoxInstance.SpriteInstance.CurrentChainName = "Attack";
-            if (InputManager.Keyboard.KeyPushed(Keys.H)) JackInTheBoxInstance.SpriteInstance.CurrentChainName = "Drehen";
+            //if (InputManager.Keyboard.KeyPushed(Keys.G)) JackInTheBoxInstance.SpriteInstance.CurrentChainName = "Attack";
+            //if (InputManager.Keyboard.KeyPushed(Keys.H)) JackInTheBoxInstance.SpriteInstance.CurrentChainName = "Drehen";
 
             TheoHighJump();
 

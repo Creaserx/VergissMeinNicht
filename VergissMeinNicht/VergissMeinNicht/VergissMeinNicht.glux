@@ -2267,7 +2267,7 @@
           <CustomProperty>
             <Type>string</Type>
             <Member>CurrentChainName</Member>
-            <ValueAsString>Drehen</ValueAsString>
+            <ValueAsString>JitB_Idle</ValueAsString>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>

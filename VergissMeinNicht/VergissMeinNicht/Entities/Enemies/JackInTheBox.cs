@@ -36,7 +36,7 @@ namespace VergissMeinNicht.Entities.Enemies
 
 		private void CustomActivity()
 		{
-
+            AnimationActivity();
 
 		}
 
@@ -50,6 +50,18 @@ namespace VergissMeinNicht.Entities.Enemies
         {
 
 
+        }
+
+        private void AnimationActivity()
+        {
+            if (PlatformerCharacterBase.getInstance().X >= this.X - 100)
+            {
+                this.SpriteInstance.CurrentChainName = "JitB_Attack";
+            }
+            else
+            {
+                this.SpriteInstance.CurrentChainName = "JitB_Idle" ;
+            }
         }
 	}
 }
