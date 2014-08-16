@@ -4941,7 +4941,6 @@
         </InstructionSave>
       </RequiredProperties>
       <Name>TileMapInfo</Name>
-      <GenerateCode>true</GenerateCode>
     </CustomClassSave>
   </CustomClasses>
   <TranslatedFiles>

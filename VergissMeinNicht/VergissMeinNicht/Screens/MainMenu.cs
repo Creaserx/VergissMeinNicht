@@ -85,8 +85,15 @@ namespace VergissMeinNicht.Screens
                 SpriteInstance.ScaleY = FlatRedBall.SpriteManager.Camera.RelativeYEdgeAt(SpriteInstance.Z);      
             }
 
+            //Musik stumm schalten
             if (!Manager.MusicOn) Microsoft.Xna.Framework.Media.MediaPlayer.Volume = 0;
             else Microsoft.Xna.Framework.Media.MediaPlayer.Volume = 1;
+
+
+            //Raum instant wechseln
+            if (InputManager.Keyboard.KeyPushed(Keys.D1)) MoveToScreen(typeof(Empfang).FullName);
+            if (InputManager.Keyboard.KeyPushed(Keys.D2)) MoveToScreen(typeof(Flur).FullName);
+            if (InputManager.Keyboard.KeyPushed(Keys.D3)) MoveToScreen(typeof(Schlafraum).FullName);
 		}
 
 		void CustomDestroy()
