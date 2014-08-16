@@ -71,12 +71,7 @@ namespace VergissMeinNicht.Screens
                 if (PlatformerCharacterBase.getInstance().Collision.CollideAgainst(HoleList[i].Collision))
                     FallInHole();
 
-
-
-            // JitB Test
-            //if (InputManager.Keyboard.KeyPushed(Keys.G)) JackInTheBoxInstance.SpriteInstance.CurrentChainName = "Attack";
-            //if (InputManager.Keyboard.KeyPushed(Keys.H)) JackInTheBoxInstance.SpriteInstance.CurrentChainName = "Drehen";
-
+           
             TheoHighJump();
 
             
@@ -100,9 +95,9 @@ namespace VergissMeinNicht.Screens
 
         void TheoHighJump()
         {
-            if (PlatformerCharacterBase.getInstance().X >= JackInTheBoxInstance.X - 40
-             && PlatformerCharacterBase.getInstance().X <= JackInTheBoxInstance.X + 40
-             && PlatformerCharacterBase.getInstance().Y > 185 && PlatformerCharacterBase.getInstance().Y < 195)
+            if (PlatformerCharacterBase.getInstance().X >= JackInTheBoxInstance.X - 55
+             && PlatformerCharacterBase.getInstance().X <= JackInTheBoxInstance.X + 55
+             && PlatformerCharacterBase.getInstance().Y >= JackInTheBoxInstance.Y + 45 && PlatformerCharacterBase.getInstance().Y <= JackInTheBoxInstance.Y + 55)
                 HighJump = true;
 
             if (HighJump)
