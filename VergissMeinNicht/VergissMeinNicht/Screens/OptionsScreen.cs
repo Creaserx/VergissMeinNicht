@@ -51,6 +51,20 @@ namespace VergissMeinNicht.Screens
             if (!Manager.MusicOn) Microsoft.Xna.Framework.Media.MediaPlayer.Volume = 0;
             else Microsoft.Xna.Framework.Media.MediaPlayer.Volume = 1;
 
+            if (InputManager.Mouse.X >= (BackButton.X + 500) && InputManager.Mouse.X < (BackButton.X + 900) &&
+                            InputManager.Mouse.Y > (BackButton.Y + 700) && InputManager.Mouse.Y < (BackButton.Y + 770))
+            {
+                SpriteInstance.Texture = Menu_Optionen_MouseOver_ganz;
+                SpriteInstance.ScaleX = FlatRedBall.SpriteManager.Camera.RelativeXEdgeAt(SpriteInstance.Z);
+                SpriteInstance.ScaleY = FlatRedBall.SpriteManager.Camera.RelativeYEdgeAt(SpriteInstance.Z);
+            }
+            else
+            {
+                SpriteInstance.Texture = Menu_Optionen;
+                SpriteInstance.ScaleX = FlatRedBall.SpriteManager.Camera.RelativeXEdgeAt(SpriteInstance.Z);
+                SpriteInstance.ScaleY = FlatRedBall.SpriteManager.Camera.RelativeYEdgeAt(SpriteInstance.Z);
+            }
+
 		}
 
 		void CustomDestroy()

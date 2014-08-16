@@ -1372,7 +1372,7 @@
           <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
         </ReferencedFileSave>
         <ReferencedFileSave>
-          <Name>Screens/OptionsScreen/Menu_Optionen_MouseOver.png</Name>
+          <Name>Screens/OptionsScreen/Menu_Optionen_MouseOver_ganz.png</Name>
           <IsSharedStatic>true</IsSharedStatic>
           <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
         </ReferencedFileSave>
@@ -1456,20 +1456,21 @@
             <ValueAsFloat>-165</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
-            <Type>float</Type>
-            <Member>SpriteFrameInstanceScaleY</Member>
-            <ValueAsFloat>25</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
             <Type>bool</Type>
             <Member>Visible</Member>
             <ValueAsBool>true</ValueAsBool>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>SpriteFrameInstanceScaleY</Member>
+            <ValueAsFloat>25</ValueAsFloat>
           </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\Button</SourceClassType>
           <InstanceName>BackButton</InstanceName>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
+          <LayerOn>Under Everything (Engine Layer)</LayerOn>
         </NamedObjectSave>
         <NamedObjectSave>
           <CustomProperty>
@@ -4940,6 +4941,7 @@
         </InstructionSave>
       </RequiredProperties>
       <Name>TileMapInfo</Name>
+      <GenerateCode>true</GenerateCode>
     </CustomClassSave>
   </CustomClasses>
   <TranslatedFiles>

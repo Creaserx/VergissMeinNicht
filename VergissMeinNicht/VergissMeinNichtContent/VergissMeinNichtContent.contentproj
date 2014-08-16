@@ -406,9 +406,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Menu_Optionen</Name>
     </None>
-    <None Include="Screens\OptionsScreen\Menu_Optionen_MouseOver.png">
+    <None Include="Screens\OptionsScreen\Menu_Optionen_MouseOver_ganz.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Name>Menu_Optionen_MouseOver</Name>
+      <Name>Menu_Optionen_MouseOver_ganz</Name>
     </None>
     <None Include="Screens\Schlafraum\AnimationChainListFile.achx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
