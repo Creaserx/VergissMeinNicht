@@ -20,6 +20,10 @@ namespace VergissMeinNicht.Entities
 
         public static bool CharacterFallingInHole = false;
 
+        public static bool MusicOn = true;
+        public static bool SoundOn = true;
+        
+
         //Keys Disablen
         public static bool EnableKey_Space = true;
         public static bool EnableKey_Down = true;

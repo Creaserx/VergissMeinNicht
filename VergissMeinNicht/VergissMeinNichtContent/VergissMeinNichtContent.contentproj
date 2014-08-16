@@ -402,6 +402,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>HauptmenüHighlightOptions</Name>
     </None>
+    <None Include="Screens\OptionsScreen\Menu_Optionen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Menu_Optionen</Name>
+    </None>
+    <None Include="Screens\OptionsScreen\Menu_Optionen_MouseOver.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Menu_Optionen_MouseOver</Name>
+    </None>
     <None Include="Screens\Schlafraum\AnimationChainListFile.achx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>AnimationChainListFile</Name>

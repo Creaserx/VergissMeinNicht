@@ -84,6 +84,9 @@ namespace VergissMeinNicht.Screens
                 SpriteInstance.ScaleX = FlatRedBall.SpriteManager.Camera.RelativeXEdgeAt(SpriteInstance.Z);
                 SpriteInstance.ScaleY = FlatRedBall.SpriteManager.Camera.RelativeYEdgeAt(SpriteInstance.Z);      
             }
+
+            if (!Manager.MusicOn) Microsoft.Xna.Framework.Media.MediaPlayer.Volume = 0;
+            else Microsoft.Xna.Framework.Media.MediaPlayer.Volume = 1;
 		}
 
 		void CustomDestroy()

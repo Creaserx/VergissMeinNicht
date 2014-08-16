@@ -206,7 +206,7 @@ namespace VergissMeinNicht.Screens
             if (InputManager.Keyboard.KeyPushed(Keys.E) && DoorOpen)
             {
                 FlashInstance.BlackFadeIn();
-                TuerQuitschen.Play();
+                if (Manager.SoundOn) TuerQuitschen.Play();
                 Manager.LoadLevel = 1;              
             }
         }

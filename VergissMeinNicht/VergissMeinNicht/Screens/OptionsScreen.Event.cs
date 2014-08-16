@@ -16,25 +16,18 @@ namespace VergissMeinNicht.Screens
 	{
         void OnSoundCheckBoxClick (FlatRedBall.Gui.IWindow callingWindow)
         {
-            if(this.SoundCheckBox.CurrentState == CheckBox.VariableState.Checked)
+            if(this.MusicCheckBox.CurrentState == CheckBox.VariableState.Checked)
             {
-               this.SoundCheckBox.DisplayText = "Sound is ON"; 
-            }
-            else
-            {
-               this.SoundCheckBox.DisplayText = "Sound is OFF";
+            
             }
         }
         void OnSoundEffectCheckBoxClick (FlatRedBall.Gui.IWindow callingWindow)
         {
             if(this.SoundEffectCheckBox.CurrentState == CheckBox.VariableState.Checked)
             {
-               this.SoundEffectCheckBox.DisplayText = "Sound Effects are ON"; 
+              
             }
-            else
-            {
-               this.SoundEffectCheckBox.DisplayText = "Sound Effects are OFF";
-            }
+            
             
         }
         void OnBackButtonClick (FlatRedBall.Gui.IWindow callingWindow)

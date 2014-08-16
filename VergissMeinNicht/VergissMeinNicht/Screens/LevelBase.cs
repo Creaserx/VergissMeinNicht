@@ -117,8 +117,10 @@ namespace VergissMeinNicht.Screens
             LayerOn();
             LayerManagement();
             
-            if (!IsPaused) PlatformerCharacterBase.getInstance().Activity();            
-            
+            if (!IsPaused) PlatformerCharacterBase.getInstance().Activity();
+
+            if (!Manager.MusicOn) FlatRedBall.Audio.AudioManager.StopSong(); 
+
             PauseGame();
 
             ControllFlower();
@@ -212,7 +214,7 @@ namespace VergissMeinNicht.Screens
                 Blume_SchattenInstance.Destroy();
                 RauchInstance.Y = -500;             // WA: Ansonsten bleibt die Collision da, obwohl sie nicht mehr da ist
                 RauchInstance.Destroy();
-                Blume.Blop.Play();
+                if (Manager.SoundOn) Blume.Blop.Play();
             }
         }
         //---/Flower

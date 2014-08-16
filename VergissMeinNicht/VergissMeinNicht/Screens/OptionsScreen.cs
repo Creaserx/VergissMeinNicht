@@ -17,6 +17,7 @@ using FlatRedBall.Math.Splines;
 using Cursor = FlatRedBall.Gui.Cursor;
 using GuiManager = FlatRedBall.Gui.GuiManager;
 using FlatRedBall.Localization;
+using VergissMeinNicht.Entities;
 
 #if FRB_XNA || SILVERLIGHT
 using Keys = Microsoft.Xna.Framework.Input.Keys;
@@ -32,15 +33,23 @@ namespace VergissMeinNicht.Screens
 
 		void CustomInitialize()
 		{  
-            //so the checkboxes are properly named at the beginning
-            OnSoundCheckBoxClick(null);
-            OnSoundEffectCheckBoxClick(null);
 
+
+            // Size the sprite to match the size of the camera
+            SpriteInstance.ScaleX = FlatRedBall.SpriteManager.Camera.RelativeXEdgeAt(SpriteInstance.Z);
+            SpriteInstance.ScaleY = FlatRedBall.SpriteManager.Camera.RelativeYEdgeAt(SpriteInstance.Z);
 		}
 
 		void CustomActivity(bool firstTimeCalled)
 		{
+            if (this.SoundEffectCheckBox.SpriteInstanceCurrentChainName == "Checked") Manager.MusicOn = true;
+            else Manager.MusicOn = false;
 
+            if (this.SoundEffectCheckBox.SpriteInstanceCurrentChainName == "Checked") Manager.SoundOn = true;
+            else Manager.SoundOn = false;
+
+            if (!Manager.MusicOn) Microsoft.Xna.Framework.Media.MediaPlayer.Volume = 0;
+            else Microsoft.Xna.Framework.Media.MediaPlayer.Volume = 1;
 
 		}
 

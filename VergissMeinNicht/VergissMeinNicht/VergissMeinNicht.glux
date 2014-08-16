@@ -531,24 +531,48 @@
           <RuntimeType>Microsoft.Xna.Framework.Audio.SoundEffect</RuntimeType>
         </ReferencedFileSave>
         <ReferencedFileSave>
+          <Properties>
+            <PropertySave>
+              <Name>UseContentPipeline</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+          </Properties>
           <Name>Screens/LevelBase/Music/Jagd.mp3</Name>
           <IsSharedStatic>true</IsSharedStatic>
           <LoadedOnlyWhenReferenced>true</LoadedOnlyWhenReferenced>
           <RuntimeType>Microsoft.Xna.Framework.Media.Song</RuntimeType>
         </ReferencedFileSave>
         <ReferencedFileSave>
+          <Properties>
+            <PropertySave>
+              <Name>UseContentPipeline</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+          </Properties>
           <Name>Screens/LevelBase/Music/Kind.mp3</Name>
           <IsSharedStatic>true</IsSharedStatic>
           <LoadedOnlyWhenReferenced>true</LoadedOnlyWhenReferenced>
           <RuntimeType>Microsoft.Xna.Framework.Media.Song</RuntimeType>
         </ReferencedFileSave>
         <ReferencedFileSave>
+          <Properties>
+            <PropertySave>
+              <Name>UseContentPipeline</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+          </Properties>
           <Name>Screens/LevelBase/Music/Titel.mp3</Name>
           <IsSharedStatic>true</IsSharedStatic>
           <LoadedOnlyWhenReferenced>true</LoadedOnlyWhenReferenced>
           <RuntimeType>Microsoft.Xna.Framework.Media.Song</RuntimeType>
         </ReferencedFileSave>
         <ReferencedFileSave>
+          <Properties>
+            <PropertySave>
+              <Name>UseContentPipeline</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+          </Properties>
           <Name>Screens/LevelBase/Music/Erwachsen.mp3</Name>
           <IsSharedStatic>true</IsSharedStatic>
           <LoadedOnlyWhenReferenced>true</LoadedOnlyWhenReferenced>
@@ -722,6 +746,12 @@
       <Name>Screens\LoadGameScreen</Name>
       <ReferencedFiles>
         <ReferencedFileSave>
+          <Properties>
+            <PropertySave>
+              <Name>UseContentPipeline</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+          </Properties>
           <Name>Screens/OptionsScreen/Titel.mp3</Name>
           <IsSharedStatic>true</IsSharedStatic>
           <DestroyOnUnload>false</DestroyOnUnload>
@@ -814,6 +844,12 @@
           <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
         </ReferencedFileSave>
         <ReferencedFileSave>
+          <Properties>
+            <PropertySave>
+              <Name>UseContentPipeline</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+          </Properties>
           <Name>Screens/OptionsScreen/Titel.mp3</Name>
           <IsSharedStatic>true</IsSharedStatic>
           <DestroyOnUnload>false</DestroyOnUnload>
@@ -1060,6 +1096,12 @@
           <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
         </ReferencedFileSave>
         <ReferencedFileSave>
+          <Properties>
+            <PropertySave>
+              <Name>UseContentPipeline</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+          </Properties>
           <Name>Screens/MainMenu/Titel.mp3</Name>
           <IsSharedStatic>true</IsSharedStatic>
           <DestroyOnUnload>false</DestroyOnUnload>
@@ -1295,7 +1337,7 @@
         </EventResponseSave>
         <EventResponseSave>
           <EventName>SoundCheckBoxClick</EventName>
-          <SourceObject>SoundCheckBox</SourceObject>
+          <SourceObject>MusicCheckBox</SourceObject>
           <SourceObjectEvent>Click</SourceObjectEvent>
           <BeforeOrAfter>Before</BeforeOrAfter>
           <DelegateType />
@@ -1312,32 +1354,85 @@
       <Name>Screens\OptionsScreen</Name>
       <ReferencedFiles>
         <ReferencedFileSave>
+          <Properties>
+            <PropertySave>
+              <Name>UseContentPipeline</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+          </Properties>
           <Name>Screens/OptionsScreen/Titel.mp3</Name>
           <IsSharedStatic>true</IsSharedStatic>
           <DestroyOnUnload>false</DestroyOnUnload>
           <LoadedAtRuntime>false</LoadedAtRuntime>
           <RuntimeType>Microsoft.Xna.Framework.Media.Song</RuntimeType>
         </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>Screens/OptionsScreen/Menu_Optionen.png</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
+        </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>Screens/OptionsScreen/Menu_Optionen_MouseOver.png</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
+        </ReferencedFileSave>
       </ReferencedFiles>
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
+            <Type>string</Type>
+            <Member>SpriteInstanceCurrentChainName</Member>
+            <ValueAsString>Checked</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>X</Member>
+            <ValueAsFloat>160</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
             <Type>float</Type>
             <Member>Y</Member>
-            <ValueAsFloat>-40</ValueAsFloat>
+            <ValueAsFloat>-70</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>string</Type>
+            <Member>DisplayText</Member>
+            <ValueAsString />
           </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\CheckBox</SourceClassType>
           <InstanceName>SoundEffectCheckBox</InstanceName>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
+          <LayerOn>Layer2D</LayerOn>
         </NamedObjectSave>
         <NamedObjectSave>
+          <CustomProperty>
+            <Type>string</Type>
+            <Member>SpriteInstanceCurrentChainName</Member>
+            <ValueAsString>Checked</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>X</Member>
+            <ValueAsFloat>160</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Y</Member>
+            <ValueAsFloat>-10</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>string</Type>
+            <Member>DisplayText</Member>
+            <ValueAsString />
+          </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\CheckBox</SourceClassType>
-          <InstanceName>SoundCheckBox</InstanceName>
+          <InstanceName>MusicCheckBox</InstanceName>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
+          <LayerOn>Layer2D</LayerOn>
         </NamedObjectSave>
         <NamedObjectSave>
           <CustomProperty>
@@ -1347,14 +1442,63 @@
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
+            <Member>ScaleX</Member>
+            <ValueAsFloat>130</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>X</Member>
+            <ValueAsFloat>250</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
             <Member>Y</Member>
-            <ValueAsFloat>-120</ValueAsFloat>
+            <ValueAsFloat>-165</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>SpriteFrameInstanceScaleY</Member>
+            <ValueAsFloat>25</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>bool</Type>
+            <Member>Visible</Member>
+            <ValueAsBool>true</ValueAsBool>
           </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\Button</SourceClassType>
           <InstanceName>BackButton</InstanceName>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+        <NamedObjectSave>
+          <CustomProperty>
+            <Type>Texture2D</Type>
+            <Member>Texture</Member>
+            <ValueAsString>Menu_Optionen</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>TextureScale</Member>
+            <ValueAsFloat>1</ValueAsFloat>
+          </CustomProperty>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceFile />
+          <SourceName />
+          <SourceClassType>Sprite</SourceClassType>
+          <InstanceName>SpriteInstance</InstanceName>
+          <AttachToContainer>true</AttachToContainer>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+        <NamedObjectSave>
+          <SourceType>FlatRedBallType</SourceType>
+          <SourceFile />
+          <SourceName />
+          <SourceClassType>Layer</SourceClassType>
+          <InstanceName>Layer2D</InstanceName>
+          <AttachToContainer>true</AttachToContainer>
+          <IndependentOfCamera>true</IndependentOfCamera>
+          <Is2D>true</Is2D>
         </NamedObjectSave>
       </NamedObjects>
     </ScreenSave>
@@ -1771,6 +1915,19 @@
           <Name>RotationZ</Name>
           <Type>float</Type>
           <DefaultValue xsi:type="xsd:float">0</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>SpriteFrameInstanceScaleY</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">16</DefaultValue>
+          <SourceObject>SpriteFrameInstance</SourceObject>
+          <SourceObjectProperty>ScaleY</SourceObjectProperty>
         </CustomVariable>
       </CustomVariables>
       <ImplementsIVisible>true</ImplementsIVisible>
@@ -4045,6 +4202,12 @@
           <RuntimeType>FlatRedBall.Graphics.Animation.AnimationChainList</RuntimeType>
         </ReferencedFileSave>
         <ReferencedFileSave>
+          <Properties>
+            <PropertySave>
+              <Name>UseContentPipeline</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+          </Properties>
           <Name>Screens/LevelBase/Music/Kind.mp3</Name>
           <IsSharedStatic>true</IsSharedStatic>
           <LoadedOnlyWhenReferenced>true</LoadedOnlyWhenReferenced>
@@ -4192,6 +4355,12 @@
           <RuntimeType>FlatRedBall.Graphics.Animation.AnimationChainList</RuntimeType>
         </ReferencedFileSave>
         <ReferencedFileSave>
+          <Properties>
+            <PropertySave>
+              <Name>UseContentPipeline</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+          </Properties>
           <Name>Screens/LevelBase/Music/Erwachsen.mp3</Name>
           <IsSharedStatic>true</IsSharedStatic>
           <LoadedOnlyWhenReferenced>true</LoadedOnlyWhenReferenced>
