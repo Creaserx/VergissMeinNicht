@@ -4,180 +4,168 @@
   <TimeMeasurementUnit>Undefined</TimeMeasurementUnit>
   <CoordinateType>Pixel</CoordinateType>
   <AnimationChain>
-    <Name>Drehen</Name>
+    <Name>JitB_Idle</Name>
     <ColorKey>0</ColorKey>
     <Frame>
       <FlipHorizontal>false</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
-      <TextureName>JitB_Kurbel_AnimationSpriteSheet.png</TextureName>
-      <FrameLength>0.2</FrameLength>
-      <LeftCoordinate>0</LeftCoordinate>
-      <RightCoordinate>301</RightCoordinate>
-      <TopCoordinate>0</TopCoordinate>
-      <BottomCoordinate>400</BottomCoordinate>
-      <RelativeX>0</RelativeX>
-      <RelativeY>0</RelativeY>
-    </Frame>
-    <Frame>
-      <FlipHorizontal>false</FlipHorizontal>
-      <FlipVertical>false</FlipVertical>
-      <TextureName>JitB_Kurbel_AnimationSpriteSheet.png</TextureName>
-      <FrameLength>0.2</FrameLength>
-      <LeftCoordinate>301</LeftCoordinate>
-      <RightCoordinate>602</RightCoordinate>
-      <TopCoordinate>0</TopCoordinate>
-      <BottomCoordinate>400</BottomCoordinate>
-      <RelativeX>0</RelativeX>
-      <RelativeY>0</RelativeY>
-    </Frame>
-    <Frame>
-      <FlipHorizontal>false</FlipHorizontal>
-      <FlipVertical>false</FlipVertical>
-      <TextureName>JitB_Kurbel_AnimationSpriteSheet.png</TextureName>
-      <FrameLength>0.2</FrameLength>
-      <LeftCoordinate>602</LeftCoordinate>
-      <RightCoordinate>903</RightCoordinate>
-      <TopCoordinate>0</TopCoordinate>
-      <BottomCoordinate>400</BottomCoordinate>
-      <RelativeX>0</RelativeX>
-      <RelativeY>0</RelativeY>
-    </Frame>
-    <Frame>
-      <FlipHorizontal>false</FlipHorizontal>
-      <FlipVertical>false</FlipVertical>
-      <TextureName>JitB_Kurbel_AnimationSpriteSheet.png</TextureName>
-      <FrameLength>0.2</FrameLength>
-      <LeftCoordinate>0</LeftCoordinate>
-      <RightCoordinate>301</RightCoordinate>
-      <TopCoordinate>400</TopCoordinate>
-      <BottomCoordinate>800</BottomCoordinate>
-      <RelativeX>0</RelativeX>
-      <RelativeY>1</RelativeY>
-    </Frame>
-    <Frame>
-      <FlipHorizontal>false</FlipHorizontal>
-      <FlipVertical>false</FlipVertical>
-      <TextureName>JitB_Kurbel_AnimationSpriteSheet.png</TextureName>
-      <FrameLength>0.2</FrameLength>
-      <LeftCoordinate>301</LeftCoordinate>
-      <RightCoordinate>602</RightCoordinate>
-      <TopCoordinate>400</TopCoordinate>
-      <BottomCoordinate>800</BottomCoordinate>
-      <RelativeX>0</RelativeX>
-      <RelativeY>1</RelativeY>
-    </Frame>
-    <Frame>
-      <FlipHorizontal>false</FlipHorizontal>
-      <FlipVertical>false</FlipVertical>
-      <TextureName>JitB_Kurbel_AnimationSpriteSheet.png</TextureName>
-      <FrameLength>0.2</FrameLength>
-      <LeftCoordinate>602</LeftCoordinate>
-      <RightCoordinate>903</RightCoordinate>
-      <TopCoordinate>400</TopCoordinate>
-      <BottomCoordinate>800</BottomCoordinate>
-      <RelativeX>0</RelativeX>
-      <RelativeY>1</RelativeY>
-    </Frame>
-  </AnimationChain>
-  <AnimationChain>
-    <Name>Attack</Name>
-    <ColorKey>0</ColorKey>
-    <Frame>
-      <FlipHorizontal>false</FlipHorizontal>
-      <FlipVertical>false</FlipVertical>
-      <TextureName>JitB _Attack_AnimationSpriteSheet.png</TextureName>
-      <FrameLength>0.15</FrameLength>
+      <TextureName>JitB_Animation_Full_Sheet.png</TextureName>
+      <FrameLength>0.1</FrameLength>
       <LeftCoordinate>0</LeftCoordinate>
       <RightCoordinate>682</RightCoordinate>
       <TopCoordinate>0</TopCoordinate>
-      <BottomCoordinate>415</BottomCoordinate>
+      <BottomCoordinate>372</BottomCoordinate>
       <RelativeX>0</RelativeX>
       <RelativeY>0</RelativeY>
     </Frame>
     <Frame>
       <FlipHorizontal>false</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
-      <TextureName>JitB _Attack_AnimationSpriteSheet.png</TextureName>
-      <FrameLength>0.15</FrameLength>
+      <TextureName>JitB_Animation_Full_Sheet.png</TextureName>
+      <FrameLength>0.1</FrameLength>
+      <LeftCoordinate>0</LeftCoordinate>
+      <RightCoordinate>682</RightCoordinate>
+      <TopCoordinate>372</TopCoordinate>
+      <BottomCoordinate>744</BottomCoordinate>
+      <RelativeX>0</RelativeX>
+      <RelativeY>0</RelativeY>
+    </Frame>
+    <Frame>
+      <FlipHorizontal>false</FlipHorizontal>
+      <FlipVertical>false</FlipVertical>
+      <TextureName>JitB_Animation_Full_Sheet.png</TextureName>
+      <FrameLength>0.1</FrameLength>
+      <LeftCoordinate>0</LeftCoordinate>
+      <RightCoordinate>682</RightCoordinate>
+      <TopCoordinate>744</TopCoordinate>
+      <BottomCoordinate>1116</BottomCoordinate>
+      <RelativeX>0</RelativeX>
+      <RelativeY>0</RelativeY>
+    </Frame>
+    <Frame>
+      <FlipHorizontal>false</FlipHorizontal>
+      <FlipVertical>false</FlipVertical>
+      <TextureName>JitB_Animation_Full_Sheet.png</TextureName>
+      <FrameLength>0.1</FrameLength>
       <LeftCoordinate>682</LeftCoordinate>
       <RightCoordinate>1364</RightCoordinate>
       <TopCoordinate>0</TopCoordinate>
-      <BottomCoordinate>415</BottomCoordinate>
+      <BottomCoordinate>372</BottomCoordinate>
       <RelativeX>0</RelativeX>
       <RelativeY>0</RelativeY>
     </Frame>
     <Frame>
       <FlipHorizontal>false</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
-      <TextureName>JitB _Attack_AnimationSpriteSheet.png</TextureName>
-      <FrameLength>0.15</FrameLength>
-      <LeftCoordinate>0</LeftCoordinate>
-      <RightCoordinate>682</RightCoordinate>
-      <TopCoordinate>415</TopCoordinate>
-      <BottomCoordinate>830</BottomCoordinate>
-      <RelativeX>0</RelativeX>
-      <RelativeY>0</RelativeY>
-    </Frame>
-    <Frame>
-      <FlipHorizontal>false</FlipHorizontal>
-      <FlipVertical>false</FlipVertical>
-      <TextureName>JitB _Attack_AnimationSpriteSheet.png</TextureName>
-      <FrameLength>0.15</FrameLength>
-      <LeftCoordinate>1364</LeftCoordinate>
-      <RightCoordinate>2046</RightCoordinate>
-      <TopCoordinate>0</TopCoordinate>
-      <BottomCoordinate>415</BottomCoordinate>
-      <RelativeX>0</RelativeX>
-      <RelativeY>0</RelativeY>
-    </Frame>
-    <Frame>
-      <FlipHorizontal>false</FlipHorizontal>
-      <FlipVertical>false</FlipVertical>
-      <TextureName>JitB _Attack_AnimationSpriteSheet.png</TextureName>
-      <FrameLength>0.15</FrameLength>
+      <TextureName>JitB_Animation_Full_Sheet.png</TextureName>
+      <FrameLength>0.1</FrameLength>
       <LeftCoordinate>682</LeftCoordinate>
       <RightCoordinate>1364</RightCoordinate>
-      <TopCoordinate>415</TopCoordinate>
-      <BottomCoordinate>830</BottomCoordinate>
-      <RelativeX>0</RelativeX>
-      <RelativeY>0</RelativeY>
-    </Frame>
-    <Frame>
-      <FlipHorizontal>false</FlipHorizontal>
-      <FlipVertical>false</FlipVertical>
-      <TextureName>JitB _Attack_AnimationSpriteSheet.png</TextureName>
-      <FrameLength>0.15</FrameLength>
-      <LeftCoordinate>1364</LeftCoordinate>
-      <RightCoordinate>2046</RightCoordinate>
-      <TopCoordinate>415</TopCoordinate>
-      <BottomCoordinate>830</BottomCoordinate>
-      <RelativeX>0</RelativeX>
-      <RelativeY>0</RelativeY>
-    </Frame>
-    <Frame>
-      <FlipHorizontal>false</FlipHorizontal>
-      <FlipVertical>false</FlipVertical>
-      <TextureName>JitB _Attack_AnimationSpriteSheet.png</TextureName>
-      <FrameLength>0.15</FrameLength>
-      <LeftCoordinate>0</LeftCoordinate>
-      <RightCoordinate>682</RightCoordinate>
-      <TopCoordinate>830</TopCoordinate>
-      <BottomCoordinate>1245</BottomCoordinate>
-      <RelativeX>0</RelativeX>
-      <RelativeY>0</RelativeY>
-    </Frame>
-    <Frame>
-      <FlipHorizontal>false</FlipHorizontal>
-      <FlipVertical>false</FlipVertical>
-      <TextureName>JitB _Attack_AnimationSpriteSheet.png</TextureName>
-      <FrameLength>0.15</FrameLength>
-      <LeftCoordinate>682</LeftCoordinate>
-      <RightCoordinate>1364</RightCoordinate>
-      <TopCoordinate>830</TopCoordinate>
-      <BottomCoordinate>1245</BottomCoordinate>
+      <TopCoordinate>372</TopCoordinate>
+      <BottomCoordinate>744</BottomCoordinate>
       <RelativeX>0</RelativeX>
       <RelativeY>0</RelativeY>
     </Frame>
   </AnimationChain>
-  <FileName>C:/Users/Jan/Documents/GitHub/VergissMeinNicht/VergissMeinNicht/VergissMeinNichtContent/Entities/Enemies/JackInTheBox/AnimationChainListFile.achx</FileName>
+  <AnimationChain>
+    <Name>JitB_Attack</Name>
+    <ColorKey>0</ColorKey>
+    <Frame>
+      <FlipHorizontal>false</FlipHorizontal>
+      <FlipVertical>false</FlipVertical>
+      <TextureName>JitB_Animation_Full_Sheet.png</TextureName>
+      <FrameLength>0.1</FrameLength>
+      <LeftCoordinate>1364</LeftCoordinate>
+      <RightCoordinate>2046</RightCoordinate>
+      <TopCoordinate>0</TopCoordinate>
+      <BottomCoordinate>372</BottomCoordinate>
+      <RelativeX>0</RelativeX>
+      <RelativeY>0</RelativeY>
+    </Frame>
+    <Frame>
+      <FlipHorizontal>false</FlipHorizontal>
+      <FlipVertical>false</FlipVertical>
+      <TextureName>JitB_Animation_Full_Sheet.png</TextureName>
+      <FrameLength>0.1</FrameLength>
+      <LeftCoordinate>1364</LeftCoordinate>
+      <RightCoordinate>2046</RightCoordinate>
+      <TopCoordinate>372</TopCoordinate>
+      <BottomCoordinate>744</BottomCoordinate>
+      <RelativeX>0</RelativeX>
+      <RelativeY>0</RelativeY>
+    </Frame>
+    <Frame>
+      <FlipHorizontal>false</FlipHorizontal>
+      <FlipVertical>false</FlipVertical>
+      <TextureName>JitB_Animation_Full_Sheet.png</TextureName>
+      <FrameLength>0.1</FrameLength>
+      <LeftCoordinate>682</LeftCoordinate>
+      <RightCoordinate>1364</RightCoordinate>
+      <TopCoordinate>744</TopCoordinate>
+      <BottomCoordinate>1116</BottomCoordinate>
+      <RelativeX>0</RelativeX>
+      <RelativeY>0</RelativeY>
+    </Frame>
+    <Frame>
+      <FlipHorizontal>false</FlipHorizontal>
+      <FlipVertical>false</FlipVertical>
+      <TextureName>JitB_Animation_Full_Sheet.png</TextureName>
+      <FrameLength>0.1</FrameLength>
+      <LeftCoordinate>1364</LeftCoordinate>
+      <RightCoordinate>2046</RightCoordinate>
+      <TopCoordinate>744</TopCoordinate>
+      <BottomCoordinate>1116</BottomCoordinate>
+      <RelativeX>0</RelativeX>
+      <RelativeY>0</RelativeY>
+    </Frame>
+    <Frame>
+      <FlipHorizontal>false</FlipHorizontal>
+      <FlipVertical>false</FlipVertical>
+      <TextureName>JitB_Animation_Full_Sheet.png</TextureName>
+      <FrameLength>0.1</FrameLength>
+      <LeftCoordinate>0</LeftCoordinate>
+      <RightCoordinate>682</RightCoordinate>
+      <TopCoordinate>1116</TopCoordinate>
+      <BottomCoordinate>1488</BottomCoordinate>
+      <RelativeX>0</RelativeX>
+      <RelativeY>0</RelativeY>
+    </Frame>
+    <Frame>
+      <FlipHorizontal>false</FlipHorizontal>
+      <FlipVertical>false</FlipVertical>
+      <TextureName>JitB_Animation_Full_Sheet.png</TextureName>
+      <FrameLength>0.1</FrameLength>
+      <LeftCoordinate>682</LeftCoordinate>
+      <RightCoordinate>1364</RightCoordinate>
+      <TopCoordinate>1116</TopCoordinate>
+      <BottomCoordinate>1488</BottomCoordinate>
+      <RelativeX>0</RelativeX>
+      <RelativeY>0</RelativeY>
+    </Frame>
+    <Frame>
+      <FlipHorizontal>false</FlipHorizontal>
+      <FlipVertical>false</FlipVertical>
+      <TextureName>JitB_Animation_Full_Sheet.png</TextureName>
+      <FrameLength>0.1</FrameLength>
+      <LeftCoordinate>682</LeftCoordinate>
+      <RightCoordinate>1364</RightCoordinate>
+      <TopCoordinate>744</TopCoordinate>
+      <BottomCoordinate>1116</BottomCoordinate>
+      <RelativeX>0</RelativeX>
+      <RelativeY>0</RelativeY>
+    </Frame>
+    <Frame>
+      <FlipHorizontal>false</FlipHorizontal>
+      <FlipVertical>false</FlipVertical>
+      <TextureName>JitB_Animation_Full_Sheet.png</TextureName>
+      <FrameLength>0.1</FrameLength>
+      <LeftCoordinate>1364</LeftCoordinate>
+      <RightCoordinate>2046</RightCoordinate>
+      <TopCoordinate>372</TopCoordinate>
+      <BottomCoordinate>744</BottomCoordinate>
+      <RelativeX>0</RelativeX>
+      <RelativeY>0</RelativeY>
+    </Frame>
+  </AnimationChain>
+  <FileName>C:/Users/Wur/Documents/GitHub/VergissMeinNicht/VergissMeinNicht/VergissMeinNichtContent/Entities/Enemies/JackInTheBox/AnimationChainListFile.achx</FileName>
 </AnimationChainArraySave>

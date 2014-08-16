@@ -327,7 +327,7 @@
           <CustomProperty>
             <Type>float</Type>
             <Member>Y</Member>
-            <ValueAsFloat>120</ValueAsFloat>
+            <ValueAsFloat>130</ValueAsFloat>
           </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\Enemies\JackInTheBox</SourceClassType>
@@ -2267,7 +2267,7 @@
           <CustomProperty>
             <Type>string</Type>
             <Member>CurrentChainName</Member>
-            <ValueAsString>Drehen</ValueAsString>
+            <ValueAsString>JitB_Idle</ValueAsString>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
@@ -2297,12 +2297,12 @@
           <CustomProperty>
             <Type>float</Type>
             <Member>Width</Member>
-            <ValueAsFloat>120</ValueAsFloat>
+            <ValueAsFloat>110</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
             <Member>Y</Member>
-            <ValueAsFloat>-80</ValueAsFloat>
+            <ValueAsFloat>-110</ValueAsFloat>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile />

@@ -36,7 +36,7 @@ namespace VergissMeinNicht.Entities.Enemies
 
 		private void CustomActivity()
 		{
-
+            AnimationActivity();
 
 		}
 
@@ -50,6 +50,29 @@ namespace VergissMeinNicht.Entities.Enemies
         {
 
 
+        }
+
+        private void AnimationActivity()
+        {
+            if (TheoInRange())
+            {
+                this.SpriteInstance.CurrentChainName = "JitB_Attack";
+            }            
+            else
+            {
+                this.SpriteInstance.CurrentChainName = "JitB_Idle";
+            }
+        }
+
+        private bool TheoInRange()
+        {
+            if (PlatformerCharacterBase.getInstance().X >= this.X - 180 
+                && PlatformerCharacterBase.getInstance().X <= this.X + 55
+                && PlatformerCharacterBase.getInstance().Y <= this.Y + 40)
+            {
+                return true;
+            }
+            else return false;
         }
 	}
 }
