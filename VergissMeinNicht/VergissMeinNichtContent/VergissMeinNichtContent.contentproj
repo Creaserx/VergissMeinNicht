@@ -250,6 +250,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>!TheodorGrownUp_IdleAnimation_Sheet</Name>
     </None>
+    <None Include="Entities\Theodor\!TheodorGrownUp_LaufAnimation_Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>!TheodorGrownUp_LaufAnimation_Sheet</Name>
+    </None>
     <None Include="Entities\Theodor\AnimationChainListFile.achx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>AnimationChainListFile</Name>

@@ -121,25 +121,7 @@ namespace VergissMeinNicht.Entities
                     }
                 }
             }
-            else // in the air
-            {
-                if (DirectionFacing == LeftOrRight.Left && Manager.isSwitching)
-                {
-                    this.SpriteInstance.CurrentChainName = "GU_IdleLeft";
-                }
-                else if (DirectionFacing == LeftOrRight.Right && Manager.isSwitching)
-                {
-                    this.SpriteInstance.CurrentChainName = "GU_IdleRight";
-                }
-                /*else if (DirectionFacing == LeftOrRight.Left)
-                {
-                    this.SpriteInstance.CurrentChainName = "JumpLeft";
-                }
-                else if (DirectionFacing == LeftOrRight.Right)
-                {
-                    this.SpriteInstance.CurrentChainName = "JumpRight";
-                }*/
-            }
+            
         }
 
         private void IdleAnimationRight()
