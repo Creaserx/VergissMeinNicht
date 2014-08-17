@@ -267,14 +267,18 @@ namespace VergissMeinNicht.Screens
                 EnableKeys();
                 DisableLayers = true;
                 
-                CurrentLayer = 1;
+                
                 Boden.Y = -50;
                 PlatformerCharacterBase.getInstance().X = 300;
                 PlatformerCharacterBase.getInstance().Y = 102.5f;
                 PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale = 0.5f;
                 PlatformerCharacterBase.getInstance().Collision.Height = CollisionHeightLayerFront;
                 PlatformerCharacterBase.getInstance().Collision.Width = CollisionWidthLayerFront;
-                Manager.CharacterReset = false;
+                if (CurrentLayer != 1)
+                {                  
+                    Manager.CharacterReset = false;
+                }
+                CurrentLayer = 1;
             }
         }
         
