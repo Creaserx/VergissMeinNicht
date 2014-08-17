@@ -25,8 +25,9 @@ namespace VergissMeinNicht.Entities
 
         public static bool MusicOn = true;
         public static bool SoundOn = true;
-        
 
+        public static bool CharacterReset = false;
+        
         //Keys Disablen
         public static bool EnableKey_Space = true;
         public static bool EnableKey_Down = true;
@@ -34,6 +35,8 @@ namespace VergissMeinNicht.Entities
         public static bool EnableKey_E = true;
         public static bool EnableKey_Left = true;
         public static bool EnableKey_Right = true;
+
+
 
         public static void SetCheckPoint(float x, float y)
         {
