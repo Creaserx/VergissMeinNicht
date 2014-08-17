@@ -8,7 +8,7 @@ using FlatRedBall.Input;
 using FlatRedBall.Instructions;
 using FlatRedBall.AI.Pathfinding;
 using FlatRedBall.Graphics.Animation;
-using FlatRedBall.Graphics.Particle;
+using StateInterpolationPlugin; 
 
 using FlatRedBall.Graphics.Model;
 using FlatRedBall.Math.Geometry;
@@ -76,8 +76,8 @@ namespace VergissMeinNicht.Screens
            
             TheoHighJump();
 
+            JitBKill();
             
-
 		}
 
         public override void CustomDestroy()
@@ -94,6 +94,22 @@ namespace VergissMeinNicht.Screens
 
         //----------------------------------------------------------------------------------
         //--------FUNKTIONEN----------------------------------------------------------------
+
+        void JitBKill()
+        {
+            if (JackInTheBoxInstance.SpriteInstance.CurrentChainName == "JitB_Attack" && JackInTheBoxInstance.SpriteInstance.CurrentFrameIndex == 4 && PlatformerCharacterBase.getInstance().X <= 500)
+            {
+                TweenCharacterInvis(0.75f);                
+                FlashInstance.BlackFadeIn(1, 1);
+                PlatformerCharacterBase.getInstance().X = TeddyInstance.X;
+            }
+            else if (FlashInstance.SpriteInstanceBlack.Alpha == 1)
+            {
+                TweenCharacterInvis(0.75f);
+                FlashInstance.BlackFadeOut(0, 1);            
+            }
+        }
+        
 
         void TheoHighJump()
         {

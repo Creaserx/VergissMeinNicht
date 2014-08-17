@@ -239,6 +239,12 @@ namespace VergissMeinNicht.Screens
             Manager.EnableKey_Down = false;
             Manager.EnableKey_Up = false;
 
+            if (FlashInstance.SpriteInstanceBlack.Alpha == 0)
+            {
+                TweenCharacterInvis(0.4f);
+                FlashInstance.BlackFadeIn(0.9f, 0.5f);
+            }
+
             Boden.Y = -500;
             Manager.CharacterFallingInHole = true;
 
@@ -265,11 +271,10 @@ namespace VergissMeinNicht.Screens
             if (Manager.CharacterReset == true)
             {
                 EnableKeys();
-                DisableLayers = true;
-                
+                DisableLayers = true;                                                
                 
                 Boden.Y = -50;
-                PlatformerCharacterBase.getInstance().X = 300;
+                PlatformerCharacterBase.getInstance().X = Manager.CheckPointX;
                 PlatformerCharacterBase.getInstance().Y = 102.5f;
                 PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale = 0.5f;
                 PlatformerCharacterBase.getInstance().Collision.Height = CollisionHeightLayerFront;
@@ -279,6 +284,38 @@ namespace VergissMeinNicht.Screens
                     Manager.CharacterReset = false;
                 }
                 CurrentLayer = 1;
+                
+            }
+
+            if (FlashInstance.SpriteInstanceBlack.Alpha == 0.9f)
+            {
+                TweenCharacterInvis(0.9f);
+                FlashInstance.BlackFadeOut(0, 1);
+            }
+                
+        }
+
+        public void TweenCharacterInvis(float time)
+        {
+            if (PlatformerCharacterBase.getInstance().SpriteInstance.Alpha == 0)
+            {
+                PlatformerCharacterBase.getInstance().SpriteInstance
+                .Tween("Alpha")
+                .To(1)
+                .During(time)
+                .Using(
+                    FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                    FlatRedBall.Glue.StateInterpolation.Easing.Out);
+            }
+            else if (PlatformerCharacterBase.getInstance().SpriteInstance.Alpha == 1)
+            {
+                PlatformerCharacterBase.getInstance().SpriteInstance
+                .Tween("Alpha")
+                .To(0)
+                .During(time)
+                .Using(
+                    FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                    FlatRedBall.Glue.StateInterpolation.Easing.Out);
             }
         }
         
@@ -355,10 +392,11 @@ namespace VergissMeinNicht.Screens
                 string resultStringVolume = "Volume: " + Microsoft.Xna.Framework.Media.MediaPlayer.Volume;
                 string resultStringCheckX = "CheckX: " + Manager.CheckPointX.ToString();
                 string resultStringCheckY = "CheckY: " + Manager.CheckPointY.ToString();
+                string resultStringFlashAlpha = "FlashAlpha: " + FlashInstance.SpriteInstanceBlack.Alpha.ToString();
                 FlatRedBall.Debugging.Debugger.Write(resultStringX + "\n" + resultStringY + "\n" + resultStringCollisionH + "\n" + resultStringCollisionW +
                     "\n" + resultStringLayer + "\n" + resultStringL3 + "\n" + resultStringLa + "\n" + resultStringSwitch + "\n" + resultStringCameraX +
-                    "\n" + resultStringLayerCount + "\n" + resultStringChainName + "\n" + resultStringCharacterYVelocity + "\n" + resultStringVolume + 
-                    "\n" + resultStringCheckX + "\n" + resultStringCheckY);
+                    "\n" + resultStringLayerCount + "\n" + resultStringChainName + "\n" + resultStringCharacterYVelocity + "\n" + resultStringVolume +
+                    "\n" + resultStringCheckX + "\n" + resultStringCheckY + "\n" + resultStringFlashAlpha);
             }
         }        
 

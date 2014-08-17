@@ -106,11 +106,11 @@ namespace VergissMeinNicht.Entities
                     switch (Manager.CurrentLevel)
                     {
                         case 1:
-                            Manager.SetCheckPoint(400, 102.5f);
+                            Manager.SetCheckPoint(this.X, 102.5f);
                             break;
 
                         case 2:
-
+                            Manager.SetCheckPoint(this.X, 102.5f);
                             break;
 
                         case 3:

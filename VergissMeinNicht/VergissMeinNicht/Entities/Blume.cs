@@ -51,6 +51,7 @@ namespace VergissMeinNicht.Entities
 
 		private void CustomDestroy()
 		{
+            Manager.CheckPointX = this.X;
             Manager.FlowerDestroyed = true;
 
 		}

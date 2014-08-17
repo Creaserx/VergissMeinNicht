@@ -53,13 +53,25 @@ namespace VergissMeinNicht.Entities
 
         }
 
-        public void BlackFadeIn()
+        public void BlackFadeIn(float value, float time)
         {
             this.SpriteInstanceBlack.Visible = true;
             this.SpriteInstanceBlack
                 .Tween("Alpha")
-                .To(1)
-                .During(1)
+                .To(value)
+                .During(time)
+                .Using(
+                    FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
+                    FlatRedBall.Glue.StateInterpolation.Easing.Out);
+        }
+
+        public void BlackFadeOut(float value, float time)
+        {
+            this.SpriteInstanceBlack.Visible = true;
+            this.SpriteInstanceBlack
+                .Tween("Alpha")
+                .To(value)
+                .During(time)
                 .Using(
                     FlatRedBall.Glue.StateInterpolation.InterpolationType.Linear,
                     FlatRedBall.Glue.StateInterpolation.Easing.Out);
