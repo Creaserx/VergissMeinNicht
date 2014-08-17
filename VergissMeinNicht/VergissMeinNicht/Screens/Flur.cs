@@ -41,11 +41,11 @@ namespace VergissMeinNicht.Screens
 
             Manager.CurrentLevel = 2;
 
-            CameraMaximum(-305, 1600);
+            CameraMaximum(-305, 1400);
 
             //Objektpositionen bestimmen
-            BlumeInstance.PositionBlume(-600, 80);
-            RauchInstance.PositionRauch(1560, 180);
+            BlumeInstance.PositionBlume(-600, -180);
+            RauchInstance.PositionRauch(1860, 180);
             TeddyInstance.PositionTeddy(-400, 100);
             DoorInstance_Schlafraum.X = 1260;
             UI_Button_EInstance.PositionUI_Button(DoorInstance_Schlafraum.X + 90, DoorInstance_Schlafraum.Y + 90, UI_Button_EInstance.Y);
