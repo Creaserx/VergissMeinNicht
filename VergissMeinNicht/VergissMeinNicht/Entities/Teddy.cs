@@ -10,6 +10,7 @@ using FlatRedBall.AI.Pathfinding;
 using FlatRedBall.Graphics.Animation;
 using FlatRedBall.Graphics.Particle;
 using StateInterpolationPlugin;
+using FlatRedBall.Screens;
 
 using FlatRedBall.Math.Geometry;
 using FlatRedBall.Math.Splines;
@@ -102,6 +103,24 @@ namespace VergissMeinNicht.Entities
                 //--Transform Character
                 if (InputManager.Keyboard.KeyPushed(Keys.E))
                 {
+                    switch (Manager.CurrentLevel)
+                    {
+                        case 1:
+                            Manager.SetCheckPoint(400, 102.5f);
+                            break;
+
+                        case 2:
+
+                            break;
+
+                        case 3:
+
+                            break;
+
+                        default:
+                            break;
+                    } 
+
                     // aktuelle Blickrichtung speichern
                     if (PlatformerCharacterBase.getInstance().DirectionFacing == PlatformerCharacterBase.LeftOrRight.Right)
                         LastDirectionRight = true;
@@ -180,6 +199,7 @@ namespace VergissMeinNicht.Entities
                 SaveText.Visible = false;
                 InteractText.Visible = false;
             }
+            
         }
 
 		private void CustomDestroy()
