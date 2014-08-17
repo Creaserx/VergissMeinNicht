@@ -250,6 +250,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>!TheodorChild_Idle_Animation_220x410_Sheet</Name>
     </None>
+    <None Include="Entities\Theodor\!TheodorChild_SprungAnimation_Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>!TheodorChild_SprungAnimation_Sheet</Name>
+    </None>
     <None Include="Entities\Theodor\!TheodorGrownUp_IdleAnimation_Sheet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>!TheodorGrownUp_IdleAnimation_Sheet</Name>

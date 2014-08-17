@@ -18,6 +18,9 @@ namespace VergissMeinNicht.Entities
 
         public static int LoadLevel;
         public static int CurrentLevel = 0;
+        public static int CurrentLayer = 1;
+        public static float SizeFirstDiff = 0.45f;
+        public static float SizeSecondDiff = 0.4f;
 
         public static bool CharacterFallingInHole = false;
         public static float CheckPointX = 0;

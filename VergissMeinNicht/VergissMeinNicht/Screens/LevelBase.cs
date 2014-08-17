@@ -112,6 +112,10 @@ namespace VergissMeinNicht.Screens
 
             KeyControl();
 
+            Manager.CurrentLayer = CurrentLayer;
+            Manager.SizeFirstDiff = SizeFirstDiff;
+            Manager.SizeSecondDiff = SizeSecondDiff;
+
             LayerOn();
             LayerManagement();
             

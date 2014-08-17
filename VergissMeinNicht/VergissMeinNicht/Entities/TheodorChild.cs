@@ -95,6 +95,26 @@ namespace VergissMeinNicht.Entities
             // check whether in air or on ground
             if (IsOnGround)
             {
+                if (!Manager.isSwitching)
+                {
+                    switch (Manager.CurrentLayer)
+                    {
+                        case 1:
+                            this.SpriteInstance.TextureScale = 0.5f;
+                            break;
+
+                        case 2:
+                            this.SpriteInstance.TextureScale = Manager.SizeFirstDiff;
+                            break;
+
+                        case 3:
+                            this.SpriteInstance.TextureScale = Manager.SizeSecondDiff;
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
                 if (HorizontalRatio > 0 || (Manager.isSwitching && base.DirectionFacing == LeftOrRight.Right))
                 {
                     this.SpriteInstance.CurrentChainName = "WalkRight";
@@ -118,6 +138,26 @@ namespace VergissMeinNicht.Entities
             }
             else // in the air
             {
+                if (!Manager.isSwitching)
+                {
+                    switch (Manager.CurrentLayer)
+                    {
+                        case 1:
+                            this.SpriteInstance.TextureScale = 0.5f * 1.2f;
+                            break;
+
+                        case 2:
+                            this.SpriteInstance.TextureScale = Manager.SizeFirstDiff * 1.2f;
+                            break;
+
+                        case 3:
+                            this.SpriteInstance.TextureScale = Manager.SizeSecondDiff * 1.2f;
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
                 if (DirectionFacing == LeftOrRight.Left && Manager.isSwitching)
                 {
                     this.SpriteInstance.CurrentChainName = "WalkLeft";
@@ -128,12 +168,16 @@ namespace VergissMeinNicht.Entities
                 }
                 else if (DirectionFacing == LeftOrRight.Left && !Manager.CharacterFallingInHole)
                 {
+
                     this.SpriteInstance.CurrentChainName = "JumpLeft";
+                    
                 }
                 else if (DirectionFacing == LeftOrRight.Right && !Manager.CharacterFallingInHole)
                 {
-                    this.SpriteInstance.CurrentChainName = "JumpRight";
+                    this.SpriteInstance.CurrentChainName = "JumpRight";                  
+
                 }
+                
             }
         }
 
