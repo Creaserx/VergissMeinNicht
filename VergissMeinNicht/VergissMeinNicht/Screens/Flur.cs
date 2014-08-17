@@ -39,6 +39,8 @@ namespace VergissMeinNicht.Screens
             base.CustomInitialize();
             DisableLayers = true;
 
+            Manager.CurrentLevel = 2;
+
             CameraMaximum(-305, 1600);
 
             //Objektpositionen bestimmen

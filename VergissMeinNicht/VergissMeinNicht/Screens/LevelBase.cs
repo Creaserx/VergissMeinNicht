@@ -247,7 +247,28 @@ namespace VergissMeinNicht.Screens
                 PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName = "FallLeft";
             else
                 PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName = "FallRight";
+
+            if (PlatformerCharacterBase.getInstance().SpriteInstance.CurrentFrameIndex == 4)
+            {
+                DeathReset();
+            }
         }
+
+        public void DeathReset()
+        {            
+            EnableKeys();
+            DisableLayers = true;
+            Boden.Y = -50;
+            CurrentLayer = 1;
+            //Manager.GoToCheckPoint(400, 102.5f);
+            PlatformerCharacterBase.getInstance().X = 400;
+            PlatformerCharacterBase.getInstance().Y = 102.5f;
+            PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale = 0.5f;
+            PlatformerCharacterBase.getInstance().Collision.Height = CollisionHeightLayerFront;
+            PlatformerCharacterBase.getInstance().Collision.Width = CollisionWidthLayerFront;
+            Manager.CharacterFallingInHole = false;
+        }
+        
         
         public void CollisionVisibilityOn()
         {
@@ -271,6 +292,8 @@ namespace VergissMeinNicht.Screens
                 CurrentLayer = 1;
                 PlatformerCharacterBase.getInstance().Y = 75;
                 PlatformerCharacterBase.getInstance().SpriteInstance.TextureScale = 0.5f;
+                PlatformerCharacterBase.getInstance().Collision.Height = CollisionHeightLayerFront;
+                PlatformerCharacterBase.getInstance().Collision.Width = CollisionWidthLayerFront;
                 Manager.CharacterFallingInHole = false;
 
                 if (!PlatformerCharacterBase.isChild())
@@ -318,9 +341,12 @@ namespace VergissMeinNicht.Screens
                 string resultStringChainName = "Animation:" + PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName;
                 string resultStringCharacterYVelocity = "Theo Y Velocity:" + PlatformerCharacterBase.getInstance().YVelocity;
                 string resultStringVolume = "Volume: " + Microsoft.Xna.Framework.Media.MediaPlayer.Volume;
+                string resultStringCheckX = "CheckX: " + Manager.CheckPointX.ToString();
+                string resultStringCheckY = "CheckY: " + Manager.CheckPointY.ToString();
                 FlatRedBall.Debugging.Debugger.Write(resultStringX + "\n" + resultStringY + "\n" + resultStringCollisionH + "\n" + resultStringCollisionW +
                     "\n" + resultStringLayer + "\n" + resultStringL3 + "\n" + resultStringLa + "\n" + resultStringSwitch + "\n" + resultStringCameraX +
-                    "\n" + resultStringLayerCount + "\n" + resultStringChainName + "\n" + resultStringCharacterYVelocity + "\n" + resultStringVolume);
+                    "\n" + resultStringLayerCount + "\n" + resultStringChainName + "\n" + resultStringCharacterYVelocity + "\n" + resultStringVolume + 
+                    "\n" + resultStringCheckX + "\n" + resultStringCheckY);
             }
         }        
 

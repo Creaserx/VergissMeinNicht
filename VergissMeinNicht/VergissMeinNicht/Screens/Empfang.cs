@@ -60,6 +60,8 @@ namespace VergissMeinNicht.Screens
             Manager.EnableKey_Down = false;
             Manager.EnableKey_Up = false;
             Manager.EnableKey_Space = false;
+
+            Manager.CurrentLevel = 1;
             
             //Objektpositionen bestimmen
             BlumeInstance.PositionBlume(-600, 80);
@@ -298,7 +300,7 @@ namespace VergissMeinNicht.Screens
                         UI_Button_SpaceInstance.SpriteInstanceVisible = true;
                     }
                     if (PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName == "JumpRight" ||
-                    PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName == "JumpRLeft")
+                    PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName == "JumpLeft")
                         LeftJumpZone = true;
                 }
                 //if (PlatformerCharacterBase.getInstance().SpriteInstance.CurrentChainName == "JumpRight" ||

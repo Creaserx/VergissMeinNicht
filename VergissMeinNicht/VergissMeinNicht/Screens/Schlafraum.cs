@@ -38,6 +38,8 @@ namespace VergissMeinNicht.Screens
             this.SpriteInstance.Y = 270;
             this.SpriteInstance.TextureScale *= 0.9f;
             CameraMaximum(-280, 280);
+
+            Manager.CurrentLevel = 3;
             
 
             //Objektpositionen bestimmen
