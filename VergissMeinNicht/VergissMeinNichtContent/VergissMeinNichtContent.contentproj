@@ -446,6 +446,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>schlafzimmer_backup_00025</Name>
     </None>
+    <None Include="Screens\StartUp\FacepalmStudios.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>FacepalmStudios</Name>
+    </None>
     <None Include="Screens\ZooLevel\10382537_889952597687392_1592239203505348189_o.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>10382537_889952597687392_1592239203505348189_o</Name>

@@ -47,10 +47,10 @@ namespace VergissMeinNicht
             IsMouseVisible = true;
 
             //sets resolution to screen resoulution
-            FlatRedBallServices.GraphicsOptions.SetResolution(/*GraphicsDevice.DisplayMode.Width,GraphicsDevice.DisplayMode.Height*/1280, 720);
+            FlatRedBallServices.GraphicsOptions.SetResolution(1280, 720);
 
             //initializing the MainMenu Screen first
-			FlatRedBall.Screens.ScreenManager.Start(typeof(VergissMeinNicht.Screens.Empfang));
+			FlatRedBall.Screens.ScreenManager.Start(typeof(VergissMeinNicht.Screens.StartUp));
 
             Microsoft.Xna.Framework.Media.MediaPlayer.IsRepeating = true;
 
