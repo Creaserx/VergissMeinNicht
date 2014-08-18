@@ -48,7 +48,6 @@ namespace VergissMeinNicht.Screens
                 
                 MoveToScreen(typeof(ZooLevel).FullName);
             }
-
             
             if (InputManager.Mouse.X >= (NewGameButton.X+500) && InputManager.Mouse.X < (NewGameButton.X + 900) && 
                             InputManager.Mouse.Y > (NewGameButton.Y + 275) && InputManager.Mouse.Y < (NewGameButton.Y + 360) )
