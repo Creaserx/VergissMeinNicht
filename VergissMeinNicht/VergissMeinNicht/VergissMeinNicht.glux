@@ -48,6 +48,12 @@
           <RuntimeType>FlatRedBall.Scene</RuntimeType>
         </ReferencedFileSave>
         <ReferencedFileSave>
+          <Properties>
+            <PropertySave>
+              <Name>UseContentPipeline</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+          </Properties>
           <Name>Screens/Credits/Titel.mp3</Name>
           <IsSharedStatic>true</IsSharedStatic>
           <RuntimeType>Microsoft.Xna.Framework.Media.Song</RuntimeType>
@@ -397,7 +403,7 @@
               <CustomProperty>
                 <Type>float</Type>
                 <Member>X</Member>
-                <ValueAsFloat>320</ValueAsFloat>
+                <ValueAsFloat>350</ValueAsFloat>
               </CustomProperty>
               <CustomProperty>
                 <Type>float</Type>
