@@ -41,7 +41,7 @@ namespace VergissMeinNicht.Screens
         public bool DisableLayers = false;
         public bool DisableLayerBack = false;
 
-        bool DebuggerOn = true;
+        bool DebuggerOn = false;
 
         public static float CollisionHeightLayerFront;
         public static float CollisionHeightLayerMid;
@@ -363,7 +363,8 @@ namespace VergissMeinNicht.Screens
             if (InputManager.Keyboard.KeyPushed(Keys.D1)) MoveToScreen(typeof(Empfang).FullName);
             if (InputManager.Keyboard.KeyPushed(Keys.D2)) MoveToScreen(typeof(Flur).FullName);
             if (InputManager.Keyboard.KeyPushed(Keys.D3)) MoveToScreen(typeof(Schlafraum).FullName);
-            
+            if (InputManager.Keyboard.KeyPushed(Keys.D4)) MoveToScreen(typeof(Credits).FullName);
+
             // F3/F4 -- Zeigt Debugger Werte an 
             if (InputManager.Keyboard.KeyPushed(Keys.F3))
             {

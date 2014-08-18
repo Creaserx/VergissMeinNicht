@@ -287,9 +287,17 @@
     <Compile Include="Screens\Cinematics.Generated.cs">
       <DependentUpon>Cinematics.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screens\Credits.cs" />
+    <Compile Include="Screens\Credits.Generated.cs">
+      <DependentUpon>Credits.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screens\Empfang.cs" />
     <Compile Include="Screens\Empfang.Generated.cs">
       <DependentUpon>Empfang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\FadeOut.cs" />
+    <Compile Include="Screens\FadeOut.Generated.cs">
+      <DependentUpon>FadeOut.cs</DependentUpon>
     </Compile>
     <Compile Include="Screens\Flur.cs" />
     <Compile Include="Screens\Flur.Generated.cs">

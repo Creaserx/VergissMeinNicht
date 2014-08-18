@@ -184,7 +184,7 @@ namespace VergissMeinNicht.Screens
             {
                 UI_Button_EInstance.SpriteInstanceVisible = true;
                 if (InputManager.Keyboard.KeyPushed(Keys.E))
-                    MoveToScreen(typeof(Schlafraum).FullName);  
+                    MoveToScreen(typeof(FadeOut).FullName);  
             }
             else UI_Button_EInstance.SpriteInstanceVisible = false;
         }
