@@ -338,6 +338,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Keyboard_Black_E</Name>
     </None>
+    <None Include="Screens\Credits\CreditsBild.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>CreditsBild</Name>
+    </None>
+    <None Include="Screens\Credits\SceneFile.scnx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>SceneFile</Name>
+    </None>
     <None Include="Screens\Empfang\!creepempfang.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>!creepempfang</Name>
@@ -369,6 +377,14 @@
     <None Include="Screens\Empfang\Layer3.shcx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Layer3</Name>
+    </None>
+    <None Include="Screens\FadeOut\fadeout.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>fadeout</Name>
+    </None>
+    <None Include="Screens\FadeOut\SceneFile.scnx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>SceneFile</Name>
     </None>
     <None Include="Screens\Flur\flur_1-1-1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -464,6 +480,11 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Name>Blop</Name>
+    </Compile>
+    <Compile Include="Screens\Credits\Titel.mp3">
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Name>Titel</Name>
     </Compile>
     <Compile Include="Screens\LevelBase\Music\Erwachsen.mp3">
       <Importer>Mp3Importer</Importer>

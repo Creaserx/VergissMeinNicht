@@ -94,6 +94,7 @@ namespace VergissMeinNicht.Screens
             if (InputManager.Keyboard.KeyPushed(Keys.D1)) MoveToScreen(typeof(Empfang).FullName);
             if (InputManager.Keyboard.KeyPushed(Keys.D2)) MoveToScreen(typeof(Flur).FullName);
             if (InputManager.Keyboard.KeyPushed(Keys.D3)) MoveToScreen(typeof(Schlafraum).FullName);
+            if (InputManager.Keyboard.KeyPushed(Keys.D4)) MoveToScreen(typeof(Credits).FullName);
 		}
 
 		void CustomDestroy()
