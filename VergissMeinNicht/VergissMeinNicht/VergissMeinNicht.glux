@@ -1550,6 +1550,14 @@
       </Tags>
       <Source>GLUE</Source>
       <BaseScreen>Screens\LevelBase</BaseScreen>
+      <Name>Screens\StartUp</Name>
+    </ScreenSave>
+    <ScreenSave>
+      <Tags>
+        <string>GLUE</string>
+      </Tags>
+      <Source>GLUE</Source>
+      <BaseScreen>Screens\LevelBase</BaseScreen>
       <Name>Screens\ZooLevel</Name>
       <ReferencedFiles>
         <ReferencedFileSave>

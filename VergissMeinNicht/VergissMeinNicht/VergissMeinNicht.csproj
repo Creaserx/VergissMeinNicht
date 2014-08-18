@@ -347,6 +347,10 @@
     <Compile Include="Screens\Schlafraum.Generated.cs">
       <DependentUpon>Schlafraum.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screens\StartUp.cs" />
+    <Compile Include="Screens\StartUp.Generated.cs">
+      <DependentUpon>StartUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screens\ZooLevel.cs" />
     <Compile Include="Screens\ZooLevel.Event.cs">
       <DependentUpon>ZooLevel.cs</DependentUpon>
